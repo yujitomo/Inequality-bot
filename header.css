@@ -1,0 +1,62 @@
+/*　ヘッダー　*/
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.header {
+  width: 100%;
+  margin-left: 15px;
+  margin-top: 10px;
+  font-size: 70px;
+  font-family: 'Mouhitsu';
+}
+
+.header-icon {
+  width: 25%;
+  margin-left: 15px;
+  margin-top: 10px;
+  float: left;
+}
+
+.header-moji {
+  margin-left: 20px;
+  float: left;
+}
+
+.header-title {
+  font-size: 70px;
+  font-family: 'Mouhitsu';
+}
+
+.header-subtitle {
+  margin-top: -40px;
+  margin-left: 15px;
+  font-size: 20px;
+  font-family: 'Mouhitsu';
+}
+
+.header-links {
+  font-size: 20px;
+  font-family: 'Sawarabi Gothic';
+}
+
+.header-links p {
+  float: left;
+  color: #006400;
+}
+
+.header-links p a {
+  transition: all 0.05s ease-in-out;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.header-links p a:hover {
+  opacity: 0.5;
+}
+
+.header-links p span {
+  border-bottom: 1px solid #006400;
+}
