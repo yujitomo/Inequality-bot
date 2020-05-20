@@ -40,7 +40,7 @@
   background-color: #f5fffa;
   float: left;
   padding-left: 15px;
-  margin-left: 15px;
+  margin-left: 70px;
   padding-right: 10px;
   width: 63%;
   font-family: 'Sawarabi Gothic';
@@ -62,4 +62,38 @@
 
 .left p a:hover {
   opacity: 0.5;
+}
+
+.left-links {
+  margin-top: 10px;
+  background-color: #f5fffa;
+  float: left;
+  padding-left: 15px;
+  margin-left: 70px;
+  padding-right: 10px;
+  width: 63%;
+  font-family: 'Sawarabi Gothic';
+  border: 1px solid #dadada;
+  border-radius: 10px;
+}
+
+.left-links h2 {
+  color: #000000;
+  border-left: 5px solid #000000;
+  padding-left: 10px;
+}
+
+.left-links p a {
+  color: #006400;
+  transition: all 0.05s ease-in-out;
+  text-decoration: none;
+}
+
+.left-links p a:hover {
+  opacity: 0.5;
+}
+
+.left-links p a:hover:before {
+  font-size: 12px;
+  content: "≫";
 }
