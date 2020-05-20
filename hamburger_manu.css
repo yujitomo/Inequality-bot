@@ -81,7 +81,7 @@
 }
 
 .hamburger_manu_list {
-  margin-left: -40px;
+  margin-left: -400px;
   font-size: 30px;
   position: relative;
   transition: all 0.3s ease-in-out;
@@ -94,6 +94,7 @@
 
 .hamburger_manu_list.on_click {
   opacity: 1;
+  margin-left: -40px;
 }
 
 .hamburger_manu_list ul li a {
