@@ -1,0 +1,9397 @@
+\documentclass[uplatex, a5paper]{jsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{otf}
+
+\usepackage{xcolor}
+\usepackage[dvipdfmx]{graphicx}
+
+
+
+
+
+
+%%%%%図式
+\usepackage{tikz}%%%図
+\usetikzlibrary{arrows}
+\usepackage{amscd}%%%簡単な図式
+%%%%%図式
+
+
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem*{prf}{証明}
+\newtheorem*{caut}{注意}
+
+%%%
+
+\newtheorem{prob}{問題}
+%\newtheorem*{proof}{解答}
+\newtheorem*{kannsou}{感想やコメント}
+\newtheorem*{lem}{補題}
+
+%%%証明環境の調整
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+    #1\@addpunct{\textbf{.}}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+\providecommand{\proofname}{証明}
+
+
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}%%%%fnsymbolという文字をenumerate環境のパラメーターで使えるようにする。
+\makeatother
+
+\renewcommand{\theenumi}{(\arabic{enumi})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumi}{\theenumi}
+%%%%%箇条書き環境
+
+
+\newcommand{\lhs }{ L.H.S. }
+\newcommand{\rhs }{ R.H.S. }
+
+%%%
+
+
+
+
+\usepackage{latexsym}
+\def\qed{\hfill $\Box$}
+
+
+\title{bot解答}
+\author{不等式bot}
+
+
+
+\begin{document}
+\maketitle
+
+不等式botの解答例です.
+
+
+
+\section{記号の定義}
+
+
+\begin{itemize}
+ \item $(L.H.S.),(R.H.S.)$は示すべき不等式の左辺, 右辺を意味する.
+ \item ３変数の問題のときに$s,t,u$と書いた場合, 基本対称式を意味する：$s=a+b+c,t=ab+bc+ca,u=abc$. また$\Delta$と書いた場合は差積$(a-b)(b-c)(c-a)$を意味する.
+ \item ３変数の問題のとき, 次の記号を用いることがある：$s_n=a^n+b^n+c^n , t_n=(ab)^n+(bc)^n+(ca)^n$
+\end{itemize}
+
+
+
+
+
+
+
+\section{有名不等式}
+ここでは, 解答で使っていく有名な不等式の紹介と証明をします.
+
+
+\begin{itemize}
+ \item 相加相乗調和平均の関係（$\mathrm{AM-GM}$と略す）：
+
+ $a_i >0$に対し
+ $$
+ \frac{a_1+a_2+\cdots + a_n }{n} \geq \sqrt[n]{a_1a_2\cdots a_n } \geq \frac{n}{\frac{1}{a_1}+\cdots + \frac{1}{a_n}}
+ $$
+
+ \item 重み付き相加相乗：
+
+$a_i > 0 , p_i \geq 0 , p_1+p_2+ \cdots + p_n =1$に対し
+$$
+p_1a_1+p_2a_2 + \cdots + p_na_n \geq {a_1}^{p_1}{a_2}^{p_2}\cdots {a_n}^{p_n}
+$$
+
+ \item コーシー・シュワルツの不等式（$\mathrm{CS}$と略す）：
+
+ $a_i,b_i \in \mathbb{R}$に対し
+ $$
+ ({a_1}^2+ {a_2}^2+ \cdots + {a_n}^2)({b_1}^2+ {b_2}^2+ \cdots + {b_n}^2) \geq (a_1b_1+ a_2b_2 + \cdots + a_nb_n)^2
+ $$
+  \item 変形版（$\mathrm{Engei}$型）コーシーシュワルツ：
+ $a_i \in \mathbb{R} ,b_i >0$に対し
+ $$
+ \frac{{a_1}^2}{b_1} + \frac{{a_2}^2}{b_2} + \cdots + \frac{{a_n}^2}{b_n} \geq \frac{(a_1+a_2+ \cdots + a_n)^2 }{b_1+b_2+ \cdots + b_n}
+ $$
+
+ \item 多重コーシーシュワルツ：
+
+ $a_{ij} > 0 , (1 \leq i \leq n , 1 \leq j \leq m)$に対し
+ $$
+ \prod_{j=1}^m \sum_{i=1}^n {a_{ij}}^m \geq \left( \sum_{i=1}^n \prod_{j=1}^m a_{ij} \right) ^m
+ $$
+
+ \item べき平均不等式：
+
+ $a_i > 0 , r \in \mathbb{R}$に対し
+\[
+  [r] = \begin{cases}
+    \left( a_1a_2\cdots a_n \right) ^{1/n} & (r=0) \\
+    \left( \displaystyle\frac{ {a_1}^r + {a_2}^r + \cdots + {a_n}^r }{n} \right) ^{1/r} & (r\neq 0)
+  \end{cases}
+\]
+と置くと, $ r > s $に対し$[r] \geq [s] $.
+
+ \item $\mathrm{Muirhead}$の不等式：
+ \item Schurの不等式：
+ \item 拡張Schur：
+
+
+ \item
+
+ \item
+ \item
+ \item
+\end{itemize}
+
+
+
+
+\section{有用な不等式と置き換え技術}
+
+
+
+
+
+%\twocolumn
+\newpage
+
+\section{解答}
+
+
+解答例です.
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0\), \(a^2+b^2+c^2=3\), \(\min \{ a+b,b+c,c+a \} > \sqrt{2}\)のとき
+  \[
+  \frac{a}{(b+c-a)^2}+\frac{b}{(c+a-b)^2}+\frac{c}{(a+b-c)^2}\geq\frac{3}{(abc)^2}
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO Shortlist 2011 A-7
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(a,b,c\)が三角形の\(3\)辺とならないとき、\(a+b\leq c\)としてよい。
+  このとき\(c \geq a+c \geq \min \{ a+b,b+c,c+a \} > \sqrt{2} \)である。
+  よって\(2< (a+b)^2 < 2(a^2+b^2) = 6 - 2c^2 < 2\)となり矛盾。
+  従って\(a,b,c\)は三角形の三辺を成す。
+
+  \(3\)次Schurと\(4\)次Schurより
+  \begin{align*}
+    3abc &\geq a^2(b+c-a) + b^2( c+a -b) + c^2( a+b-c) \\
+    abc(a+b+c) &\geq a^3(b+c-a) + b^3(c+a-b) + c^3(a+b-c)
+  \end{align*}
+  である。
+  これらを考慮して、３重コーシーと\(a+b+c \leq \sqrt{3(a^2+b^2+c^2)} = 3\)より
+  \begin{align*}
+    3(abc)^2(a+b+c)(L.H.S.) &\geq
+    \left( \sum_{cyc.} \sqrt[3]{a^2(b+c-a)\cdot a^3(b+c-a) \cdot \frac{a}{(b+c-a)^2} } \right)^3 \\
+    &= (a^2+b^2+c^2)^3 = 27  \\
+    &\geq 9 (a+b+c) = 3(abc)^2(a+b+c)(R.H.S.)
+  \end{align*}
+  となる。以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c,d>0,a+b+c+d=6,a^2+b^2+c^2+d^2=12\)
+  のとき
+  \[
+  36\leq 4(a^3+b^3+c^3+d^3 )-(a^4+b^4+c^4+d^4) \leq 48
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO Shortlist 2010 A-2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(s_n= a^n+b^n+c^n+d^n\)と置く。
+  \(s_1=6,s_2=12\)であり、
+  \((a-1)^2+(b-1)^2+(c-1)^2+(d-1)^2 = s_2 -2s +4 = 4\)である。
+
+  \(S= (a-1)^4 + (b-1)^4 + (c-1)^4 + (d-1)^4\)と置く。
+  \(4(a^3+b^3+c^3+d^3 )-(a^4+b^4+c^4+d^4)= -S + 6s_2 -4s_1 +4 = -S +52\)なので
+  \(4 \leq S \leq 16\)を示せば良い。
+
+  \(y=x^2\)は下に凸なので、凸不等式より、
+  \[S \geq 4 \left( \left( (a-1)^2+(b-1)^2+(c-1)^2+(d-1)^2 \right) /4 \right) ^2 = 4\]
+  となる。
+  よって下からの評価が得られた。
+  また、上からの評価は
+  \(S \leq \left( (a-1)^2+(b-1)^2+(c-1)^2+(d-1)^2 \right) ^2 = 16\)
+  より従う。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0 , 1/a + 1/b + 1/c = a+b+c\)
+  のとき
+  \[
+  \frac{1}{(2a+b+c)^2} +\frac{1}{(2b+c+a)^2} +\frac{1}{(2c+a+b)^2} \leq \frac{3}{16}
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO Shortlist 2009 A-2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(1/a + 1/b + 1/c = a+b+c \Leftrightarrow t/u=s \Leftrightarrow su=t\)なので
+  \begin{align*}
+    ( L.H.S.) &= \sum_{cyc.} \frac{1}{\left( (a+b) + (a+c) \right)^2}  \\
+    &\leq \sum_{cyc.} \frac{1}{ 4(a+b)(a+c) } \\
+    &= \frac{1}{4} \sum_{cyc.} \frac{b+c}{(a+b)(b+c)(c+a)} \\
+    &= \frac{1}{2} \frac{s}{st-u}  \\
+    &= \frac{s^2u}{2t(st-u)}  \\
+    &= \frac{3}{16} \frac{8s^2u}{3t(st-u)}  \\
+    &= \frac{3}{16} \frac{8s^2u}{ 3s(t^2-3su) + u(s^2 -3t) + 8s^2u }  \\
+    &\leq \frac{3}{16}
+  \end{align*}
+\end{proof}
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0,ab+bc+ca\leq 3abc\)
+  のとき
+  \[
+  \sqrt{\frac{a^2+b^2}{a+b}} +\sqrt{\frac{b^2+c^2}{b+c}} +\sqrt{\frac{c^2+a^2}{c+a}}+3
+  \leq \sqrt{2} \left( \sqrt{a+b} +\sqrt{b+c} +\sqrt{c+a} \right)
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO Shortlist 2009 A-4
+  \end{flushright}
+\end{prob}
+
+
+
+\begin{proof}
+  \[2(a+b)^2 = a^2+b^2 + \left( ( a^2 +b^2) + 2ab \right) + 2ab \geq ( a^2 + b^2) +\sqrt{2ab( a^2+b^2 )} + 2ab = \left( \sqrt{ a^2+b^2} + \sqrt{2ab} \right) ^2\]
+  なので
+  \[
+  \sqrt{2}\sqrt{a+b} \geq \sqrt{ \frac{a^2+b^2}{a+b}} + \sqrt{ \frac{ 2ab}{a+b} }
+  \]
+  である。従って、
+  \[
+  ( R.H.S.)
+  \geq \sum_{cyc.}\left( \sqrt{ \frac{a^2+b^2}{a+b}} + \sqrt{ \frac{ 2ab}{a+b} } \right)
+  = \sum_{cyc.} \sqrt{ \frac{a^2+b^2}{a+b}} + \sum_{cyc. } \sqrt{ \frac{ 2ab}{a+b} }
+  \]
+  となる。ここでべき平均を\(3\sqrt{[1/2]}\geq 3\sqrt{[-1]}\)で使って
+  \[
+  \sum_{cyc. } \sqrt{ \frac{ 2ab}{a+b} }
+  \geq 3\sqrt{ \frac{3}{\sum_{cyc.}\frac{ a+b}{2ab}}} = 3\sqrt{ \frac{3abc}{ab+bc+ca} }
+  \geq 3
+  \]
+  以上より示された。
+\end{proof}
+
+
+
+
+
+
+\
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x,y,z\neq 1, xyz=1\)
+  のとき
+  \[
+  \frac{x^2}{(x-1)^2} + \frac{y^2}{(y-1)^2} + \frac{z^2}{(z-1)^2} \geq 1
+  \]
+  を示せ.
+
+  \begin{flushright}
+    IMO 2008 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(u=xyz=1\)に注意して,
+  \begin{align*}
+    ( L.H.S.) &=  \frac{ \sum_{cyc.}x^2(y-1)^2(z-1)^2 }{\left( (x-1)(y-1)(z-1) \right) ^2 }  \\
+    &=  \frac{ \sum_{cyc.} (xyz - xz - xy + x ) ^2 }{(1-s+t-u)^2}  \\
+    &=  \frac{ \sum_{cyc.} ( 1+x -xy-xz)^2}{(s-t)^2}  \\
+    &=  \frac{ \sum_{cyc.} (1+x^2+x^2y^2+x^2z^2+2x-2xy-2xz-2x^2y-2x^2z+2x^2yz)}{(s-t)^2}  \\
+    &=  \frac{ 3+4s + s_2 -4t + 2t_2-2(st-3u) }{(s-t)^2}  \\
+    &=  \frac{ 9+4s+(s^2-2t)-4t+2(t^2-2su)-2st }{(s-t)^2}  \\
+    &=  \frac{ s^2 -2st + 2t^2 -6t +1}{(s-t)^2}  \\
+    &=  \frac{ (s-t)^2 + (t-3)^2}{(s-t)^2} \geq 1
+  \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c\)が三角形の三辺の辺長を成すとき,
+  \[
+  \frac{\sqrt{b+c-a}}{\sqrt{b}+\sqrt{c}-\sqrt{a}} +
+  \frac{\sqrt{c+a-b}}{\sqrt{c}+\sqrt{a}-\sqrt{b}} +
+  \frac{\sqrt{a+b-c}}{\sqrt{a}+\sqrt{b}-\sqrt{c}}
+  \leq 3
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO Shortlist 2006 A-6
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  対称式なので\(a \geq b \geq c\)としてよい.
+  このとき\(\sqrt{b}+\sqrt{c}-\sqrt{a} \leq \sqrt{c}+\sqrt{a}-\sqrt{b} \leq \sqrt{a}+\sqrt{b}-\sqrt{c}\)なので
+  拡張Schurより,
+  \[
+  \sum_{cyc.} \frac{(\sqrt{a} - \sqrt{b})(\sqrt{a}-\sqrt{c})}{(\sqrt{b}+\sqrt{c}-\sqrt{a})^2} \geq 0
+  \]
+  である. これとコーシーシュワルツより
+  \begin{align*}
+    (L.H.S.)^2 &\leq 3 \sum_{cyc.} \frac{b+c-a}{(\sqrt{b}+\sqrt{c}-\sqrt{a})^2}   \\
+    &\leq 3 \sum_{cyc.} \frac{b+c-a + (\sqrt{a} - \sqrt{b})(\sqrt{a}-\sqrt{c})}{(\sqrt{b}+\sqrt{c}-\sqrt{a})^2} \\
+    &= 3 \sum_{cyc.} \frac{(\sqrt{b} + \sqrt{c} - \sqrt{a})^2}{(\sqrt{b}+\sqrt{c}-\sqrt{a})^2}  = 9
+  \end{align*}
+\end{proof}
+
+
+
+
+
+\
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  任意の\(a,b,c \in \mathbb{R}\)に対し, 次が成立するような最小の実数\(M\)を求めよ：
+  \[
+  \left| ab(a^2-b^2 )+ bc(b^2-c^2 )+ ca(c^2-a^2 ) \right| \leq M(a^2+b^2+c^2 )^2
+  \]
+  \begin{flushright}
+    IMO 2006 問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(M=\displaystyle\frac{9\sqrt{2}}{32}\)である.
+  \(x=a-b,y=b-c,z=c-a\)と置く.
+  この時\(\lhs = |xyzs| , \rhs = (x^2+y^2+z^2+s^2)^2/9 , |x+y|=|z|\)である.
+  よって
+  \begin{align*}
+    \frac{1}{M}(R.H.S.) &= \frac{1}{9}(x^2+y^2+z^2+s^2)^2  \\
+    &\geq  \frac{1}{9}\left( \frac{(x+y)^2}{2} + (x+y)^2 + s^2 \right) ^2  \\
+    &\geq  \frac{1}{9}\left( (x+y)^2 + 2\sqrt{\frac{(x+y)^2}{2}s^2} \right) ^2  \\
+    &\geq  \frac{1}{9} \cdot 4 \cdot (x+y)^2 \cdot 2\sqrt{\frac{(x+y)^2}{2}s^2}  \\
+    &=  \frac{8}{9\sqrt{2}} \left| (x+y)^3s \right|  \\
+    &\geq  \frac{8}{9\sqrt{2} } \left| 4xy \cdot (x+y) \cdot s \right|  \\
+    &=  \frac{32}{9\sqrt{2} } \left| xyzs \right| = \frac{32}{9\sqrt{2} }( L.H.S.)
+  \end{align*}
+  となる. これより\(M \geq \displaystyle\frac{9\sqrt{2}}{32}\)なら不等式が成立することがわかる.
+  また, \(a=3+\sqrt{2} ,b= \sqrt{2} , c=3- \sqrt{2}\)とすれば,
+  \(\displaystyle\frac{L.H.S. }{R.H.S.} = \displaystyle\frac{9\sqrt{2}}{32}\)なので
+  \(M < \displaystyle\frac{9\sqrt{2}}{32}\)では成立しない.
+  よって\(M=\displaystyle\frac{9\sqrt{2}}{32}\)が最小.
+\end{proof}
+
+
+
+
+
+
+\
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x,y,z > 0 , xyz \geq 1\)のとき
+  \[
+  \frac{x^5-x^2}{x^5+y^2+z^2} + \frac{y^5-y^2}{y^5+z^2+x^2} + \frac{z^5-z^2}{z^5+x^2+y^2} \geq 0
+  \]
+  を示せ.
+  \begin{flushright}
+    IMO 2005 問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \[
+  3-(L.H.S.) = \sum_{cyc.} \left( 1- \frac{x^5-x^2}{x^5+y^2+z^2}\right)
+  = \sum_{cyc.} \frac{x^2+y^2+z^2}{x^5+y^2+z^2}
+  \]
+  なので
+  \[
+  \sum_{cyc.} \frac{x^2+y^2+z^2}{x^5+y^2+z^2} \leq 3
+  \]
+  を示せば良い.
+  コーシー・シュワルツより
+  \[
+  (x^2+y^2+z^2 )^2
+  \leq (x^5+y^2+z^2 ) \left( \frac{1}{x} + y^2+z^2 \right)
+  \leq (x^5+y^2+z^2 )(yz+y^2+z^2 )
+  \]
+  である. ゆえに
+  \[
+  \sum_{cyc.} \frac{x^2+y^2+z^2}{x^5+y^2+z^2}
+  \leq \sum_{cyc.} \frac{yz+y^2+z^2}{x^2+y^2+z^2} = 2 + \frac{t}{s_2}
+  \leq 3
+  \]
+\end{proof}
+
+
+
+\begin{proof}
+  \[
+  \frac{x^5-x^2}{x^5+y^2+z^2} - \frac{x^5-x^2}{x^3(x^2+y^2+z^2)} =
+  \frac{(x^5-x^2)(y^2+z^2)(x^3-1)}{x^3(x^5+y^2+z^2)(x^2+y^2+z^2)}
+  \]
+  \[
+  = \frac{x^2(y^2+z^2)(x^3-1)^2}{x^3(x^5+y^2+z^2)(x^2+y^2+z^2)} \geq 0
+  \]
+  なので
+  \[
+  L.H.S. \geq \sum_{cyc.} \frac{x^5-x^2}{x^3(x^2+y^2+z^2)} =
+  \frac{1}{s_2}\sum_{cyc.}\left( x^2-\frac{1}{x} \right) \geq \frac{1}{s_2}\sum_{cyc.}\left( x^2-yz \right) \geq 0
+  \]
+\end{proof}
+
+
+\begin{proof}
+  \[
+  3(y^2+z^2)\left( \frac{z^5}{xyz} + y^2+z^2 \right) -2(x^2+y^2+z^2)^2
+  \]
+  \[
+  = x^4\left( \sqrt{\frac{y}{z}} -
+  \sqrt{\frac{z}{y}} \right) ^2 + (y^2+z^2)\left( (y-z)^2 +
+  2\left( \frac{x^2}{\sqrt{yz}} - \sqrt{yz} \right) ^2 \right) \geq 0
+  \]
+  なので
+  \[
+  \sum_{cyc.} \frac{x^2+y^2+z^2}{x^5+y^2+z^2} \leq \sum_{cyc.}
+  \frac{x^2+y^2+z^2}{x^5/xyz+y^2+z^2} \leq \frac{3}{2}\sum_{cyc.} \frac{y^2+z^2}{x^2+y^2+z^2} = 3
+  \]
+\end{proof}
+
+
+\
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0\)に対し
+  \[
+  \frac{a}{\sqrt{a^2+8bc}} + \frac{b}{\sqrt{b^2+8ca}} + \frac{c}{\sqrt{c^2+8ab}} \geq 1
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO 2001 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \[
+  \frac{a}{\sqrt{a^2+8bc}} \geq \frac{a^{4/3}}{a^{4/3}+b^{4/3}+c^{4/3}}
+  \]
+  を示せば十分であるが, これは
+  \[
+  \left( a^{4/3}+b^{4/3}+c^{4/3} \right) ^2 \geq a^{2/3}(a^2+8bc)
+  \]
+  と同値.
+  よってこの不等式を示せば良いが, これは
+  \begin{align*}
+    \left( a^{4/3}+b^{4/3}+c^{4/3} \right) ^2
+    &= \left( a^{4/3} \right) ^2 + 2a^{4/3}(b^{4/3}+c^{4/3}) + (b^{4/3}+c^{4/3})^2 \\
+    &\geq  a^{2/3}a^2 + 4(bc)^{2/3}\left( a^{4/3} + (bc)^{2/3} \right)  \\
+    &\geq  a^{2/3}a^2 + 8a^{2/3}bc = a^{2/3}(a^2+8bc)
+  \end{align*}
+  よりわかる。
+\end{proof}
+
+\begin{proof}
+  \(a+b+c=1\)としてよい. \(1/\sqrt{x}\)は下に凸なので凸不等式より
+  \[
+  L.H.S. \geq \frac{1}{\sqrt{ \sum_{cyc.} a(a^2+8bc) }} = \frac{1}{\sqrt{ a^3+b^3+c^3+24abc }}
+  \]
+  である. 一方, 相加相乗より
+  \[
+  24abc \leq 3(a^2b+ab^2+b^2c+bc^2+c^2a+ca^2) + 6abc
+  \]
+  なので
+  \[
+  \frac{1}{\sqrt{ a^3+b^3+c^3+24abc }}
+  = \frac{1}{\sqrt{ a^3+b^3+c^3+3(a^2b+ab^2+b^2c+bc^2+c^2a+ca^2) + 6abc }}
+  \]
+  \[
+  = \frac{1}{\sqrt{(a+b+c)^3}} =1
+  \]
+\end{proof}
+
+
+\begin{proof}
+  コーシーシュワルツより
+  \[
+  (a+b+c)(a^3+b^3+c^3+24abc ) = (a+b+c)\sum_{cyc.} a(a^2+8bc) \geq \left( \sum_{cyc.} a\sqrt{a^2+8bc} \right) ^2
+  \]
+  相加相乗より
+  \[
+  (a+b+c) ^3 \geq a^3+b^3+c^3+24abc
+  \]
+  コーシーシュワルツより
+  \[
+  ( L.H.S.) \sum_{cyc.}a\sqrt{a^2+8bc}
+  \geq \left( \sum_{cyc.}\frac{a}{\sqrt{a^2+8bc}}\cdot a\sqrt{a^2+8bc} \right) ^2 = (a+b+c)^2
+  \]
+  以上をつなげて,
+  \[
+  (a+b+c)^4(L.H.S.) ^2 \geq (a+b+c)(a^3+b^3+c^3 +24abc) (L.H.S.)^2
+  \]
+  \[
+  \geq \left( \sum_{cyc.} a\sqrt{a^2+8bc} \right) ^2 (L.H.S.)^2 \geq (a+b+c)^4
+  \]
+  この両辺を\((a+b+c)^4\)で割れば良い。
+\end{proof}
+
+
+
+
+
+
+\
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c> 0 , abc=1\)のとき
+  \[
+  \left( a-1 +\frac{1}{b} \right) \left( b-1+\frac{1}{c} \right) \left( c-1+\frac{1}{a} \right) \leq 1
+  \]
+  を示せ.
+  \begin{flushright}
+    IMO 2000 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(x=abc, y=bc,z=c\)と置くと\(a=x/y,b=y/z,c=z/x\)となるので, これを代入して
+  \begin{align*}
+    &\Leftrightarrow
+    \left( \frac{x}{y}-1 +\frac{z}{y} \right)
+    \left( \frac{y}{z}-1+\frac{x}{z} \right) \left( \frac{z}{x}-1+\frac{y}{x} \right) \leq 1  \\
+    &\Leftrightarrow (x+y-z)(y+z-x)(z+y-x) \leq xyz
+  \end{align*}
+  となるがこれは\(3\)次Schurよりわかる.
+\end{proof}
+
+
+\begin{proof}
+  \(b\)を\(a,c\)の中間にあるとして良い.
+  このとき\((a-1)(c-1)\leq 0\)であるから\(ac -a+1 \leq c\), よって\(c-1+1/a \leq c/a\)となる.
+  一方, 相加相乗より\(2 - b - 1/b \leq 0\)なので
+  \[
+  \left( a-1 +\frac{1}{b} \right) \left( b-1+\frac{1}{c} \right)
+  = ab -\frac{1}{c}-a+\frac{1}{bc} +2 -b-\frac{1}{b}+\frac{a}{c}
+  = 2 -b-\frac{1}{b}+\frac{a}{c} \leq \frac{a}{c}
+  \]
+  であるから
+  \[
+  L.H.S.\leq \frac{c}{a}\frac{a}{c} =1
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x,y,z>0 , xyz=1\)のとき
+  \[
+  \frac{x^3}{(1+y)(1+z)} + \frac{y^3}{(1+z)(1+x)} + \frac{z^3}{(1+x)(1+y)} \geq \frac{3}{4}
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO Shortlist 1998 A-3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  相加相乗より\(x+y+z \geq 3\), ３重コーシーより
+  \begin{align*}
+    (x+y+z+3)^2(L.H.S.) &= \sum_{cyc.}(y+1)\sum_{cyc.}(z+1)\sum_{cyc.}\frac{x^3}{(1+y)(1+z)} \\
+    &\geq (x+y+z)^3 \geq \frac{3}{4}\left( 2(x+y+z) \right) ^2  \\
+    &\geq \frac{3}{4}\left( x+y+z+3 \right) ^2
+  \end{align*}
+  となるのでこの両辺を\((x+y+z+3)^2\)で割れば良い。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{prob}
+  \(x,y,z>0,xyz=1\)
+  のとき
+  \[
+  \frac{xy}{x^5+y^5+xy} + \frac{yz}{y^5+z^5+yz} + \frac{zx}{z^5+x^5+zx} \leq 1
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO Shortlist 1996 A-1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(x^5+y^5 \geq x^2y^2(x+y)\)なのでゆえに
+  \[
+  L.H.S. \leq \sum_{cyc.}\frac{xy}{x^2y^2(x+y)+x^2y^2z}
+  = \sum_{cyc.}\frac{1}{xy(x+y+z)}
+  =  \sum_{cyc.}\frac{z}{x+y+z} = 1
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0,abc=1\)
+  のとき
+  \[
+  \frac{1}{a^3(b+c)} + \frac{1}{b^3(c+a)} + \frac{1}{c^3(a+b)} \geq \frac{3}{2}
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO 1995 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  相加相乗より\(ab+bc+ca \geq 3\)なのでコーシーより
+  \[
+  2(ab+bc+ca)(L.H.S.)
+  = \sum_{cyc.}a(b+c)\sum_{cyc.}\frac{1}{aaa(b+c)}
+  \geq \left( \sum_{cyc.}\sqrt{a(b+c)\frac{1}{aaa(b+c)}} \right)^2
+  = \left( \frac{1}{a} + \frac{1}{b} + \frac{1}{c} \right)^2
+  \]
+  \[
+  = (ab+bc+ca)^2 \geq 3(ab+bc+ca)
+  \]
+  である.
+  この両辺を\(2(ab+bc+ca)\)で割れば良い。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c,d>0\)
+  のとき
+  \[
+  \frac{a}{b+2c+3d} + \frac{b}{c+2d+3a} + \frac{c}{d+2a+3b} + \frac{d}{a+2b+3c} \geq \frac{2}{3}
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO Shortlist 1993 A-2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(3(a+b+c+d)^2 - 8(ab+bc+cd+da+ac+bd) = \sum_{sym}(a-b)^2 \geq 0\)なので
+  \((a+b+c+d)^2 \geq \displaystyle\frac{8}{3}(ab+bc+cd+da+ac+bd)\)である。
+  よってコーシーより
+  \begin{align*}
+    4(ab+bc+cd+da+ac+bd)(L.H.S.) &=  \sum_{cyc.}a(b+2c+3d)\sum_{cyc.}\frac{a}{b+2c+3d}  \\
+    &\geq \left( \sum_{cyc.}\sqrt{a(b+2c+3d)\frac{a}{b+2c+3d}} \right) ^2 =(a+b+c+d)^2  \\
+    &\geq \frac{8}{3}(ab+bc+cd+da+ac+bd)
+  \end{align*}
+  この両辺を\(4(ab+bc+cd+da+ac+bd)\)で割れば良い。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x,y,z>0,x+y+z=1\)
+  のとき
+  \[
+  0 \leq xy+yz+zx-2xyz \leq \frac{7}{27}
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO 1984 問1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  まず左側は
+  \[
+  xy+yz+zx-2xyz \geq xy+yz+zx-3xyz = (x+y+z)(xy+yz+zx)-3xyz
+  \]
+  \[
+  = xy^2+x^2y+yz^2+y^2z+zx^2+z^2x \geq 0
+  \]
+  であるから良い。
+
+  右側を示す。
+  \(1-2x,1-2y,1-2z\)のうち負のものは高々１つ。
+  １つの時と全て正のときで別々に示す。
+  まず一つのときは、\((1-2x)(1-2y)(1-2z)\leq 0\)なので展開して\(1-2s+4t-8u \leq 0\)。
+  よって\(t-2u \leq 1/4 \leq 7/27\)となるので良い。
+
+  全て正のときは、相加相乗
+  \[
+  (1-2x)(1-2y)(1-2z) \leq \left( \frac{(1-2x)+(1-2y)+(1-2z) }{3} \right) ^3 = \frac{1}{27}
+  \]
+  なので
+  \[
+  xy+yz+zx-2xyz
+  = \frac{1}{4}\left( (1-2x)(1-2y)(1-2z) +1 \right) \leq \frac{1}{4}\left( \frac{1/27} +1 \right)
+  = \frac{7}{27}
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x,y,z > 0\)
+  のとき
+  \[
+  (x+y)\sqrt{(y+z)(z+x)} + (y+z)\sqrt{(z+x)(x+y)} + (z+x)\sqrt{(x+y)(y+z)} \geq 4(xy+yz+zx)
+  \]
+  を示せ。
+  \begin{flushright}
+    バルカンMO 2012 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(s \geq \sqrt{3t} , st-u \geq 8st/9\)なので相加相乗より
+  \[
+  L.H.S. \geq 3\left( (x+y)(y+z)(z+x) \right) ^{2/3}
+  = 3(st-u)^{2/3} \geq 3\left( \frac{8}{9}st \right) ^{2/3}
+  \geq 3\left( \frac{8t}{9}\sqrt{3t} \right) ^{2/3} = 4t
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0\)
+  のとき
+  \[
+  \frac{a^2b(b-c)}{a+b} + \frac{b^2c(c-a)}{b+c} + \frac{c^2a(a-b)}{c+a} \geq 0
+  \]
+  を示せ。
+  \begin{flushright}
+    バルカンMO 2010 問1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \[
+  (a+b)(b+c)(c+a)(L.H.S.)
+  = \sum_{cyc.} a^2b(b^2-c^2)(c+a)
+  = \sum_{cyc.}a^3b^2c + \sum_{cyc.}a^3b^3 -\sum_{cyc.} a^2bc^3 - \sum_{cyc.} a^3b^2c
+  \]
+  \[
+  = \sum_{cyc.}a^3b^3 - \sum_{cyc.} a^3b^2c
+  = \sum_{cyc.} \left( \frac{2}{3}a^3b^3 + \frac{1}{3}a^3c^3 -a^3b^2c \right)
+  \geq 0 \ \ \ \left( \mbox{重み付き相加相乗より} \right)
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x,y,z>0, \sqrt{x} + \sqrt{y} + \sqrt{z} = 1\)
+  のとき
+  \[
+  \frac{x^2+yz}{\sqrt{2x^2(y+z)}} + \frac{y^2+zx}{\sqrt{2y^2(z+x)}} + \frac{z^2+xy}{\sqrt{2z^2(x+y)}} \geq 1
+  \]
+  を示せ。
+  \begin{flushright}
+    APMO 2007 問4
+  \end{flushright}
+\end{prob}
+
+
+
+\begin{proof}
+  \(x \geq y \geq z\)として良い.
+  このとき
+  \[1/\sqrt{2x^2(y+z)} \leq 1/\sqrt{2y^2(z+x)} \leq 1/\sqrt{2z^2(x+y)}\]なので拡張Schurより
+  \[
+  \sum_{cyc.}\frac{(x-y)(x-z)}{\sqrt{2x^2(y+z)}} \geq 0
+  \]
+  である。よって
+  \[
+  (\lhs ) \geq \sum_{cyc.} \frac{x^2+yz - (x-y)(x-z)}{\sqrt{2x^2(y+z)}} = \sum_{cyc.} \sqrt{\frac{y+z}{2}}
+  \]
+  ここで凸不等式より\(\sqrt{(y+z)/2} \geq (\sqrt{y} + \sqrt{z})/2\)なので
+  \[
+  \geq  \sum_{cyc.} \frac{\sqrt{y}+\sqrt{z}}{2} = 1
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0, abc=8\)
+  のとき
+  \[
+  \frac{a^2}{\sqrt{(1+a^3)(1+b^3)}} + \frac{b^2}{\sqrt{(1+b^3)(1+c^3)}} + \frac{c^2}{\sqrt{(1+c^3)(1+a^3)}}
+  \geq \frac{4}{3}
+  \]
+  を示せ。
+  \begin{flushright}
+    APMO 2005 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  相加相乗より\((x^2+2)^2 = 4 + (4 + x^2)x^2 \geq 4(1+x^3)\)なので,
+  \(1/\sqrt{1+x^3 } \geq 2/(2+x^2)\)である.
+  また相加相乗より\(2s_2+t_2\geq 24+48 = 72\)なので, よって
+  \begin{align*}
+    \lhs &\geq \sum_{cyc.} \frac{4a^2}{(2+a^2)(2+b^2)}
+    = \frac{\sum_{cyc.} 4a^2(2+c^2)}{(2+a^2)(2+b^2)(2+c^2)} = \frac{8s_2+ 4t_2}{8+ 4s_2+2t_2+u^2} \\
+    &= \frac{4}{2+\frac{72}{2s_2+t_2}} \geq \frac{4}{2+1}=\frac{4}{3}
+  \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0\)
+  のとき
+  \[
+  (a^2+2)(b^2+2)(c^2+2) \geq 3(a+b+c)^2
+  \]
+  を示せ。
+  \begin{flushright}
+    APMO 2004 問5 改題
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \begin{align*}
+    \lhs &= u^2 + 2t_2 + 4s_2 + 8 = u^2 + 2( t^2 -2su) + 4(s^2-2t) +8 \\
+    &= \left( u - \frac{1}{3}s \right) ^2 - \frac{10}{3}su + \frac{35}{9}s^2 +2t^2 - 8t + 8 \\
+    &= \left( u - \frac{1}{3}s \right) ^2 + \frac{8}{9}(t-3)^2 - \frac{8}{3}t
+    + \frac{10}{9}t^2 - \frac{10}{3}su +
+    \frac{35}{9}s^2 \\
+    &= \left( u - \frac{1}{3}s \right) ^2 + \frac{8}{9}(t-3)^2 + \frac{10}{9}(t^2-3su) + \frac{8}{9}(s^2-3t) + 3s^2 \\
+    &\geq 3s^2 = \rhs
+  \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x,y,z>0, \displaystyle\frac{1}{x} + \frac{1}{y} + \frac{1}{z} = 1\)
+  のとき
+  \[
+  \sqrt{x+yz} + \sqrt{y+zx} + \sqrt{z+xy} \geq \sqrt{xyz} + \sqrt{x} + \sqrt{y} + \sqrt{z}
+  \]
+  を示せ。
+  \begin{flushright}
+    APMO 2002 問4
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \begin{align*}
+    \lhs &= \sum_{cyc.} \sqrt{x+yz\left( \frac{1}{x} + \frac{1}{y} + \frac{1}{z} \right) } \\
+    &= \sum_{cyc.} \sqrt{\frac{x^2+xy+xz+yz}{x}} \\
+    &= \sum_{cyc.} \sqrt{\frac{(x+y)(x+z)}{x}} \\
+    &\geq \sum_{cyc.} \frac{x+\sqrt{yz}}{\sqrt{x}} \ \ \ ( \mbox{コーシー} )\\
+    &= \sum_{cyc.} \sqrt{x} + \sqrt{xyz}\sum_{cyc.}\frac{1}{x} \\
+    &= \rhs
+  \end{align*}
+\end{proof}
+
+
+
+\
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0\)
+  のとき
+  \[
+  \left( 1+\frac{a}{b}\right) \left( 1+\frac{b}{c} \right) \left( 1+\frac{c}{a}\right)
+  \geq 2\left( 1+\frac{a+b+c}{\sqrt[3]{abc} } \right)
+  \]
+  を示せ。
+  \begin{flushright}
+    APMO 1998 問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  相加相乗より
+  \[
+  \lhs = \frac{st-u}{u}
+  \geq \frac{3su^{2/3}-u}{u} = \frac{3s-u^{1/3}}{u^{1/3}}
+  \geq \frac{2s+3u^{1/3}-u^{1/3}}{u^{1/3}} = \rhs
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c\)が三角形の三辺の辺長を成す数のとき
+  \[
+  \sqrt{b+c-a} + \sqrt{c+a-b} + \sqrt{a+b-c} \leq \sqrt{a} + \sqrt{b} + \sqrt{c}
+  \]
+  を示せ。
+  \begin{flushright}
+    APMO 1996 問5
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  凸不等式より\(\sqrt{x}+\sqrt{y} \leq \sqrt{ 2(x+y) }\)なので
+  \[
+  \lhs = \sum_{cyc.} \frac{\sqrt{b+c-a} + \sqrt{c+a-b}}{2}
+  \leq \sum_{cyc.} \frac{\sqrt{2(b+c-a+c+a-b)}}{2} = \sum_{cyc.} \sqrt{a} = \rhs
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c\)が三角形の三辺の辺長を成す数のとき,
+  \[
+  a^2b(a-b) + b^2c(b-c) + c^2a(c-a) \geq 0
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO 1983 問6
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \((b+c-a)/2=x , (c+a-b)/2=y , (a+b-c)/2=z\)とおくと
+  \(x,y,z > 0\)で\(a=y+z , b=z+x , c=x+y\)となるので, 代入して, 重み付き相加相乗より
+  \[
+  \lhs = \sum_{cyc.} (y+z)^2(z+x)(y-x)
+  = \sum_{cyc.} (z^2+t)(y^2-zx-xy+yz)
+  = t_2 - su + s_2t -t^2 + \sum_{cyc.} (yz^3-z^3x)
+  \]
+  \[
+  = 2\sum_{cyc.} ( xy^3 -  xyz^2 )
+  = 2\sum_{cyc.} ( \frac{2}{7}xy^3 + \frac{1}{7}yz^3 + \frac{4}{7}zx^3 - x^2yz ) \geq 0
+  \]
+\end{proof}
+
+
+\begin{proof}
+  実は次のように変形できる：
+  \[
+  \lhs = \frac{1}{2}\sum_{cyc.}(b+c-a)(b+a-c)(a-b)^2 \geq 0
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c > 0 , ab+bc+ca+2abc=1\)
+  のとき
+  \[
+  2(a+b+c) + 1 \geq 32abc
+  \]
+  を示せ。
+  \begin{flushright}
+    地中海数学オリンピック 2004 問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(a=x/(y+z) , b=y/(z+x) , c=z/(x+y) \)と置ける（置き換えパターン）.
+  代入して
+  \begin{align*}
+    &\Leftrightarrow \frac{2x}{y+z} + \frac{2y}{z+x} + \frac{2z}{x+y} + 1
+    \geq 32\frac{xyz}{(x+y)(y+z)(z+x)} \ , \ (x,y,z>0) \\
+    &\Leftrightarrow \sum_{cyc.}2x(x+y)(x+z) + (x+y)(y+z)(z+x) \geq 32xyz  \ , \ (x,y,z>0) \\
+    &\Leftrightarrow & 2s_3 + 2st + (st-u) \geq 32u \ , \ (x,y,z>0)
+  \end{align*}
+  ここで相加相乗より\(s_3 \geq 3u , st \geq 9u\)なので
+  \[
+  2s_3 + 2st + (st-u) \geq 6u + 18u + ( 9u-u) = 32u
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0 , a^2+b^2+c^2 = 1\)
+  のとき
+  \[
+  \frac{a}{b^2+1} + \frac{b}{c^2+1} + \frac{c}{a^2+1}
+  \geq \frac{3}{4}\left( a\sqrt{a} + b\sqrt{b} + c\sqrt{c} \right) ^2
+  \]
+  を示せ。
+  \begin{flushright}
+    地中海数学オリンピック 2002 問4
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(t_2 \leq {s_2}^2/3 =1/3\)に注意してコーシーシュワルツより
+  \[
+  \frac{4}{3}( \rhs ) = \left( \sum_{cyc.} a\sqrt{a} \right) ^2
+  = \left( \sum_{cyc.} \sqrt{a^2(b^2+1) \cdot \frac{a}{b^2+1} } \right) ^2
+  \]
+  \[
+  \leq \sum_{cyc.} a^2(b^2+1) \sum_{cyc.} \frac{a}{b^2+1} = (s_2+t_2)( \lhs )
+  \]
+  \[
+  \leq \left( 1+\frac{1}{3} \right) ( \lhs ) = \frac{4}{3}(\lhs )
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x^2+y^2+z^2+9 = 4(x+y+z)\)
+  のとき
+  \[
+  x^4+y^4+z^4+16(x^2+y^2+z^2) \geq 8(x^3+y^3+z^3)+27
+  \]
+  を示せ。
+  \begin{flushright}
+    Middle European Mathematical Olympiad 2009 問5
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(a=x-2 , b=y-2,c=z-2\)と置くと\(a^2+b^2+c^2=3\)となる.
+  よって\(s_4 \geq {s_2}^2/3 = 3\)に注意して
+  \[
+  (\lhs ) - (\rhs ) = ( s_4+8s_3 + 24s_2+32s+48)+16(s_2+4s+12) - 8(s_3+6s_2+12s+24)-27
+  \]
+  \[
+  = s_4  -8s_2 +21 \geq 3-24+21=0
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  任意の実数\(x,y,z\)に対し
+  \[
+  (x+y+z)^2(xy+yz+zx)^2 \leq 3(x^2+xy+y^2)(y^2+yz+z^2)(z^2+zx+x^2)
+  \]
+  を示せ。
+  \begin{flushright}
+    インド数学オリンピック 2007 問6
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \((x+y)^2 \leq 4(x^2+xy+y^2)/3\)なので
+  \begin{align*}
+    \lhs = (st)^2 & \leq & \frac{81}{64}(st-u)^2 = \frac{81}{64}(x+y)^2(y+z)^2(z+x)^2 \\
+    & \leq & \frac{81}{64}\left( \frac{4}{3}(x^2+xy+y^2) \right) \left( \frac{4}{3}(y^2+yz+z^2) \right)
+    \left( \frac{4}{3}(z^2+zx+x^2) \right) = \rhs
+  \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0\)
+  のとき
+  \[
+  \frac{(b+c-a)^2}{a^2+(b+c)^2} + \frac{(c+a-b)^2}{b^2+(c+a)^2} + \frac{(a+b-c)^2}{c^2+(a+b)^2} \geq \frac{3}{5}
+  \]
+  を示せ。
+  \begin{flushright}
+    日本数学オリンピック 1997年 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  $a+b+c=1$としてよい。
+  このとき
+  \[
+  \Leftrightarrow \sum_{cyc.}\frac{(1-2a)^2}{a^2+(1-a)^2}
+  \geq \frac{3}{5} \Leftrightarrow \sum_{cyc.}\frac{1}{2-2a+2a^2} \leq \frac{27}{5}
+  \]
+  ここで
+  \[
+  \left( \mbox{ 右辺 } \right) - \left( \mbox{ 左辺 } \right)
+  = \sum_{cyc.} \left( \frac{9}{5} - \frac{1}{2-2a+2a^2} \right)
+  = \sum_{cyc.} \left( \frac{54a}{25} + \frac{27}{25} - \frac{1}{2-2a+2a^2} \right)
+  \]
+  \[
+  = \sum_{cyc.} \frac{ (54a+27)(2a^2-2a+1) -25 }{25(2a^2-2a+1)}
+  = \sum_{cyc.} \frac{ 2(54a^3-27a^2+1) }{25(2a^2-2a+1)}
+  = \sum_{cyc.} \frac{ 2(3a-1)^2(6a+1) }{25(2a^2-2a+1)} \geq 0
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a , b , c > 0 , a^2\leq b^2+c^2 , b^2\leq c^2+a^2 , c^2 \leq a^2+b^2\)
+  のとき
+  \[
+  (a+b+c)(a^2+b^2+c^2)(a^3+b^3+c^3) \geq 4(a^6+b^6+c^6)
+  \]
+  を示せ。
+  \begin{flushright}
+    日本数学オリンピック 2001年 問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  コーシーシュワルツより
+  \((a+b+c)(a^3+b^3+c^3) \geq ( a^2+b^2+c^2 )^2\)なので
+  \((a^2+b^2+c^2)^3 \geq 4(a^6+b^6+c^6)\)を示せば良い。
+  左辺を展開して、
+  \[
+  (a^2+b^2+c^2)^3 = s_6 + 3u^2 + 3\sum_{cyc.} a^4(b^2+c^2) \geq s_6 + 3\sum_{cyc.} a^4\cdot a^2 = 4s_6
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a , b , c > 0 , a^2 > bc\)
+  を満たす任意の実数\(a,b,c\)に対し,
+  次を満たす最大の実数\(k\)を求めよ：
+  \[
+  (a^2-bc)^2 > k(b^2-ca)(c^2-ab)
+  \]
+  \begin{flushright}
+    日本数学オリンピック 2003年 問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(k>4\)とする。
+  \(k-4 > 5 \varepsilon\)となる\(1> \varepsilon > 0\)がとれる。
+  \(a= 1+ \varepsilon , b=c=1\)とすると、\(a^2 > bc\)である。
+  このとき
+  \[
+  (a^2 -bc)^2 = ( 2\varepsilon + \varepsilon ^2 ) ^2
+  = \varepsilon ^2 ( \varepsilon ^2 + 4\varepsilon + 4)
+  < \varepsilon ^2( 5\varepsilon + 4)
+  < k\varepsilon ^2
+  = k(b^2 -ca)(c^2-ab)
+  \]
+  なので\(k\leq 4\)である。
+
+  \(k=4\)で不等式が成立することを示そう。
+  \(b^2 \geq ca , c^2 \geq b\)とすると、
+  \(b^2c^2 \geq a^2 bc > b^2c^2\)となって|矛盾するので\(b^2 < ca\)または\(c^2 <ab\)である。
+
+  \(a=b=c\)とはならないので\(a^2+b^2+c^2 > ab+bc+ca\)である。
+  よって\(a^2-bc > (ca -b^2)+ (ab-c^2)\)がわかり、
+  \[
+  (a^2-bc)^2 > \left( ( ca-b^2) + (ab-c^2 ) \right) ^2 \geq 4(ca-b^2)(ab-c^2)
+  \]
+  となる。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c > 0 , a+b+c=1\)のとき
+  \[
+  \frac{1+a}{1-a} + \frac{1+b}{1-b} + \frac{1+c}{1-c}
+  \leq 2 \left( \frac{b}{a} + \frac{c}{b} + \frac{a}{c} \right)
+  \]
+  を示せ。
+  \begin{flushright}
+    日本数学オリンピック 2004年 問4
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \begin{align*}
+    ( \rhs ) - ( \lhs ) &= \sum_{cyc.} \left( \frac{2a}{c} - \frac{2a+b+c}{b+c} \right) \\
+    &= -3 + 2\sum_{cyc.} \left( \frac{a}{c} - \frac{a}{b+c} \right) \\
+    &= -3 + 2\sum_{cyc.} \left( \frac{ab}{c(b+c)} \right) \\
+    &= -3 + 2\sum_{cyc.} \left( \frac{(ab)^2}{ abc(b+c)} \right) \\
+    &\geq -3 + 2\frac{ ( ab+bc+ca )^2 }{ 2abc(a+b+c) } \\
+    &\geq 0
+  \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0,a+b+c=1\)
+  のとき
+  \[
+  a\sqrt[3]{1-b+c} + b\sqrt[3]{1-c+a} + c\sqrt[3]{1-a+b} \leq 1
+  \]
+  を示せ。
+  \begin{flushright}
+    日本数学オリンピック 2005年 問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(\sqrt[3]{x}\)は上に凸なので凸不等式より
+  \[
+  \lhs \leq \sqrt[3]{ \sum_{cyc.} a(1-b+c) } = \sqrt[3]{ a+b+c } =1
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x,y,z>0\)
+  のとき
+  \[
+  \frac{1+xy+xz}{(1+y+z)^2} + \frac{1+yz+yx}{(1+z+x)^2} + \frac{1+zx+zy}{(1+x+y)^2} \geq 1
+  \]
+  を示せ。
+  \begin{flushright}
+    日本数学オリンピック 2010年 問4
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  コーシーシュワルツより、
+  \((1+xy+xz)(1+y/x+z/x)\geq (1+y+z)^2\)なので
+  \[
+  \frac{1+xy+xz}{(1+y+z)^2} \geq \frac{1}{1+y/x+z/x } = \frac{x}{x+y+z}
+  \]
+  となる。
+  これを巡回的に足して、
+  \[
+  \lhs \geq \sum_{cyc.} \frac{x}{x+y+z} = 1
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a , b , c , d > 0 , abcd=1 \)
+  のとき
+  \[
+  \frac{1}{a} + \frac{1}{b} + \frac{1}{c} + \frac{1}{d} + \frac{9}{a+b+c+d} \geq \frac{25}{4}
+  \]
+  を示せ。
+  \begin{flushright}
+    CGMO 2011 問4
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \[
+  \frac{1}{a} + \frac{1}{b} + \frac{1}{c} + \frac{1}{d} + \frac{12}{a+b+c+d} \geq 7
+  \]
+  を示そう。
+  これが示せると問いの不等式は相加相乗より従う。
+
+  \(d\)が\(a,b,c,d\)のうち最大として良い。このとき\(d \geq (a+b+c)/3\)なので,
+  \begin{align*}
+    f(a,b,c,d) - f( \sqrt[3]{abc} , \sqrt[3]{abc} , \sqrt[3]{abc} , d )
+    &= \frac{1}{a} + \frac{1}{b} + \frac{1}{c} - \frac{3}{ \sqrt[3]{abc} }
+    - \frac{12 ( a+b+c -3\sqrt[3]{abc}) }{(a+b+c+d)(3\sqrt[3]{abc} + d) } \\
+    &\geq \frac{1}{a} + \frac{1}{b} + \frac{1}{c} - \frac{3}{ \sqrt[3]{abc} }
+    - \frac{12(a+b+c -3\sqrt[3]{abc}) }{\left( a+b+c+\frac{a+b+c}{3}\right)
+    \left( 3\sqrt[3]{abc} + \frac{a+b+c}{3} \right) } \\
+    &= \frac{ab+bc+ca - 3\sqrt[3]{a^2b^2c^2} }{abc}
+    - \frac{27( a+b+c -3\sqrt[3]{abc}) }{(a+b+c)(9\sqrt[3]{abc}+a+b+c)}
+  \end{align*}
+  \(a+b+c=3u,ab+bc+ca=3v^2,abc=w^3\)と置く。
+  このとき\(u\geq v \geq w , v^4\geq uw^3\)である。
+  右辺は
+  \begin{align*}
+    &= \frac{3(v^2-w^2 )}{w^3} - \frac{9(u-w)}{4u \left( u+3w \right) } \\
+    &= \frac{12u(v^2-w^2)(u+3w) -9w^3(u-w) }{4w^3u(u+3w) } \\
+    &= \frac{12u^2(v^2 - w^2) + 36uv^2w - 45uw^3 +9w^4 }{4w^3u(u+3w) } \\
+    &\geq \frac{36u^{3/2}w^{5/2} - 45uw^3 +9w^4 }{4w^3u(u+3w) } \\
+    &\geq \frac{45u^{108/90}w^{180/90+36/45} - 45uw^3 }{4w^3u(u+3w) } \ \ \ (\mbox{重み付き相加相乗}) \\
+    &= \frac{45uw^{14/5}\left( u^{1/5} - w^{1/5} \right) }{4w^3u(u+3w) } \\
+    &\geq 0
+  \end{align*}
+  なので以上より\(f(a,b,c,d) \geq f( \sqrt[3]{abc} , \sqrt[3]{abc} , \sqrt[3]{abc} , d)\)である。
+
+  よってあとは\(f(1/x,1/x,1/x,x^3) \geq 7 \ (x \geq 1)\)を示せば良い。
+  \begin{align*}
+    f(\frac{1}{x},\frac{1}{x},\frac{1}{x},x^3) -7
+    &= 3x + \frac{1}{x^3} + \frac{12}{\frac{3}{x} + x^3} - 7 \\
+    &= \frac{(3x^4 + 1)(3+x^4) + 12x^4 - 7x^3(3+x^4)}{x^3(3 + x^4)} \\
+    &= \frac{3x^8 + 15x^4 - 21x^3 + 3 }{x^3(3 + x^4)} \\
+    &\geq \frac{3x^6 +3 + 15x^3 - 21x^3 }{x^3(3 + x^4)} \ \ \ ( \because x \geq 1 )\\
+    &\geq \frac{6\sqrt{x^6} - 6x^3}{x^3(3 + x^4)} \ \ \ ( \mbox{相加相乗} ) \\
+    &= 0
+  \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(N\)行\(N\)列の実対称行列\(X\)の全ての固有値が非負であるとき
+  \[
+  \left( \mathrm{tr} X \right) ^n \geq \mathrm{tr} X^n
+  \]
+  を示せ。
+  \begin{flushright}
+    東大院試 2008年 2 問1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  すべての固有値を\(\lambda _1 , ... , \lambda _N \geq 0\)と置く。
+  \(X\)は対称行列であるから、
+  直交行列で対角成分に固有値がすべて並ぶ対角行列に対角化できる。
+  対角化でのトレースの不変性から、\(X\)は対角成分が\(\lambda _1 , ... , \lambda _N\)の対角行列としてよい。
+  従って問いは次の不等式の成立と同値：
+  \[
+  \left( \lambda _1 + \cdots + \lambda _N \right) ^n \geq {\lambda _1}^n + \cdots + { \lambda _N }^n
+  \]
+  これは左辺を展開すれば成り立つことが容易に分かる。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0,a^2+b^2+c^2+abc=4\)
+  のとき
+  \[
+  0 \leq ab+bc+ca-abc \leq 2
+  \]
+  を示せ。
+  \begin{flushright}
+    USAMO 2001 問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  まず下からを示す。
+  対称式なので\(a\leq b \leq c\)としてよい。
+  \(a\leq 1 \leq c\)なので
+  \[
+  ab+bc+ca-abc= bc(1-a) + ab+ca \geq 0
+  \]
+  である。
+
+  上からを示す。
+  \(a,b,c\)のうち二つは\(1\)以上または以下。
+  その二つを\(a,b\)としてよい。
+  このとき\((1-a)(1-b) \geq 0\)である。
+  条件より、
+  \(0 = 4-(a^2+b^2+c^2+abc) \leq (2-c)(2+c) - ab(c+2) = (c+2)(2-c-ab)\)
+  なので\(c+ab \leq 2\)がわかる。
+  よって
+  \[
+  ab+bc+ca-abc = c + ab - c(1-a)(1-b) \leq 2
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{prob}
+  \(x>1\)での
+  \[
+  f(x) = \frac{x^4-x^2}{x^6+2x^3+1}
+  \]
+  の最大値を求めよ。
+  \begin{flushright}
+    Harverd-MIT 数学トーナメント
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \[
+  \frac{d}{dx}\left( \frac{x^4-x^2}{x^6+2x^3+1} \right)
+  = - \frac{2x(x^4 - x^3 - x^2 - x + 1 ) }{ (x+1)^2(x^2 -x +1)^3 } = 0
+  \]
+  である。
+  \(x^4 - x^3 - x^2 - x + 1 = 0\)を解く。
+  \(x \neq 0\)なので\((x^2 + 1/x^2 ) - (x+1/x) -1=0 , t = x+1/x\)と置く。
+  \(x^2 + 1/x^2 = t^2 -2\)なので\(t^2 -t -3 =0\)、
+  \(t \geq 2\)なので\(t = ( 1 + \sqrt{ 13 } ) / 2\)、
+  よって\(x = ( 1 + \sqrt{13} + \sqrt{ 2 \sqrt{ 13 } - 2 } ) / 4\)で極大となる。
+  代入して計算すると、
+  \[
+  f(x) \leq f\left( \frac{ 1 + \sqrt{13} + \sqrt{ 2 \sqrt{ 13 } - 2 } }{ 4 } \right)
+  = \sqrt{ \frac{13\sqrt{13}}{486} -\frac{35}{486} }
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c\)が最大角\(\theta\)以上の鈍角三角形の\(3\)辺となる数のとき
+  \[
+  A \leq \frac{a^2+b^2+c^2}{ab+bc+ca} \leq B
+  \]
+  が成立する最大の\(A\)と最小の\(B\)を求めよ。
+  \begin{flushright}
+    東工大 2011 AO 問2 改題
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(B\)を求める。
+  \(2(ab+bc+ca) - (a^2+b^2+c^2) = \sum_{cyc.} a(b+c-a) > 0\)
+  なので\((a^2+b^2+c^2)/(ab+bc+ca) < 2\)である。
+  \(a=b , c \to 0\)のとき\((a^2+b^2+c^2)/(ab+bc+ca) \to 2\)である。
+
+  \(A\)を求める。
+  鈍角\(t\)を固定して考える。\(c\)を最大として良い。
+  余弦定理より、\(a^2+b^2 -2ab \cos t = c^2\)である。
+  \(\cos t \leq 0\)に注意。
+  相加相乗より
+  \[
+  c^2 = a^2+b^2 -2ab \cos t
+  \geq ( a^2 + b^2 ) \sin ^2 \frac{ t }{2}
+  + 2ab \left( 1 - \sin ^2 \frac{ t }{2} - \cos t \right)
+  = ( a + b )^2 \sin ^2 \frac{ t }{2}
+  \]
+  である。
+  三角不等式より、\(c < a+b \leq c/ \sin ( t /2 )\)である。
+  相加相乗より
+  \[
+  4ab \sin \frac{ t }{2}
+  = 2ab( 1 - \cos t ) \leq a^2+b^2 - 2ab\cos t
+  = c^2 \leq ( a^2+b^2 )( 1-\cos t )
+  = 2(a^2+b^2)\sin \frac{ t }{2}
+  \]
+  なので\(2ab \leq c^2/ ( 2\sin ( t /2 ) ) \leq a^2 + b^2\)。
+  以上より、
+  \begin{align*}
+    \frac{a^2+b^2+c^2}{ab+bc+ca} &= \frac{(a^2+b^2)+c^2}{ab+c(a+b)} \\
+    &\geq \frac{\frac{c^2}{2\sin ^2 (t/2)}+c^2}{\frac{c^2}{4\sin ^2(t/2) } + c\frac{c}{\sin (t/2) }} \\
+    &= \frac{ 2 + 4\sin ^2 \frac{ t }{2} }{ 1 + 4 \sin \frac{ t }{2} }
+  \end{align*}
+  これは\(\frac{\pi }{2} \leq t \leq \pi\)の範囲で単調増加。
+  ゆえに
+  \[
+  \frac{a^2+b^2+c^2}{ab+bc+ca}
+  \geq \frac{ 2 + 4\sin ^2 \frac{ t }{2} }{ 1 + 4 \sin \frac{ t }{2} }
+  \geq \frac{ 2 + 4\sin ^2 \frac{ \theta }{2} }{ 1 + 4 \sin \frac{ \theta }{2} }
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{prob}
+  \(a , b , c \geq 0\)
+  のとき
+  \[
+  (a^3+b^3+c^3)^4 \geq (a^4+b^4+c^4)^3
+  \]
+  を示せ。
+  \begin{flushright}
+    数検1級2次
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(a,b,c\)のうち\(a\)が最大としても一般性を失わない。
+  両辺を\(a^{12}\)で割ることで、
+  \[
+  \left( 1+ \left( \frac{b}{a} \right) ^3 + \left( \frac{c}{a} \right) ^3 \right) ^4
+  \geq \left( 1 + \left( \frac{b}{a} \right) ^4 + \left( \frac{c}{a} \right) ^4 \right) ^3
+  \]
+  を示せば良い。
+  \(s=b/a , t=c/a \leq 1\)と置く。
+  このとき\((1+s^3+t^3)^4 \geq ( 1+s^4+t^4 )^3\)を示せば十分であるが、これは
+  \[
+  ( 1+s^4+t^4 )^3 \leq ( 1+s^3+t^3 )^3 \leq (1+s^3+t^3)^4
+  \]
+  より従う。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a , b , c \geq 1\)
+  のとき
+  \[
+  a^3 + b^3 + c^3 - \frac{1}{a^3} - \frac{1}{b^3} - \frac{1}{c^3}
+  \geq 3 \left( abc - \frac{1}{abc} \right)
+  \]
+  を示せ。
+  \begin{flushright}
+    早稲田大
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \((a-b)^2(1-1/(ab)^2) \geq 0 , ( \because a,b \geq 1 )\)より
+  \(a^2+b^2-2ab \geq 1/a^2 + 1/b^2 -2/ab\)が成り立つ.
+  巡回的に足して、
+  \(a^2+b^2+c^2 -ab-bc-ca \geq 1/a^2+1/b^2+1/c^2 -1/ab-1/bc-1/ca\)
+  となる。
+  また\(a,b,c \geq 1\)より\(a+b+c \geq 1/a+1/b+1/c\)となる。
+  辺々かけて
+  \(a^3+b^3+c^3 - 3abc \geq 1/a^3 + 1/b^3 + 1/c^3 - 3/abc\)
+  を得る。
+  これは示すべき不等式と同値である。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  任意の実数\(x,y,z\)に対し、
+  \[
+  x^2+y^2+z^2 \geq xy+yz+zx + \frac{3}{4}(x-y)^2
+  \]
+  を示せ。
+  \begin{flushright}
+    有名問題
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \[
+  ( \lhs ) - ( \rhs ) = \left( \frac{x+y}{2} - z \right) ^2 \geq 0
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c\)が三角形の三辺の辺長のとき
+  \[
+  \frac{(c+a-b)^4}{a(a+b-c)} + \frac{(a+b-c)^4}{b(b+c-a)} + \frac{(b+c-a)^4}{c(c+a-b)} \geq ab+bc+ca
+  \]
+  を示せ。
+  \begin{flushright}
+    ギリシャ数学オリンピック 2007年 S 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  コーシーシュワルツより
+  \[
+  s_2 ( \lhs )
+  = \left( \sum_{cyc.} a(a+b-c) \right) ( \lhs )
+  \geq \left( \sum_{cyc.} (c+a-b)^2 \right) ^2
+  = ( 3s_2 -2t )^2 \geq {s_2}^2 \geq s_2t
+  \]
+  この両辺を\(s_2\)で割ると所望の不等式を得る。
+\end{proof}
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0\)
+  のとき
+  \[
+  \frac{(2a+b+c)^2}{2a^2+(b+c)^2} + \frac{(2b+c+a)^2}{2b^2+(c+a)^2} + \frac{(2c+a+b)^2}{2c^2+(a+b)^2} \leq 8
+  \]
+  を示せ。
+  \begin{flushright}
+    USAMO 2003年 問5
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(x=a/s , y=b/s , z=c/s\)と置く。
+  このとき\(x+y+z=1\)である。
+  \[
+  \sum_{cyc.}\frac{(1+x)^2}{2x^2 + (1-x)^2} \leq 8
+  \]
+  を示せば良い。
+  \[
+  \sum_{cyc.}\frac{(1+x)^2}{2x^2 + (1-x)^2}
+  = 1 + \sum_{cyc.}\frac{1}{3}
+  \left( \frac{\frac{8}{3}x + \frac{2}{3} }{\left( x-\frac{1}{3} \right) ^2 + \frac{2}{9} } \right)
+  \leq 1 + \sum_{cyc.}\frac{3}{2}\left( \frac{8}{3}x + \frac{2}{3} \right) = 8
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a , b , c > 0 , a^2 + b^2 + c^2 + ( a + b + c ) ^2 \leq 4\)
+  のとき
+  \[
+  \frac{ab+1}{(a+b)^2} + \frac{bc+1}{(b+c)^2} + \frac{ca+1}{(c+a)^2} \geq 3
+  \]
+  を示せ。
+  \begin{flushright}
+    USAMO 2011 問1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  条件式から\(s_2 + t \leq 2\)である。
+  よって
+  \[
+  2( \lhs ) = \sum_{cyc.} \frac{2ab+2}{(a+b)^2}
+  \geq \sum_{cyc.}\frac{2ab + s_2 + t }{(a+b)^2}
+  = \sum_{cyc.}\frac{(a+b)^2 + c^2 + t }{(a+b)^2}
+  = 3 + \sum_{cyc.}\frac{(c+a)(c+b)}{(a+b)^2} \geq 6
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0\)
+  のとき
+  \[
+  a^a b^b c^c \geq (abc)^{\frac{a+b+c}{3}}
+  \]
+  を示せ。
+  \begin{flushright}
+    USAMO 1974年 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  両辺共に対称式なので\(a \leq b \leq c\)としてよい。
+  このとき\(\log x\)は単調増加であり、
+  よって\(\log a \leq \log b \leq \log c\)である。
+  従ってチェビシェフの不等式より、
+  \[
+  \log ( \lhs ) = \sum_{cyc.} a\log a \geq \frac{a+b+c}{3}\sum_{cyc.}\log a = \log ( \rhs )
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  任意の実数\(a,b,c\)に対し、
+  \[
+  (a^2+ab+b^2)(b^2+bc+c^2)(c^2+ca+a^2) \geq (ab+bc+ca)^3
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO 1990 Long List day 1 問77
+  \end{flushright}
+\end{prob}
+
+
+
+\begin{proof}
+  \begin{align*}
+    \lhs - \rhs
+    &= \sum _{cyc.}(a^4b^2+a^2b^4) + \sum _{cyc.}a^4bc - \sum _{cyc.}(a^3b^2c+a^3bc^2) - 3a^2b^2c^2 \\
+    &= \sum _{cyc.}(a^4b^2+a^2b^4) - 6a^2b^2c^2 + \sum _{cyc.}(a^4bc-a^3b^2c-a^3bc^2+a^2b^2c^2) \\
+    &= \left( \sum _{cyc.}(a^4b^2+a^2b^4) - 6a^2b^2c^2 \right)
+    + abc\sum _{cyc.}a(a-b)(a-c) \\
+    &\geq 0
+  \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0\)のとき
+  \[
+  (a^5-a^2+3)(b^5-b^2+3)(c^5-c^2+3) \geq (a+b+c)^3
+  \]
+  を示せ。
+  \begin{flushright}
+    USAMO 2004 問5
+  \end{flushright}
+\end{prob}
+
+
+
+\begin{proof}
+  \(x^5 -x^3 -x^2 +1 = ( x^3 -1 )( x^2 -1 ) \geq 0\)なので、
+  \(x^5 -x^2 + 3 \geq x^3 +2\)である。
+  よって３重コーシーより
+  \[
+  \lhs \geq ( a^3 +1 +1)(1+b^3+1)(1+1+c^3) \geq (a+b+c)^3
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0, a+b+c=1\)
+  のとき
+  \[
+  \sqrt{a^{1-a}b^{1-b}c^{1-c}} \leq \frac{1}{3}
+  \]
+  を示せ。
+  \begin{flushright}
+    オーストリア数学オリンピック part2 2008 day1 問1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  両辺共に対称式なので\(a \leq b \leq c\)として良い。
+  \(1-a \geq 1-b \geq 1-c , \log a \leq \log b \leq \log c\)であるから、
+  チェビシェフの不等式と凸不等式より、
+  \[
+  \log ( \lhs ) = \frac{1}{2} \left( \sum_{cyc.} (1-a)\log a \right)
+  \leq \frac{1}{6} \left( \sum_{cyc.} (1-a) \right) \left( \sum_{cyc.} \log a \right)
+  = \frac{1}{3}\sum_{cyc.} \log a
+  \]
+  \[
+  \leq \log \frac{a+b+c}{3} = \log \frac{1}{3}
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{prob}
+  \(a,b,c>0,abc=1\)
+  のとき
+  \[
+  a^{b+c}b^{c+a}c^{a+b} \leq 1
+  \]
+  を示せ。
+  \begin{flushright}
+    インド数学オリンピック 2001 問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  対称式なので\(a\leq b \leq c\)としてよい。
+  このとき\(b+c \geq c+a \geq a+b , \log a \leq \log b \leq \log c\)なのでチェビシェフの不等式より
+  \[
+  \log ( \lhs ) = \sum_{cyc.} (b+c)\log a
+  \leq \left( \sum_{cyc.}(b+c) \right) \left( \log a + \log b + \log c \right)
+  = \left( \sum_{cyc.}(b+c) \right) \log ( abc ) = 0
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c,d>0\)
+  のとき
+  \[
+  \frac{a+b+c+d}{abcd} \leq \frac{1}{a^3} + \frac{1}{b^3} + \frac{1}{c^3} + \frac{1}{d^3}
+  \]
+  を示せ。
+  \begin{flushright}
+    オーストリア Federal Competition for Advanced students
+
+    2005年 part2 1日目 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \[
+  \rhs = \frac{1}{3}\sum_{cyc.} \left( \frac{1}{a^3} + \frac{1}{b^3} + \frac{1}{c^3} \right)
+  \geq \frac{1}{3}\sum_{cyc.} \frac{3}{abc} = \lhs
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c\in \mathbb{C} , a|bc|+b|ca|+c|ab|=0\)
+  のとき
+  \[
+  |(a-b)(b-c)(c-a)| \geq 3\sqrt{3}|abc|
+  \]
+  を示せ。
+  \begin{flushright}
+    ルーマニア数学オリンピック 2008 10年 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(a,b,c\)のどれかが\(0\)のときは明らかに成立するので、
+  どれも\(0\)でないとしてよい。
+
+  極座標で表示して\(a= r_a e^{i\theta _a}, b= r_b e^{i\theta _b}, c= r_c e^{i\theta _c}\)と置く。
+  このとき
+  \(a|bc|+b|ca|+c|ab| = r_a r_b r_c \left( e^{i\theta _a} + e^{i \theta _b} + e^{i\theta _c } \right)\)なので
+  \(e^{i\theta _a} + e^{i \theta _b} + e^{i\theta _c }=0\)となり、
+  ゆえに
+  \(\theta _a \equiv \theta _b \equiv \theta _c \ ( \mathrm{mod} \pi /3 )
+  , \theta _a \neq \theta _b \neq \theta _c\)となる。
+
+  一般性を失わずに\(0 \leq \theta _a < \theta _b < \theta _c < 2\pi\)としてよい。
+  このとき余弦定理より\(|a-b|= \sqrt{ {r_a}^2 + {r_b}^2 + r_ar_b }\)であるから、
+  \[
+  \lhs = \prod_{cyc.} \sqrt{ {r_a}^2 + {r_b}^2 + r_ar_b }
+  \geq \prod_{cyc.} \sqrt{ 3r_ar_b } = 3\sqrt{3}r_a r_b r_c = \rhs
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{prob}
+  \(f:[0,1]\to \mathbb{R}\)、\(f\)は\([0,1]\)で微分可能で、\(\int_0^1 f(x)dx=0\)であるとする。
+  このとき、\(a\in (0,1)\)に対し
+  \[
+  \left| \int_0^a f(x)dx \right| \leq \frac{1}{8}\max_{0\leq x \leq 1} |f'(x)|
+  \]
+  となることを示せ。
+  \begin{flushright}
+    Putnam Competition 2007 B 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  平均値の定理より、
+  \(x\in (0,1)\)に対してある\(ax < c_x < x\)が存在して
+  \(\displaystyle\frac{f(x)-f(ax)}{x(1-a)} = f'(c_x)\)となる。
+  \(0 < a(1-a) \leq 1/4\)なので、
+  \begin{align*}
+    \lhs &= \left| a \int_0^1 f(ax)dx \right| = \left| a\int_0^1 \left( f(ax) -f(x) \right) dx \right| \\
+    &\leq a\int_0^1 \left|  f(ax) -f(x) \right| dx = a\int_0^1 \left| (1-a)xf'(c_x ) \right| dx \\
+    &\leq a(1-a)\int_0^1 x \max_{0\leq t \leq 1} |f'(t)| dx = a(1-a)\max_{0\leq t \leq 1} |f'(t)| \int_0^1 x dx \\
+    &= \frac{a(1-a)}{2}\max_{0\leq t \leq 1}|f'(t)| \\
+    &\leq \frac{1}{8} \max_{0\leq t \leq 1}|f'(t)|.
+  \end{align*}
+  以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(f\)が\([0,1]\)で積分可能で\(\int_0^1 f(x)dx = \int_0^1 xf(x)dx =1\)
+  のとき
+  \[
+  \int_0^1 \left( f(x) \right) ^2 dx \geq 4
+  \]
+  を示せ。
+  \begin{flushright}
+    ルーマニア数学オリンピック 2004年 12-問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \begin{align*}
+    0 &\leq \int_0^1 \left( f(x) - 6x + 2 \right) ^2 dx \\
+    &= \int_0^1 \left( f(x) \right) ^2 dx - 12\int_0^1 xf(x)dx
+    + 4\int_0^1 f(x)dx + \int_0^1 \left( - 6x + 2 \right) ^2 dx \\
+    &= ( \lhs ) - 12 + 4 + 12-12+4 = ( \lhs ) -4
+  \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0\)
+  のとき
+  \[
+  \frac{1}{a^3+b^3+abc} + \frac{1}{b^3+c^3+abc} + \frac{1}{c^3+a^3+abc} \leq \frac{1}{abc}
+  \]
+  を示せ。
+  \begin{flushright}
+    USAMO 1997年 問5
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \[
+  abc(\lhs ) = \sum_{cyc.}\frac{abc}{a^3+b^3+abc}
+  \leq \sum_{cyc.}\frac{abc}{ab(a+b)+abc} = \sum_{cyc.}\frac{c}{a+b+c} = 1 = abc(\rhs)
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c,d>0, a^3+b^3+3ab=c+d=1\)
+  のとき
+  \[
+  \left( a+\frac{1}{a} \right) ^3
+  + \left( b+\frac{1}{b} \right) ^3
+  + \left( c+\frac{1}{c} \right) ^3
+  + \left( d+\frac{1}{d} \right) ^3
+  \geq \frac{125}{2}
+  \]
+  を示せ。
+  \begin{flushright}
+    ギリシャ数学オリンピック 2003 問1 改
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(a^3+b^3+3ab-1=(a+b-1)(a^2+b^2-ab+a+b+1)=0\)より\(a+b=1\)である。
+  \(x^3,1/x\)は共に下に凸なので、凸不等式より
+  \begin{align*}
+    \lhs &\geq
+    2\left( \frac{1}{2}\left( a+\frac{1}{a} +  \right)
+    + \frac{1}{2}\left( b + \frac{1}{b} \right) \right) ^3
+    + 2\left( \frac{1}{2}\left( c+\frac{1}{c} +  \right) + \frac{1}{2}\left( d + \frac{1}{d} \right) \right) ^3 \\
+    &= 2\left( \frac{1}{2} + \frac{1}{2}\left( \frac{1}{a} + \frac{1}{b} \right) \right) ^3
+    + 2\left( \frac{1}{2} + \frac{1}{2}\left( \frac{1}{c} + \frac{1}{d } \right) \right) ^3 \\
+    &\geq 2\left( \frac{1}{2} + \frac{2}{a+b} \right) ^3 + 2\left( \frac{1}{2} + \frac{2}{c+d} \right) ^3 \\
+    &= 4\left( \frac{1}{2} + 2 \right) ^3 = \frac{125}{2}
+  \end{align*}
+  となる。以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(0\)でない実数\(a,b,c\)が
+  \(\displaystyle\frac{1}{|a|} + \frac{1}{|b|} + \frac{1}{|c|} \leq 3\)
+  を満たすとき、
+  \[
+  \min (a^2+4b^2+4c^2)(b^2+4c^2+4a^2)(c^2+4a^2+4b^2)
+  \]
+  を求めよ。
+  \begin{flushright}
+    オーストリア Federal Competition for Advanced Students
+
+    2012年 Part 2 1日目 問1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \[
+  3 \geq \displaystyle\frac{1}{|a|} + \frac{1}{|b|} + \frac{1}{|c|}
+  \geq \displaystyle\frac{3}{\sqrt[3]{|abc|}}
+  \]
+  なので\(|abc| \geq 1\)である。
+  よって
+  \[
+  \prod_{cyc.}(a^2+4b^2+4c^2) \geq \prod_{cyc.}9\sqrt[9]{|a|^2|b|^8|c|^8} = 9^3 |abc|^2 \geq 9^3
+  \]
+  となる。
+  \(a=b=c=\pm 1\)のときに最小値をとる。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x,y,z,w > 0 , wx+xy+yz+zw=1\)
+  のとき
+  \[
+  \frac{w^3}{x+y+z} + \frac{x^3}{y+z+w} + \frac{y^3}{z+w+x} + \frac{z^3}{w+x+y} \geq \frac{1}{3}
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO 1990年 Long List 1日目 問88
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \begin{align*}
+    w^2+x^2+y^2+z^2
+    &= \frac{1}{3}(w^2+x^2)
+    + \frac{1}{3}(x^2+y^2)
+    + \frac{1}{3}(y^2+z^2)
+    + \frac{1}{3}(z^2+w^2)
+    + \frac{1}{3}(w^2+y^2)
+    + \frac{1}{3}(x^2+z^2) \\
+    &\geq \frac{2}{3}(wx+xy+yz+zw+wy+xz) \\
+    w^2+x^2+y^2+z^2
+    &= \frac{1}{2}(w^2+x^2) + \frac{1}{2}(x^2+y^2) + \frac{1}{2}(y^2+z^2) + \frac{1}{2}(z^2+w^2) \\
+    &\geq wx+xy+yz+zw = 1
+  \end{align*}
+  がわかる。
+  これらとコーシーシュワルツより
+  \begin{align*}
+    2(wx+xy+yz+zw+wy+xz)( \lhs )
+    &= \left( \sum_{cyc.} w(x+y+z) \right) \left( \sum_{cyc.}\frac{w^3}{x+y+z} \right) \\
+    &\geq \left( w^2+x^2+y^2+z^2 \right) ^2 \\
+    &\geq w^2+x^2+y^2+z^2 \\
+    &\geq \frac{2}{3}(wx+xy+yz+zw+wy+xz)
+  \end{align*}
+  となる。
+  この両辺を\(2(wx+xy+yz+zw+wy+xz)\)で割ると所望の不等式を得る。
+\end{proof}
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{prob}
+  \(x,y,z>0\)
+  のとき
+  \[
+  x^2+xy^2+xyz^2 \geq 4xyz-4
+  \]
+  を示せ。
+  \begin{flushright}
+    カナダ数学オリンピック 2012年 問1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  相加相乗より
+  \[
+  x^2+xy^2+xyz^2 + 4 = \left( 4+ x^2 + \frac{xy^2}{2} + \frac{xy^2}{2} \right) + xyz^2
+  \]
+  \[
+  \geq \sqrt[4]{4x^2\left( \frac{xy^2}{2} \right) ^2 } + xyz^2 = 4xy+xyz^2 = xy(4+z^2) \geq 4xyz
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c > 0 , a+b+c = 1\)
+  のとき
+  \[
+  \frac{a-bc}{a+bc} + \frac{b-ca}{b+ca} + \frac{c-ab}{c+ab} \leq \frac{3}{2}
+  \]
+  を示せ。
+  \begin{flushright}
+    カナダ数学オリンピック 2008年 問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+\begin{align*}
+\lhs &= \sum_{cyc.} \frac{a(a+b+c)-bc}{a(a+b+c)+bc} \\
+&= \sum_{cyc.} \frac{\left( a(a+b+c)-bc \right) ( b+c ) }{(a+b)(a+c)(b+c) } \\
+&= \frac{ 2st-\sum_{cyc.} bc(b+c) }{(a+b)(a+c)(b+c) } \\
+&= \frac{ 2st-(st-3u) }{ st-u } \\
+&= 1+\frac{ 4u }{ st-u } \leq 1+\frac{4u}{9u-u} = \frac{3}{2}
+\end{align*}
+\end{proof}
+
+
+\
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c > 0 , a+b+c = 1\)
+  のとき
+  \[
+  a^2b+b^2c+c^2a \leq \frac{4}{27}
+  \]
+  を示せ。
+  \begin{flushright}
+    カナダ数学オリンピック 1995年 問5
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  巡回的なので\(a \leq b \leq c\)または\(a\geq b\geq c\)としてよい。
+  \(a \leq b \leq c\)のとき。
+  \(ab \leq ca \leq bc\)なので並び替え不等式より、
+  \[
+  \lhs \leq a^2b + abc + bc^2 = b(a^2+ac+c^2)
+  \]
+  ここで相加相乗より
+  \[
+  b(a^2+ac+c^2) \leq b(a^2+ac+c^2) + abc = b(a+c)^2 = 4b\left( \frac{a+c}{2} \right) ^2
+  \]
+  \[
+  \leq 4\left( \frac{ b+ (a+c)/2 + (a+c)/2 }{3} \right) ^3 = \frac{ 4(a+b+c)^3 }{27} = \frac{4}{27}
+  \]
+  である。
+
+  \(a \geq b \geq c\)のとき。
+  \(ab \geq ca \geq bc\)なので並び替え不等式より、
+  \[
+  \lhs \leq a^2b + abc + bc^2 = b(a^2+ac+c^2)
+  \]
+  あとは上と同様にすれば良い。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x , y , z \in [0,1]\)のとき
+  \[
+  \sqrt{ |x-y| } + \sqrt{ |y-z| } + \sqrt{ |z-x| }
+  \]
+  の最大値を求めよ。
+  \begin{flushright}
+    中国数学オリンピック 2012年 Round 2 問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  対称式であるから\(x \leq y \leq z \)としてよい。
+  このとき\(\sqrt{z-x} \leq \sqrt{1-0} = 1\)なので凸不等式より
+  \[
+  \lhs = \sqrt{ y-x } + \sqrt{ z-y } + \sqrt{ z-x } \leq 2 \sqrt{ \frac{y-x}{2} + \frac{z-y}{2} } + \sqrt{ z-x }
+  = \left( \sqrt{2} + 1 \right) \sqrt{ z-x } \leq \sqrt{2} + 1
+  \]
+  となる。
+  等号成立は\(x=0,y=1/2,z=1\)のとき。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a , b , c > 0 , ab+bc+ca = 1\)
+  のとき
+  \[
+  \sqrt{a^2 + b^2 + \frac{1}{c^2}} + \sqrt{b^2 + c^2 + \frac{1}{a^2} } + \sqrt{c^2 + a^2 + \frac{1}{b^2} }
+  \geq \sqrt{33}
+  \]
+  を示せ。
+  \begin{flushright}
+    韓国数学オリンピック 2010年 1日目 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(ab+bc+ca=1\)より\(abc \leq 1/\sqrt{3^3}\)である.
+  （重み付き）相加相乗より
+  \[
+  a^2 + b^2 + \frac{1}{c^2}
+  = a^2+b^2 + \frac{9}{9c^2}
+  \geq 11\sqrt[11]{a^2b^2\left( \frac{1}{9c^2} \right) ^9 }
+  = \frac{11}{3^{18/11}} \frac{a^{2/11}b^{2/11}}{c^{18/11}}
+  \]
+  なので
+  \[
+  \lhs \geq \sum_{cyc.} \frac{\sqrt{11}}{3^{9/11}} \frac{a^{1/11}b^{1/11}}{c^{9/11}}
+  \geq 3 \sqrt[3]{ \frac{\sqrt{11} ^3}{3^{27/11}} \prod_{cyc.}\frac{a^{1/11}b^{1/11}}{c^{9/11}} }
+  = 3^{2/11}\sqrt{11} \frac{1}{(abc)^{7/33}}
+  \geq 3^{2/11 +  7/22}\sqrt{11} = \sqrt{33}
+  \]
+  となる。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{prob}
+  任意の実数\(a,b,c > 0\)に対し
+  \[
+  \frac{a}{b+kc} + \frac{b}{c+ka} + \frac{c}{a+kb} \geq \frac{1}{2007}
+  \]
+  を満たす最大の実数\(k\)を求めよ。
+  \begin{flushright}
+    韓国数学オリンピック 2007年 2日目 問1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  コーシーより
+  \[
+  \lhs = \sum_{cyc.} \frac{a^2}{ab+kac} \geq \frac{(a+b+c)^2}{(k+1)(ab+bc+ca)} \geq \frac{3}{k+1}
+  \]
+  これは\(a=b=c\)で等号が成立する。
+  よって\(k\)の最小値は\(3/(k+1)=1/2007\)となるときの\(k=6020\)
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0\)
+  のとき
+  \[
+  \frac{a}{2a+b} + \frac{b}{2b+c} + \frac{c}{2c+a} \leq 1
+  \]
+  を示せ。
+  \begin{flushright}
+    モルドバ数学オリンピック 2002年 Grade 9 2日目 問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  コーシーより
+  \[
+  3- 2\lhs
+  = \sum_{cyc.} \left( 1 - \frac{2a}{2a+b} \right)
+  = \sum_{cyc.} \frac{b}{2a+b}
+  = \sum_{cyc.} \frac{a^2}{a^2+2ca}
+  \geq \frac{(a+b+c)^2}{\sum_{cyc.} (a^2+2ac) } = 1
+  \]
+  これから従う。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{prob}
+  \(a,b,c > 0\)
+  のとき
+  \[
+  \frac{a^3}{c(a^2+bc)} + \frac{b^3}{a(b^2+ca)} + \frac{c^3}{b(c^2+ab)} \geq \frac{3}{2}
+  \]
+  を示せ。
+  \begin{flushright}
+    韓国数学オリンピック 2009年 1日目 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  コーシーより
+  \[
+  \lhs = \sum_{cyc.} \frac{a^4}{ca^3+abc^2}
+  \geq \frac{{s_2}^2}{su + \sum_{cyc.}ab^3}
+  = \frac{s_4+2t_2}{su+\sum_{cyc.}ab^3}
+  \]
+  ここで相加相乗より
+  \[
+  s_4+2t_2
+  = \frac{3}{4}\sum_{cyc.}(b^4 + a^2b^2) + \frac{s_4}{4} + \frac{5t_2}{4}
+  \geq \frac{3}{4}\sum_{cyc.}2ab^3 + \frac{su}{4} + \frac{5su}{4}
+  = \frac{3}{2}\left( su + \sum_{cyc.}ab^3 \right)
+  \]
+  なので
+  \[
+  \frac{s_4+2t_2}{su+\sum_{cyc.}ab^3} \geq \frac{3}{2}
+  \]
+  以上より示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c \geq 0 , a+b+c=1 \)
+  のとき
+  \[
+  \frac{1}{a^2-4a+9} + \frac{1}{b^2-4b+9} + \frac{1}{c^2-4c+9}
+  \]
+  のとりうる最大の値を求めよ。
+  \begin{flushright}
+    韓国数学オリンピック 2011年 Final 2日目 問1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \[
+  \frac{1}{a^2-4a+9}
+  = \frac{(a+2)\left( (a-2)^2 + 5 \right) -a(1-a)^2 }{18\left( (a-2)^2 + 5 \right) }
+  \leq \frac{a+2}{18}
+  \]
+  なので
+  \[
+  \sum_{cyc.} \frac{1}{a^2-4a+9}
+  \leq \sum_{cyc.} \frac{a+2}{18}
+  = \frac{a+b+c}{18}+\frac{6}{18} = \frac{7}{18}
+  \]
+  等号は\(a=b=0,c=1\)のときに実現する。
+  よって最大値は\(7/18\)。
+\end{proof}
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c\)を三角形の三辺の長さとなる数とする。
+  \begin{align*}
+    A &= \frac{a^2+bc}{b+c} + \frac{b^2+ca}{c+a} + \frac{c^2+ab}{a+b} \\
+    B &= \frac{1}{\sqrt{(a+b-c)(b+c-a)}} + \frac{1}{\sqrt{(b+c-a)(c+a-b)}} + \frac{1}{\sqrt{(c+a-b)(a+b-c)}}
+  \end{align*}
+  と置くとき、
+  \[
+  AB\geq 9
+  \]
+  を示せ。
+  \begin{flushright}
+    韓国数学オリンピック 2009年 Final 1日目 問1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(a\geq b \geq c\)としてよい。
+  このとき\(1/(b+c)\geq 1/(c+a) \geq 1/(a+b)\)なので拡張シューアより
+  \[
+  \sum_{cyc.}\frac{a^2+bc}{b+c}
+  \geq \sum_{cyc.}\frac{a^2+bc - (a-b)(a-c)}{b+c}
+  = \sum_{cyc.}\frac{ab+ac}{b+c}
+  = a+b+c
+  \]
+  また
+  \[
+  \frac{1}{\sqrt{(a+b-c)(b+c-a)}} = \frac{1}{\sqrt{b^2-(a-c)^2}} \geq \frac{1}{b}
+  \]
+  なので、以上より
+  \[
+  \lhs \geq (a+b+c)\left( \frac{1}{a} + \frac{1}{b} + \frac{1}{c} \right)
+  \geq 9
+  \]
+  となる。以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{prob}
+\(a , b , c > 0 , a+b+c = 1\)
+のとき
+\[
+\sqrt{\frac{a}{1-a}} + \sqrt{\frac{b}{1-b}} + \sqrt{\frac{c}{1-c}} > 2
+\]
+を示せ。
+\begin{flushright}
+  韓国数学オリンピック 2010年 2日目 問1
+\end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(a(1-a) \leq 1/4\)なので\(\sqrt{a(1-a)}\leq 1/2\)である。
+  よって\(\sqrt{a/(1-a)} \geq 2a\)となる。
+  これを巡回的に足して
+  \[
+  \lhs \geq 2(a+b+c) = 2
+  \]
+  を得る。
+  等号が成立するためには\(a,b,c\)の全てが\(1/2\)でなければならないが、
+  \(a+b+c=1\)よりこれは実現しない。
+  以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x,y,z>0\)
+  のとき
+  \[
+  x\sqrt{y} + y\sqrt{z} + z\sqrt{x} \leq k\sqrt{(x+y)(y+z)(z+x)}
+  \]
+  を満たす最小の実数\(k\)を求めよ。
+  \begin{flushright}
+    イラン数学オリンピック 2008年 3rd 問A-2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(k = 3\sqrt{2}/4\)が最小であることを示す。
+  まず\(k\)が\(3\sqrt{2}/4\)より小さいときは\(x=y=z\)で不等式が成立しなくなるので、
+  \(k\)は少なくとも\(3\sqrt{2}/4\)以上である。
+  \(k=3\sqrt{2}/4\)のときに不等式が成立することを示す。
+  コーシーシュワルツより
+  \[
+  ( \lhs )^2 = \left( \sum_{cyc.}\sqrt{x}\sqrt{xy} \right) ^2
+  \leq (x+y+z)(xy+yz+zx)
+  \leq \frac{9}{8}(x+y)(y+z)(z+x) = ( \rhs )^2
+  \]
+  となるので以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  任意の実数\(a,b,c,d\)に対し
+  \[
+  \sqrt{a^4+c^4} + \sqrt{a^4+d^4} + \sqrt{b^4+c^4} + \sqrt{b^4+d^4} \geq 2\sqrt{2}(ad+bc)
+  \]
+  を示せ。
+  \begin{flushright}
+    トルコ数学オリンピック 2005年 Round2 2日目 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  相加相乗より\(x^4+y^4 \geq (x^2+y^2)^2/2\)なので
+  \[
+  \lhs
+  \geq \sqrt{\frac{(a^2+c^2)^2}{2}}
+  + \sqrt{\frac{(a^2+d^2)^2}{2}}
+  + \sqrt{\frac{(b^2+c^2)^2}{2}}
+  + \sqrt{\frac{(b^2+d^2)^2}{2}}
+  = \sqrt{2}(a^2+b^2+c^2+d^2) \geq 2\sqrt{2}(ad+bc)
+  \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{prob}
+  \(a,b,c\)が直角三角形の三辺をなす数となるように動くとき、
+  \[
+  \frac{(a+b+c)^3}{a^3+b^3+c^3}
+  \]
+  の値の取りうる上限と下限を求めよ。
+  \begin{flushright}
+    イラン数学オリンピック 2006年 3rd 問A-4 改題
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \[
+  f(a,b,c)=\frac{(a+b+c)^3}{a^3+b^3+c^3}
+  \]
+  と置く。
+  まず\(f(a,b,c)>4\)を示す。
+  \(a,b,c\)は直角三角形の三辺をなすので、
+  \(a^2\leq b^2+c^2 , b^2 \leq c^2+a^2 , c^2 \leq a^2+b^2\)である。
+  よって
+  \[
+  (a+b+c)^3 -4(a^3+b^3+c^3) = 3\left( \sum_{cyc.} a(b^2+c^2 -a^2 ) \right) +6abc \geq 0
+  \]
+  となる。
+  ここで等号が成立するには\(a,b,c\)のうちのどれか一つが\(0\)でなければならないが、
+  それは実現不可能である。
+  よって\(f(a,b,c)>4\)がわかる。
+  \(a,b,c\)のうちどれか一つが\(0\)に限りなく近い場合に、
+  \(f(a,b,c)\)の値はいくらでも\(4\)に近くなることがわかる。
+
+  次に\(\sqrt{2}\left( 1+ \sqrt{2} \right) ^2 \geq f(a,b,c)\)を示す。
+  \(a^2=b^2+c^2\)としてよい。
+  このとき相加相乗より
+  \(\sqrt{2}a = \sqrt{2}\sqrt{b^2+c^2} \geq \sqrt{2}\sqrt{(b+c)^2/2} = b+c\)となる。
+  またべき平均不等式より\(\sqrt[3]{(b^3+c^3)/2} \geq \sqrt{(b^2+c^2)/2}\)なので、
+  整理すると\(b^3+c^3 \geq \sqrt{(b^2+c^2)^3}/\sqrt{2}\)がわかる。
+  以上より
+  \[
+  a^3+b^3+c^3
+  \geq a^3 + \frac{1}{\sqrt{2}} \sqrt{(b^2+c^2)^3}
+  = \left( 1+ \frac{1}{\sqrt{2}} \right) a^3
+  \geq \left( 1+ \frac{1}{\sqrt{2}} \right) \left( \frac{a+b+c}{1+\sqrt{2}} \right) ^3
+  = \frac{(a+b+c)^3}{ \sqrt{2}(1+ \sqrt{2})^2}
+  \]
+  となる。
+  等号は\(a=\sqrt{2}b=\sqrt{2}c\)のときに成立する。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a , b , c > 0 , a^2 + b^2 + c^2 + abc = 4\)
+  のとき
+  \[
+  a+b+c \leq 3
+  \]
+  を示せ。
+  \begin{flushright}
+    イラン数学オリンピック 2002年 3rd 問16
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(a,b,c\)のうち二つは\(1\)以上または以下である。
+  条件式も示すべき式も対称式なので、\(b,c\)が\(1\)以上または以下としてよい。
+  このとき\(1+bc-b-c = (1-b)(1-c) \geq 0\)となり、よって\(b+c \leq bc+1\)である。
+  相加相乗より\((2-a)(2+a) = 4-a^2 = b^2+c^2+abc \geq 2bc + abc =bc(2+a)\)がわかる。
+  この両辺を\(2+a\)で割って、\(2-a \geq bc\)、つまり\(a+bc \leq 2\)を得る。
+  以上より
+  \[
+  a+b+c \leq a +bc +1 \leq 2+1 =3
+  \]
+  となり、所望の不等式を得る。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(A,B,C\)が鋭角三角形の三つの角であるとき
+  \[
+  \frac{\sin A + \sin B + \sin C }{\cos A + \cos B + \cos C }
+  \]
+  の値のとりうる上限と下限を求めよ。
+  \begin{flushright}
+    大学への数学 2012年 12月の宿題
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \[
+  f(A,B,C) = \frac{\sin A + \sin B + \sin C }{\cos A + \cos B + \cos C }
+  \]
+  と置く。
+  まず\(2 > f(A,B,C) \)を示す。
+  \(A,B,C\)は鋭角なので\(\pi /4 > A/2,B/2,C/2\)である。
+  ゆえに
+  \[
+  \sqrt{2}\sin \left( \frac{\pi}{4} + \frac{C}{2} \right)
+  > \sqrt{2}\sin \left( \frac{\pi}{4} \right)
+  = 1 \geq \cos \left( \frac{A-B}{2} \right)
+  \]
+  \[
+  \cos \left( \frac{\pi}{4} + \frac{C}{2} \right) ,
+  \sin \left( \frac{\pi }{4} - \frac{A}{2} \right) ,
+  \sin \left( \frac{\pi }{4} - \frac{B}{2} \right) > 0
+  \]
+  がわかる。よって
+  \begin{align*}
+    & \ 2\left( \cos A + \cos B + \cos C \right) - \left( \sin A + \sin B + \sin C \right) \\
+    &= 2\sqrt{2} \cos \left( \frac{\pi}{4} + \frac{C}{2} \right)
+    \left(\sqrt{2} \sin \left( \frac{\pi}{4} + \frac{C}{2} \right)
+    - \cos \left( \frac{A-B}{2} \right) \right)
+    + 4 \sin \frac{C}{2} \sin \left( \frac{\pi}{4} - \frac{A}{2} \right)
+    \sin \left( \frac{\pi}{4} - \frac{B}{2} \right) > 0
+  \end{align*}
+  となる。
+
+  次に\(f(A,B,C) > 1 + \sqrt{2}/2 = (1+ \sqrt{2})/\sqrt{2}\)を示す。
+  \(A\)を最大角としてよい。
+  このとき\(\pi /2 > A \geq \pi /3\)である。
+  よって\(1/2 \leq \sin (A/2) < 1/ \sqrt{2} < \cos (A/2) \leq \sqrt{3}/2\)である。
+  \(0<B,C<A\)なので\((B-C)/2 < A/2 < \pi /4\)。
+  よって\(1 > \cos ((B-C)/2) > \cos (\pi /4) = \sqrt{2}/2\)
+  また
+  \[
+  \sqrt{2} - \sin \frac{A}{2} - \cos \frac{A}{2}
+  = \sqrt{2} - \sqrt{2}\sin \left( \frac{\pi}{4}+\frac{A}{2} \right) \geq 0
+  \]
+  より\(0 < \sqrt{2}\cos (A/2) -1 \leq 1 - \sqrt{2}\sin (A/2)\)なので、
+  \begin{align*}
+    \left( \sqrt{ \frac{3}{2} } -1 \right)
+    \left( 1- \sqrt{2}\sin \frac{A}{2} \right)
+    - \left( \sqrt{2}\cos \frac{A}{2} -1 \right) ^2
+    &\geq \left( \sqrt{ \frac{3}{2} } -1 \right)
+    \left( \sqrt{2}\cos \frac{A}{2} -1 \right)
+    - \left( \sqrt{2}\cos \frac{A}{2} -1 \right) ^2 \\
+    &= \left( \sqrt{ \frac{3}{2} } - \sqrt{2}\cos \frac{A}{2} \right)
+    \left( \sqrt{2}\cos \frac{A}{2} -1 \right) \\
+    &= \sqrt{2}\left( \frac{\sqrt{3}}{2} - \cos \frac{A}{2} \right)
+    \left( \sqrt{2}\cos \frac{A}{2} -1 \right) \geq 0
+  \end{align*}
+  である。
+  以上より、
+  \begin{align*}
+    & \ \sqrt{2}\left( \sin A + \sin B + \sin C \right)
+    - \left( 1 + \sqrt{2} \right) \left( \cos A + \cos B + \cos C \right) \\
+    &= \sqrt{2}\left( 1- \cos \frac{B-C}{2} \right)
+    \left( 2 \left( \frac{\sqrt{3}}{2} - \cos \frac{A}{2} \right)
+    + 2 \left( \sqrt{2}\left( 2 - \sqrt{3} \right)
+    + \sqrt{3} \left( \sqrt{3} - 1 \right) \right)
+    \left( \sin \frac{A}{2} - \frac{1}{2} \right) \right) \\
+    & \ + 2\left( 2- \sqrt{3} \right) \left( \sqrt{3} - \sqrt{2} \right)
+    \left( \frac{1}{\sqrt{2}} -\sin \frac{A}{2} \right)
+    \left( \cos \frac{B-C}{2} -\frac{1}{\sqrt{2}} \right) \\
+    & \ + \left( 1 + \sqrt{2} \right) \left( \left( \sqrt{ \frac{3}{2} } -1 \right)
+    \left( 1- \sqrt{2} \sin \frac{A}{2} \right) - \left( \sqrt{2} \cos \frac{A}{2} - 1 \right) ^2 \right) \\
+    & \ + \sqrt{2} \left( \sqrt{2} - \sin \frac{A}{2} - \cos \frac{A}{2} \right) ^2 \\
+    & \ + \frac{\sqrt{3}\left( 3-2\sqrt{2} \right) }
+    {\left( \sqrt{3} + \sqrt{2} \right) \left( \sqrt{6} + \sqrt{2} + 1 \right) }
+    \left( 1- \sqrt{2} \sin \frac{A}{2}\right) \\
+    & > & 0
+  \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(t > 1\)のとき
+  \(\displaystyle\int_0^\infty \sin{x^t} dx\)
+  と
+  \(\displaystyle\int_0^\infty \cos{x^t} dx\)
+  の大小を比較せよ。
+  \begin{flushright}
+    作: 不等式bot
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(S(t) = \displaystyle\int_0^\infty \sin{x^t} dx,
+  C(t) = \displaystyle\int_0^\infty \cos{x^t} dx\)
+  と置き、\(E=\displaystyle\int_0^\infty e^{-x^t} dx\)と置く。
+  複素平面内の曲線\(L_1,L_2,K\)を
+  \begin{alignat*}{4}
+    &L_1 & : &z=x                       & \quad &\left( 0 \leq x \leq R \right) \notag \\
+    &K   & : &z=Re^{i \theta }          &       &\left( 0 \leq \theta \leq \frac{\pi}{2} \right) \notag \\
+    &L_2 & : &z=re^{i\frac{ \pi }{2t}}  &       &\left( 0 \leq r \leq R \right) \notag
+  \end{alignat*}
+  とし、閉曲線\(C=L_1+K+L_2\)は反時計回りに向き付ける。
+  \(f(z)=e^{iz^t}\)の値を、\(C\)を含む単連結な領域上で一価となるように選んでおく。
+  このとき\(f\)は\(C\)で囲まれた領域内に極を持たないのでコーシーの積分定理より
+  \[
+  \left( \int_{L_1} + \int_K - \int_{-L_2} \right) f(z) dz = \int_C f(z) dz = 0
+  \]
+  ここで\(R \to \infty\)の極限を考える。
+  まず
+  \[
+  \int_{L_1} f(z) dz = \int_0^R e^{ix^t} dx \to C(t)+iS(t) \ \ ( R \to \infty )
+  \]
+  である。
+  次に\(L_2\)上では
+  \begin{align*}
+    \int_{-L_2} f(z) dz &= \int_0^R \exp \left( i\left( re^{i\pi /2t} \right) ^t \right) e^{i\pi /2t} dr
+    = \left(\cos \frac{\pi}{2t} + i \sin \frac{\pi}{2t} \right) \int_0^R e^{-r^t} dr  \\
+    &\to E\cos \frac{\pi}{2t} + i E \sin \frac{\pi}{2t} \ \  ( R \to \infty )
+  \end{align*}
+  となる。
+  最後に\(K\)上では、\(0 \leq \theta \leq \pi / 2t\)のとき
+  \(\sin t\theta \geq 2t\theta / \pi\)となることに注意すると、
+  \begin{align*}
+    \left| \int_{K} e^{iz^t} dz \right|
+    &= \left| \int_0^{\frac{\pi}{2t}} e^{iR^te^{it\theta}} \cdot iRe^{i\theta } d\theta \right| \\
+    &= \left| \int_0^{\frac{\pi}{2t}} e^{iR^t\cos t\theta} \cdot e^{-R^t\sin t\theta}
+    \cdot iRe^{i\theta } d\theta \right| \\
+    &\leq \int_0^{\frac{\pi}{2t}} e^{-R^t\sin t\theta}
+    \left| iR e^{i \left( R^t\cos (t\theta ) + \theta \right) } \right| d\theta \\
+    &= R \int_0^{\frac{\pi}{2t}} e^{-R^t\sin t\theta} d\theta \\
+    &\leq  R \int_0^{\frac{\pi}{2t}} e^{-R^t\frac{2t}{\pi}\theta } d\theta \\
+    &= \frac{\pi}{2tR^{t-1}} \int_{-R^t}^0 e^x dx \\
+    &= \frac{\pi}{2tR^{t-1}} \left( 1-e^{-R^t} \right)  \to 0 \ ( R\to \infty )
+  \end{align*}
+  となる。
+  よって以上より
+  \[
+  C(t) + iS(t)
+  = \int_0^\infty e^{ix^t} dx
+  = \lim_{R \to \infty} \int_{-L_2} e^{iz^t} dz
+  = E\cos \frac{\pi}{2t} + i E \sin \frac{\pi}{2t}
+  \]
+  となる。
+  従って実部と虚部を比較すれば\(C(t)=E\cos (\pi / 2t) , S(t) = E \sin (\pi /2t) \)である。
+  ゆえに\(C(t)\)と\(S(t)\)の大小関係は
+  \begin{alignat*}{2}
+    &C(t) < S(t) & \quad & ( 1 < t < 2 )  \notag \\
+    &C(t) = S(t) &       & ( t = 2 )      \notag \\
+    &C(t) > S(t) &       & ( 2 < t )      \notag
+  \end{alignat*}
+  である。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{prob}
+  \(a,b,c>0\)
+  のとき
+  \[
+  \frac{a}{\sqrt{4b^2 + 4c^2 + bc}} + \frac{b}{\sqrt{4c^2+4a^2+ca}} + \frac{c}{\sqrt{4a^2+4b^2+ab}} \geq 1
+  \]
+  を示せ。
+  \begin{flushright}
+    作: 不等式bot
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(s=a+b+c=1\)としてよい。
+  \(1/\sqrt{x}\)は下に凸なので、凸不等式より
+  \[
+  \lhs \geq \frac{1}{ \sqrt{ \sum_{cyc.} a(4b^2+4c^2 +bc) }} = \frac{1}{\sqrt{4st-9u}}
+  \]
+  ここでSchurの不等式より\(s^3 \geq 4st -9u\)なので
+  \[
+  \geq \frac{1}{\sqrt{s^3}} = 1
+  \]
+  となり、所望の不等式を得る。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a , b , c > 0 , abc = 2\)
+  のとき
+  \[
+  \frac{1}{a(b+1)} + \frac{1}{b(c+1)} + \frac{1}{c(a+1)}
+  \]
+  のとりうる最小の値を求めよ。
+  \begin{flushright}
+    数研\(1\)級
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \[
+  f(a,b,c) = \frac{1}{a(b+1)} + \frac{1}{b(c+1)} + \frac{1}{c(a+1)}
+  \]
+  と置く。
+  \((x+y+z)^2 \geq 3(xy+yz+zx)\)と\(u=2, s\geq 3\sqrt[3]{2}, t \geq 3\sqrt[3]{4}\)より、
+  \begin{align*}
+    ( f(a,b,c) )^2 &\geq 3\left( \sum_{cyc.} \frac{1}{ab(b+1)(c+1)} \right) \\
+    &= \frac{3\sum_{cyc.} c(a+1) }{abc(a+1)(b+1)(c+1)} \\
+    &= \frac{3(s+t) }{u(1+s+t+u)} \\
+    &= \frac{3}{2} \frac{1}{1+\frac{3}{s+t}} \\
+    &\geq \frac{3}{2} \frac{1}{1+\frac{1}{\sqrt[3]{2}+\sqrt[3]{4}}} \\
+    &= \left( \sqrt[3]{2} + \frac{1}{\sqrt[3]{2}} - 1 \right) ^2
+  \end{align*}
+  がわかる。
+  以上より
+  \[f(a,b,c) \geq \sqrt[3]{2} + \frac{1}{\sqrt[3]{2}} - 1\]
+  となる。
+  等号は\(a=b=c=\sqrt[3]{2}\)のときに成立。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c\)を三角形の三辺の長さとなる実数で、
+  \(a+b+c = 1 , a < 2b , b < 2c , c < 2a \)を満たすとするとき、
+  \[
+  \sqrt{\frac{a}{2b-a}} + \sqrt{\frac{b}{2c-b}} + \sqrt{\frac{c}{2a-c}} \geq \frac{1}{\sqrt{3abc}}
+  \]
+  を示せ。
+  \begin{flushright}
+    作: 不等式bot
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  まず次の不等式を示す：
+  \begin{equation}\label{eq: 1}
+    3abc \geq \sum_{cyc.} a^2(2b-a) \tag{\(*\)}
+  \end{equation}
+  \(x=(b+c-a)/2 > 0 , y=(c+a-b)/2 >0 , z=(a+b-c)/2 >0\)とおくと
+  \(a=y+z,b=z+x,c=x+y\)となる。
+  これらを代入して
+  \begin{align*}
+    3abc- \sum_{cyc.} a^2(2b-a) &= 3(x+y)(y+z)(z+x) - \sum_{cyc.} (y+z)^2(2x-y+z) \\
+    &= 3(st-u) - \sum_{cyc.}(2xy^2+2z^2x+4xyz-y^3+yz^2-y^2z+z^3) \\
+    &= 3\sum_{cyc.}(xy^2+x^2y) + 6xyz - \left( 3\sum_{cyc.}xy^2 + \sum_{cyc.}x^2y +12xyz \right) \\
+    &= 2\sum_{cyc.}x^2y -6xyz \geq 0
+  \end{align*}
+  を得る。
+  よって\eqref{eq: 1}が示された。
+  \(1/\sqrt{x}\)は下に凸なので、凸不等式と\eqref{eq: 1}より
+  \[
+  \lhs = \sum_{cyc.} \frac{a}{\sqrt{a(2b-a)}} + cyc.
+  \geq \frac{1}{ \sqrt{\sum_{cyc.}a^2(2b-a) }}
+  \geq \frac{1}{ \sqrt{3abc}}
+  \]
+  となり、所望の不等式が示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c\)が三角形の三辺を成す数のとき
+  \[
+  \frac{1}{a(a+b-c)} + \frac{1}{b(b+c-a)} + \frac{1}{c(c+a-b)} \geq 3\sqrt{\frac{a+b+c}{abc(ab+bc+ca)}}
+  \]
+  を示せ。
+  \begin{flushright}
+    作: 不等式bot
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  Schurの不等式より\((a+b-c)(b+c-a)(c+a-b) \leq abc\)なので
+  \begin{align*}
+    ( \lhs )^2 &\geq 3\left( \sum_{cyc.} \frac{1}{ab(a+b-c)(b+c-a)} \right) ^2 \\
+    &= \frac{3\sum_{cyc.} c(c+a-b) }{abc(a+b-c)(b+c-a)(c+a-b)} \\
+    &\geq \frac{3(a^2+b^2+c^2) }{(abc)^2} \\
+    &\geq \frac{3(ab+bc+ca)}{(abc)^2} \\
+    &\geq \frac{9(a+b+c)}{abc(ab+bc+ca)} \ ( \because t^2 \geq 3su)
+  \end{align*}
+  となる。以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c> 0 , \displaystyle\frac{1}{ab} + \frac{1}{bc} + \frac{1}{ca} = 1\)
+  のとき
+  \[
+  (a-1)(b-1)(c-1) \leq 6\sqrt{3} -10
+  \]
+  を示せ。
+  \begin{flushright}
+    2ch　不等式への招待7 , 59-60
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  条件式より\(a+b+c=abc\)となる。
+  \(a-1=x, b-1=y, c-1=z\)とおくと\(x+y+z+3 = xyz+xy+yz+zx+x+y+z+1\)なので\(xy+yz+zx+xyz=2\)となる。
+  \(\sqrt[3]{xyz}=t\)とおくと相加相乗より\(2\geq t^3+3t^2\)なので、
+  よって\(0 \leq 2-3t^2-t^3 = (t+1)(-t^2-2t+2)\)がわかる。
+  従って\(-1-\sqrt{3} \leq t \leq -1 + \sqrt{3}\)となる。
+  以上より
+  \[
+  (a-1)(b-1)(c-1)=xyz=t^3 \leq (-1+\sqrt{3} )^3 = 6\sqrt{3} -10
+  \]
+  となって所望の不等式が示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c\)が三角形の三辺の長さとなる実数で、\(a^2 + b^2 + c^2 = 1\)を満たすとき、
+  \[
+  3abc + \frac{1}{\cos \frac{\pi}{6}} \leq a+b+c \leq 2abc + \frac{1}{\cos \frac{\pi}{4}}
+  \]
+  を示せ。
+  \begin{flushright}
+    Casphy 不等式 780
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \begin{align*}
+    f_2 &= s^4-5s^2t+6su+4t^2 = \sum_{cyc.} a^2(a-b)(a-c) \geq 0  \\
+    f_1 &= s^3 -4st +9u = \sum_{cyc.}a(a-b)(a-c) \geq 0
+  \end{align*}
+  とおく。
+  まず左辺の不等号を示す。
+  \(s_2s -2u \leq \sqrt{2} \Leftrightarrow 2{s_2}^3 - (s_2s-2u)^2 \geq 0\)であるから、
+  \begin{align*}
+    &2{s_2}^3 - (s_2s-2u)^2 \\
+    &= s^6 -8s^4t+20s^2t^2+4s^3u-16t^3-8stu-4u^2 \\
+    &= (s^2-3t)f_2 + \left( (a-b)(b-c)(c-a) \right) ^2 + 2uf_1 + 5u^2 \geq 0
+  \end{align*}
+  となる。
+
+  次に右辺の不等号を示す。
+  \(s_2s-3u \geq 2/ \sqrt{3} \Leftrightarrow 3(s_2s-3u)^2 -4{s_2}^3 \geq 0\)であるから、
+  \begin{align*}
+    &3(s_2s-3u)^2 -4{s_2}^3 \\
+    &= -s^6 + 12s^4t - 36s^2t^2 + 32t^3 - 18s^3u -36stu + 27u^2 \\
+    &= \frac{f_1}{9}\left( 9(a+b-c)(b+c-a)(c+a-b) + (st-9u) \right) \\
+    &\ \ + \frac{t(s^2-3t)}{9}\left( 35(s^2-3t) + 9t \right) \\
+    &\ \ + \frac{st-9u}{9}\left( 25(st-9u) + 117u \right) \\
+    &\geq 0
+  \end{align*}
+  となる。
+  以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b \geq 0\)、
+  \(a^{2012} + b^{2011} \leq a^{2011} + b^{2010}\)
+  のとき
+  \[
+  a^{2011} + b^{2011} \leq 2
+  \]
+  を示せ。
+  \begin{flushright}
+    Casphy 不等式 438
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  対偶を示す。
+  \(a^{2011} + b^{2011} > 2\)とする。
+  相加相乗より\(a^{2012}+a^{2010} \geq 2a^{2011}\)なので\(a^{2011}-a^{2010} \leq a^{2012}-a^{2011}\)となる。
+  また、べき平均不等式より
+  \[
+  a^{2010} + b^{2010}
+  \leq 2\left( \frac{a^{2011} + b^{2011} }{2} \right)^{\frac{2010}{2011}}
+  = 2^{\frac{1}{2011}} \left( a^{2011} + b^{2011} \right) ^{\frac{2010}{2011}}
+  \]
+  \[
+  < \left( a^{2011} + b^{2011} \right)^{\frac{1}{2011}}
+  \left( a^{2011} + b^{2011} \right) ^{\frac{2010}{2011}}
+  = a^{2011} + b^{2011}
+  \]
+  となるので、以上より
+  \[
+  b^{2011}-b^{2010} < a^{2011} - a^{2010} \leq a^{2012} - a^{2011}
+  \]
+  がわかる。
+  よって\(a^{2012} + b^{2011} > a^{2011} + b^{2010}\)が示された。
+\end{proof}
+
+
+
+
+
+\
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a , b , c \geq 0 , a+b+c = 1\)
+  のとき
+  \[
+  \frac{bc}{a+1} + \frac{ca}{b+1} + \frac{ab}{c+1} \leq \frac{1}{4}
+  \]
+  を示せ。
+  \begin{flushright}
+    2ch 不等式への招待5 , 733-734
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  凸不等式とSchurの不等式より
+  \begin{align*}
+    \lhs &= \sum_{cyc.} ab\left( 1- \frac{c}{1+c} \right) \\
+    &= t-u\sum_{cyc.} \frac{1}{1+a} \\
+    &\leq t-\frac{9u}{s+3} = t- \frac{9u}{4s} = \frac{4st-9u}{4s} \\
+    &= \frac{s^3-f_1}{4s} \leq \frac{1}{4}s^2 = \frac{1}{4}
+  \end{align*}
+  となる。以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(k,m,n\)を相異なる自然数とするとき
+  \[
+  \left( k-\frac{1}{k} \right) \left( m-\frac{1}{m} \right) \left( n-\frac{1}{n} \right)
+  \leq kmn-(k+m+n)
+  \]
+  を示せ。
+  \begin{flushright}
+    ポーランド数学オリンピック 2013年 Final , 2日目 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  対称式なので一般性を失うことなく\(k\leq m \leq n\)と仮定してよい。
+  このとき\(m=k+a,n=m+b=k+a+b\)なる自然数\(a,b\)がとれる。
+  また
+  \begin{align*}
+    &\left( k-\frac{1}{k} \right) \left( m-\frac{1}{m} \right) \left( n-\frac{1}{n} \right) \leq kmn-(k+m+n) \\
+    &\Leftrightarrow (k^2-1)(m^2-1)(n^2-1) \leq k^2m^2n^2 - kmn(k+m+n) \\
+    &\Leftrightarrow s_2 -1 \leq t_2-su
+  \end{align*}
+  であるから、
+  ここで\(m=k+a,n=k+a+b\)を代入すると
+  \begin{align*}
+    t_2-su &= k^2\frac{b^2}{2} + ( k+a )^2\frac{(a+b)^2}{2} + ( k+a+b)^2\frac{a^2}{2} \\
+    &= k^2\left( \frac{a^2}{2} + \frac{b^2}{2} + \frac{(a+b)^2}{2} \right) + k\left( a(a+b)^2 + a^2(a+b) \right) +
+    a^2\frac{(a+b)^2}{2} + \frac{a^2}{2}(a+b)^2 \\
+    &\geq k^2\left( \frac{1}{2} + \frac{1}{2} + \frac{(1+1)^2}{2} \right) + a(a+b)(2a+b)k + (a^2-1)\left( (a+b)^2-1
+    \right) -1 + a^2 + (a+b)^2 \\
+    &\geq 3k^2 + (a+a+b)k -1 + a^2 + (a+b)^2 \\
+    &= k^2 + (k+a)^2 + (k+a+b)^2 -1 = k^2+m^2+n^2 -1 = s_2^2
+  \end{align*}
+  がわかる。
+  以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c\)は自然数で\(\displaystyle\frac{1}{a} + \frac{1}{b} + \frac{1}{c} < 1\)を満たすとする。
+  このとき
+  \[
+  \frac{1}{a} + \frac{1}{b} + \frac{1}{c} \leq \frac{41}{42}
+  \]
+  を示せ。
+  \begin{flushright}
+    フィンランドMC 2001 問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(2\leq a \leq b \leq c\)としてよい。
+  \(3\leq a\)のときは\(3\leq b\)なので
+  \[
+  \frac{1}{a} + \frac{1}{b} + \frac{1}{c} \leq \frac{1}{3}+\frac{1}{3} + \frac{1}{c} = \frac{2}{3} + \frac{1}{c}
+  \]
+  ここで\(c=3\)なら\(1/a+1/b+1/c<1\)に反するので\(c\geq 4\)であり、よって
+  \[
+  \frac{1}{a} + \frac{1}{b} + \frac{1}{c} \leq \frac{2}{3} + \frac{1}{4} = \frac{11}{12} < \frac{41}{42}
+  \]
+  がわかる。
+  \(a=2\)のとき。
+  \(b=2\)なら仮定に反するので\(b \geq 3\)である。
+  \(b\geq 4\)のときは
+  \[
+  \frac{1}{a} + \frac{1}{b} + \frac{1}{c}
+  \leq \frac{1}{2} + \frac{1}{4} + \frac{1}{c}
+  = \frac{3}{4} + \frac{1}{c}
+  \]
+  となる。
+  \(c=4\)なら仮定に反するので\(c \geq 5\)である。よって
+  \[
+  \frac{1}{a} + \frac{1}{b} + \frac{1}{c} \leq \frac{3}{4} + \frac{1}{5} = \frac{19}{20} < \frac{41}{42}
+  \]
+  がわかる。
+  \(b=3\)のとき。
+  \(c=3,4,5,6\)なら条件に矛盾するので\(c\geq 7\)である。よって
+  \(
+  \frac{1}{a} + \frac{1}{b} + \frac{1}{c} \leq \frac{1}{2} + \frac{1}{3} + \frac{1}{7} = \frac{41}{42}
+  \)
+  以上より示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{prob}
+  \[
+  \sqrt{2a^2+2b^2} + \sqrt{2b^2+2c^2} + \sqrt{2c^2+2a^2} \geq \sqrt{3(a+b)^2 + 3(b+c)^2 + 3(c+a)^2}
+  \]
+  を示せ。
+  \begin{flushright}
+    ポーランド数学オリンピック 2004年 Final 2日目 問1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  コーシーシュワルツより
+  \[
+  (\lhs )^2 \geq 3\sum_{cyc.} \sqrt{2(a^2+b^2)}\sqrt{2(b^2+c^2)}
+  \geq 3\sum_{cyc.} 2(b^2+ca) = 3\sum_{cyc.}(a+b)^2 = ( \rhs )^2
+  \]
+  となる。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(n \geq 2 , {a_1}^2 + {a_2}^2 + \cdots + {a_n}^2 = n\)
+  のとき
+  \[
+  \sum_{1\leq i < j \leq n}\frac{1}{n-a_ia_j} \leq \frac{n}{2}
+  \]
+  を示せ。
+  \begin{flushright}
+    APMO 2012 問5
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \begin{align*}
+    &\sum_{1\leq i < j \leq n}\frac{1}{n-a_ia_j} \leq \frac{n}{2} \\
+    &\Leftrightarrow \sum_{1\leq i < j \leq n}\frac{n}{n-a_ia_j} \leq \frac{n^2}{2} \\
+    &\Leftrightarrow \sum_{1\leq i < j \leq n}\frac{a_ia_j}{n-a_ia_j} \leq \frac{n}{2} \tag{\(*\)}
+  \end{align*}
+  である。
+  よって\((*)\)を示せば良い。
+  また、\(0 < a_ia_j/(n-a_ia_j) \leq |a_i| |a_j| / ( n - |a_i| |a_j|)\)なので、
+  \(a_i\)が非負のときのみ考えれば良い。
+  相加相乗より
+  \[
+  \frac{a_ia_j}{n-a_ia_j} \leq \frac{\left( \frac{a_i+a_j}{2} \right) ^2 }{n-\left( \frac{a_i+a_j}{2}\right) ^2}
+  = \frac{1}{2} \frac{ (a_i+a_j)^2}{(n-{a_i}^2) + (n-{a_j}^2)}
+  \]
+  である。
+  コーシーシュワルツより
+  \[
+  \left( \frac{ {a_i}^2 }{n-{a_j}^2} + \frac{ {a_j}^2 }{n-{a_j}^2} \right) \left( (n-{a_i}^2) + (n-{a_j}^2) \right)
+  \geq \left( a_i + a_j \right) ^2
+  \]
+  である。
+  よって以上より
+  \[
+  \frac{a_ia_j}{n-a_ia_j} \leq \frac{1}{2} \frac{ (a_i+a_j)^2}{(n-{a_i}^2) + (n-{a_j}^2)} \leq \frac{1}{2}\left( \frac{
+  {a_i}^2 }{n-{a_j}^2} + \frac{ {a_j}^2 }{n-{a_j}^2} \right)
+  \]
+  となり、ゆえに
+  \begin{align*}
+    \sum_{1\leq i < j \leq n}\frac{a_ia_j}{n-a_ia_j}
+    &\leq \sum_{1\leq i < j \leq n}\frac{1}{2}
+    \left( \frac{ {a_i}^2 }{n-{a_j}^2} + \frac{ {a_j}^2 }{n-{a_j}^2} \right) \\
+    &= \frac{1}{2}\sum_{i\neq j}\frac{{a_i}^2}{n-{a_j}^2} \\
+    &= \frac{1}{2}\sum_{i=1}^n \frac{n-{a_i}^2}{n-{a_i}^2} = \frac{n}{2}
+  \end{align*}
+  となる。
+  以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(n \geq 5 , a_i > 0 , a_2a_3 \cdots a_n = 1\)
+  のとき
+  \[
+  \prod_{i=2}^n (1+a_i)^i > n^n \left( \frac{n-1}{4} \right) ^{n-1}
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO 2012年 問2 改題
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  重み付き相加相乗より
+  \[
+  1+a_i
+  = \frac{i}{2}\left( \frac{i-2}{i} \frac{2}{i-2} + \frac{2}{i}a_i \right)
+  \geq \frac{i}{2}\left( \frac{2}{i-2} \right) ^{ \frac{i-2}{i} } {a_i}^{\frac{2}{i}}
+  \]
+  である
+  よって
+  \[
+  \prod_{i=2}^n (1+a_i)^i
+  \geq (1+a_2)^2 \prod_{i=3}^n \left( \frac{i}{2}\right) ^i \left( \frac{2}{i-2} \right) ^{i-2} {a_i}^2
+  = \frac{(1+a_2)^2}{{a_2}^2} \frac{(n-1)^{n-1}n^n}{2^{2n-2}}
+  \geq n^n \left( \frac{n-1}{4} \right) ^{n-1}
+  \]
+  となる。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(n \geq 2 , a_1 , \ldots , a_n \geq 0 , a_1 + a_2 + \ldots + a_n = 1\)
+  のとき
+  \[
+  \left( \sum_{i=1}^n ia_i \right) \left( \sum_{i=1}^n \frac{a_i}{i} \right) ^2
+  \]
+  のとりうる最大の値を求めよ。
+  \begin{flushright}
+    日本数学オリンピック 2011年 予選 問12
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(X= \displaystyle\sum_{cyc.} ia_i , Y= \displaystyle\sum_{cyc.} \frac{a_i}{i}\)と置く。
+  \[
+  (n+a) - \left( i + \frac{n}{i} \right) = \frac{1}{i}(i-1)(n-i) \geq 0
+  \]
+  なので、\(n+1\geq i + \displaystyle\frac{n}{i}\)である。
+  ゆえに
+  \[
+  X+nY = \sum_{i=1}^n \left( i+ \frac{n}{i} \right) a_i \leq \sum_{i=1}^n (n+1)a_i = n+1
+  \]
+  となる。
+  よって、\(X+\displaystyle\frac{n}{2}Y+\displaystyle\frac{n}{2}Y\leq n+1\)となり、
+  相加相乗より
+  \[
+  X \cdot \frac{n}{2}Y \cdot \frac{n}{2}Y
+  \leq \left( X + \frac{n}{2}Y + \frac{n}{2}Y \right) ^3
+  = \frac{(n+1)^3}{27}
+  \]
+  がわかる。
+  以上より
+  \[
+  XY^2 \leq \frac{4(n+1)^3}{27n^2}
+  \]
+  となる。
+  等号は\(a_1=\displaystyle\frac{2n-1}{3(n-1)} , a_2=\cdots = a_{n-1}=0 , a_n=\displaystyle\frac{n-2}{3(n-1)}\)
+  のときに実現する。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a_i \in \mathbb{N} , a_1 + a_2 + \cdots + a_n = 2008, A_k = a_1a_2\cdots a_k\)
+  のとき
+  \[
+  A_1 + A_2 + \cdots + A_n
+  \]
+  のとりうる最大の値を求めよ。
+  \begin{flushright}
+    日本数学オリンピック 2008年 予選 問12
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(S(a_1,\ldots a_n ) = A_1 + A_2 + \cdots + A_n , A_0=1\)と置く。
+  まず、
+  \begin{enumerate}
+    \item \label{enumi: JMO 2008-12 1}
+    \(S\)が最大値を取るときに\(a_i \geq a_{i+1} , ( 1\leq i \leq n-1 )\)であること
+  \end{enumerate}
+  を示す。
+  ある\(1 \leq k \leq n-1\)で\(a_k > a_{k+1}\)と仮定する。
+  \[
+  b_i = \begin{cases}
+  a_i     & (i<k)      \\
+  a_{k+1} & (i=k)      \\
+  a_k     & (i=k+1)    \\
+  a_i     & ( i> k+1 )
+  \end{cases}
+  \]
+  と定めると、\(b_1+\cdots +b_n=2008\)である。
+  \(S(a_1,\ldots ,a_n) < S(b_1,\ldots ,b_n)\)を示そう。
+  \(B_i=b_1b_2\cdots b_i\)と定めると、\(i\neq k\)のとき\(B_i=A_i\)であり、\(i=k\)のときは
+  \[
+  B_k-A_k = (a_{k+1}-a_k)A_{k-1} > 0
+  \]
+  である。
+  よって\(S(a_1,\ldots ,a_n) < S(b_1,\ldots ,b_n)\)となる。
+  以上で\ref{enumi: JMO 2008-12 1}が示された。
+
+  次に
+  \begin{enumerate}[start=2]
+    \item \label{enumi: JMO 2008-12 2}
+    \(S\)が最大値を取るとき、\(a_k \leq 3 , (k=1,\cdots ,n)\)となる
+  \end{enumerate}
+  ことを示す。
+  ある\(k\)について\(a_k\geq 4\)であると仮定する。
+  \ref{enumi: JMO 2008-12 1}より、\(a_1\geq 4\)と仮定してよい。
+  このとき
+  \[
+  c_i = \begin{cases}
+  a_1-2   & (i=1)    \\
+  2       & (i=2)    \\
+  a_{i-1} & (i>2)
+  \end{cases}
+  \]
+  と定めると、\(c_1+\cdots +c_{n+1} = 2008\)なので\(S(a_1,\ldots ,a_n) < S(c_1,\ldots ,c_{n+1})\)を示せば良い。
+  \((A_2+A_3+\cdots + A_n)/A_1=Q\)と置くと、\(S(a_1,\ldots ,a_n) = a_1+a_1Q\)となる。
+  一方、\(S(c_1,\ldots ,c_{n+1})=(a_1-2)+2(a_1-2)+2(a_1-2)Q=3a_1-6+2(a_1-2)Q\)なので、以上より
+  \[
+  S(c_1,\ldots ,c_{n+1}) - S(a_1,\ldots ,a_n) = 2(a_1-3)+(a_1-4)Q > 0
+  \]
+  となる。
+  以上で\ref{enumi: JMO 2008-12 2}が示された。
+
+  次に、
+  \begin{enumerate}[start=3]
+    \item \label{enumi: JMO 2008-12 3}
+    \(S\)が最大値を取るような自然数の組\((n ; a_1,\ldots ,a_n )\)で、
+    \(a_1,\ldots ,a_n\)の中に\(1\)が高々\(1\)つしかないものがある
+  \end{enumerate}
+  ことを示す。
+
+  \(S(a_1,\ldots,a_n)\)が最大値を取るとして、\(a_1,\ldots ,a_n\)の中に\(1\)が\(2\)つ以上あったとする。
+  \ref{enumi: JMO 2008-12 1}より\(a_{n-1}=a_n=1\)としてよい。
+  \[
+  d_i=\begin{cases}
+  a_i   & (i<n-1) \\
+  2     & (i=n-1)
+  \end{cases}
+  \]
+  と定めれば\(d_1+\cdots +d_{n-1}=2008\)となる。
+  \(D_k=d_1d_2\cdots d_k\)と置くと、\(1\leq i \leq n-2\)に対し\(D_i=A_i\)である。
+  また、\(D_{n-1}=2A_{n-2}\)である。
+  \(a_{n-1}=a_n=1\)より\(A_{n-1}=A_n=A_{n-2}\)である。
+  よって
+  \(S(a_1,\ldots,a_n)=S(d_1,\ldots,d_n)\)となる。
+  以上より\(1\)の個数を高々\(1\)つまで減らせる(最大性が保たれる)。
+  よって\ref{enumi: JMO 2008-12 3}が示された。
+
+  次に、
+  \begin{enumerate}[start=4]
+    \item \label{enumi: JMO 2008-12 4}
+    \(S\)が最大値を取るような自然数の組\((n ; a_1,\ldots ,a_n )\)であって、
+    \(a_1,\ldots ,a_n\)の中に\(2\)が高々\(3\)つしかないものがある
+  \end{enumerate}
+  ことを示す。
+  \(S(a_1,\ldots,a_n)\)が最大値を取るとして、\(a_1,\ldots ,a_n\)の中に\(2\)が\(4\)つ以上あったとする。
+  \ref{enumi: JMO 2008-12 1}より、
+  ある\(1\leq k \leq n-3\)で\(a_k=a_{k+1}=a_{k+2}=a_{k+3}=2\)としてよい。
+  \[
+  e_i=\begin{cases}
+  a_i     & ( i < k     ) \\
+  3       & ( i = k,k+1 ) \\
+  a_{i+1} & ( i > k+1   )
+  \end{cases}
+  \]
+  と定めれば\(e_1+\cdots +e_{n-1}=2008\)である。
+  \(k=1\)のときは\(P=0\),
+  \(k>1\)のとき\(P=A_1+\cdots +A_{k-1}\)と定め,
+  \(k<n-3\)のとき\((A_{k+4}+A_{k+5}+\cdots +A_n)/A_{k+3}=Q\)と置く。
+  \(k=n-3\)のときは\(Q=0\)とする。
+  このとき
+  \begin{align*}
+    S(a_1,\ldots ,a_n ) &= P+2A_{k-1}+4A_{k-1}+8A_{k-1}+16A_{k-1}+16A_{k-1}Q \\
+    S(e_1,\ldots ,e_{n-1} ) &= P+3A_{k-1}+9A_{k-1}+18A_{k-1}+18A_{k-1}Q
+  \end{align*}
+  なのでゆえに
+  \[
+  S(e_1,\ldots ,e_{n-1} ) - S(a_1,\ldots ,a_n ) = 2A_{k-1}Q >0
+  \]
+  となる。
+  従って\(2\)の個数は\(3\)個以下に減らすことができる。
+  以上で\ref{enumi: JMO 2008-12 4}が示された。
+
+  さて、\ref{enumi: JMO 2008-12 2} \ref{enumi: JMO 2008-12 3} \ref{enumi: JMO 2008-12 4}より、
+  問いを示すには次の場合のみについて調べれば十分：
+  \begin{enumerate}
+    \item \(a_1=a_2=\cdots =a_{669}=3, a_{670}=1\)
+    \item \(a_1=a_2=\cdots =a_{667}=3, a_{668}=a_{669}=a_{670}=2, a_{671}=1\)
+    \item \(a_1=a_2=\cdots =a_{668}=3, a_{669}=a_{670}=2\)
+  \end{enumerate}
+  \(X=3+3^2+ \cdots +3^{667} = (3^{668}-3)/2 , Y=3^{667}\)と置く。
+  \begin{itemize}
+    \item (1)のとき、\(S=X+3Y+9Y+9Y=X+21Y\)
+    \item (2)のとき, \(S=X+2Y+4Y+8Y+8Y=X+22Y\)
+    \item (3)のとき, \(S=X+3Y+6Y+12Y=X+21Y\)
+  \end{itemize}
+  よって以上より求める値は
+  \(X+22Y=\displaystyle\frac{47}{2}\cdot 3^{667}-\frac{3}{2}\)である。
+\end{proof}
+
+
+
+
+
+
+
+
+
+\
+
+
+
+\newpage
+
+\begin{prob}
+  \(a_i > 0 , a_1 + a_2 + \ldots + a_n = 1 , A_k = \displaystyle\frac{a_k}{1 + a_1 + a_2 + \ldots + a_k}\)
+  のとき
+  \[
+  \max \min_{1\leq k \leq n}A_k
+  \]
+  を求めよ。
+  \begin{flushright}
+    日本数学オリンピック 2004年 予選 問8
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \(P=\min A_k < 1\)と置くと
+  \begin{align*}
+    (1-P)^n &\geq (1-A_1)(1-A_2)\cdots (1-A_n) \\
+    &= \frac{1}{1+a_1}\frac{1+a_1}{1+a_1+a_2}\cdots \frac{1+a_1+a_2+\cdots +a_{n-1}}{1+a_1+a_2+\cdots +a_n} \\
+    &= \frac{1}{1+a_1+a_2+\cdots +a_n}=\frac{1}{2}
+  \end{align*}
+  ゆえに
+  \(P \leq 1- \displaystyle\frac{1}{\sqrt[n]{2}}\)となる。
+  等号は\(a_k=\sqrt[n]{2^k} - \sqrt[n]{2^{k-1}}\)のとき成立する。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x_i > 0\)
+  のとき
+  \[
+  x_1 + 2x_2 + \ldots + nx_n \leq \frac{n(n-1)}{2} + x_1 + {x_2}^2 + \ldots + {x_n}^n
+  \]
+  を示せ。
+  \begin{flushright}
+    ポーランド数学オリンピック 2001年 Final 1日目 問1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  \[
+  \Leftrightarrow \sum i(x_i-1) \leq \sum ({x_i}^i-1)
+  \Leftrightarrow \sum \left( {x_i}^i +(i-1) -ix_i \right) \geq 0
+  \]
+  ここで\(i\)個の相加相乗より
+  \({x_i}^i +(i-1) -ix_i = {x_i}^i +1+1+\cdots +1-ix_i \geq ix_i-ix_i=0\)となる。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a , b , c > 0 , ab+bc+ca = 1\)
+  のとき
+  \[
+  \sqrt[3]{\frac{1}{a} + 6b} + \sqrt[3]{\frac{1}{b}+ 6c} + \sqrt[3]{\frac{1}{c} + 6a} \leq \frac{1}{abc}
+  \]
+  を示せ。
+  \begin{flushright}
+    IMO 2004年 ShortList 問A-5
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+  凸不等式より
+  \begin{align*}
+    \lhs &\leq 3\sqrt[3]{\frac{1}{3}\left( \frac{1}{a}+\frac{1}{b}+\frac{1}{c} \right) +2(a+b+c)}
+    = \sqrt[3]{\frac{9}{u} + 54s}=\frac{1}{u}\sqrt[3]{9u^2+54su^3} \\
+    &\leq \frac{1}{u}\sqrt[3]{9u^2 + 18t^2u^2} = \frac{1}{u}\sqrt[3]{27u^2}= \frac{3\sqrt[3]{u^2}}{u} \\
+    &\leq \frac{t}{u} = \frac{1}{u}
+  \end{align*}
+  となる。以上で示された。
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x_i > 0\)のとき
+  \[
+  \frac{{x_1}^3}{{x_1}^2 + x_1x_2 + {x_2}^2} + \ldots + \frac{{x_n}^3}{{x_n}^2 + x_nx_1 + {x_1}^2}
+  \geq \frac{x_1 + \ldots + x_n }{3}
+  \]
+  を示せ。
+  \begin{flushright}
+    Hungary-Israel binational 02 1日目 問1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+$x^2-xy+y^2 \geq \displaystyle\frac{1}{3}(x^2+xy+y^2)$なので,
+$$
+\lhs = \sum \left( \frac{{x_1}^3}{{x_1}^2 + x_1x_2 + {x_2}^2} + \frac{x_1-x_2}{2} \right) = \sum \frac{1}{2}\frac{{x_1}^3+{x_2}^3}{{x_1}^2 + x_1x_2 + {x_2}^2}
+$$
+$$
+ = \frac{1}{2}\sum (x_1+x_2)\frac{{x_1}^2 - x_1x_2 + {x_2}^2}{{x_1}^2 + x_1x_2 + {x_2}^2} \geq \frac{1}{6}\sum (x_1+x_2) = \rhs
+$$
+\qed
+
+\end{proof}
+
+
+
+\
+
+
+
+
+
+
+\newpage\begin{prob}
+
+$x,y,z > 0$のとき
+$$
+\frac{x^2+y^2+z^2+xy+yz+zx}{6} \leq \frac{x+y+z}{3}\sqrt{\frac{x^2+y^2+z^2}{3}}
+$$
+を示せ.
+
+$\rightline{Hungary-Israel binational 2009 2日目 問2}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$x+y=a,y+z=b,z+x=c$と置くと,
+\begin{align*}
+&\Leftrightarrow \frac{a^2+b^2+c^2}{12} \leq \frac{a+b+c}{6}\sqrt{\frac{3(a^2+b^2+c^2)-2(ab+bc+ca)}{12}} \\
+&\Leftrightarrow s^2-2t \leq s\sqrt{\frac{3s^2-8t}{3}} \\
+&\Leftrightarrow 3(s^2-2t)^2 \leq s^2(3s^2-8t)
+\end{align*}
+あとは
+$$
+s^2(3s^2-8t) - 3(s^2-2t)^2 = 4s^2t - 12t^2 = 4t(s^2-3t) \geq 0
+$$
+\qed
+
+\end{proof}
+
+
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$x,y,z > 0$のとき
+$$
+\frac{yz}{x} + \frac{zx}{y} + \frac{xy}{z} \geq 2\sqrt[3]{ x^3+y^3+z^3 }
+$$
+を示せ.
+
+$\rightline{中国 Team Selection Test 2008 4日目 問2}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$\sqrt{\displaystyle\frac{yz}{x}}=a, \sqrt{\displaystyle\frac{zx}{y}}=b, \sqrt{\displaystyle\frac{xy}{z}}=c $と置くと,
+$$
+\Leftrightarrow a^2+b^2+c^2 \geq 2\sqrt[3]{(ab)^3+(bc)^3+(ca)^3}  \Leftrightarrow s_2 \geq 2\sqrt[3]{t_3}  \Leftrightarrow {s_2}^3\geq 8t_3
+$$
+相加相乗より,
+$$
+{s_2}^3 = s_6 + 6u^2 + 3\sum_{cyc.}a^2b^2(a^2+b^2) \geq s_6 + 6u^2 + 3\sum_{cyc.}2a^3b^3 = s_6 + 6u^2 + 6t_3
+$$
+ここでSchurより,
+$$
+s_6 + 6u^2 \geq \sum_{cyc.}a^2b^2(a^2+b^2) \geq 2t_3
+$$
+以上より
+$$
+{s_2}^3\geq  s_6 + 6u^2 + 6t_3 \geq 8t_3 + 3u^2 \geq 8t_3
+$$
+\qed
+
+\end{proof}
+
+
+
+\
+
+
+
+
+
+
+
+
+\newpage\begin{prob}
+
+$a,b,c > 0 , a+b+c+\sqrt{abc} = 4 $
+のとき
+$$
+\sqrt{\frac{bc}{a}} + \sqrt{\frac{ca}{b}} + \sqrt{\frac{ab}{c}} \geq a+b+c
+$$
+を示せ.
+
+$\rightline{中国 Team Selection Test 2007 2日目 問1}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$x=\displaystyle\sqrt{\frac{bc}{a}}, y=\displaystyle\sqrt{\frac{ca}{b}}, z=\displaystyle\sqrt{\frac{ab}{c}}$と置くと, $a=yz, b=zx, c=xy$なので
+$$
+xy+yz+zx+xyz=4
+$$
+のもとで
+$$
+x+y+z \geq xy+yz+zx
+$$
+を示せば良い.
+
+
+
+
+
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\
+
+
+
+\newpage\begin{prob}
+\
+
+$a^2\leq 1 , a^2+b^2 \leq 5 , a^2+b^2+c^2 \leq 14 , a^2+b^2+c^2+d^2 \leq 30$
+のとき
+$$
+a+b+c+d \leq 10
+$$
+を示せ.
+
+$\rightline{Hungary-Israel binational 2007 1日目 問2}$
+
+\end{prob}
+
+
+\begin{proof}
+
+コーシーシュワルツより
+\begin{align*}
+( \lhs )^2 & \leq \left( 1+2+3+4 \right) \left( a^2+\frac{b^2}{2}+\frac{c^2}{3} + \frac{d^2}{4} \right) \\
+& =  10 \left( \frac{1}{4}(a^2+b^2+c^2+d^2) + \frac{1}{12}(a^2+b^2+c^2) + \frac{1}{6}(a^2+b^2) + \frac{1}{2}a^2 \right) \\
+& \leq 10\left( \frac{15}{2} + \frac{7}{6} + \frac{5}{6} + \frac{1}{2} \right) \\
+& = 10 \times 10 = 100
+\end{align*}
+\qed
+
+\end{proof}
+
+
+
+
+
+
+
+\
+
+
+
+\newpage\begin{prob}
+
+$a,b,c,d > 0 , abcd=1 , a+b+c+d > \frac{a}{b}+ \frac{b}{c} + \frac{c}{d} + \frac{d}{a} $
+のとき
+$$
+a+b+c+d < \frac{b}{a} + \frac{c}{b} + \frac{d}{c} + \frac{a}{d}
+$$
+を示せ.
+
+$\rightline{IMO 2008 Short List 問A5}$
+
+\end{prob}
+
+
+\begin{proof}
+
+相加相乗より
+\begin{align*}
+3(a+b+c+d)+ \rhs &= 3(a+b+c+d) + \sum_{cyc.} \frac{a}{d} \\
+&> 3\sum_{cyc.} \frac{a}{b} + \frac{a}{d} = \sum_{cyc.} \left( 2\frac{a}{b} + \frac{b}{c} + \frac{a}{d} \right) \\
+&\geq \sum_{cyc.} 4\sqrt[4]{\left( \frac{a}{b} \right) ^2 \frac{b}{c}\frac{a}{d}} = \sum_{cyc.} 4\sqrt[4]{\frac{a^4}{abcd}} \\
+&= 4 (a+b+c+d)
+\end{align*}
+\qed
+
+\end{proof}
+
+
+
+\
+
+
+
+
+
+
+
+
+\newpage\begin{prob}
+
+$a,b,c,d > 0 $
+のとき
+$$
+\frac{(a-b)(a-c)}{a+b+c} + \frac{(b-c)(b-d)}{b+c+d} + \frac{(c-d)(c-a)}{c+d+a} + \frac{(d-a)(d-b)}{d+a+b} \geq 0
+$$
+を示せ.
+
+$\rightline{IMO 2008 Short List 問A7}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$s=a+b+c+d$
+$$
+A=\frac{(a-b)(a-c)}{a+b+c} , B= \frac{(b-c)(b-d)}{b+c+d} , C=\frac{(c-d)(c-a)}{c+d+a} , D=\frac{(d-a)(d-b)}{d+a+b}
+$$
+$$
+A'=\frac{(a-c)^2}{a+b+c} , B'=\frac{(b-d)^2}{b+c+d} , C'=\frac{(c-a)^2}{c+d+a} , D'=\frac{(d-b)^2}{d+a+b}
+$$
+$$
+A''=\frac{(a-c)(a+c-2b)}{a+b+c} , B''=\frac{(b-d)(b+d-2c)}{b+c+d} , C''=\frac{(c-a)(c+a-2d)}{c+d+a} , D''=\frac{(d-b)(d+b-2a)}{d+a+b}
+$$
+と置くと, $2A=A'+A''$（$B,C,D$に関しても同様の等式が成立する）.
+コーシーシュワルツより,
+$$
+\left( |a-c| + |b-d| + |c-a| + |d-b| \right) ^2 \leq \left( A'+B'+C'+D' \right) ( 4s-s )
+$$
+ゆえに
+\begin{align*}
+A'+B'+C'+D' \geq \frac{ 4\left( |a-c| + |b-d| \right) ^2}{3s} \tag{$1$}
+\end{align*}
+となる.
+
+次に,
+\begin{align*}
+A''+C'' &= \frac{(a-c)(a+c-2b)(s-b)+(c-a)(c+a-2d)(s-d)}{(s-b)(s-d)} \\
+&= \frac{(a-c)\left( s(a+c-2b-c-a+2d) -b(a+c-2b)+d(c+a-2d) \right) }{s(a+c+b)-b(s-d)} \\
+&= \frac{(a-c)\left( 2s(d-b) +(d-b)(a+c)+2(b+d)(b-d) \right)}{s(a+c)+bd} \\
+&= \frac{(a-c)(b-d)\left( -2s -(a+c)+2(b+d) \right)}{s(a+c)+bd} \\
+&= \frac{-3(a-c)(b-d)(a+c)}{s(a+c)+bd}
+\intertext{同様に}
+B''+D'' &= \frac{-3(b-d)(c-a)(b+d)}{s(b+d)+ca}
+\intertext{ゆえに}
+A'' + B'' + C'' + D'' &= \frac{-3(a-c)(b-d)(a+c)}{s(a+c)+bd} + \frac{-3(b-d)(c-a)(b+d)}{s(b+d)+ca} \\
+&= 3(a-c)(b-d) \frac{(b+d)\left( s(a+c)+bd \right) - (a+c)\left( s(b+d) -ca \right)}{\left( s(a+c)+bd \right) \left( s(b+d) +ca \right) } \\
+&= 3(a-c)(b-d)\frac{ bd(b+d) - ca(c+a) }{\left( s(a+c)+bd \right) \left( s(b+d) +ca \right) }
+\end{align*}
+ここで$a,b,c,d > 0$と三角不等式より
+\begin{align*}
+\left( s(a+c)+bd \right) \left( s(b+d) +ca \right) &= s^2(a+c)(b+d) + s\left( bd(b+d) + ac(a+c) \right) + abcd \\
+&> s\left( bd(b+d) + ac(a+c) \right) \\
+&\geq s\left| bd(b+d) - ac(a+c) \right|
+\end{align*}
+なので,
+\begin{align*}
+\left| A'' + B'' + C'' + D'' \right| &= 3\left| (a-c)(b-d) \right| \frac{ \left| bd(b+d) - ca(c+a) \right| }{\left( s(a+c)+bd \right) \left( s(b+d) +ca \right) } \\
+&\geq 3\left| (a-c)(b-d) \right| \frac{ \left| bd(b+d) - ca(c+a) \right| }{ s\left| bd(b+d) - ac(a+c) \right| } \\
+&\geq \frac{3\left| (a-c)(b-d) \right| }{s} \tag{$2$}
+\end{align*}
+よって$(1),(2)$より,
+\begin{align*}
+2( A+B+C+D ) &= (A'+B'+C'+D') + (A''+B''+C''+D'') \\
+&\geq | A'+B'+C'+D' | - | A''+B''+C''+D'' | \\
+&\geq \frac{ 4\left( |a-c| + |b-d| \right) ^2}{3s} - \frac{3\left| (a-c)(b-d) \right| }{s} \\
+&= \frac{ 3|a-c|^2 + 3|b-d|^2 + |a-c|\cdot |b-d| + \left( |a-c| - |b-d| \right) ^2}{3s} \\
+&\geq 0
+\end{align*}
+\qed
+
+\end{proof}
+
+
+
+
+
+
+
+
+\
+
+
+\newpage\begin{prob}
+
+$a,b,c,d > 0 , a+b+c+d = 1 $
+のとき
+$$
+6\left( a^3+b^3+c^3+d^3 \right) \geq a^2+b^2+c^2+d^2+\frac{1}{8}
+$$
+を示せ.
+
+$\rightline{フランス Team Selection Test 2007 問2}$
+
+\end{prob}
+
+
+\begin{proof}
+
+コーシーシュワルツより
+\begin{align*}
+ \lhs &=(a+b+c+d)( \lhs ) \\
+ &=     6(a+b+c+d)(a^3+b^3+c^3+d^3) \\
+ &\geq  6(a^2+b^2+c^2+d^2)^2 \\
+ &=     \frac{3}{2}(1+1+1+1)(a^2+b^2+c^2+d^2)(a^2+b^2+c^2+d^2) \\
+ &\geq  \frac{3}{2}(a+b+c+d)^2(a^2+b^2+c^2+d^2) \\
+ &=     \frac{3}{2}(a^2+b^2+c^2+d^2) \\
+ &=     a^2+b^2+c^2+d^2 + \frac{1}{8}(1+1+1+1)(a^2+b^2+c^2+d^2) \\
+ &\geq  a^2+b^2+c^2+d^2 + \frac{1}{8}(a+b+c+d)^2 = \rhs
+\end{align*}
+\qed
+
+\end{proof}
+
+
+
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$ a , b , c > 0 , abc = 1 $のとき
+$$
+\frac{1}{a^5(b+2c)^2} + \frac{1}{b^5(c+2a)^2} + \frac{1}{c^5(a+2b)^2} \geq \frac{1}{3}
+$$
+を示せ.
+
+$\rightline{USA Team Selection Test 2010 1日目 問2}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$x=\displaystyle\frac{1}{a} , y=\frac{1}{b} , z= \frac{1}{c}$と置くと, $xyz=1$で
+$$
+\frac{x^5y^2z^2}{(2y+z)^2} + \frac{y^5z^2x^2}{(2z+x)^2} + \frac{z^5x^2y^2}{(2x+y)^2} \geq \frac{1}{3}
+$$
+を示せば良い.
+
+３重コーシーより
+$$
+9(x+y+z)^2(\lhs ) = \left( \sum_{cyc.} (2y+z) \right) ^2 \sum_{cyc.} \frac{x^3}{(2y+z)^2} \geq ( x+y+z )^3
+$$
+この両辺を$9(x+y+z)^2$で割って
+$$
+\lhs \geq \frac{x+y+z}{9} \geq \frac{3\sqrt[3]{xyz}}{9} = \frac{1}{3}
+$$
+\qed
+
+\end{proof}
+
+
+
+
+
+
+
+\
+
+
+
+\newpage\begin{prob}
+
+$a , b , c > 0 $のとき
+$$
+a^3(b^2+c^2)^2 + b^3(c^2+a^2)^2 + c^3(a^2+b^2)^2 \geq abc\left( ab(a+b)^2 + bc(b+c)^2 + ca(c+a)^2 \right)
+$$
+を示せ.
+
+$\rightline{USA Team Selection Test 2009 3日目 問3}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$a \geq b \geq c$のとき$a^2b^2(a+b) \geq c^2a^2(c+a) \geq b^2c^2(b+c) $なので, 拡張Schurより,
+$$
+\sum_{cyc.} a^2b^2(a+b)(c-a)(c-b) \geq 0
+$$
+であるが, 一方これを展開すると分かる通り,
+$$
+( \lhs ) - ( \rhs ) = \sum_{cyc.} a^2b^2(a+b)(c-a)(c-b) \geq 0
+$$
+\qed
+
+\end{proof}
+
+
+
+
+
+
+
+\
+
+
+
+\newpage
+
+\begin{prob}
+  任意の実数\(a,b,c\)に対し
+  \[
+  ( a^2+b^2+c^2 )^2 - ( ab+bc+ca )^2 \geq \sqrt{6}(a-b)(b-c)(c-a)(a+b+c)
+  \]
+  を示せ。
+  \begin{flushright}
+    作: 不等式bot
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+$a-b=x, b-c=y, c-a=z, a+b+c=s$と置く.
+このとき$|z|=|x+y|$である. 相加相乗より,
+\begin{align*}
+\lhs &= \left( \frac{x^2+y^2+z^2+s^2}{3} \right) ^2 - \left( \frac{x^2+y^2+z^2-2s^2}{6} \right) ^2 \\
+&=     \frac{1}{12}(x^2+y^2+z^2)(x^2+y^2+z^2+s^2) \\
+&\geq  \frac{1}{12}\left( \frac{1}{2}(x+y)^2+z^2 \right) \left( \frac{1}{2}(x+y)^2 +z^2 +4s^2 \right) \\
+&\geq  \frac{1}{12}\cdot \frac{3}{4} (x+y)^2(3z^2+8s^2) \\
+&\geq  \frac{1}{12}\cdot \frac{3}{4} (x+y)^2 \cdot 2\sqrt{3\times 8}|zs| \\
+&\geq  \frac{1}{12}\cdot \frac{3}{4} \cdot 4xy \cdot 2\sqrt{3\times 8}zs \\
+&=     \sqrt{6}sxyz = \rhs
+\end{align*}
+
+等号成立は$a:b:c=1:-\displaystyle\frac{\sqrt{6}+1}{5}:-\frac{(\sqrt{6}+1)^2}{5}$のとき. \qed
+
+\end{proof}
+
+
+
+
+
+
+
+
+\
+
+
+\newpage\begin{prob}
+
+$a_i > 0 , a_1 + \ldots + a_n = 1 $
+のとき
+$$
+\frac{{a_1}^2}{a_1 + a_2} + \ldots + \frac{{a_n}^2}{a_n + a_1} \geq \frac{1}{2}
+$$
+を示せ.
+
+$\rightline{リトアニア Team Selection Test 2006 問1}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$$
+\lhs = \sum_{cyc.}\left( \frac{{a_1}^2}{a_1 + a_2} +\frac{1}{2}(a_2 - a_1) \right) = \frac{1}{2}\sum_{cyc.} \frac{{a_1}^2+{a_2}^2}{a_1 + a_2} \geq \frac{1}{4}\sum_{cyc.} \frac{(a_1 + a_2)^2}{a_1 + a_2}
+$$
+$$
+= \frac{1}{4}\sum_{cyc.} (a_1 + a_2) = \frac{1}{2}\sum_{cyc.} a_1 = \frac{1}{2}
+$$
+\qed
+
+\end{proof}
+
+
+
+
+
+
+
+\
+
+
+
+\newpage
+
+\begin{prob}
+  \(a , b , c > 0\)のとき
+  \[
+  \frac{3(a^4+b^4+c^4)}{(a^2+b^2+c^2)^2} + \frac{ab+bc+ca}{a^2+b^2+c^2} \geq 2
+  \]
+  を示せ。
+  \begin{flushright}
+    コスタリカ数学オリンピック 2006年 Final 2 改
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+４次Schurより
+$$
+\lhs = \frac{3s_4+s_2t}{{s_2}^2} \geq \frac{3s_4+su+2t_2}{{s_2}^2} \geq \frac{2s_4+2t_2+\sum_{cyc.}ab(a^2+b^2)}{{s_2}^2}
+$$
+$$
+\geq \frac{2s_4+4t_2}{{s_2}^2} =2
+$$
+\qed
+
+\end{proof}
+
+
+
+
+\
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a, b, c > 0\)のとき
+  \[
+  (ab)^3 + (bc)^3 + (ca)^3 + 9(abc)^2 + abc(a^3+b^3+c^3+9abc) \geq 3abc(a+b)(b+c)(c+a)
+  \]
+  を示せ。
+  \begin{flushright}
+    作: 不等式bot
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+$$
+( \lhs ) - ( \rhs ) = t^3 + s^3u + 27u^2 - 9stu \geq 3 \sqrt[3]{t^3\cdot s^3u \cdot 27u^2 } - 9stu = 0
+$$
+\qed
+
+\end{proof}
+
+
+\
+
+
+
+
+
+
+
+
+\newpage\begin{prob}
+
+$a_i > 0 $のとき
+$$
+\sum_{i<j}\frac{a_ia_j}{a_i+a_j} \leq \frac{n}{a_1+a_2+\ldots +a_n}\sum_{i<j}a_ia_j
+$$
+を示せ.
+
+$\rightline{IMO 2006 Short List 問A4}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$S=\displaystyle\sum_{i=1}^n a_i $と置く.
+\begin{align*}
+2S( \lhs ) &= 2\sum_{i<j}\frac{a_ia_j}{a_i+a_j}S \\
+&=     2\sum_{i<j}\left( a_ia_j + a_ia_j\cdot \frac{S-a_i-a_j}{a_i+a_j} \right) \\
+&\leq  2\sum_{i<j}\left( a_ia_j + \frac{(a_i+a_j)^2}{4}\cdot \frac{S-a_i-a_j}{a_i+a_j} \right) \\
+&=     \frac{1}{2}\sum_{i<j}\left( 4a_ia_j + (a_i+a_j)( S-a_i-a_j ) \right) \\
+&=     \frac{1}{2}\sum_{i<j}\left( (a_i+a_j)S - {a_i}^2 - {a_j}^2 + 2a_ia_j \right) \\
+&=     \frac{1}{2}(n-1)\left( S^2- \sum_{i=1}^n{a_i}^2 \right) + \sum_{i<j} a_ia_j  \\
+&=     \frac{1}{2}(n-1)\sum_{i \neq j}a_ia_j + \sum_{i<j} a_ia_j \\
+&=     n \sum_{i<j} a_ia_j = 2S( \rhs )
+\end{align*}
+\qed
+
+\end{proof}
+
+
+
+
+\
+
+
+
+
+
+
+\newpage\begin{prob}
+
+$x_i > 0 , x_1 x_2 \cdots x_n = 1$
+のとき
+$$
+\sum_{i=1}^n\frac{1}{n-1+x_i} \leq 1
+$$
+を示せ.
+
+$\rightline{シンガポール Team Selection Test 2008 1日目 問2}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$y_i=\displaystyle\frac{1}{n-1+x_i}$と置くと, $x_i=\displaystyle\frac{1}{y_i} + 1-n $
+
+
+
+
+
+
+\end{proof}
+
+
+
+
+\
+
+
+
+
+
+
+\newpage
+
+
+\begin{prob}
+  \(x,y,z > 0\)のとき
+  \[
+  \frac{x+y}{y+z} + \frac{y+z}{z+x} + \frac{z+x}{x+y} + \frac{x+y}{z+x} + \frac{y+z}{x+y} + \frac{z+x}{y+z}
+  \geq 5 + \frac{x^2+y^2+z^2}{xy+yz+zx}
+  \]
+  を示せ。
+  \begin{flushright}
+    コスタリカ数学オリンピック 2008年 Final 問4
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+両辺から$3$を引いて,
+$$
+\frac{2x}{y+z} + \frac{2y}{z+x} + \frac{2z}{x+y} \geq \frac{(x+y+z)^2}{xy+yz+zx}
+$$
+を示せば良いが, 通分して,
+$$
+2t(s^3-2st+6u) \geq s^2(st-u)
+$$
+を示せば良い. この左辺から右辺を引いて,
+$$
+2t(s^3-2st+6u) - s^2(st-u) = tf_1 + u(s^2-3t) \geq 0
+$$
+\qed
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+\
+
+
+\newpage\begin{prob}
+$a,b,c \geq 0$
+のとき
+$$
+a(a-b)(a-2b)+b(b-c)(b-2c)+c(c-a)(c-2a) \geq 0
+$$
+を示せ.
+
+$\rightline{USA ELMO 2009 1日目 問3}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$\min \{ a,b,c \} = a $としてよい. $b=a+x,c=a+y , \ ( x,y \geq 0 )$と置く. このとき
+\begin{align*}
+( \lhs ) &= -ax(-a-2x) + (a+x)(x-y)(x-a-2y) + (a+y)y(y-a) \\
+&= a( 2x^2 - 2xy + 2y^2 ) + x(x-y)(x-2y) + y^3 \\
+&= a( x^2 + y^2 + (x-y)^2 ) + x(x-2y)^2 + y(x-y)^2 \\
+&\geq 0
+\end{align*}
+\qed
+
+\end{proof}
+
+
+
+
+
+\
+
+
+
+
+
+\newpage\begin{prob}
+$ 0 \leq a_1 \leq a_2 \leq \ldots \leq a_n $
+のとき
+$$
+\frac{{a_1}^2}{a_2} + \frac{{a_2}^3}{{a_3}^2} + \ldots + \frac{{a_n}^{n+1}}{{a_1}^n} \geq a_1 + a_2 + \ldots + a_n
+$$
+を示せ.
+
+$\rightline{カザフスタンMO 2010 9年生 問4}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$S = a_1 + a_2 + \ldots + a_n$と置く. $\displaystyle\frac{a_k}{a_{k+1}} \leq 1$なので, これと凸不等式より,
+\begin{align*}
+\lhs &\geq \frac{{a_1}^{n+1}}{{a_2}^n} + \ldots + \frac{{a_n}^{n+1}}{{a_1}^n} \\
+&=     a_1 \left( \frac{a_2}{a_1} \right) ^{-n} + \ldots + a_n \left( \frac{a_1}{a_n} \right) ^{-n} \\
+&\geq  S \left( \frac{a_1}{S} \frac{a_2}{a_1} + \ldots + \frac{a_n}{S}\frac{a_1}{a_n} \right) ^{-n} \\
+&=     S = \rhs
+\end{align*}
+\qed
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+\
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(x_i > 0 , (i= 1,2,\cdots n)\)
+  のとき
+  \[
+  \sum_{i=1}^n \frac{1}{1+x_i} \leq \frac{n}{1+\displaystyle\frac{n}{\sum_{i=1}^n \frac{1}{x_i} } }
+  \]
+  を示せ。
+  \begin{flushright}
+    カザフスタン数学オリンピック 2012年 10年次 1日目 問1
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+$\displaystyle\frac{1}{x_i}=a_i$と置けば
+$$
+\sum_{i=1}^n \frac{a_i}{1+a_i} \leq \frac{ \sum_{i=1}^n a_i }{ 1 + \frac{ \sum_{i=1}^n a_i }{n}}
+$$
+を示せば良いが, これは凸不等式より従う.
+\end{proof}
+
+
+
+
+
+
+
+
+
+\
+
+\newpage
+
+
+\begin{prob}
+  \(x,y > 0\)
+  のとき
+  \[
+  \sqrt{x^2-x+1}\sqrt{y^2-y+1} + \sqrt{x^2+x+1}\sqrt{y^2+y+1} \geq 2(x+y)
+  \]
+  を示せ。
+  \begin{flushright}
+    カザフスタン数学オリンピック 2010年 11年次 問4
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+コーシーシュワルツより,
+\begin{align*}
+( \lhs )^2 &= (x^2-x+1)(y^2-y+1) + (x^2+x+1)(y^2+y+1) \\
+& \qquad + 2\sqrt{x^2-x+1}\sqrt{y^2-y+1}\sqrt{x^2+x+1}\sqrt{y^2+y+1} \\
+&=     2(x^2+1)(y^2+1) + 2xy + 2\sqrt{ x^4+x^2+1 }\sqrt{ y^4+y^2+1 } \\
+&\geq  2(x+y)^2 + 2xy + 2(x^2+xy+y^2) \\
+&=     4(x+y)^2 = ( \rhs )^2
+\end{align*}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a_i , x_i > 0 , \displaystyle\sum_{i=1}^n a_i =\sum_{i=1}^n x_i = 1\)
+  のとき
+  \[
+  2\sum_{i<j}x_ix_j \leq \frac{n-2}{n-1} + \sum_{i=1}^n \frac{a_i}{1-a_i}{x_i}^2
+  \]
+  を示せ。
+  \begin{flushright}
+    ポーランド数学オリンピック 1996年 Final 1日目 問3
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+\begin{align*}
+& \Leftrightarrow \sum_{i=1}^n {x_i}^2 + \sum_{i\neq j}x_ix_j \leq \sum_{i=1}^n {x_i}^2 + \frac{n-2}{n-1} + \sum_{i=1}^n \frac{a_i}{1-a_i}{x_i}^2 \\
+& \Leftrightarrow \left( \sum_{i=1}^n x_i \right)^2 \leq \frac{n-2}{n-1} + \sum_{i=1}^n \frac{{x_i}^2}{1-a_i} \\
+& \Leftrightarrow \left( \sum_{i=1}^n x_i \right)^2 \leq \frac{n-2}{n-1} + \sum_{i=1}^n \frac{{x_i}^2}{1-a_i} \\
+& \Leftrightarrow \frac{1}{n-1} \leq \sum_{i=1}^n \frac{{x_i}^2}{1-a_i}
+\end{align*}
+ここで変形コーシーより,
+$$
+\sum_{i=1}^n \frac{{x_i}^2}{1-a_i} \geq \frac{ \left( \sum_{i=1}^n x_i \right) ^2 }{ \sum_{i=1}^n (1-a_i) } = \frac{1}{n-1}
+$$
+\qed
+
+\end{proof}
+
+
+
+
+
+
+
+
+\
+
+
+
+\newpage
+
+\begin{prob}
+$x^2+y^2+z^2 = 2$
+のとき
+$$
+x+y+z \leq 2+xyz
+$$
+を示せ.
+
+$\rightline{ポーランド数学オリンピック 1990 Final 2日目 問3}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$x(1-yz)+y+z\leq 2$を示せば良い.
+コーシーシュワルツより,
+$$
+\left( x(1-yz) + y + z \right) ^2 \leq \left( x^2 + (y+z)^2 \right) \left( (1-yz)^2 + 1 \right) = (2+2yz)\left( 2-2yz+(yz)^2 \right)
+$$
+$$
+ = 4 + 2(yz)^2(yz-1) \leq 4 + 2(yz)^2\left( \frac{y^2+z^2}{2} - 1 \right) \leq 4
+$$
+\qed
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+\
+
+
+\newpage\begin{prob}
+$x,y,z$が三角形の三辺の長さとなる実数のとき,
+$$
+\frac{x^2y}{z} + \frac{y^2z}{x} + \frac{z^2x}{y} \geq x^2+y^2+z^2
+$$
+を示せ.
+
+$\rightline{Art of Problem Solving より}$
+
+\end{prob}
+
+
+\begin{proof}
+
+通分して,
+$$
+x^3y^2+y^3z^2+z^3x^2 - xyz(x^2+y^2+z^2) \geq 0
+$$
+を示せば良いが,
+$$
+x^3y^2+y^3z^2+z^3x^2 - xyz(x^2+y^2+z^2) = \sum_{cyc.}x^2(y-z)^2(x-y+z) \geq 0
+$$
+\qed
+
+\end{proof}
+
+
+
+
+
+
+
+\
+
+
+
+\newpage\begin{prob}
+\
+
+$x,y,z > 0 , x+y+z = xy+yz+zx $
+のとき
+$$
+\frac{1}{x^2+y+1} + \frac{1}{y^2+z+1} + \frac{1}{z^2+x+1} \leq 1
+$$
+を示せ.
+
+$\rightline{セルビア Team Selection Test 2009 2日目 問2}$
+
+\end{prob}
+
+
+\begin{proof}
+
+コーシーシュワルツより,
+$$
+(x^2+y+1)(1+y+z^2) \geq (x+y+z)^2
+$$
+また, $s=t\geq s^2/3 $より, $s \geq 3$なので, ゆえに
+$$
+\lhs \leq \sum_{cyc.}\frac{1+y+z^2}{s^2} = \frac{3+s+s_2}{s^2} \leq \frac{2s+s_2}{s^2} = \frac{s_2+2t}{s^2} = 1
+$$
+\qed
+
+\end{proof}
+
+\
+
+
+
+
+
+
+
+
+
+\newpage\begin{prob}
+
+$a,b,c > 0 , a+b+c = 1 $
+のとき
+$$
+\sqrt{\frac{ab}{ab+c}} + \sqrt{\frac{bc}{bc+a}} + \sqrt{\frac{ca}{ca+b}} \leq \frac{3}{2}
+$$
+を示せ.
+
+$\rightline{キルギス 数学オリンピック 2010 問1}$
+
+\end{prob}
+
+
+\begin{proof}
+
+相加相乗より,
+$$
+\lhs = \sum_{cyc.} \sqrt{\frac{ab}{ab+c(a+b+c)}} = \sum_{cyc.} \sqrt{\frac{ab}{(c+a)(c+b)}} = \sum_{cyc.} \sqrt{\frac{a}{c+a}\frac{b}{c+b}}
+$$
+$$
+\leq \frac{1}{2}\sum_{cyc.} \left( \frac{a}{c+a} + \frac{b}{c+b} \right) = \frac{1}{2}\sum_{cyc.} \left( \frac{a}{a+b} + \frac{b}{a+b} \right) = \frac{3}{2}
+$$
+\qed
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\
+
+
+\newpage\begin{prob}
+
+$a\geq b\geq c\geq 0 , a+b+c = 3 $
+のとき
+$$
+ab^2+bc^2+ca^2 \leq \frac{27}{8}
+$$
+を示せ.
+
+$\rightline{香港数学オリンピック 2002 問3}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$a\geq b\geq c\geq 0 $より$(a-b)(b-c)(c-a) \leq 0$. これと３次Schurより,
+\begin{align*}
+8(\lhs ) &\leq 8( ab^2+bc^2+ca^2 ) - 4(a-b)(b-c)(c-a) \\
+&=    8( ab^2+bc^2+ca^2 ) - 4(ab^2+bc^2+ca^2) + 4(a^2b+b^2c+c^2a) \\
+&=    3(ab^2+bc^2+ca^2+a^2b+b^2c+c^2a) + (ab^2+bc^2+ca^2+a^2b+b^2c+c^2a) \\
+&\leq 3(ab^2+bc^2+ca^2+a^2b+b^2c+c^2a) + (a^3+b^3+c^3+3abc) \\
+&=    (a+b+c)^3 = 27
+\end{align*}
+\qed
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+\
+
+\newpage\begin{prob}
+
+$f(0)=f(1)=0 $, $f'$は$[0,1]$で連続
+のとき
+$$
+\int_0^1 \left( f'(x) \right) ^2 dx \geq \pi ^2 \int_0^1 \left( f(x) \right) ^2 dx
+$$
+を示せ.
+
+$\rightline{山梨大 医 後期 改}$
+
+\end{prob}
+
+
+\begin{proof}
+
+
+
+\end{proof}
+
+
+\
+
+
+
+
+
+
+
+
+\newpage\begin{prob}
+$a,b,c > 0 , abc \geq 1$
+のとき
+$$
+\frac{a}{1+\sqrt{bc}} + \frac{b}{1+\sqrt{ca}} + \frac{c}{1+\sqrt{ab}} \geq \frac{3}{2}
+$$
+を示せ.
+
+$\rightline{Math Excalibur, Vol15, No.3, 問852}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$k=abc$と置くと, $\displaystyle\frac{a}{1+\sqrt{bc}} = \frac{\sqrt{a^3}}{\sqrt{k}+ \sqrt{a}}$. $f(x)=\displaystyle\frac{x^{3/2}}{\sqrt{k}+\sqrt{x}}$と置くと,
+\begin{align*}
+f'(x)  &= \frac{3\sqrt{kx} + 2x}{2\left( \sqrt{k} + \sqrt{x} \right) ^2 } > 0 \\
+f''(x) &= \frac{3k+\sqrt{kx}}{4\sqrt{x}\left( \sqrt{k}+\sqrt{x} \right) ^3 } > 0
+\end{align*}
+なので$f$は$x>0$で下に凸な単調増加関数. 従って凸不等式と$a+b+c \geq 3\sqrt[3]{k}$より,
+$$
+\lhs = f(a)+f(b)+f(c) \geq 3f(\frac{a+b+c}{3}) \geq 3f(\sqrt[3]{k}) = \frac{3}{1+\frac{1}{\sqrt[3]{k}}} \geq \frac{3}{2}
+$$
+\qed
+
+\end{proof}
+
+\
+
+
+
+
+
+
+
+
+
+\newpage\begin{prob}
+
+\
+
+$f(0)=f(1)=-\displaystyle\frac{1}{6} $, $f'$は$[0,1]$で連続
+のとき
+$$
+\int_0^1 \left( f'(x)\right)^2 dx \geq 2\int_0^1 f(x) dx + \frac{1}{4}
+$$
+を示せ.
+
+$\rightline{G.R.A.20 Problem Solving Group, Mathematical Magazine M 1852}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\begin{align*}
+\int_0^1 f(x) dx &= \int_0^1 \left( x-\frac{1}{2} \right) ' f(x) dx \\
+&= \left[ \left( x-\frac{1}{2} \right) \right] _0^1 - \int_0^1 \left( x-\frac{1}{2} \right) f'(x) dx \\
+&= \frac{f(0)+f(1)}{2} - \int_0^1 \left( x-\frac{1}{2} \right) f'(x) dx \\
+&= - \frac{1}{6} - \int_0^1 \left( x-\frac{1}{2} \right) f'(x) dx
+\end{align*}
+より,
+\begin{align*}
+( \lhs ) - ( \rhs ) &= \int_0^1 \left( f'(x)\right)^2 dx - 2\int_0^1 f(x) dx - \frac{1}{4}  \\
+&= \int_0^1 \left( f'(x)\right)^2 dx + 2\int_0^1 \left( x-\frac{1}{2} \right) f'(x) dx + \frac{1}{12} \\
+&= \int_0^1 \left( f'(x)\right)^2 dx + 2\int_0^1 \left( x-\frac{1}{2} \right) f'(x) dx + \int_0^1 \left( x-\frac{1}{2} \right) ^2 dx \\
+&= \int_0^1 \left( f'(x) + x - \frac{1}{2} \right) ^2 dx \geq 0
+\end{align*}
+\qed
+
+\end{proof}
+
+
+
+
+\
+
+
+
+
+
+
+\newpage\begin{prob}
+
+$a,b,c > 0 , ab+bc+ca = 1 $
+のとき
+$$
+\frac{1}{a+b} + \frac{1}{b+c} + \frac{1}{c+a} - \frac{1}{a+b+c} \geq 2
+$$
+を示せ.
+
+$\rightline{Math Excalibur, 問365}$
+
+\end{prob}
+
+
+\begin{proof}
+
+変形コーシーより,
+\begin{align*}
+\lhs &= \frac{1}{s}\sum_{cyc.} \frac{a+b+c}{b+c} -\frac{1}{s} \\
+&=     \frac{1}{s}\sum_{cyc.} \left( \frac{a}{b+c} +1 \right)   -\frac{1}{s}   \\
+&\geq  \frac{1}{s}\cdot \frac{s^2}{2t} + \frac{2}{s} = \frac{s}{2} + \frac{2}{s} \geq 2
+\end{align*}
+\qed
+
+\end{proof}
+
+
+
+\
+
+
+
+
+
+
+
+\newpage\begin{prob}
+$a,b,c > 0, ab+bc+ca = 3$
+のとき
+$$
+\frac{(a+b)^3}{\sqrt[3]{2(a+b)(a^2+b^2)}} + \frac{(b+c)^3}{\sqrt[3]{2(b+c)(b^2+c^2)}} + \frac{(c+a)^3}{\sqrt[3]{2(c+a)(c^2+a^2)}} \geq 12
+$$
+を示せ.
+
+$\rightline{韓国数学オリンピック 2013 問2}$
+
+\end{prob}
+
+
+\begin{proof}
+
+まず$(a+b)^8 \geq 128a^3b^3(a^2+b^2)$を示そう.
+左辺を展開して, 重み付き相加相乗より
+\begin{align*}
+(a+b)^8 &= \left( \frac{5}{8}a^8+\frac{3}{8}b^8 \right) + \left( \frac{3}{8}a^8+\frac{5}{8}b^8 \right) + \frac{9}{2}\left( \frac{2}{3}a^7b+\frac{1}{3}ab^7 \right) + \frac{9}{2}\left( \frac{1}{3}a^7b+\frac{2}{3}ab^7 \right) \\
+&\quad  + 56a^3b^3(a^2+b^2) \\
+&\qquad + \frac{7}{2}\left( ( a^7b+2a^4b^4 ) + ( ab^7+2a^4b^4 ) \right) + 28\left( (a^6b^2+a^4b^4) + (a^2b^6+a^4b^4) \right) \\
+&\geq   (a^5b^3+a^3b^5) + \frac{9}{2}(a^5b^3+a^3b^5) + 56a^3b^3(a^2+b^2) + \frac{7}{2}(3a^5b^3+3a^3b^5) + 28(2a^5b^3+a^3b^5) \\
+&=128a^3b^3(a^2+b^2)
+\end{align*}
+これより
+$$
+\frac{(a+b)^3}{\sqrt[3]{2(a+b)(a^2+b^2)}} \geq 4ab
+$$
+がわかるので, 巡回的に足して,
+$$
+\lhs \geq 4(ab+bc+ca) =12
+$$
+\qed
+
+\end{proof}
+
+
+\
+
+
+
+
+
+
+
+
+\newpage\begin{prob}
+
+$a,b,c > 0, ab+bc+ca = 3$
+のとき
+$$
+\frac{1}{a} + \frac{1}{b} + \frac{1}{c} + \frac{3abc}{2} \geq \frac{9}{2}
+$$
+を示せ.
+
+$\rightline{Mathematical Bulletin (北京) 2013 No.9, 問1245}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$t=3$より$u\leq 1$. これと相加相乗より,
+$$
+\lhs = \frac{t}{u} + \frac{3u}{2} = \frac{3}{2}\left( \frac{1}{u} + \frac{1}{u} + u \right) \geq \frac{9}{2} \sqrt[3]{\frac{1}{u}} \geq \frac{9}{2}
+$$
+\qed
+
+\end{proof}
+
+
+
+
+\
+
+
+
+
+
+
+\newpage\begin{prob}
+
+$p\geq 2, x,y,a,b \geq 0$
+のとき
+$$
+(x+y)^p+(a+b)^p+(x+b)^p+(y+a)^p \leq x^p+y^p+a^p+b^p+(x+y+a+b)^p
+$$
+を示せ.
+
+$\rightline{K\"{o}MaL Problems in Mathematics May2012 , B4461}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$f(x)=x^{p-1}$と置くと, $f$は単調増加で, $p\geq 2$より$f$は下に凸.
+\begin{align*}
+& (x+y)f(x+y) + (a+b)f(a+b) + (x+b)f(x+b) + (y+a)f(y+a) \\
+&\quad \leq xf(x)+yf(y)+af(a)+bf(b)+(x+y+a+b)f(x+y+a+b) \tag{$*$}
+\end{align*}
+を示せば良い.
+
+凸不等式より,
+\begin{align*}
+\frac{1}{y+b}\left( bf(x) + yf(x+y+b) \right) &\geq f\left( \frac{bx+y(x+y+b)}{y+b} \right) = f(x+y) \\
+\frac{1}{y+b}\left( yf(x) + bf(x+y+b) \right) &\geq f(x+b)
+\intertext{なので, 辺々足して単調性より, }
+f(x)+f(x+y+a+b) &\geq f(x) + f(x+y+b) \geq f(x+y) + f(x+b)  \tag{$1$}
+\intertext{同様にして}
+f(y)+f(x+y+a+b) &\geq f(x+y) + f(y+a) \tag{$2$} \\
+f(a)+f(x+y+a+b) &\geq f(a+b) + f(x+b) \tag{$3$} \\
+f(b)+f(x+y+a+b) &\geq f(a+b) + f(y+a) \tag{$4$}
+\end{align*}
+がわかる. $x\times (1)+y\times (2)+a\times (3)+b\times (4)$とすれば$(*)$がわかる. \qed
+
+\end{proof}
+
+
+
+
+\
+
+
+
+
+
+
+\newpage\begin{prob}
+
+$ a,b,c>0 $
+のとき
+$$
+\frac{2a^2}{b+c} + \frac{2b^2}{c+a} + \frac{2c^2}{a+b} \geq a+b+c
+$$
+を示せ.
+
+$\rightline{International Competitions Nordic 2005 問2}$
+
+\end{prob}
+
+
+\begin{proof}
+
+変形コーシーより,
+$$
+\lhs \geq 2\frac{(a+b+c)^2}{(b+c) + (c+a) + (a+b)} = a+b+c
+$$
+\qed
+
+\end{proof}
+
+
+
+
+
+\
+
+
+
+
+
+\newpage\begin{prob}
+
+$a,b,c > 0$
+のとき
+$$
+3 \leq \frac{4a+b}{a+4b} + \frac{4b+c}{b+4c} + \frac{4c+a}{c+4a} < \frac{33}{4}
+$$
+を示せ.
+
+$\rightline{ドイツ Team Selection Test 2010 Vaimo 8 問2}$
+
+\end{prob}
+
+
+\begin{proof}
+
+まず下から. 変形コーシーより,
+\begin{align*}
+\frac{4a+b}{a+4b} + \frac{4b+c}{b+4c} + \frac{4c+a}{c+4a} &= \sum_{cyc.} \frac{(4a+b)^2}{4a^2+4b^2+17ab} \\
+&\geq \frac{(5s)^2}{8s_2+17t} = \frac{24s^2 + s^2}{8s^2+t} \\
+&\geq \frac{24s^2 + 3t}{8s^2+t} = 3
+\end{align*}
+次に上から.
+\begin{align*}
+&\Leftrightarrow \frac{15}{4}\left( \frac{a}{a+4b} + \frac{b}{4b+c} + \frac{c}{4c+a} \right) + \frac{3}{4} < \frac{33}{4} \\
+&\Leftrightarrow \frac{a}{a+4b} + \frac{b}{4b+c} + \frac{c}{4c+a} < 2
+\end{align*}
+なので最後の不等式を示せば良い. 巡回的なので$\max \{ a,b,c \} = a$として良い. このとき$\displaystyle\frac{a}{a+4b} < 1$. また,
+$$
+\frac{b}{b+4c} + \frac{c}{c+4a} \leq \frac{a}{a+4c} + \frac{c}{c+4a} = \frac{4a^2+ac+4c^2}{(4a+c)(4c+a)} < 1
+$$
+なので, これらより従う. \qed
+
+\end{proof}
+
+\
+
+
+
+
+
+
+
+
+
+\newpage\begin{prob}
+
+$ a_i $を実数, $x_i > 0 $とするとき
+$$
+\sum_{i=1}^n \sum_{j=1}^n \frac{a_ia_j}{x_i+x_j} \geq 0
+$$
+を示せ.
+
+$\rightline{ポーランド 1992 Final 1日目 問3 改 , 2ch 不等式への招待 6 - 343}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$S_n=\displaystyle\sum_{i=1}^n \sum_{j=1}^n \frac{a_ia_j}{x_i+x_j} $と置く.
+帰納法で示す. $n=1$のときは明らかに$S_1 \geq 0$.
+ある$n$で成立したとする. $n+1$のときを考える.
+$\max \{ x_1 , x_2 , \ldots , x_{n+1} \} = x_{n+1}$として良い.
+
+$S_{n+1}$を$a_{n+1}$に関する式と見て$S_{n+1}=f(a_{n+1}$と置く. このとき
+\begin{align*}
+f(a_{n+1}) &= S_n + 2a_{n+1} \left( \sum_{k=1}^n \frac{a_k}{x_k+x_{n+1} } \right) + \frac{{a_{n+1}}^2}{2x_{n+1}} \\
+&= S_n + 2a_{n+1} t_n + \frac{{a_{n+1}}^2}{2x_{n+1}}
+\end{align*}
+なので$f$は２次間数. ただし１次の係数を$t_n$と置いた. $f$の軸は$-2x_{n+1}t_n$なので,
+\begin{align*}
+f(a_{n+1}) & \geq f( -2x_{n+1}t_n ) \\
+&=     S_n - 4x_{n+1}{t_n}^2 + 2x_{n+1}{t_n}^2 \\
+&=     S_n - 2x_{n+1}{t_n}^2 \\
+&=     \sum_{i=1}^n \sum_{j=1}^n \frac{a_ia_j}{x_i+x_j} - 2x_{n+1}\sum_{i=1}^n \sum_{j=1}^n \frac{a_ia_j}{(x_{n+1}+x_i)(x_{n+1}+x_j)}  \\
+&=     \sum_{i=1}^n \sum_{j=1}^n \left( \frac{1}{x_i+x_j} - \frac{2x_{n+1}}{(x_{n+1}+x_i)(x_{n+1}+x_j)} \right) a_ia_j  \\
+&=     \sum_{i=1}^n \sum_{j=1}^n  \frac{(x_{n+1}+x_i)(x_{n+1}+x_j)-2x_{n+1}(x_i+x_j)}{(x_i+x_j)(x_{n+1}+x_i)(x_{n+1}+x_j)} a_ia_j  \\
+&=     \sum_{i=1}^n \sum_{j=1}^n \frac{(x_{n+1}-x_i)(x_{n+1}-x_j)}{(x_i+x_j)(x_{n+1}+x_i)(x_{n+1}+x_j)} a_ia_j
+\end{align*}
+$x_{n+1}$は$\max$なので, これは非負. よって示された. \qed
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\
+
+\newpage\begin{prob}
+
+$f''(x) \geq 0 , (x\geq 0)$
+のとき
+$$
+\int_0^x \left( f(2t)-f(t) \right) dt \leq \frac{x\left( f(2x)-f(x) \right) }{2}
+$$
+を示せ.
+
+$\rightline{2ch 不等式への招待 6-283}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$f'$は単調増加なので,
+\begin{align*}
+\lhs &= \int_0^x\int_0^t f'(t+u) dudt \\
+&=     \iint_{0 \leq u \leq t \leq x } f'(t+u) dudt \\
+&=     \frac{1}{2}\left( \iint_{0 \leq u \leq t \leq x } + \iint_{0 \leq t \leq u \leq x } \right) f'(t+u) dudt \\
+&=     \frac{1}{2}\int_0^x \int_0^x f'(t+u) dudt \\
+&\leq  \frac{1}{2}\int_0^x \int_0^x f'(t+x) dudt , (\because u \leq x ) \\
+&=     \frac{1}{2}\int_0^x du \int_0^x f'(t+x) dt \\
+&=     \frac{x}{2} \left( f(2x) - f(x) \right) = \rhs
+\end{align*}
+\qed
+
+\end{proof}
+
+
+\
+
+
+
+
+
+
+
+
+
+
+\newpage\begin{prob}
+
+実数$a_i > 0$に対し,
+\begin{align*}
+g   & = \sqrt[n]{a_1a_2\ldots a_n} \\
+A_k & = \frac{a_1 + \ldots + a_k}{k} , ( k=1,\ldots ,n ) \\
+G   & = \sqrt[n]{A_1A_2\cdots A_n}
+\end{align*}
+と置く. このとき,
+$$
+n\sqrt[n]{\frac{G}{A_n}} + \frac{g}{G} \leq n+1
+$$
+を示せ.
+
+$\rightline{IMO 2004 Short List 問A-7}$
+
+\end{prob}
+
+
+\begin{proof}
+
+
+
+
+
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\
+
+\newpage\begin{prob}
+
+$$
+\frac{x_1}{1+{x_1}^2} + \frac{x_2}{1 + {x_1}^2 + {x_2}^2} + \ldots + \frac{x_n}{1 + {x_1}^2 + {x_2}^2 + \ldots + {x_n}^2} < \sqrt{n}
+$$
+を示せ.
+
+$\rightline{IMO 2001 Short List 問A-3}$
+
+\end{prob}
+
+
+\begin{proof}
+
+コーシーシュワルツより,
+\begin{align*}
+( \lhs )^2 &\leq n\left( \frac{{x_1}^2}{(1+{x_1}^2)^2} + \frac{{x_2}^2}{(1+{x_1}^2+{x_2}^2)^2} + \ldots + \frac{{x_n}^2}{(1+{x_1}^2+{x_2}^2+\ldots + {x_n}^2)^2} \right) \\
+&\leq   n\left( \frac{{x_1}^2}{1\cdot (1+{x_1}^2)} + \frac{{x_2}^2}{(1+{x_1}^2)(1+{x_1}^2+{x_2}^2)} + \right. \\
+&\qquad \left. \ldots + \frac{{x_n}^2}{(1+{x_1}^2+{x_2}^2+\ldots + {x_{n-1}}^2)(1+{x_1}^2+{x_2}^2+\ldots + {x_n}^2)} \right)     \\
+&\leq   n\left( \left( 1 - \frac{1}{1+{x_1}^2} \right) + \left( \frac{1}{1+{x_1}^2} - \frac{1}{1+{x_1}^2+{x_2}^2} \right) + \right. \\
+&\qquad \left. \ldots + \left( \frac{1}{1+{x_1}^2+{x_2}^2+\ldots + {x_{n-1}}^2} - \frac{1}{1+{x_1}^2+{x_2}^2+\ldots + {x_n}^2} \right) \right)  \\
+&=      n \left( 1- \frac{1}{1+{x_1}^2+{x_2}^2+\ldots + {x_n}^2} \right)  \\
+&<   n
+\end{align*}
+\qed
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\
+
+
+\newpage\begin{prob}
+
+$x_1 \leq x_2 \leq \ldots \leq x_n$
+のとき
+$$
+\left( \sum_{i=1}^n \sum_{j=1}^n |x_i-x_j| \right) ^2 \leq \frac{2(n^2-1)}{3}\sum_{i=1}^n \sum_{j=1}^n (x_i-x_j)^2
+$$
+を示せ.
+
+$\rightline{IMO 2003 問5}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$$
+ \sum_{i=1}^n \sum_{j=1}^n (i-j)^2 = \sum_{i=1}^n \sum_{j=1}^n i^2 +  \sum_{i=1}^n \sum_{j=1}^n j^2 - 2\sum_{i=1}^n \sum_{j=1}^n ij = 2n \frac{n(n+1)(2n+1)}{6} - 2\left( \frac{n(n+1)}{2} \right) ^2
+$$
+$$
+= \frac{n^2}{4}\cdot \frac{2(n^2-1)}{3}
+$$
+なので,
+$$
+( \rhs ) = \frac{4}{n^2} \sum_{i=1}^n \sum_{j=1}^n (i-j)^2 \sum_{i=1}^n \sum_{j=1}^n (x_i-x_j)^2 \geq \frac{4}{n^2} \left( \sum_{i=1}^n \sum_{j=1}^n |i-j| \cdot |x_i-x_j| \right) ^2
+$$
+
+
+
+
+
+
+
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\
+
+\newpage\begin{prob}
+
+$a,b,c > 0$のとき
+$$
+abc \leq \frac{(a+b+c)^3-a^3-b^3-c^3}{24} \leq \frac{(a+b+c)^3}{27}
+$$
+を示せ.
+
+$\rightline{GRA 20 , 2006 C 835}$
+
+\end{prob}
+
+
+\begin{proof}
+
+下から：$s^3-s_3 = 3st -3u \geq 24u$より.
+
+上から：$\Leftrightarrow s_3/3 \geq (s/3)^3 $. これは凸不等式より従う. \qed
+
+\end{proof}
+
+
+
+
+\
+
+
+
+
+
+
+
+
+\newpage\begin{prob}
+
+$$
+\frac{x+y}{(1+x^2)(1+y^2)}
+$$
+について
+\begin{itemize}
+ \item[$(1)$] $0\leq x,y \leq 1 $での最大値
+ \item[$(2)$] 実数全体を動いたときの最大値
+\end{itemize}
+を求めよ.
+
+$\rightline{東大院試 2012 数理修士 問A2}$
+
+\end{prob}
+
+
+\begin{proof}
+
+$(1)$から. $s=x+y$と置く. コーシーシュワルツと相加相乗より,
+
+$$
+\frac{s}{(1+x^2)(1+y^2)} \leq \frac{s}{\left( \frac{2}{3} + \frac{s}{\sqrt{3}} \right) ^2 } \leq \frac{s}{4\cdot \frac{2}{3}\frac{s}{\sqrt{3}} } = \frac{3\sqrt{3}}{8}
+$$
+よって最大値は$\displaystyle\frac{3\sqrt{3}}{8} $.
+
+次に$(2)$.
+
+
+
+
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$0 \leq \theta _i \leq \displaystyle\frac{\pi }{2} , \sum_{i=1}^n \cos \theta _i = 1$のとき,
+$$
+\sqrt{n-1} \leq \sum_{i=1}^n \sin \theta _i
+$$
+を示せ.
+
+$\rightline{阪大 2004年前期 問1}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+非負実数$s,t$が$s^2+t^2 =1$を満たしながら動くとき, 方程式
+$$
+x^4 -2(s+t)x^2 +(s-t)^2=0
+$$
+の解の取りうる値の範囲を求めよ.
+
+$\rightline{東大 2005年 文科系前期 問3}$
+
+
+\end{prob}
+
+
+\begin{proof}
+平方完成すると
+$$
+(x^2-(s+t))^2=4st \leq 2
+$$
+がわかるが$s+t \leq \sqrt{2}$なので
+$$
+0\leq \sqrt{2}-s-t\leq x^2 \leq \sqrt{2} + s+t \leq 2\sqrt{2}
+$$
+となって$-\sqrt{\sqrt{8}}\leq x\leq \sqrt{\sqrt{8}}$.
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$f:\mathbb{R} \to \mathbb{R}$は$(0 ,\infty )$において二回微分可能で, 任意の$x > 0$に対し
+$$
+| f(x) | \leq A , | f''(x) | \leq B
+$$
+を満たす. このとき任意の$x>0$に対し,
+$$
+|f'(x)| \leq 2 \sqrt{AB}
+$$
+を示せ.
+
+$\rightline{解析演習（東大出版）より}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$\sqrt{a}+\sqrt{b}+\sqrt{c}=1$を満たす相異なる正実数$a,b,c$に対し,
+$$
+\frac{ab}{a-b}\log \frac{a}{b} + \frac{bc}{b-c} \log \frac{b}{c} + \frac{ca}{c-a}\log \frac{c}{a} \leq \frac{1}{3}
+$$
+を示せ.
+
+$\rightline{阪大 2007年 前期 問2}$
+
+\end{prob}
+
+
+\begin{proof}
+
+まず$x>0$に対し$|\log x | \leq | x-1 | / \sqrt{x}$を示そう.
+$x>1$に対して示せば良いことは容易にわかる.
+さらに$x=e^{2t}$で置き換えることで$t>0$に対して$e^t-e^{-t}\geq 2t$を示せば良い.
+
+$0<x<1$に対して$e^x \geq 1+x+x^2/2 , e^{-x}\leq 1-x+x^2/2$であることに注意する.
+これは
+\begin{eqnarray*}
+(1+x)^2 & = & 1+2x+\frac{2(2-1)}{2}x^2 , \\
+(1-x)^2 & = & 1-2x+\frac{2(2-1)}{2}x^2
+\end{eqnarray*}
+から帰納的に
+\begin{eqnarray*}
+(1+x)^{n+1} & \geq  & (1+x)\left( 1+nx+\frac{n(n-1)}{2}x^2 \right) \\
+& = & 1+(n+1)x+\frac{n(n+1)}{2}x^2+\frac{n(n-1)}{2}x^3 \\
+& \geq & 1+(n+1)x+\frac{n(n+1)}{2}x^2 \\
+(1-x)^{n+1} & \leq  & (1-x)\left( 1-nx+\frac{n(n-1)}{2}x^2 \right) \\
+& = & 1-(n+1)x+\frac{n(n+1)}{2}x^2-\frac{n(n+1)}{2}x^3 \\
+& \leq & 1-(n+1)x+\frac{n(n+1)}{2}x^2
+\end{eqnarray*}
+なのでこの$x$として$x/(n+1)$を代入したのち$n\to \infty$とすればわかる.
+
+これより$x>0$に対して
+\begin{eqnarray*}
+e^x - 1 & \geq & x+\frac{1}{2}x^2  \\
+e^{-x} - 1 & \leq & -x+\frac{1}{2}x^2
+\end{eqnarray*}
+なので
+\begin{eqnarray*}
+\frac{e^x - 1}{x} & \geq & 1+\frac{1}{2}x  \\
+\frac{e^{-x} - 1}{-x} & \geq & 1-\frac{1}{2}x
+\end{eqnarray*}
+辺々足せば求める式を得る.
+
+さて本題に入る.
+$|\log x | \leq | x-1 | / \sqrt{x}$で$x$に$a/b$を代入すれば
+$\log (a/b) \leq |a-b|/\sqrt{ab}$となってこれを整理してcyclicに足せば
+$$
+\frac{ab}{a-b}\log \frac{a}{b} + \frac{bc}{b-c} \log \frac{b}{c} + \frac{ca}{c-a}\log \frac{c}{a} \leq \sqrt{ab} + \sqrt{bc} + \sqrt{ca} \leq \frac{1}{3}(\sqrt{a} + \sqrt{b} + \sqrt{c})^2 = \frac{1}{3}
+$$
+\qed
+\end{proof}
+
+
+
+\
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0\)のとき,
+  \[
+  \frac{a^2(b-c)}{\log b -\log c } + \frac{b^2(c-a)}{\log c -\log a } + \frac{c^2(a-b)}{\log a -\log b }
+  < \frac{ (a+b+c)^3}{8}
+  \]
+  を示せ。
+  \begin{flushright}
+    作: 不等式bot
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$$
+\left( {x_1}^2 + {x_2}^2 + \ldots + {x_n}^2 \right) \cos \frac{\pi}{n} \geq x_1x_2+x_2x_3+ \ldots + x_{n-1}x_n - x_nx_1
+$$
+を示せ.
+
+$\rightline{近大数学コンテスト 2013 問B3}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$f$は実関数で連続な三階導関数を持ち, 任意の実数$x$に対し
+$$
+0< f'(x) , 0<f''(x) , 0<f'''(x) \leq f(x)
+$$
+を満たす. このとき
+$$
+f'(x) < 2f(x)
+$$
+を示せ.
+
+$\rightline{Putnam Competition 1999年 問B4}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$f$は実関数で, 連続な二階導関数を持ち, $f''(x) \geq f(x)$を満たすとする. このとき
+$$
+f(x) \geq f(0)\frac{e^x+e^{-x}}{2} + f'(0)\frac{e^x-e^{-x}}{2}
+$$
+を示せ.
+
+$\rightline{近大数学コンテスト 2008年 問A5}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c > 0$のとき
+$$
+\frac{a^3}{b+2c} + \frac{b^3}{c+2a} + \frac{c^3}{a+2b} \geq \frac{a^2+b^2+c^2}{3}
+$$
+を示せ.
+
+$\rightline{ウクライナ 数学オリンピック 1996}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c<1,2(a+b+c)+4abc=3(ab+bc+ca)+1$
+のとき
+$$
+a+b+c\geq 3/4
+$$
+を示せ.
+
+$\rightline{ウクライナ 数学オリンピック 2011}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c,A,B,C\in \mathbb{R},a,A\neq 0$が任意の実数$x$に対し
+
+$$
+| ax^2+bx+c | \leq | Ax^2+Bx+C |
+$$
+を満たすとき
+$$
+| b^2-4ac | \leq | B^2-4AC |
+$$
+を示せ.
+
+
+$\rightline{Putnam 2003年 1日目 問4}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0$
+のとき
+$$
+\left( ab+bc+ca \right) \left( \frac{1}{(a+b)^2} + \frac{1}{(b+c)^2} + \frac{1}{(c+a)^2} \right) \geq \frac{9}{4}
+$$
+を示せ.
+
+$\rightline{イラン 数学オリンピック 1996 }$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0,a+b+c=1$
+のとき
+$$
+\frac{ab}{\sqrt{ab+bc}} + \frac{bc}{\sqrt{bc+ca}} + \frac{ca}{\sqrt{ca+ab}} \leq \frac{1}{\sqrt{2}}
+$$
+を示せ.
+
+$\rightline{中国 Team Selection Test 2006 3日目 問2}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+任意の正の実数$x,y,z$に対し, 以下を満たす最小の実数$k$を求めよ.
+$$
+\frac{x}{\sqrt{x+y}} + \frac{y}{\sqrt{y+z}} + \frac{z}{\sqrt{z+x}} \leq k\sqrt{x+y+z}
+$$
+
+$\rightline{Crux1366}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0,ab+bc+ca=1$
+のとき
+$$
+a\sqrt{b^2+bc+c^2} + b\sqrt{c^2+ca+a^2} + c\sqrt{a^2+ab+b^2} \geq \sqrt{3}
+$$
+を示せ.
+
+$\rightline{GRA20,2007年 問C-851}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0$
+のとき
+$$
+\left( \frac{a}{b} + \frac{b}{c} + \frac{c}{a} \right) ^2 \geq \left( a+b+c \right) \left( \frac{1}{a} + \frac{1}{b} + \frac{1}{c} \right)
+$$
+を示せ.
+
+$\rightline{イラン 数学オリンピック 2005年 3rd Round 1日目 問1}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0,\displaystyle\frac{1}{a^2+1} +\frac{1}{b^2+1} +\frac{1}{c^2+1} =2$
+のとき
+$$
+ab+bc+ca \leq \frac{3}{2}
+$$
+を示せ.
+
+$\rightline{イラン数学オリンピック 2005年 3rd Round 1日目 問5}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$x,y,z>1, \displaystyle \frac{1}{x} + \frac{1}{y} + \frac{1}{z} =2$
+のとき
+$$
+\sqrt{x-1} + \sqrt{y-1} + \sqrt{z-1} \leq \sqrt{x+y+z}
+$$
+を示せ.
+
+$\rightline{イラン数学オリンピック 1997年 3rd Round 3日目 問4}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c$が相異なる正の実数のとき
+$$
+\left| \frac{a+b}{a-b} + \frac{b+c}{b-c} + \frac{c+a}{c-a} \right| ＞1
+$$
+を示せ.
+
+$\rightline{イラン数学オリンピック 2007年 3rd Round 問A2}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$x,y,z>1,\displaystyle\frac{1}{x^2-1}+\frac{1}{y^2-1}+\frac{1}{z^2-1}=1$
+のとき
+$$
+\frac{1}{x+1} + \frac{1}{y+1} + \frac{1}{z+1} \leq 1
+$$
+を示せ.
+
+$\rightline{USA ELMO 2003年 問4}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0,(a+b)(b+c)(c+a)=1$
+のとき
+$$
+ab+bc+ca \leq \frac{3}{4}
+$$
+を示せ.
+
+$\rightline{クロアチア Team Selection Test 2006年 問2}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0,a+b+c=1$
+のとき
+$$
+\frac{a^2}{b} + \frac{b^2}{c} + \frac{c^2}{a} \geq 3(a^2+b^2+c^2)
+$$
+を示せ.
+
+$\rightline{クロアチア Team Selection Test 2007年 2日目 問3}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+
+\newpage\begin{prob}[]
+
+$x,y,z$が相異なる非負実数のとき
+$$
+\frac{1}{(x-y)^2} + \frac{1}{(y-z)^2} + \frac{1}{(z-x)^2} \geq \frac{4}{xy+yz+zx}
+$$
+を示せ.
+
+$\rightline{ベトナム数学オリンピック 2008年 問6}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$f$は開区間$(-1,1)$で連続な二階導関数を持ち,
+$f(0)=1,f(x) \geq 0 \geq f'(x)$で, $x \geq 0 $に対し$f(x) \geq f''(x)$を満たす.
+このとき
+$$
+f'(0)\geq -\sqrt{2}
+$$
+を示せ.
+
+$\rightline{ISI BS 2011年 問4}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+
+\newpage\begin{prob}
+
+$x>0$のとき
+$$
+\frac{\Gamma '(x+1)}{\Gamma (x+1) } < x
+$$
+を示せ. ただし$\Gamma(x)=\displaystyle\int_0^\infty t^{x-1}e^{-t} dt $は$\Gamma$関数である.
+
+$\rightline{Miklos Schweizer 1973年 問5}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$f$は連続な実関数で, 任意の$x,t\in \mathbb{R}$に対し
+$$
+|f(x+t)-2f(x)+f(x-t)| \leq Mt^2
+$$
+を満たす. このとき$f$は微分可能で, 任意の$x,t\in \mathbb{R}$に対し
+$$
+|f'(x+t)-f'(x)| \leq M|t|
+$$
+となることを示せ.
+
+$\rightline{Miklos Schweizer 1975年 改}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$[0,1]$で上に凸な関数$f$が$f(0)=1$を満たすとき
+$$
+\int_0^1 xf(x) dx \leq \frac{2}{3}\left( \int_0^1 f(x) dx \right) ^2
+$$
+を示せ.
+
+$\rightline{Miklos Schweizer 1973年 改}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$f$は$[0,1]$で単調増加な凸関数で$f(0)=0,f(1)=1$を満たすとする.
+$g$を$f$の逆関数とするとき,
+$$
+x^2 \geq f(x)g(x)
+$$
+を示せ.
+
+$\rightline{Art of Problem Solving より}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c$が相異なる実数のとき
+$$
+\frac{a^2}{(b-c)^2} + \frac{b^2}{(c-a)^2} + \frac{c^2}{(a-b)^2} \geq 2
+$$
+を示せ.
+
+$\rightline{V.Cirtoaje , Algeblaic inequalities より 1.1.6}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c,d>0$
+のとき
+$$
+\frac{a-b}{b+c} + \frac{b-c}{c+d} + \frac{c-d}{d+a} + \frac{d-a}{a+b} \geq 0
+$$
+を示せ.
+
+$\rightline{クロアチア MEMO Team Selection Test 2009年 1日目 問1}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0$のとき
+$$
+\sqrt{\frac{a^3}{a^3+(b+c)^3}} + \sqrt{\frac{b^3}{b^3+(c+a)^3}} + \sqrt{\frac{c^3}{c^3+(a+b)^3}} \geq 1
+$$
+を示せ.
+
+$\rightline{V.Cirtoaje,Algeblaic inequalities より 1.1.11}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+
+
+
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0$
+のとき
+$$
+(a^2-bc)\sqrt{b+c} + (b^2-ca)\sqrt{c+a} + (c^2-ab)\sqrt{a+b} \geq 0
+$$
+を示せ.
+
+$\rightline{V.Cirtoaje,Algeblaic inequalities より 1.1.7}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c \geq 0$
+のとき
+$$
+4(a+b+c)^3 \geq 27(ab^2+bc^2+ca^2+abc)
+$$
+を示せ.
+
+$\rightline{有名問題}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c \geq 1 , a+b+c=9$のとき
+$$
+\sqrt{ab+bc+ca} \leq \sqrt{a} + \sqrt{b} + \sqrt{c}
+$$
+を示せ.
+
+$\rightline{ブルガリア Team Selection Test 2004年 4日目 問2}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$x,y,z>0$
+のとき
+$$
+\frac{2x^2+xy}{\left( y+\sqrt{zx}+z \right) ^2} + \frac{2y^2+yz}{\left( z+\sqrt{xy}+x \right) ^2} + \frac{2z^2+zx}{\left( x+\sqrt{yz}+y \right) ^2} \geq 1
+$$
+を示せ.
+
+$\rightline{韓国数学オリンピック 2012年 Final Round 1日目 問1}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0,a^3+b^3+c^3=a^4+b^4+c^4$
+のとき
+$$
+\frac{a}{a^2+b^3+c^3} + \frac{b}{b^2+c^3+a^3} + \frac{c}{c^2+a^3+b^3} \geq 1
+$$
+を示せ.
+
+$\rightline{トルコ Junior 数学オリンピック 2012年 問3}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0$
+のとき
+$$
+\sqrt{ \frac{a}{a+b} } + \sqrt{ \frac{b}{b+c} } + \sqrt{ \frac{c}{c+a} } \leq \frac{3}{\sqrt{2}}
+$$
+を示せ.
+
+$\rightline{V.Cirtoaje}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0,a+b+c=3$
+のとき
+$$
+\frac{1}{a^2} + \frac{1}{b^2} + \frac{1}{c^2} \geq a^2+b^2+c^2
+$$
+を示せ.
+
+$\rightline{ルーマニア Team Selection Test 2006年 3日目 問4}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage
+
+\begin{prob}
+\(a,b,c\)が三角形の三辺の長さを成す実数であるとき、
+\begin{align*}
+  &(-a+b+c)(-b+c+a)
+  +(-b+c+a)(-c+a+b)
+  +(-c+a+b)(-a+b+c) \\
+  &\leq \sqrt{abc}\left( \sqrt{a} + \sqrt{b} + \sqrt{c} \right)
+\end{align*}
+を示せ。
+
+$\rightline{ルーマニア Team Selection Test 2001年 3日目 問3}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+\
+
+
+
+
+
+
+
+
+\newpage\begin{prob}[]
+
+$x,y,z>0$のとき
+$$
+\frac{1}{\sqrt{x^2+y^2+z^2+1}} - \frac{2}{(x+1)(y+1)(z+1)}
+$$
+の最大値を求めよ.
+
+$\rightline{Art of Problem Solving より}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c$が$a^2+b^2+c^2=3$となる三角形の三辺を成す実数のとき,
+$$
+\frac{a+b}{\sqrt{b+c-a}} + \frac{b+c}{\sqrt{c+a-b}} + \frac{c+a}{\sqrt{a+b-c}} \geq 6
+$$
+を示せ.
+
+$\rightline{Art of Problem Solving より}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$(x^2+y^2)^2=x^2-y^2$のとき$x+y$のとりうる最大値を求めよ.
+
+$\rightline{第二回 早大プレ 2006年}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0\)のとき
+  \[
+  4\left( ab+bc+ca \right) \left( \frac{a}{a+b} + \frac{b}{b+c} + \frac{c}{c+a} \right)
+  \leq (a+b+c)^2+3(ab+bc+ca)
+  \]
+  を示せ。
+  \begin{flushright}
+    作: 不等式bot
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c>0 , a^2+b^2+c^2+abc=2(ab+bc+ca)\)
+  のとき
+  \[
+  ab+bc+ca \leq 3(a+b+c) \leq 27
+  \]
+  を示せ。
+  \begin{flushright}
+    作: 不等式bot
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$x^3+y^3+z^3=1,x,y,z>0$のとき
+$x^2y+xz^2$の取りうる最大の値を求めよ.
+
+$\rightline{東進数学コンクール 2014年 2月}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+
+\newpage\begin{prob}[]
+
+$x^2+y^2+z^2=1$のとき
+\begin{itemize}
+ \item[$(1)$] $(x-y)(y-z)(z-x)$
+ \item[$(2)$] $(2x-y)(2y-z)(2z-x)$
+ \end{itemize}
+の取りうる最大の値を求めよ.
+
+$\rightline{大学への数学 2013年5月の宿題}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$z\in \mathbb{C} , \left| z+\displaystyle\frac{1}{2} \right| < \displaystyle\frac{1}{2}$のとき
+$$
+\left| 1+z+\ldots +z^n \right| <1
+$$
+を示せ.
+
+$\rightline{東工大 前期 2000年 問4}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0,a+b+c+abc=4$のとき
+$$
+a+b+c \geq ab+bc+ca
+$$
+を示せ.
+
+$\rightline{大学への数学 2010年7月の宿題}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a+b+c=1$を満たす非負実数$a,b,c$に対し
+$$
+\frac{a}{1+9bc+k(b-c)^2} + \frac{b}{1+9ca+k(c-a)^2} + \frac{c}{1+9ab+k(a-b)^2} \geq \frac{1}{2}
+$$
+を満たす最大の実数$k$を求めよ.
+
+$\rightline{日本数学オリンピック 2014年 問5}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0$のとき
+$$
+(a+b+c)^2(a^2+b^2+c^2)^2 \geq 27abc(a^3+b^3+c^3)
+$$
+を示せ.
+
+$\rightline{2ch 不等式への招待6-908 , Casphy! 高校数学板 不等式1-964}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a\geq b\geq 0$のとき
+$$
+\sqrt{a^2+b^2} + \sqrt[3]{a^3+b^3} + \sqrt[4]{a^4+b^4} \leq 3a+b
+$$
+を示せ.
+
+$\rightline{ウズベキスタン数学オリンピック 2013年 問1}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0,ab+bc+ca=1$のとき
+$$
+\frac{a^3}{1+9b^2ca} + \frac{b^3}{1+9c^2ab} + \frac{c^3}{1+9a^2bc} \geq \frac{(a+b+c)^3}{18}
+$$
+を示せ.
+
+$\rightline{ウズベキスタン数学オリンピック 2012年 問4}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\
+
+
+\newpage\begin{prob}[]
+
+$a,b,c>0$のとき
+$$
+\left( (a+2b)(b+2c)(c+2a) \right) ^2 \geq 27(ab+bc+ca)^3
+$$
+を示せ.
+
+
+$\rightline{Casphy! 高校数学板 不等式1-339}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+\
+
+
+
+\newpage
+
+\begin{prob}
+  任意の\(a,b,c>0\)に対して次を満たすような, 最大の実数\(k\)を求めよ.
+  \[
+  a^6+b^6+c^6-3(abc)^2 \geq k(bc-a^2)(ca-b^2)(ab-c^2)
+  \]
+  \begin{flushright}
+    作: 不等式bot
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\
+
+\newpage
+
+\begin{prob}
+  \(x,y,z>0,xyz=1\)に対し
+  \[
+  x^2+y^2+z^2-3 \geq 2\left| (x-1)(y-1)(z-1) \right|
+  \]
+  を示せ。
+  \begin{flushright}
+    作: 不等式bot
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\
+
+\newpage
+
+\begin{prob}
+  任意の実数\(a,b,c\)に対し
+  \[
+  (a-b)(a-c)(a^2-bc)^2 + (b-c)(b-a)(b^2-ca)^2 + (c-a)(c-b)(c^2-ab)^2 \geq 0
+  \]
+  を示せ。
+  \begin{flushright}
+    作: 不等式bot
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\
+
+
+
+\newpage\begin{prob}[]
+
+$x,y,z>0,xyz+xy+yz+zx=x+y+z+1$
+のとき
+$$
+\frac{1}{3}\left( \sqrt{\frac{1+x^2}{1+x}} + \sqrt{\frac{1+y^2}{1+y}} + \sqrt{\frac{1+z^2}{1+z}} \right) \leq \left( \frac{x+y+z}{3} \right)^{\displaystyle\frac{5}{8}}
+$$
+を示せ.
+
+$\rightline{USA TSTST 2012年 問6}$
+
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\
+
+\newpage
+
+
+\begin{prob}
+  \(a,b,c>0\)のとき
+  \[
+  3(a+b+c) \geq 8\sqrt[3]{abc} + \sqrt[3]{\frac{a^3+b^3+c^3}{3}}
+  \]
+  を示せ。
+  \begin{flushright}
+    オーストリアFederal Competition For Advanced Students
+
+    part2 2006年 1日目 問2
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\
+
+
+\newpage\begin{prob}
+
+$x+y+z=0$のとき
+$$
+6(x^3+y^3+z^3 )^2 \leq (x^2+y^2+z^2)^3
+$$
+を示せ.
+
+$\rightline{蕪湖市数学競技会}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\
+
+
+
+
+
+
+
+\newpage
+
+\begin{prob}
+  \(a,b,c > 0 , a+b+c=1\)のとき
+  \[
+  -\left( 1-\frac{1}{a} \right) \left( 1-\frac{1}{b} \right) \left( 1-\frac{1}{c} \right)
+  \geq 24(a^2+b^2+c^2)
+  \]
+  を示せ。
+  \begin{flushright}
+    作: 不等式bot
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+$a,b,c>0$
+,
+$a+b+c=3$
+のとき
+$$
+\frac{a^2+3b^2}{ab^2(4-ab)}+\frac{b^2+3c^2}{bc^2(4-bc)}+\frac{c^2+3a^2}{ca^2(4-ca)}\geq 4
+$$
+を示せ.
+
+ $\rightline{トルコ数学オリンピック 2nd 2007 day1-3}$
+\end{prob}
+
+
+
+
+
+\begin{proof}
+
+$ 1\geq\frac{9-x^2}{9}$より$ \frac{1}{3-x}\geq\frac{3+x}{9}$, よって$\frac{1}{4-x}\geq\frac{2+x}{9}$なので
+
+\begin{eqnarray}
+\lhs & \geq & \frac{1}{9}\sum_{cyc.} \frac{(a^2+3b^2)(2+ab)}{ab^2} \nonumber \\
+& = & \frac{1}{9}\sum_{cyc.}\left( \frac{2a}{b^2} + \frac{6}{a} + \frac{a^2}{b}+3b \right) \nonumber \\
+& \geq & \frac{1}{9}\left( \frac{6}{\sqrt[3]{abc}}+\frac{18}{\sqrt[3]{abc}}+\frac{(a+b+c)^2}{(a+b+c)}+9 \right) \ \ \ \left( \mbox{相加相乗と変形コーシー} \right)  \nonumber \\
+& \geq & \frac{1}{9}\left( \frac{18}{a+b+c}+\frac{54}{a+b+c}+12 \right)  \ \ \ \left( \mbox{相加調和} \right) \nonumber \\
+& = & 4 \nonumber
+\end{eqnarray}
+\qed
+
+
+\end{proof}
+
+
+
+\
+
+
+
+\newpage\begin{prob}
+
+$a,b,c>0$
+のとき
+$$
+\frac{1}{a^2}+\frac{1}{b^2}+\frac{1}{c^2}+\frac{1}{(a+b+c)^2}\geq \frac{7}{25}\left(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{a+b+c}\right)^2
+$$
+を示せ.
+
+$\rightline{イラン数学オリンピック 3rd 2010 day1-2}$
+
+\end{prob}
+
+
+
+
+
+\begin{proof}
+
+\begin{eqnarray}
+28(L.H.S.) & = & (9+9+9+1)\left(\frac{9}{(3a)^2}+\frac{9}{(3b)^2}+\frac{9}{(3c)^2}+\frac{1}{(a+b+c)^2} \right) \nonumber \\
+& \geq & \left(\frac{9}{3a}+\frac{9}{3b}+\frac{9}{3c}+\frac{1}{a+b+c}\right)^2 \ \ \ \left( \mbox{コーシー} \right) \nonumber \\
+& = & \left(\frac{14}{5}\left(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}\right)+\frac{1}{5}\left(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}\right)+\frac{1}{a+b+c}\right)^2 \nonumber \\
+& \geq & \left(\frac{14}{5}\left(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}\right)+\frac{1}{5}\frac{9}{a+b+c}+\frac{1}{a+b+c}\right)^2 \nonumber \\
+& = & \frac{28\times 7}{25}\left(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{9}{a+b+c}\right)^2 = 28(R.H.S.) \nonumber
+\end{eqnarray} \qed
+
+\end{proof}
+
+
+
+
+\
+
+
+
+\newpage\begin{prob}
+
+$a,b,c>0$
+,
+$a+b+c=1$
+のとき
+$$
+\frac{1}{2a^2+2a+bc}+\frac{1}{2b^2+2b+ca}+\frac{1}{2c^2+2c+ab}\geq \frac{1}{ab+bc+ca}
+$$
+を示せ.
+
+$\rightline{トルコTeam Selection Test 2007 day1-3}$
+
+\end{prob}
+
+
+
+
+
+\begin{proof}
+
+\begin{eqnarray}
+L.H.S & = & \sum_{cyc.} \frac{b^2c^2}{2a^2b^2c^2+2ab^2c^2+b^3c^3}  \nonumber \\
+& \geq & \frac{\left(\sum_{cyc.} bc \right)^2}{\sum_{cyc.}(2a^2b^2c^2+2ab^2c^2+b^3c^3)} \ \ \ \left( \mbox{変形コーシー} \right)  \nonumber \\
+& = & \frac{t^2}{6u^2+ 2tu + t_3} \nonumber \\
+& = & \frac{t^2}{t^3-stu+9u^2} \nonumber \\
+& = & \frac{1}{ab+bc+ca}\frac{\left(ab+bc+ca \right)^3}{\left( ab+bc+ca \right)^3-abc\sum_{cyc.}a\left( b-c \right) ^2} \geq \frac{1}{ab+bc+ca} \nonumber
+\end{eqnarray}
+\qed
+
+\end{proof}
+
+
+
+
+\
+
+
+\newpage\begin{prob}
+
+$a,b,c>0$
+,
+$ab+bc+ca \leq 1 $
+のとき
+$$
+a+b+c+\sqrt{3} \geq 8abc\left(\frac{1}{a^2+1}+\frac{1}{b^2+1}+\frac{1}{c^2+1}\right)
+$$
+を示せ.
+
+$\rightline{トルコTeam Selection Test 2012 day1-3}$
+
+\end{prob}
+
+
+
+
+\begin{proof}
+
+$$
+a+b+c+\sqrt{3 \left(ab+bc+ca\right)} \geq 8abc\left(\frac{1}{a^2+ab+bc+ca}+\frac{1}{b^2+ab+bc+ca}+\frac{1}{c^2+ab+bc+ca}\right)
+$$
+を示せばよい.
+
+$$
+\Leftrightarrow a+b+c+\sqrt{3 \left(ab+bc+ca\right)} \geq 8abc\left(\frac{2\left(a+b+c\right)}{\left(a+b\right)\left(b+c\right)\left(c+a\right)}\right)
+$$
+$$
+\Leftrightarrow \left(st-u \right)\left(s+\sqrt{3t}\right) \geq 16su
+$$
+$$
+\Leftrightarrow s\left(st-9u \right) \geq 8su-\sqrt{3t}\left(st-u \right) =\frac{64s^2u^2-3t\left(st-u\right)^2}{8su+\sqrt{3t}\left(st-u\right)}
+$$
+この式の左辺は正. 右辺は,
+$$
+64s^2u^2-3t\left(st-u\right)^2
+=-\frac{1}{27}t\left(st-9u\right)^2-\frac{16}{27}st^2\left(st-9u\right)-\frac{64}{27}s^2\left(t^3-27u^2\right) \leq 0
+$$
+より負. よって示された. \qed
+
+
+\end{proof}
+
+
+\
+
+
+
+\newpage\begin{prob}
+
+$a,b,c>0$
+,
+$a+b+c=1$
+のとき
+$$
+\frac{b^2c^2}{a^3\left(b^2-bc+c^2\right)}+\frac{c^2a^2}{b^3\left(c^2-ca+a^2\right)}+\frac{a^2b^2}{c^3\left(a^2-ab+b^2\right)} \geq \frac{3}{ab+bc+ca}
+$$
+を示せ.
+
+$\rightline{トルコ数学オリンピック 2nd 2008 day1-3}$
+
+\end{prob}
+
+
+
+
+
+\begin{proof}
+
+$$
+L.H.S = \sum_{cyc.} \frac{b^4c^4}{a^3b^2c^2\left(b^2-bc+c^2\right)} \geq \frac{\left( \sum_{cyc.} a^2b^2 \right)^2}{u^2\sum_{cyc.}a\left(b^2-bc+c^2\right)} = \frac{t^4-4st^2u+4s^2u^2}{u^2\left(st-6u\right)}
+$$
+よって
+$$
+\frac{t^4-4st^2u+4s^2u^2}{u^2\left(st-6u\right)} \geq \frac{3}{t}
+$$
+を示せば良い. $s=1$より
+$$
+\Leftrightarrow t\left(t^4-4st^2u+4s^2u^2\right)-3su^2\left(st-6u\right) \geq 0
+$$
+であるが, 左辺を変形して
+$$
+=t^5-4st^3u+s^2tu^2+18su^3=t\left(t^2-3su\right)^2+2su\left(t^3-4stu+9u^2\right) \geq 0
+$$
+よって示された. \qed
+
+\end{proof}
+
+
+
+
+
+\
+
+
+
+\newpage\begin{prob}
+$a,b,c \geq 0$
+,
+$a^2+b^2+c^2=1$
+のとき
+$$
+\sqrt{a+b}+\sqrt{b+c}+\sqrt{c+a} \geq 5abc+2
+$$
+を示せ.
+
+$\rightline{トルコ Team Selection Test 2014 day1-3}$
+
+\end{prob}
+
+
+
+
+
+\begin{proof}
+
+$$
+2s+2\sum_{cyc.}\sqrt{a^2+t}\geq 25u^2+20u+4
+$$
+を示せば良い.
+$
+27u^2 \leq (a^2+b^2+c^2)^3=1
+$
+より$0 \leq u \leq \frac{1}{3\sqrt{3}}$なので,
+$$
+2\left(s-1\right)+2\sum_{cyc.}\sqrt{a^2+t} -2 \geq \left(\frac{25}{3\sqrt{3}}+20\right)u
+$$
+を示せば良い.
+また, 三角不等式より
+$$
+\sum_{cyc.}\sqrt{a^2+t} \geq \sqrt{\left(a+b\right)^2+4t}+\sqrt{c^2+t} \geq \sqrt{s^2+9t}
+$$
+なので,
+$$
+2\left(s-1\right)+2\left(\sqrt{s^2+9t} -1\right) \geq \left(\frac{25}{3\sqrt{3}}+20\right)u
+$$
+を示せば良い. $a,b,c$のすべてが$0$になることはないので, $s\neq 0$. 従って左辺は,
+\begin{eqnarray}
+2\left(s-1\right)+2\left(\sqrt{s^2+9t} -1\right) & = & 2\left(\frac{s^2-1}{s+1}+\frac{s^2+9t-1}{\sqrt{s^2+9t}+1}\right) \nonumber \\
+& = & 2\frac{st}{s}\left( \frac{2}{s+1}+\frac{11}{\sqrt{1+11t}+1}\right)  \nonumber \\
+& \geq & 2\frac{ 9u }{ \sqrt{3} }\left( \frac{2}{\sqrt{3}+1}+\frac{11}{\sqrt{12}+1}\right) \nonumber \\
+& = & 6\sqrt{3}u\left(\sqrt{3}-1+2\sqrt{3}-1\right) \nonumber \\
+& = & \left(54-12\sqrt{3}\right)u \nonumber \\
+\end{eqnarray}
+となるが, $ \sqrt{3} \geq \frac{3}{2} $ より
+$$
+54-12\sqrt{3} \geq \frac{25}{3\sqrt{3}}+20 \Leftrightarrow 162\sqrt{3}-108 \geq 25+60\sqrt{3} \Leftrightarrow 102\sqrt{3} \geq 133
+$$
+$$
+102\sqrt{3} \geq \frac{306}{2} = 153 \geq 133
+$$
+となるので以上より示された.
+
+等号成立は
+\begin{itemize}
+\item $(a,t)=k_{1}(b,t)=k_{2}(c,t)$（$k_{1},k_{2}$はある実数）
+\item $s=\sqrt{3},t=1,st=9u$（即ち$a=b=c=\sqrt{3}$）または$t=0,st=9u$（即ち$a,b,c$のうちどれか$2$つ以上が$0$）
+\item $u=0$（即ち$a,b,c$のうちどれか$1$つ以上が$0$）
+\end{itemize}
+が同時に成立するときなので, $a,b,c$のうち$2$つが$0$, つまり$(a,b,c)=(1,0,0),(0,1,0),(0,0,1)$のとき. \qed
+
+\end{proof}
+
+
+
+\
+
+
+
+\newpage\begin{prob}
+$a,b,c,d>0$
+,
+$ 2(a+b+c+d) \geq abcd$
+のとき
+$$
+a^2+b^2+c^2+d^2 \geq abcd
+$$
+を示せ.
+
+$\rightline{All Russian Olympiad 2013 Grade11 day2-2}$
+
+
+\end{prob}
+
+
+
+
+\begin{proof}
+
+$a+b+c+d=s,abcd=t$ とおく. $2s\geq t$,$\frac{s}{4} \geq \sqrt[4]{t}$（AM-GM）なのでCSより
+
+$$
+a^2+b^2+c^2+d^2 \geq \frac{s^2}{4} = (2s)^{\frac{2}{3}}\left( \frac{s}{4}\right) ^{\frac{4}{3}} \geq t^{\frac{2}{3}}(\sqrt[4]{t})^{\frac{4}{3}} =t
+$$
+\qed
+
+
+\end{proof}
+
+
+
+
+
+\
+
+
+
+
+
+
+
+
+\newpage\begin{prob}
+
+$a,b,c >0 , ab+bc+ca=1$のとき,
+$$
+(a+b)(b+c)(c+a)(a+\sqrt{a^2+1})(b+\sqrt{b^2+1})(c+\sqrt{c^2+1})\geq 8
+$$
+を示せ.
+
+$\rightline{東進数学コンクール2014.9}$
+
+\end{prob}
+
+
+
+\begin{proof}
+
+\begin{eqnarray}
+a+\sqrt{a^2+1} & = & \frac{1}{\sqrt{a^2+1}-a} = \frac{1}{\sqrt{a^2+ab+bc+ca}-a} = \frac{1}{\sqrt{(a+b)(a+c)}-a}  \nonumber \\
+& \geq & \frac{1}{\frac{(a+b)+(a+c)}{2}-a} = \frac{2}{b+c} \nonumber
+\end{eqnarray}
+
+なのでこれらを掛け合わせれば良い. \qed
+
+\end{proof}
+
+
+
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+$A_n,G_n,H_n$を$x_1,\cdots ,x_n>0$の相加, 相乗, 調和平均とするとき,
+$$
+\frac{(A_n)^{n-1}H_n}{(G_n)^n} \geq \frac{(A_{n-1})^{n-2}H_{n-1}}{(G_{n-1})^{n-1}}
+$$
+を示せ.
+
+$\rightline{D.S.Mitrinovic \& P.M.Vasic(1976)}$
+
+\end{prob}
+
+
+
+
+\begin{proof}
+$(G_n)^n=x_n(G_{n-1})^{n-1}, \displaystyle\frac{n}{H_n}=\frac{n-1}{H_{n-1}}+\frac{1}{x_n}$なので
+\begin{eqnarray}
+& \Leftrightarrow & \frac{(A_n)^{n-1}}{(A_{n-1})^{n-2}} \geq \frac{(G_n)^n}{(G_{n-1})^{n-1}}\frac{H_{n-1}}{H_n} \nonumber \\
+& \Leftrightarrow & n\frac{(A_n)^{n-1}}{(A_{n-1})^{n-2}} \geq x_nH_{n-1}\frac{n}{H_n} \nonumber \\
+& \Leftrightarrow & nA_{n-1}\left( \frac{A_n}{A_{n-1}}\right) ^{n-1} \geq H_{n-1}+(n-1)x_n \nonumber
+\end{eqnarray}
+である. ここで$nA_n -(n-1)A_{n-1}=x_n$に注意してベルヌーイの不等式より,
+\begin{eqnarray}
+nA_n\left( \frac{A_n}{A_{n-1}}\right) ^{n-1} & \geq & nA_{n-1}\left( (n-1)\left( \frac{A_n}{A_{n-1}}-1 \right) +1 \right) \nonumber \\
+& = & n( (n-1)A_n -(n-2)A_{n-1} ) \nonumber \\
+& = & n( nA_n -(n-1)A_{n-1} -A_n + A_{n-1} ) \nonumber \\
+& = & n x_n - nA_n + nA_{n-1} ) \nonumber \\
+& = & (x_n - nA_n + nA_{n-1} ) +(n-1)x_n \nonumber \\
+& = & A_{n-1} + (n-1)x_n \nonumber \\
+& \geq & H_{n-1}+(n-1)x_n \nonumber
+\end{eqnarray}
+よって示された. \qed
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+$x,y,z>0,xy+yz+zx=3xyz$のとき,
+$$
+x^2y+y^2z+z^2x \geq 2(x+y+z)-3
+$$
+を示せ.
+
+$\rightline{バルカン数学オリンピック2014.1}$
+
+\end{prob}
+
+
+
+
+\begin{proof}
+$\displaystyle\sum_{cyc.}\frac{1}{x}=3$なので相加相乗より
+$$
+(L.H.S.) + 3 = \sum_{cyc.} ( x^2y + \frac{1}{y} ) \geq \sum_{cyc.} 2\sqrt{x^2y\frac{1}{y}} = \sum_{cyc.} 2x = (R.H.S.)+3
+$$
+\qed
+
+\end{proof}
+
+
+\
+
+
+
+
+
+\newpage\begin{prob}
+$a_i>0, \displaystyle\prod_{i=1}^na_i=1$のとき,
+$$
+\sum_{k=1}^n \frac{a_k}{\prod_{i=1}^k (1+a_i)} \geq \frac{2^n-1}{2^n}
+$$
+を示せ.
+
+$\rightline{カナダ数学オリンピック2014.1}$
+
+\end{prob}
+
+
+
+
+\begin{proof}
+$A_0=1 , A_k=\displaystyle\prod_{i=1}^k (1+a_i)$と置く. $a_1,\cdots ,a_n $の$k$次基本対称式を$s_k$と置くと, 相加相乗より$s_k \geq \binom nk$であるので$A_n = 1+s_1+s_2+ \cdots +s_n \geq \binom n0 + \binom n1 + \cdots + \binom nn = 2^n $である. これに注意すると,
+\begin{eqnarray}
+(L.H.S.) & = & \sum_{k=1}^n \frac{1}{A_{k-1}}\frac{a_k}{1+a_k} =\sum_{k=1}^n \frac{1}{A_{k-1}}\left( 1- \frac{1}{1+a_k} \right) =\sum_{k=1}^n \left( \frac{1}{A_{k-1}} - \frac{1}{A_k} \right) = 1- \frac{1}{A_n} \nonumber \\
+& \geq & 1 - \frac{1}{2^n} = (R.H.S.) \nonumber
+\end{eqnarray}
+\qed
+
+\end{proof}
+
+
+
+
+
+
+\
+
+
+
+\newpage
+
+
+\begin{prob}
+  \(a,b,c>0\)に対し
+  \begin{align*}
+    &\left( \frac{a^2}{bc}+\frac{bc}{a^2}\right) (a-b)(a-c)  \\
+    & \ + \left( \frac{b^2}{ca}+\frac{ca}{b^2}\right) (b-c)(b-a)  \\
+    & \ + \left( \frac{c^2}{ab} + \frac{ab}{c^2} \right) (c-a)(c-b)  \\
+    &\geq (a-b)^2+(b-c)^2+(c-a)^2
+  \end{align*}
+  を示せ。
+  \begin{flushright}
+    作: 不等式bot
+  \end{flushright}
+\end{prob}
+
+
+
+
+\begin{proof}
+$(a-b)^2+(b-c)^2+(c-a)^2 = 2(a-b)(a-c)+2(b-c)(b-a)+2(c-a)(c-b)$なので
+\begin{eqnarray}
+(L.H.S.)-(R.H.S.) & = & \sum_{cyc.} \left( \frac{a^2}{bc}+\frac{bc}{a^2} -2 \right) (a-b)(a-c)  \nonumber \\
+& = & \frac{1}{abc}\sum_{cyc.} (a^2-bc)^2 \frac{(a-b)(a-c)}{a}       \nonumber \\
+& = & \frac{1}{2abc}\sum_{cyc.} \left( (a+b)(a-c)+(a+c)(a-b) \right) \frac{(a^2-bc)(a-b)(a-c)}{a}       \nonumber \\
+& = & \frac{1}{2abc}\sum_{cyc.} (a-b) \left( \frac{(a^2-bc)(a+c)(a-b)(a-c)}{a} \right. \nonumber \\
+&{}& \hspace{9em} \left. - \frac{(b^2-ca)(b+c)(b-a)(b-c)}{b} \right) 	\nonumber \\
+& = & \frac{1}{2abc}\sum_{cyc.} \frac{(a-b)^2}{ab} \left( b(a^2-bc)(a+c)(a-c) + a(b^2-ca)(b+c)(b-c)  \right)       \nonumber \\
+& = & \frac{1}{2abc}\sum_{cyc.} \frac{(a-b)^2}{2ab} \left( b\left( (a+b)(a-c)+(a+c)(a-b)\right) (a+c)(a-c) \right. \nonumber \\
+&{}& \hspace{9em} \left. + a\left( (b+a)(b-c) + (b+c)(b-a)\right) (b+c)(b-c)  \right)      \nonumber \\
+& = & \frac{1}{2abc}\sum_{cyc.} \frac{(a-b)^2}{2ab} \left( b(a+b)(a+c)(a-c)^2 + a(b+c)(b+a)(b-c)^2  \right. \nonumber \\
+&{}& \hspace{9em}  \left. + (a-b)\left( b(a+c)^2(a-c)-a(b+c)^2(b-c) \right) \right)    \nonumber \\
+& \geq & \frac{1}{2abc}\sum_{cyc.} \frac{(a-b)^3}{2ab} \left( b(a+c)^2(a-c)-a(b+c)^2(b-c) \right)       \nonumber \\
+& = & \frac{1}{2abc}\sum_{cyc.} \frac{(a-b)^3}{2ab} \left( a^3b-ab^3 +c(a^2b-ab^2) +c^3(a-b) \right)    \nonumber \\
+& = & \frac{1}{2abc}\sum_{cyc.} \frac{(a-b)^4}{2ab} \left( ab(a+b) +abc +c^3\right) \geq 0 \nonumber
+\end{eqnarray}
+\qed
+
+\end{proof}
+
+
+
+
+\
+
+
+
+
+
+\newpage\begin{prob}
+
+$f$は$|z|<1$で解析的で$|f(z)|\leq \displaystyle\frac{1}{1-|z|}$を満たすとする.
+このとき任意の自然数nに対し
+$\displaystyle\frac{|f^{(n)}(0)|}{(n+1)!}<e$
+を示せ. ただし$f^{(n)}(z)$は$n$回導関数で$e$は自然対数.
+
+$\rightline{Ahlfors,Complex Analysis 改}$
+
+\end{prob}
+
+
+
+
+\begin{proof}
+$f^{(n)}(0)=\displaystyle\frac{n!}{2\pi n}\int_{|z|=r}\frac{f(\zeta )}{\zeta ^{n+1}}d\zeta $なので, 任意の$0<r<1$に対し
+$$
+|f^{(n)}(0)| \leq \frac{n!}{2\pi }\int_{|z|=r}\left| \frac{f(\zeta )}{\zeta ^{n+1}}\right| d\zeta \leq \frac{n!}{2\pi r^n }\int_0^{2\pi }\frac{dt}{1-r} = \frac{n!}{r^n(1-r)}
+$$
+となる. ここで$r=\displaystyle\frac{n}{n+1}$とすると
+$|f^{(n)}(0)| \leq n!\displaystyle\frac{(n+1)^{n+1}}{n^n} = (n+1)!\left( 1+\frac{1}{n} \right) ^n$がわかる. よって$\displaystyle\frac{|f^{(n)}(0)|}{(n+1)!}<\left( 1+\frac{1}{n} \right) ^n$であるがここで右辺は単調に増加して$e$に収束するので以上より示された. \qed
+
+
+
+
+\end{proof}
+
+
+
+\
+
+
+
+
+
+
+\newpage\begin{prob}
+$x_i>0,S=x_1+\cdots +x_n,T={x_1}^2+\cdots +{x_n}^2$のとき,
+$$
+\sum_{i=1}^n \frac{x_i}{S-x_i} \leq \sum_{i=1}^n\frac{{x_i}^2}{T-{x_i}^2}
+$$
+を示せ.
+
+$\rightline{大数宿題2015.1}$
+
+\end{prob}
+
+
+
+
+\begin{proof}
+\begin{eqnarray}
+(R.H.S.) - (L.H.S.) & = & \sum_{i=1}^n \left( \frac{{x_i}^2}{T-{x_i}^2} - \frac{x_i}{S-x_i} \right) \nonumber \\
+& = & \sum_{i=1}^n \frac{x_i}{(S-x_i)(T-{x_i}^2)}\left( x_i(S-x_i) - (T -{x_i}^2) \right) \nonumber \\
+& = & \sum_{i=1}^n \frac{x_i}{(S-x_i)(T-{x_i}^2)}\sum_{k=1}^n \left( x_ix_k - {x_k}^2 \right)  \nonumber \\
+& = & \sum_{i=1}^n\sum_{k=1}^n \frac{x_ix_k}{(S-x_i)(T-{x_i}^2)}\left( x_i- x_k \right) \nonumber \\
+& = & \frac{1}{2}\sum_{i=1}^n\sum_{k=1}^n x_ix_k(x_i-x_k) \left( \frac{1}{(S-x_i)(T-{x_i}^2)} - \frac{1}{(S-x_k)(T-{x_k}^2)} \right) \nonumber \\
+& = & \frac{1}{2}\sum_{i=1}^n\sum_{k=1}^n x_ix_k(x_i-x_k) \frac{(S-x_k)(T-{x_k}^2)- (S-x_i)(T-{x_i}^2)}{(S-x_i)(T-{x_i}^2)(S-x_k)(T-{x_k}^2)} \nonumber \\
+& = & \frac{1}{2}\sum_{i=1}^n\sum_{k=1}^n x_ix_k(x_i-x_k) \frac{({x_k}^3-{x_i}^3) + S({x_i}^2-{x_k}^2)+T(x_i-x_k)}{(S-x_i)(T-{x_i}^2)(S-x_k)(T-{x_k}^2)} \nonumber \\
+& = & \frac{1}{2}\sum_{i=1}^n\sum_{k=1}^n x_ix_k(x_i-x_k)^2 \frac{ S(x_i+x_k)+T - {x_i}^2 -x_ix_k-{x_k}^2}{(S-x_i)(T-{x_i}^2)(S-x_k)(T-{x_k}^2)} \nonumber
+\end{eqnarray}
+ここで$S(x_i+x_k)+T - {x_i}^2 -x_ix_k-{x_k}^2 > (x_i+x_k)^2 -x_ix_k \geq 0$なのでよってこれは非負. 等号は$x_i=x_k$が任意の$i,k$に対して成立するときである. \qed
+
+\end{proof}
+
+
+
+\
+
+
+
+
+
+\newpage\begin{prob}
+$a<b$とし, 区間$[a,b]$上の実数値連続関数$f(x),\varphi (x)$は共に狭義単調増加とする.
+$$
+\int_a^b f(x)dx=0
+$$
+ならば
+$$
+\int_a^b f(x)\varphi (x)dx>0
+$$
+であることを示せ.
+
+$\rightline{京大院試H.23基礎数学4}$
+
+\end{prob}
+
+
+
+
+\begin{proof}
+狭義単調増加なので$f(t)=0$となる$t\in [a,b]$が唯一存在し, $f(x) <0 , (x\in [a,t)), f(x) >0 ( x\in (t,x])$となる. $\varphi$も狭義単調増加なので$\varphi (x) < \varphi (t) , (x\in [a,t) ) , \varphi (x) > \varphi (t) , (x\in (t,b] ) $となる. 従って
+\begin{eqnarray}
+\int_a^b f(x)\varphi (x)dx & = & \int_a^t f(x)\varphi (x)dx + \int_t^b f(x)\varphi (x)dx \nonumber \\
+& > & \int_a^t f(x)\varphi (t)dx + \int_t^b f(x)\varphi (t)dx \nonumber \\
+& = & \varphi (t) \int_a^b f(x)dx =0 \nonumber
+\end{eqnarray}
+\qed
+
+\end{proof}
+
+
+
+\
+
+
+\newpage\begin{prob}
+
+$X$を完全正則な$T_1$空間, $\beta X$をその$\mathrm{Stone}$-$\mathrm{\check{C}ech}$コンパクト化とする. $\beta X$の部分集合$A$に対して, $\mathrm{Cl}_{\beta X} A$でその閉包を表すとする. $F\subset \beta X - X$は,
+
+\begin{itemize}
+ \item[$(1)$] $X$が離散空間で$F$が無限集合.
+ \item[$(2)$] $X$が$\mathrm{Lindel\ddot{o}f}$空間, $F$が無限集合で, $X \cap \mathrm{Cl}_{\beta X} F = \emptyset $.
+ \item[$(3)$] $F$は$\beta X$のゼロ集合.
+\end{itemize}
+の各場合に,
+$$
+| \mathrm{Cl}_{\beta X} F | \geq 2^{2^{\aleph _0}}
+$$
+となることを示せ.
+ただし位相空間$Y$の部分集合$A$がゼロ集合とは, ある連続関数$f:Y \to \mathbb{R}$により$A=f^{-1}(0)$となることである.
+
+$\rightline{有名事実}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+正の実数列$a_1,a_2,\cdots $が各自然数$k$に対して
+$$
+ a_{k+1} \geq \frac{ka_k}{{a_k}^2+(k-1)}
+$$
+を満たしているとする.
+このときすべての$n\geq 2$に対して
+$$
+a_1 + a_2 + \cdots + a_n \geq n
+$$
+となることを示せ.
+
+$\rightline{IMO Shortlist 2015 A-1}$
+
+\end{prob}
+
+
+\begin{proof}
+$n=2$での成立は$x>0$に対する$x+1/x\geq 2$からわかる.
+$n-1$までで成立しているとき, 条件式を変形して
+$$
+a_k \geq \frac{k}{a_{k+1}} - \frac{(k-1)}{a_k}
+$$
+を得るので, これを$n-1$まで足すことで
+$$
+a_1+a_2+\cdots +a_{n-1} \geq \frac{n-1}{a_n}
+$$
+を得る.
+よって
+$$
+\sum _{i=1}^n a_i = \frac{n-2}{n-1}\sum _{i=1}^{n-1} a_i + \frac{1}{n-1}\sum _{i=1}^{n-1} a_i + a_n \geq n-2 + \frac{1}{a_n} + a_n \geq n
+$$
+\qed
+\end{proof}
+
+
+
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+自然数$n\in \mathbf{N}$を固定する.
+$i=1,\cdots , 2n$に対して$x_i$が$[-1,1]$の値をとるとき,
+$$
+\sum _{1\leq r < s \leq 2n}(s-r-n)x_rx_s
+$$
+の取り得る最大の値を求めよ.
+
+$\rightline{IMO Shortlist 2015 A-3}$
+
+\end{prob}
+
+
+\begin{proof}
+各$x_i$について$1$次式であるから$x_i=1,-1$のときの最大値を求めれば良い.
+$$
+y_i = \sum _{k=1}^i x_i - \sum _{k=i+1}^{2n}x_i
+$$
+と置く.
+すべての$i$に対して${x_i}^2=1$であることに注意すれば,
+$$
+{y_i}^2 = 2n + 2\sum _{r<s\leq i}x_rx_s + 2\sum _{i<r<s}x_rx_s - 2\sum _{r\leq i < s}x_rx_s
+$$
+である.
+$x_rx_s$の係数を$i=1,\cdots ,2n$で足すことを考えると, $s\leq i$に対しては$2$, $r\leq i <s$に対しては$-2$, $i<r$に対しては$2$であるから, $2(2n-s+1)-2(s-r)+2(r-1)=4(n-s+r)$である.
+従って
+$$
+\sum _{i=1}^{2n}{y_i}^2 = 4n^2 + 4\sum _{1\leq r<s\leq 2n}(n-s+r)x_rx_s
+$$
+となる.
+あとは$\sum {y_i}^2$の最小値を求めれば良い.
+
+
+$x_i$が$1,-1$のどちらかであるから$y_i$は偶数であり, また$y_i -y_{i-1}=2x_i = \pm 2$であるから$y_{2k-1},y_{2k}$のどちらかは$0$でない.
+従って${y_{2k-1}}^2+{y_{2k}}^2 \geq 4$がわかる.
+またこれは$x_{2i}=1,x_{2i-1}=-1$で等号が実現されるので,
+$$
+\sum _{i=1}^{2n}{y_i}^2 = \sum _{i=1}^n ({y_{2i-1}}^2+{y_{2i}}^2) \geq \sum _{i=1}^n 4 = 4n
+$$
+となって$\sum {y_i}^2$の最小値は$4n$.
+よって
+$$
+\sum _{1\leq r<s\leq 2n}(n-s+r)x_rx_s \leq \frac{1}{4}\left( 4n^2 - 4n \right) = n^2-n
+$$
+これは$x_i=(-1)^i$のときに等号成立するので, 最大値であることがわかる（他の場合にも等号成立の可能性はある）.
+\qed
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+$x,y$が実数全体を動くとき,
+$$
+\frac{(xy+x+y-1)^2}{(x^2+1)(y^2+1)}
+$$
+のとりうる最大の値を求めよ.
+
+$\rightline{日本ジュニア数学オリンピック 2015年 問2}$
+
+\end{prob}
+
+
+\begin{proof}
+$x=y=\sqrt{2}+1$とすれば$2$になる.
+$2$が最大値であることは
+$$
+2(x^2+1)(y^2+1)-(xy+x+y-1)^2 = (xy-x-y-1)^2 \geq 0
+$$
+からわかる.
+
+（注意）
+$x=\tan s , y=\tan t$を代入して計算すると$(\sin (s+y) + \cos (s+t))^2$となるのでこれから最大値の予測が簡単にできる.
+\qed
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+実数$a,b,c,d$が$ab+bc+cd=1$を満たすとき,
+$$
+(a^2+ac+c^2)(b^2+bd+d^2)
+$$
+のとりうる最小の値を求めよ.
+
+$\rightline{日本ジュニア数学オリンピック 2016年 問3}$
+
+\end{prob}
+
+
+\begin{proof}
+$a=-1/2,b=0,c=1,d=1$とすれば$3/4$になるが, $3/4$より大きいことは
+$$
+(a^2+ac+c^2)(b^2+bd+d^2) = \frac{3}{4}(ab+bc+cd)^2 + (ab/2-bc/2+cd/2+da)^2 \geq \frac{3}{4}
+$$
+からわかる.
+\qed
+
+（注意）
+この式変形は$x=a+c/2, y=d+b/2$と置けばわかる：
+$$
+(a^2+ac+c^2)(b^2+bd+d^2) = \left( x^2 + \frac{3c^2}{4} \right)\left(\frac{3b^2}{4} + y^2\right) = \frac{3}{4}(bx + cy)^2 + \left( xy-\frac{3bc}{4}\right) ^2
+$$
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+$n$を$3$以上の整数とし, $x_1,x_2,\cdots ,x_n$を実数とする.
+このとき,
+$$
+2(x_1+x_2+\cdots + x_n ) ^2 \leq n({x_1}^2+{x_2}^2+\cdots +{x_n}^2 +x_1x_2+x_2x_3+\cdots +x_{n-1}x_n+x_nx_1)
+$$
+が成り立つことを示せ.
+
+$\rightline{2016年EGMO日本代表1次選抜試験 問2}$
+
+\end{prob}
+
+
+\begin{proof}
+$x_i+x_{i+1}=y_i$, ただし$x_{n+1}=x_1$, とすれば
+$$
+(y_1+\cdots +y_n)^2 \leq n({y_1}^2+\cdots +{y_n}^2)
+$$
+を示すことに帰着されるが, これはCauchy-Schwarzの不等式から従う.
+\qed
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+実数$x,y,z$が$0<x,y,z<1$および$\displaystyle\frac{x^2}{1-x}+\frac{y^2}{1-y}+\frac{z^2}{1-z}\leq \frac{3}{2}$をみたすとき,
+$$
+\frac{1}{1-x}+\frac{1}{1-y}+\frac{1}{1-z}\leq 6
+$$
+が成り立つことを示せ.
+
+$\rightline{2015年EGMO日本代表1次選抜試験 問3}$
+
+\end{prob}
+
+
+\begin{proof}
+$\frac{x^2}{1-x}=\frac{1}{1-x}-1-x$に注意すれば
+$$
+\frac{1}{1-x}+\frac{1}{1-y}+\frac{1}{1-z} = 3+x+y+z+\frac{x^2}{1-x}+\frac{y^2}{1-y}+\frac{z^2}{1-z}\leq \frac{9}{2} +x+y+z
+$$
+がわかるから, あとは$x+y+z \leq 3/2$を示せば良い.
+$s=x+y+z$と置く.
+$0<s<3$である.
+Cauchy-Schwartzの不等式より
+$$
+\frac{3}{2}(3-s) \geq (3-s)\left( \frac{x^2}{1-x}+\frac{y^2}{1-y}+\frac{z^2}{1-z} \right) \geq s^2
+$$
+であるから, $(3/2 -s)(3+s)=-s^2-3s/2+9/2 \geq 0$.
+これより$s\leq 3/2$がわかる.
+\qed
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+$a,b,c$を$1$以上の実数とする.
+次の不等式を示せ：
+$$
+\min \left\{ \frac{10a^2-5a+1}{b^2-5b+10}, \frac{10b^2-5b+1}{c^2-5c+10}, \frac{10c^2-5c+1}{a^2-5a+10} \right\} \leq abc
+$$
+
+$\rightline{USAJMO 2014 1日目 問1}$
+
+\end{prob}
+
+
+\begin{proof}
+$a-1 \leq 0$なので$(a-1)^5 \leq 0$.
+これを展開して$10a^2-5a+1 \leq a^3 (a^2-5a+10)$, すなわち
+$$
+\frac{10a^2-5a+1}{a^2-5a+10} \leq a^3
+$$
+がわかる.
+従って,
+$$
+\left( \frac{10a^2-5a+1}{b^2-5b+10}\right)\left(\frac{10b^2-5b+1}{c^2-5c+10}\right)\left(\frac{10c^2-5c+1}{a^2-5a+10}\right) \leq (abc)^3
+$$
+となって, 求める不等式はこれから従う.
+\qed
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+$a,b,c$が三角形の三辺を成す実数のとき,
+$$
+1 \leq (1-a)^2+(1-b)^2+(1-c)^2+\frac{2\sqrt{2}abc}{\sqrt{a^2+b^2+c^2}}
+$$
+を示せ.
+
+$\rightline{USA TSTST 2011 2日目 問3 改}$
+
+\end{prob}
+
+
+\begin{proof}
+まず
+\begin{eqnarray*}
+(1-a)^2+(1-b)^2+(1-c)^2 -1 &=& a^2+b^2+c^2 + 2 - 2(a+b+c) = a^2+b^2+c^2 + \frac{(a+b+c-2)^2}{2} - \frac{(a+b+c)^2}{2} \\
+&\geq & a^2+b^2+c^2 - \frac{(a+b+c)^2}{2}
+\end{eqnarray*}
+であるから,
+$$
+\frac{a^2+b^2+c^2-2(ab+bc+ca)}{2}+\frac{2\sqrt{2}abc}{\sqrt{a^2+b^2+c^2}} \geq 0
+$$
+を示せば良い.
+さらに相加相乗より,
+$$
+2(a+b+c)\sqrt{2(a^2+b^2+c^2)} \leq (a+b+c)^2+2(a^2+b^2+c^2)
+$$
+なので,
+$$
+\frac{2\sqrt{2}abc}{\sqrt{a^2+b^2+c^2}} = \frac{8abc(a+b+c)}{2(a+b+c)\sqrt{2(a^2+b^2+c^2)}} \geq \frac{8abc(a+b+c)}{2(a^2+b^2+c^2)+(a+b+c)^2}
+$$
+である.
+よって
+$$
+(2(a^2+b^2+c^2)-(a+b+c)^2)(2(a^2+b^2+c^2)+(a+b+c)^2) + 16abc(a+b+c) \geq 0
+$$
+が示せれば良い.
+展開して整理すると,
+\begin{eqnarray*}
+(L.H.S.) & = & 3\sum _{cyc.}a^4 - 4\sum _{cyc.}(a^3b+ab^3) + 2\sum _{cyc.}a^2b^2 + 12abc(a+b+c) \\
+&=& 3\sum _{cyc.}a^2(a-b)(a-c) + (ab+bc+ca)(2(ab+bc+ca)-(a^2+b^2+c^2)) + 6abc(a+b+c) \geq 0
+\end{eqnarray*}
+ただし$a,b,c$は三角不等式を満たすので, $2(ab+bc+ca)-(a^2+b^2+c^2) \geq 0$である.
+\qed
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+正の実数$a,b,c$が$a+b+c+abc=4$を満たすとき, 以下が成り立つことを示せ：
+$$
+\frac{a+b}{ac(1+b)}+\frac{b+c}{ba(1+c)}+\frac{c+a}{cb(1+a)}\geq 3
+$$
+
+$\rightline{5th On-line Inequality Competition 問3}$
+
+\end{prob}
+
+
+\begin{proof}
+相加相乗より
+$$
+\frac{a+b}{ac(1+b)}\frac{b+c}{ba(1+c)}\frac{c+a}{cb(1+a)}\geq 1
+$$
+が示せればよい.
+$a+b+c+abc=4$なので,
+$$
+(a+b+c)(ab+bc+ca) -abc \geq (abc)^2(5+ab+bc+ca)
+$$
+が示せればよいが, $a+b+c+abc=4$より$abc\leq 1, a+b+c \geq 3$なので,
+$$
+\frac{1}{3}(a+b+c)(ab+bc+ca) \geq (abc)^2(ab+bc+ca)
+$$
+がわかり, さらに相加相乗より
+$$
+\frac{2}{3}(a+b+c)(ab+bc+ca) -abc \geq 6abc -abc \geq 5(abc)^2
+$$
+なのでこれらを足して求める不等式を得る.
+\qed
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage
+
+
+\begin{prob}
+  \(a,b,c\)が正の実数のとき、
+  \begin{align*}
+    &\sqrt{(a^2+(b-c)^2)(b^2+(c-a)^2)}  \\
+    &\ + \sqrt{(b^2+(c-a)^2)(c^2+(a-b)^2)}  \\
+    &\ + \sqrt{(c^2+(a-b)^2)(a^2+(b-c)^2)} \\
+    &\geq a^2+b^2+c^2
+  \end{align*}
+  を示せ。
+  \begin{flushright}
+    5th On-line Inequality Competition 問4
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+Cauchy-Schwartzの不等式より$\sqrt{(a^2+(b-c)^2)(b^2+(c-a)^2)} \geq ab +|(c-a)(c-b)|$であるから巡回的に足して,
+$$
+(L.H.S.) \geq ab+bc+ca +|(a-b)(b-c)|+|(b-c)(b-a)|+|(c-a)(c-b)| $$
+$$
+\geq ab+bc+ca+(a-b)(b-c)+(b-c)(c-a)+(c-a)(a-b)=a^2+b^2+c^2
+$$
+\qed
+\end{proof}
+
+
+
+\
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{prob}
+  \(m\)を奇数、
+  \(n\)を\(n\geq m^2\)を満たす整数とするとき、次を示せ：
+  \[
+  \sum _{k=1}^{m-1} \cos ^{2n}\left( \frac{2k\pi}{m} \right) \leq 4e^{-\frac{n\pi ^2}{m^2}}
+  \]
+
+  \begin{flushright}
+    数学博物館 すうじあむ
+
+    2015年 10月 3日 16:57
+
+    アンドロメダさんの投稿より
+  \end{flushright}
+\end{prob}
+
+
+\begin{proof}
+
+まず${n=m^2}$としてよい.
+なぜなら次の不等式が成り立つから：
+$a_i \geq 0$に対して
+$$
+(a_1^{n+1}+a_2^{n+1}+\cdots +a_k ^{n+1})^n \leq (a_1^n+a_2^n+\cdots+a_k ^n)^{n+1} \ .
+$$
+これは最大の$a_i$をとってきてそれの$n(n+1)$乗で両辺を割ることで最大を$1$, それ以外を$1$以下の非負実数とすればわかる.
+
+以下, $n=m^2$とする.
+簡単な変形をして以下を示すことに帰着できる：
+$$
+\sum _{k=1}^{(m-1)/2} \cos ^{2m^2}\left( \frac{k\pi }{m}\right) \leq 2e^{-\pi ^2} \ .
+$$
+
+まず以下の二つの不等式に注意する：
+\begin{itemize}
+ \item $\cos x \leq 1-\frac{x^2}{2}+\frac{x^4}{24}$,
+ \item $1-x+\frac{x^2}{6} \leq e^{-x} $（$0\leq x \leq 2$）.
+\end{itemize}
+これらは簡単な微分の計算と$2$の代入でわかる.
+これらを使えば$0\leq x \leq 2$に対して$\cos x \leq e^{-x^2/2}$がわかるので, $0 \leq k\pi /m \leq 2$であることから,
+$$
+\cos ^{2m^2}\left( \frac{k\pi }{m}\right) \leq e^{-2m^2k^2\pi ^2/ 2m^2 } = e^{-k^2 \pi ^2} \leq e^{-k\pi ^2}
+$$
+となる.
+以上より
+$$
+\sum _{k=1}^{(m-1)/2} \cos ^{2m^2}\left( \frac{k\pi }{m}\right) \leq \sum _{k=1}^{\infty} e^{-k\pi ^2} = \frac{e^{-\pi ^2}}{1-e^{-\pi ^2}} \leq 2e^{-\pi ^2}
+$$
+がわかる.
+ただし最後の不等号は$\pi ^2 \geq 1 , e > 2$より得られる$e^{-\pi ^2} \leq 1/2$である.
+
+（補足）
+$$
+\sup \sum _{k=1}^{m-1} \cos ^{2m^2}\left( \frac{2k\pi}{m} \right) = \sum _{k=1}^{m-1} e^{-k^2\pi ^2}
+$$
+であることが示せる.
+$$
+\sum _{k=1}^{(m-1)/2} \cos ^{2m^2}\left( \frac{k\pi}{m} \right)
+$$
+の上限を求めよう.
+$\left( \cos ^{2/x^2}(x) \right) ' = - 2\cos ^{2/x^2}(x) (x\tan x + 2\log (\cos x))/x^3$である.
+$(x\tan x + 2\log (\cos x))'=(x-\sin x \cos x)/\cos ^2x \geq 0$, $0\tan 0 + 2\log (\cos 0)=0$であるから, $0<x<\pi /2$に対し$x\tan x + 2\log (\cos x) \geq 0$, 従って$\cos ^{2/x^2}(x)$は$0<x<\pi /2$で単調減少である.
+よって$\cos ^{2m^2}(k\pi /m)$は$m$が大きくなれば増加し, 左辺は$m$の増加関数である.
+以上より
+$$
+\sum _{k=1}^{(m-1)/2} \cos ^{2m^2}\left( \frac{k\pi}{m} \right) \leq \sum _{k=1}^{\infty} e^{-k^2\pi ^2}
+$$
+がわかる.
+
+$(1-k^2\pi^2/2m^2)^{2m^2} \leq \cos ^{2m^2}(k\pi /m) \leq e^{-k^2\pi ^2}$に注意する.
+$m\to \infty$の極限を考えれば左辺が$e^{-k^2\pi ^2}$に収束するので$\cos ^{2m^2}(k\pi /m) \to e^{-k^2\pi ^2}$がわかる.
+$\sum _{k=1}^{\infty} e^{-k^2\pi ^2}$が上限であることを示すには次の事実を示せばよい：
+
+【proposition】
+$a_{k,l}$を非負実数, $f(l)$は$l$について増加し, $f(l)\to \infty , (l\to \infty )$, 任意の$l$と$k\leq f(l)$に対し$a_{k,l} \leq a_{k,l+1}$であり, $\lim _{l\to \infty} a_{k,l}=b_k$（収束）とするとき, 級数$\sum _{k=1}^\infty b_k$は収束すると仮定.
+このとき
+$$
+\lim _{l\to \infty}\sum _{k=1}^{f(l)}a_{k,l} = \sum _{k=1}^\infty b_k
+$$
+（証明）
+
+まず$\sum _{k=1}^{f(l)}a_{k,l}$は$l$について増加し, 上から$\sum _{k=1}^\infty b_k$で抑えられる.
+$\varepsilon >0$を任意にとる.
+条件から
+\begin{itemize}
+ \item[(1)] 任意の$k$に対しある$N_k \in \mathbf{N}$があって$l>N_k$のとき$b_k -\varepsilon /2^{k+1} < a_{k,l}$.
+ \item[(2)] ある$N$があって$\sum _{k=N}^\infty b_k < \varepsilon /2$.
+ \item[(3)] ある$N'$があって$l>N'$のとき$f(l) > N$.
+\end{itemize}
+である.
+$l > \max \{ N' , N_1,\cdots ,N_N \}$のとき,
+\begin{eqnarray*}
+\sum _{k=1}^{f(l)} a_{k,l} & > & \sum _{k=1}^N a_{k,l} \\
+& > & \sum _{k=1}^N \left( b_k - \frac{\varepsilon}{2^{k+1}} \right) \\
+& > & \sum _{k=1}^\infty b_k - \frac{\varepsilon}{2} - \frac{\varepsilon}{2} = \sum _{k=1}^\infty b_k - \varepsilon
+\end{eqnarray*}
+ここで最初の不等号は(3), 次の不等号は(1), 最後の不等号は(2)と$\sum 1/2^{k+1} =1/2$を使った.
+
+以上で示された. \qed
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\
+
+
+
+
+\newpage\begin{prob}
+
+$\rightline{}$
+
+\end{prob}
+
+
+\begin{proof}
+
+\end{proof}
+
+
+\end{document}

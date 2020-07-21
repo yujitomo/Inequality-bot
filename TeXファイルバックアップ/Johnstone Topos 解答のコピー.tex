@@ -1,0 +1,4224 @@
+\documentclass[uplatex]{jsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+
+\usepackage{xcolor}
+\usepackage[dvipdfmx]{graphicx}
+
+
+\usepackage{applekeys}
+\usepackage{mandorasymb}
+\usepackage{ulem}
+\usepackage{braket}
+\usepackage{framed}
+
+
+%%%%%ハイパーリンク
+\usepackage[setpagesize=false,dvipdfmx]{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+%%%%%ハイパーリンク
+
+
+
+
+%%%%%図式
+\usepackage{tikz}%%%図
+\usetikzlibrary{arrows}
+\usepackage{amscd}%%%簡単な図式
+%%%%%図式
+
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{thm}{定理}[section]
+\newcommand{\thmautorefname}{定理}
+
+\newaliascnt{prop}{thm}%%%カウンター「prop」の定義（thmと同じ）
+\newtheorem{prop}[prop]{命題}
+\aliascntresetthe{prop}
+\newcommand{\propautorefname}{命題}%%%カウンター名propは「命題」で参照する
+
+\newaliascnt{cor}{thm}
+\newtheorem{cor}[cor]{系}
+\aliascntresetthe{cor}
+\newcommand{\corautorefname}{系}
+
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{補題}
+\aliascntresetthe{lem}
+\newcommand{\lemautorefname}{補題}
+
+\newaliascnt{defi}{thm}
+\newtheorem{defi}[defi]{定義}
+\aliascntresetthe{defi}
+\newcommand{\defiautorefname}{定義}
+
+\newaliascnt{prob}{thm}
+\newtheorem{prob}[prob]{Exercise}
+\aliascntresetthe{prob}
+\newcommand{\probautorefname}{Exercise}
+
+
+%%%%%%%番号づけない定理環境
+\newtheorem*{exam*}{例}
+\newtheorem*{rrem*}{ゆじノート}
+\newtheorem*{question*}{疑問}
+\newtheorem*{defi*}{定義}
+
+\newtheorem*{nikki*}{日記}
+
+%%%証明環境を「proof」から「証明.」に変えるやつ
+\renewcommand\proofname{\bf 解答.}
+\renewcommand{\qedsymbol}{\kinoposymbniko}
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}%%%%fnsymbolという文字をenumerate環境のパラメーターで使えるようにする。
+\makeatother
+
+\renewcommand{\theenumi}{(\arabic{enumi})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\theenumii}{(\alph{enumii})}
+\renewcommand{\labelenumi}{\theenumi}
+\renewcommand{\labelenumii}{\theenumii}
+%%%%%箇条書き環境
+
+
+\usepackage{latexsym}
+\renewcommand{\emptyset}{\varnothing}
+\def\ep{\varepsilon}
+\def\id{\mathrm{id}}
+
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\rtot}{\rightarrowtail}
+
+\DeclareMathOperator{\Hom}{Hom}
+\newcommand{\im}{\mathrm{Im}}
+\DeclareMathOperator{\colim}{\mathrm{colim}}
+\DeclareMathOperator{\plim}{\mathrm{lim}}
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+
+\def\C{\mathbb{C}}
+\def\R{\mathbb{R}}
+\def\Q{\mathbb{Q}}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+\def\P{\mathbf{P}}
+\def\T{\mathbb{T}}
+
+
+\def\E{\mathbb{E}}
+\def\I{\mathbf{1}}
+
+\def\mcA{\mathcal{A}}
+\def\mcB{\mathcal{B}}
+\def\mcC{\mathcal{C}}
+\def\mcD{\mathcal{D}}
+\def\mcE{\mathcal{E}}
+\def\mcF{\mathcal{F}}
+\def\mcG{\mathcal{G}}
+\def\mcH{\mathcal{H}}
+\def\mcI{\mathcal{I}}
+\def\mcJ{\mathcal{J}}
+\def\mcK{\mathcal{K}}
+\def\mcL{\mathcal{L}}
+\def\mcM{\mathcal{M}}
+\def\mcN{\mathcal{N}}
+\def\mcO{\mathcal{O}}
+\def\mcP{\mathcal{P}}
+\def\mcQ{\mathcal{Q}}
+\def\mcR{\mathcal{R}}
+\def\mcS{\mathcal{S}}
+\def\mcT{\mathcal{T}}
+\def\mcU{\mathcal{U}}
+\def\mcV{\mathcal{V}}
+\def\mcW{\mathcal{W}}
+\def\mcX{\mathcal{X}}
+\def\mcY{\mathcal{Y}}
+\def\mcZ{\mathcal{Z}}
+
+\def\mbfA{\mathbf{A}}
+\def\mbfB{\mathbf{B}}
+\def\mbfC{\mathbf{C}}
+\def\mbfD{\mathbf{D}}
+\def\mbfE{\mathbf{E}}
+\def\mbfF{\mathbf{F}}
+\def\mbfG{\mathbf{G}}
+\def\mbfH{\mathbf{H}}
+\def\mbfI{\mathbf{I}}
+\def\mbfJ{\mathbf{J}}
+\def\mbfK{\mathbf{K}}
+\def\mbfL{\mathbf{L}}
+\def\mbfM{\mathbf{M}}
+\def\mbfN{\mathbf{N}}
+\def\mbfO{\mathbf{O}}
+\def\mbfP{\mathbf{P}}
+\def\mbfQ{\mathbf{Q}}
+\def\mbfR{\mathbf{R}}
+\def\mbfS{\mathbf{S}}
+\def\mbfT{\mathbf{T}}
+\def\mbfU{\mathbf{U}}
+\def\mbfV{\mathbf{V}}
+\def\mbfW{\mathbf{W}}
+\def\mbfX{\mathbf{X}}
+\def\mbfY{\mathbf{Y}}
+\def\mbfZ{\mathbf{Z}}
+
+\def\msA{\mathsf{A}}
+\def\msB{\mathsf{B}}
+\def\msC{\mathsf{C}}
+\def\msD{\mathsf{D}}
+\def\msE{\mathsf{E}}
+\def\msF{\mathsf{F}}
+\def\msG{\mathsf{G}}
+\def\msH{\mathsf{H}}
+\def\msI{\mathsf{I}}
+\def\msJ{\mathsf{J}}
+\def\msK{\mathsf{K}}
+\def\msL{\mathsf{L}}
+\def\msM{\mathsf{M}}
+\def\msN{\mathsf{N}}
+\def\msO{\mathsf{O}}
+\def\msP{\mathsf{P}}
+\def\msQ{\mathsf{Q}}
+\def\msR{\mathsf{R}}
+\def\msS{\mathsf{S}}
+\def\msT{\mathsf{T}}
+\def\msU{\mathsf{U}}
+\def\msV{\mathsf{V}}
+\def\msW{\mathsf{W}}
+\def\msX{\mathsf{X}}
+\def\msY{\mathsf{Y}}
+\def\msZ{\mathsf{Z}}
+
+
+
+
+\newcommand{\dfn}{\overset{\mathrm{\tiny def}}{\coloneqq}}
+%\def\dfn{:\overset{\mbox{{\scriptsize def}}}{=}}
+\newcommand{\deff}{:\hspace{-3pt}\overset{\text{def}}{\iff}}
+
+
+\DeclareMathOperator{\sfSet}{\mathtt{Set}}
+\DeclareMathOperator{\sfTop}{\mathtt{Top}}
+\DeclareMathOperator{\Topos}{\mathbf{Topos}}
+\DeclareMathOperator{\Sh}{\mathtt{Sh}}
+\DeclareMathOperator{\PSh}{\mathtt{PSh}}
+\DeclareMathOperator{\Open}{\mathtt{Open}}
+\DeclareMathOperator{\On}{\mathbf{On}}
+
+
+\allowdisplaybreaks[1]
+
+\renewcommand{\sectionautorefname}{Chapter}
+
+
+\begin{document}
+
+
+\title{Johnstone, Topos Theory 解答}
+\date{\today}
+\author{ゆじとも}
+
+\maketitle
+
+\begin{abstract}
+  このノートは P. T. Johnstone 氏による著書「Topos Theory (Dover)」
+  の演習問題の解答を書いたものです。
+  注：私の個人的な信条により本文で用いられているものとは異なる記号を用いますので、
+  記号に関しては\autoref{section: kigou}を参照してください。
+\end{abstract}
+
+
+\tableofcontents
+
+
+\newpage
+\setcounter{section}{-2}
+\renewcommand{\thesection}{\ensuremath{\spadesuit}}
+\section{\protect\quad 記号の定義やノートなど}
+\label{section: kigou}
+%\addcontentsline{toc}{section}{\protect\numberline{\ensuremath{\spadesuit}}\protect\quad 記号の定義}
+
+
+
+\begin{itemize}
+  \item
+  本文がGrothendieck宇宙についてあまり気にしないスタンスをとっているので、
+  このノートでもその姿勢を引き継ぐことにする。
+  \item
+  \(\sfSet, \sfTop\)を集合の圏、位相空間の圏とする。
+  \item
+  普通の圏はmathcal系、2-圏はmathbf系で表して、
+  対象や射に対してはなるべく特別な装飾を施さないデフォルトの数式環境内での表示を用いるようにする。
+  Internal categoryについてはmathsf系で表すことにする。
+  \item
+  Internal categoryについて、
+  本文中で\(d_0\)と表記されているsourceを表す射は\(s\)で、
+  本文中で\(d_1\)と表記されているtargetを表す射は\(t\)で表す。
+\end{itemize}
+
+
+
+
+
+\newpage
+\renewcommand{\thesection}{Chapter \arabic{section}:}
+\section{\protect\quad Preliminaries}
+\label{section: 0}
+\renewcommand{\thesection}{\arabic{section}}
+
+
+
+\begin{prob}\label{prob: 0.1}
+  \(\mcC\)を圏であって、以下を満たすとする：
+  \begin{enumerate}
+    \item
+    任意の有限積が存在する。
+    \item \label{enumi: prob: 0.1 condition 2}
+    任意の対象\(X\in \mcC\)に対して
+    函手\((-)\times X : \mcC\to \mcC\)はcoequalizerを保つ。
+  \end{enumerate}
+  \[
+  \begin{tikzpicture}[auto]
+    \node (A) at (0,1) {\(X_1\)};
+    \node (A') at (0,0) {\(X_2\)};
+    \node (B) at (2,1) {\(Y_1\)};
+    \node (B') at (2,0) {\(Y_2\)};
+    \node (C) at (4,1) {\(Z_1\),};
+    \node (C') at (4,0) {\(Z_2\),};
+    \draw[->,transform canvas={yshift=1pt}] (A) to node {\(\scriptstyle f_1\)} (B);
+    \draw[->,transform canvas={yshift=-1pt}] (A) to node[swap] {\(\scriptstyle g_1\)} (B);
+    \draw[->,transform canvas={yshift=-1pt}] (A') to node {\(\scriptstyle f_2\)} (B');
+    \draw[->,transform canvas={yshift=1pt}] (A') to node[swap] {\(\scriptstyle g_2\)} (B');
+    \draw[->] (B) to node {\(\scriptstyle h_1\)} (C);
+    \draw[->] (B') to node {\(\scriptstyle h_2\)} (C');
+  \end{tikzpicture}
+  \]
+  を二つのreflexiveなcoequalizer図式とする。
+  このとき、積
+  \[
+  \begin{tikzpicture}[auto]
+    \node (A) at (0,0) {\(X_1 \times X_2\)};
+    \node (B) at (3,0) {\(Y_1 \times Y_2\)};
+    \node (C) at (6,0) {\(Z_1 \times Z_2\),};
+    \draw[->,transform canvas={yshift=1pt}] (A) to node {\(\scriptstyle f_1\times f_2\)} (B);
+    \draw[->,transform canvas={yshift=-1pt}] (A) to node[swap] {\(\scriptstyle g_1 \times g_2\)} (B);
+    \draw[->] (B) to node {\(\scriptstyle h_1 \times h_2\)} (C);
+  \end{tikzpicture}
+  \]
+  がcoequalizer図式であることを示せ。
+\end{prob}
+
+\begin{proof}
+  本文の補題0.17を用いれば良い。
+  ここではその証明と同じことを繰り返す。
+
+  条件\ref{enumi: prob: 0.1 condition 2}より
+  以下の図式の縦向きと横向きはそれぞれcoequalizerの図式となる：
+  \[
+  \begin{tikzpicture}[auto]
+    \node (A) at (0,4) {\(X_1\times X_2\)};
+    \node (B) at (4,4) {\(Y_1\times X_2\)};
+    \node (C) at (8,4) {\(Z_1\times X_2\)};
+    \node (A') at (0,2) {\(X_1\times Y_2\)};
+    \node (B') at (4,2) {\(Y_1\times Y_2\)};
+    \node (C') at (8,2) {\(Z_1\times Y_2\)};
+    \node (A'') at (0,0) {\(X_1\times Z_2\)};
+    \node (B'') at (4,0) {\(Y_1\times Z_2\)};
+    \node (C'') at (8,0) {\(Z_1\times Z_2.\)};
+    \draw[->,transform canvas={yshift=1pt}] (A) to node {\(\scriptstyle f_1\times \id_{X_2}\)} (B);
+    \draw[->,transform canvas={yshift=-1pt}] (A) to node[swap] {\(\scriptstyle g_1\times \id_{X_2}\)} (B);
+    \draw[->] (B) to node {\(\scriptstyle h_1\times \id_{X_2}\)} (C);
+    \draw[->,transform canvas={yshift=1pt}] (A') to node {\(\scriptstyle f_1\times \id_{Y_2}\)} (B');
+    \draw[->,transform canvas={yshift=-1pt}] (A') to node[swap] {\(\scriptstyle g_1\times \id_{Y_2}\)} (B');
+    \draw[->] (B') to node {\(\scriptstyle h_1\times \id_{Y_2}\)} (C');
+    \draw[->,transform canvas={yshift=1pt}] (A'') to node {\(\scriptstyle f_1\times \id_{Z_2}\)} (B'');
+    \draw[->,transform canvas={yshift=-1pt}] (A'') to node[swap] {\(\scriptstyle g_1\times \id_{Z_2}\)} (B'');
+    \draw[->] (B'') to node {\(\scriptstyle h_1\times \id_{Z_2}\)} (C'');
+    \draw[->,transform canvas={xshift=1pt}] (A) to node {\(\scriptstyle \id_{X_1}\times f_2\)} (A');
+    \draw[->,transform canvas={xshift=-1pt}] (A) to node[swap] {\(\scriptstyle \id_{X_1}\times g_2\)} (A');
+    \draw[->] (A') to node {\(\scriptstyle \id_{X_1}\times h_2\)} (A'');
+    \draw[->,transform canvas={xshift=1pt}] (B) to node {\(\scriptstyle \id_{X_1}\times f_2\)} (B');
+    \draw[->,transform canvas={xshift=-1pt}] (B) to node[swap] {\(\scriptstyle \id_{X_1}\times g_2\)} (B');
+    \draw[->] (B') to node {\(\scriptstyle \id_{Y_1}\times h_2\)} (B'');
+    \draw[->,transform canvas={xshift=1pt}] (C) to node {\(\scriptstyle \id_{X_1}\times f_2\)} (C');
+    \draw[->,transform canvas={xshift=-1pt}] (C) to node[swap] {\(\scriptstyle \id_{X_1}\times g_2\)} (C');
+    \draw[->] (C') to node {\(\scriptstyle \id_{Z_1}\times h_2\)} (C'');
+  \end{tikzpicture}
+  \]
+  このとき以下がわかる：
+  \begin{enumerate}
+    \item
+    一番上の横向きがcoequalizerの図式なので、
+    \(h_1\times \id_{X_2}\)はエピである。
+    \item
+    一番右の縦向きがcoequalizerの図式であることと
+    \(h_1\times \id_{X_2}\)はエピであることから、
+    \(\id_{Z_1}\times h_2\)は
+    \(h_1\times f_2, h_1\times g_2\)のcoequalizerである。
+  \end{enumerate}
+  右下の四角形がpushoutの図式であることが次のようにしてわかる：
+  対象\(W\)と射\(p_1 : Z_1\times Y_2 \to W \gets Z_2\times Y_1 : p_2\)が
+  \(p_1\circ (h_1\times \id_{Y_2}) = p_2\circ (\id_{Y_1}\times h_2)\)を満たしているとする。
+  \(h_2\circ f_2 = h_2\circ g_2\)なので、
+  射\(\id_{Y_1}\times f_2\)を合成することで、
+  \begin{align*}
+    p_1 \circ (h_1 \times f_2)
+    &= p_1\circ (h_1\times \id_{Y_2}) \circ (\id_{Y_1}\times f_2) \\
+    &= p_2\circ (\id_{Y_1}\times h_2) \circ (\id_{Y_1}\times f_2) \\
+    &= p_2\circ (\id_{Y_1}\times (h_2\circ f_2)) \\
+    &= p_2\circ (\id_{Y_1}\times (h_2\circ g_2)) \\
+    &= p_2\circ (\id_{Y_1}\times h_2) \circ (\id_{Y_1}\times g_2) \\
+    &= p_2\circ (h_1\times \id_{Y_2}) \circ (\id_{Y_1}\times g_2) \\
+    &= p_1\circ (h_1\times g_2)
+  \end{align*}
+  がわかる。
+  ここで\(\id_{Z_1}\times h_2\)が
+  \(h_1\times f_2, h_1\times g_2\)のcoequalizerであることから、
+  \(p_1 = r\circ (\id_{Z_1}\times h_2)\)となる
+  射\(r:Z_1\times Z_2 \to W\)が一意的に存在する。
+  このとき
+  \begin{align*}
+    r \circ (h_1\times\id_{Z_2}) \circ (\id_{Y_1}\times h_2)
+    &= r\circ (\id_{Z_1}\times h_2) \circ (h_1\times\id_{Y_2}) \\
+    &= p_1 \circ (h_1\times\id_{Y_2}) \\
+    &= p_2 \circ (\id_{Y_1}\times h_2)
+  \end{align*}
+  となる。
+  ここで、真ん中の縦向きがcoequalizerの図式であることから、
+  \(\id_{Y_1}\times h_2\)はエピ射であり、
+  従って上の射の等式は
+  \[
+  p_2 = r \circ (h_1\times\id_{Z_2})
+  \]
+  を帰結する。
+  このことは右下の四角形がpushoutの普遍性を満たすことを示している。
+
+  さて、右下の四角形がpushoutの普遍性を満たすこと、
+  真ん中横向きと真ん中縦向きがcoequalizerの図式であることは、
+  test object \((-)\in \mcC\)に対する自然な集合の同型
+  \begin{align*}
+    &\Hom_{\mcC}(Z_1\times Z_2,-) \\
+    &\cong \Hom_{\mcC}(Z_1\times Y_2,-)\times_{\Hom_{\mcC}(Y_1\times Y_2,-)}
+    \Hom_{\mcC}(Y_1\times Z_2,-) \\
+    &\cong E_1 \times_{\Hom_{\mcC}(Y_1\times Y_2,-)} E_2
+  \end{align*}
+  を帰結する。
+  ただし
+  \begin{align*}
+    E_1 &\dfn
+    \mathrm{Eq}\left( \Hom_{\mcC}(Y_1\times Y_2,-) \rightrightarrows \Hom_{\mcC}(X_1\times Y_2,-)\right) \\
+    E_2 &\dfn
+    \mathrm{Eq}\left( \Hom_{\mcC}(Y_1\times Y_2,-) \rightrightarrows \Hom_{\mcC}(Y_1\times X_2,-)\right)
+  \end{align*}
+  である。
+  このことは、射\(\alpha:Y_1\times Y_2\to (-)\)に対して
+  \begin{itemize}
+    \item[ \ ]
+    \(\alpha\)が\(Z_1\times Z_2\)を経由する
+    \item[\(\Leftrightarrow\)]
+    \(\alpha\circ (f_1\times \id_{Y_2}) = \alpha\circ (g_1\times \id_{Y_2})\)
+    かつ\(\alpha\circ (\id_{Y_1}\times f_2) = \alpha\circ (\id_{Y_1}\times g_2)\)
+  \end{itemize}
+  を意味している。
+  \(\id_{X_1}\times f_2\)や\(g_1\times \id_{X_2}\)を合成すると、
+  上の同値関係の右辺にある二つの等式は、次の二つの等式を帰結する：
+  \begin{equation}
+    \label{eq: prob: 0.1}
+    \begin{aligned}
+      \alpha\circ (f_1\times \id_{Y_2})\circ (\id_{X_1}\times f_2)
+      &= \alpha\circ (g_1\times \id_{Y_2})\circ (\id_{X_1}\times f_2), \\
+      \alpha\circ (\id_{Y_1}\times f_2)\circ (g_1\times \id_{X_2})
+      &= \alpha\circ (\id_{Y_1}\times g_2)\circ (g_1\times \id_{X_2})
+    \end{aligned}
+    \tag{\(\bigstar\)}
+  \end{equation}
+  このとき、
+  \begin{align*}
+    \alpha \circ (f_1\times f_2)
+    &= \alpha \circ (f_1\times \id_{Y_2})\circ (\id_{X_1}\times f_2) \\
+    &\overset{\bigstar}{=} \alpha \circ (g_1\times \id_{Y_2})\circ (\id_{X_1}\times f_2) \\
+    &= \alpha \circ (\id_{Y_2}\times f_2)\circ (g_1\times \id_{X_1}) \\
+    &\overset{\bigstar}{=} \alpha \circ (\id_{Y_1}\times g_2)\circ (g_1\times \id_{X_2}) \\
+    &= \alpha \circ (g_1\times g_2)
+  \end{align*}
+  が成り立つ。
+  ただし上に\(\bigstar\)が書いてある等号は、
+  二つの等式\eqref{eq: prob: 0.1}より帰結されるものである。
+  従って、結局、射\(\alpha:Y_1\times Y_2\to (-)\)に対して、
+  \begin{itemize}
+    \item[ \ ]
+    \(\alpha\)が\(Z_1\times Z_2\)を経由する
+    \item[\(\Leftrightarrow\)]
+    \(\alpha\circ (f_1\times \id_{Y_2}) = \alpha\circ (g_1\times \id_{Y_2})\)
+    かつ\(\alpha\circ (\id_{Y_1}\times f_2) = \alpha\circ (\id_{Y_1}\times g_2)\)
+    \item[\(\Rightarrow\)]
+    \(\alpha\circ (f_1\times f_2) = \alpha \circ (g_1\times g_2)\)
+  \end{itemize}
+  がわかる。
+
+  逆に\(\alpha\circ (f_1\times f_2) = \alpha \circ (g_1\times g_2)\)が成り立つとする。
+  \((f_1,g_1)\)と\((f_2,g_2)\)がreflexive pairsであることから、
+  \(f_1\circ s_1 = g_1 \circ s_1 = \id_{Y_1}, f_2\circ s_2 = g_2 \circ s_2 = \id_{Y_2}\)となる
+  \(s_1:Y_1\to X_1, s_2: Y_2\to X_2\)が存在する。
+  このとき、
+  \begin{align*}
+    \alpha\circ (f_1\times \id_{Y_2})
+    &= \alpha\circ (f_1\times (f_2\circ s_2)) \\
+    &= \alpha\circ (f_1\times f_2) \circ (\id_{X_1}\times s_2) \\
+    &= \alpha\circ (g_1\times g_2) \circ (\id_{X_1}\times s_2) \\
+    &= \alpha\circ (g_1\times (g_2\circ s_2)) \\
+    &= \alpha\circ (g_1\times \id_{Y_2}), \\
+    \alpha\circ (\id_{Y_1}\times f_2)
+    &= \alpha\circ ((f_1\circ s_1)\times f_2) \\
+    &= \alpha\circ (f_1\times f_2) \circ (s_1\times \id_{X_2}) \\
+    &= \alpha\circ (g_1\times g_2) \circ (s_1\times \id_{X_2}) \\
+    &= \alpha\circ ((g_1\circ s_1)\times g_2) \\
+    &= \alpha\circ (\id_{Y_1}\times g_2),
+  \end{align*}
+  を得るので、結局これは\(\alpha\)が\(Z_1\times Z_2\)を経由することを意味している。
+  従って、とくに\(h_1\times h_2:Y_1\times Y_2\to Z_1\times Z_2\)は
+  \(f_1\times f_2, g_1\times g_2\)のcoequalizerとなる。
+  以上で証明が完了する。
+\end{proof}
+
+
+
+
+
+\begin{prob}\label{prob: 0.2}
+  \(\mcC\)を圏、
+  \(\Sigma\)を\(\mcC\)の射のクラス、\(X\in \mcC\)を対象とする。
+  \(\mcC_{/X}\)の充満部分圏\(\Sigma\downarrow X\)を次で定義する：
+  \begin{itemize}
+    \item[ \ ]
+    \(\mcC_{/X}\)の対象\(Y\to X\)が\(\Sigma\downarrow X\)に属する
+    \(\deff\) \((Y\to X)\in \Sigma\)となる。
+  \end{itemize}
+  \(\Sigma\)は\(\mcC\)の"右積閉集合"
+  (\(\Sigma\) admits a calculus of right fractions on \(\mcC\))
+  とする。
+  このとき、
+  \((\Sigma\downarrow X)^{\op}\)は
+  任意の対象\(X\in \mcC\)に対してfilteredであることを示せ。
+\end{prob}
+
+\begin{proof}
+  定義より、次の条件を確認すれば良い:
+  \begin{enumerate}
+    \item \label{enumi: prob: 0.2, in proof: condition 1}
+    \(\Sigma\downarrow X\)は空圏でない。
+    \item \label{enumi: prob: 0.2, in proof: condition 2}
+    任意の二つの\(\Sigma\downarrow X\)の対象
+    \((f_1:Y_1\to X), (f_2:Y_2\to X)\)に対して、
+    ある対象\(g:Z\to X\)と射\(p_1:g\to f_1, p_2:g\to f_2\)が存在する。
+    \item \label{enumi: prob: 0.2, in proof: condition 3}
+    任意の二つの\(\Sigma\downarrow X\)の対象
+    \((f_1:Y_1\to X), (f_2:Y_2\to X)\)と
+    二つの射\(p_1,p_2:f_1\to f_2\)に対して、
+    ある対象\(g:Z\to X\)と射\(q:g\to f_1\)が存在して、
+    \(p_1\circ q = p_2\circ q\)を満たす。
+  \end{enumerate}
+  右積閉集合であることの条件 (Definition 0.18(i)) より、
+  \(\id_X\)は\(\Sigma\)に属するので、
+  とくに\(\id_X:X\to X\)という\(\mcC_{/X}\)の対象が圏\(\Sigma\downarrow X\)に属することとなり、
+  従って条件\ref{enumi: prob: 0.2, in proof: condition 1}は満たされる。
+
+  条件\ref{enumi: prob: 0.2, in proof: condition 2}が満たされることを確認する。
+  右積閉集合であることの条件 (Definition 0.18(ii)) より、
+  任意の\((f_1:Y_1\to X), (f_2:Y_2\to X) \in \Sigma\)
+  に対して、
+  \[
+  \begin{CD}
+    Z @> a >> Y_1 \\
+    @V g VV @VV f_1 V \\
+    Y_2 @> f_2 >> X
+  \end{CD}
+  \]
+  が可換となるような\(g\in \Sigma\)と\(\mcC\)の射\(a\)が存在する。
+  右積閉集合は合成で閉じる (Definition 0.18(i)) ので
+  \((f_2\circ g : Z\to X)\in \Sigma\)であり、
+  従って、上の図式が可換となるような\(g,Z\)の存在は
+  条件\ref{enumi: prob: 0.2, in proof: condition 2}が満たされることを意味する。
+
+  最後に条件\ref{enumi: prob: 0.2, in proof: condition 2}が満たされることを確認する。
+  任意に二つの\(\Sigma\downarrow X\)の対象
+  \((f_1:Y_1\to X), (f_2:Y_2\to X)\)と
+  二つの射\(p_1,p_2:f_1\to f_2\)をとると、
+  \(\mcC_{/X}\)の射の定義より
+  \(p_1,p_2\)は\(Y_1,Y_2\)の間の\(\mcC\)の射であって、
+  \(f_2\circ p_1 = f_2\circ p_2 = f_1\)となるものである。
+  このとき、\(f_2\in \Sigma\)であるから、
+  右積閉集合であることの定義 (Definition 0.18(iii)) より、
+  ある\((q:Z\to Y_2)\in \Sigma\)が存在して
+  \(p_1\circ q = p_2 \circ q\)となる。
+  このとき、\(f_2 \circ p_1\circ q = f_1 \circ q\)は
+  \(\Sigma\)に属する二つの射の合成であるから、
+  これはまた\(\Sigma\)に属する (Definition 0.18(i))。
+  従って\(f_1\circ q:Z\to X\)は\(\Sigma\downarrow X\)に属し、
+  以上で条件\ref{enumi: prob: 0.2, in proof: condition 2}が満たされることが確認できた。
+\end{proof}
+
+
+\begin{prob}\label{prob: 0.3}
+  \
+  \begin{enumerate}
+    \item \label{enumi: prob: 0.3.1}
+    constant presheaf \(\bar{A}\)が一般に層とは限らないのはなぜか？
+    \item \label{enumi: prob: 0.3.2}
+    \(\bar{A}\)の層化を記述せよ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: prob: 0.3.1}。
+  二点集合\(X = \left\{ 0,1 \right\}\)に離散位相を入れた位相空間上で\(\bar{A}\)を考えると、
+  \(X\)の開被覆\(\left\{ 0\right\} \cup \left\{ 1 \right\}\)に対しての貼り合わせ条件は
+  \[
+  A \to A\times A \rightrightarrows \emptyset
+  \]
+  がequalizerの図式となることであるが、これはequalizerの図式ではない。
+
+  \ref{enumi: prob: 0.3.2}。
+  各開集合\(U\)に対し、その連結成分のなす集合を\(\bar{U}\)として、
+  \(U\mapsto A\times \bar{U}\)と定義することで、
+  \(\bar{A}\)の層化が得られる。
+\end{proof}
+
+
+
+
+
+
+\begin{prob}\label{prob: 0.4}
+  Example 0.22(iv)の層\(\Omega\)は
+  \(\Hom_{\sfTop}(-,S)\)と同型であることを示せ。
+  ただし\(S\)はSierpinski空間である。
+\end{prob}
+
+
+\begin{proof}
+  \(S\)の二点のうち、閉点を\(v\)として生成点を\(\eta\)とする。
+  \(V\)を\(V\)の開集合とするとき、
+  \(V\)に属する点を\(\eta\)へ写し、
+  \(V\)に属さない点を\(v\)へ写す写像\(\varphi_U(V):U\to S\)は連続である。
+  この対応により写像
+  \[
+  \varphi_U: \Omega(U) \to \Hom_{\sfTop}(U,S)
+  \]
+  が定義される。
+  異なる開集合\(V\subset U\)に対する\(\varphi_U(V)\)は、
+  \(\eta\)へと写す点が異なるので、異なる写像となり、
+  従って\(\varphi_U\)は単射である。
+  逆に連続写像\(f:U\to S\)は\(f^{-1}(\eta)\subset U\)により\(U\)の開集合を定義し、
+  この開集合によって定まる連続写像\(\varphi_U(f^{-1}(\eta))\)は
+  \(\eta\)へと写す点が\(f\)と同じであることから、
+  \(f=\varphi_U(f^{-1}(\eta))\)を満たす。
+  すなわち\(\varphi_U\)は全単射であることがわかる。
+
+  \(\Hom_{\sfTop}(-,S)\)の制限写像を\(\rho^h\)と書き、
+  \(\Omega\)の制限写像を\(\rho^o\)と書くとする。
+  \(U\subset U'\)という開集合の包含関係と
+  開集合\(V\subset U'\)に対し、
+  \begin{align*}
+    \varphi_U((\rho^o)_{U}^{U'}(V))
+    &= \varphi_U(V\cap U), \\
+    (\rho^h)_U^{U'}(\varphi_{U'}(V))
+    &= \varphi_{U'}(V)|_U \\
+    &= \varphi_U(V\cap U),
+  \end{align*}
+  であるから、
+  \(\varphi_U\)はそれぞれの制限写像と可換であり、自然変換となる。
+  以上より\(\Omega\)は\(\Hom_{\sfTop}(-,S)\)と同型である。
+\end{proof}
+
+
+
+\begin{prob}\label{prob: 0.5}
+  \(\R\)を実数直線に通常の位相を入れたものとする。
+  \(\R\)上の位相空間\(p:E\to \R\)を次で定義する：
+  \begin{itemize}
+    \item
+    集合としては
+    \(E \dfn \R \times \left\{ t,f,r,l,b\right\}\)
+    とする。
+    ただしここで\(t,f,r,l,b\)は異なる記号である。
+    \item
+    \(p\)は第一成分への射影とする。
+    \item
+    各点は次の形の基本開近傍を持つとする：
+    \begin{itemize}
+      \item[\(\star\)]
+      \((x,t)\)は\(V_t^x(\delta) \dfn (x-\delta,x+\delta)\times \left\{ t\right\} , \ (\delta > 0)\)、
+      \item[\(\star\)]
+      \((x,f)\)は\(V_f^x(\delta) \dfn (x-\delta,x+\delta)\times \left\{ f\right\} , \ (\delta > 0)\)、
+      \item[\(\star\)]
+      \((x,r)\)は\(V_r^x(\delta) \dfn \left( (x-\delta,x)\times \left\{ t\right\}\right)
+      \cup \left\{ (x,r)\right\} \cup \left( (x,x+\delta) \times \left\{ f\right\}\right), \ (\delta > 0)\)、
+      \item[\(\star\)]
+      \((x,l)\)は\(V_t^l(\delta) \dfn \left( (x-\delta,x)\times \left\{ f\right\}\right)
+      \cup \left\{ (x,l)\right\} \cup \left( (x,x+\delta) \times \left\{ t\right\}\right), \ (\delta > 0)\)、
+      \item[\(\star\)]
+      \((x,b)\)は\(V_b^x(\delta) \dfn \left( (x-\delta,x)\times \left\{ t\right\}\right)
+      \cup \left\{ (x,b)\right\} \cup \left( (x,x+\delta) \times \left\{ t\right\}\right), \ (\delta > 0)\)。
+    \end{itemize}
+    \(p\)は局所同相写像であり、
+    \(p\)に付随する\(\R\)上の層\(\Gamma(E,p)\)は
+    \(\Omega\)の部分層であることを示せ。
+    さらに\(\Gamma(E,p)\subset \Omega\)と考えたとき、
+    各開集合\(U\subset \R\)と\(U\)の開集合\(V\in \Omega(U)\)に対し、
+    次の同値関係を示せ:
+    \begin{itemize}
+      \item[ \ ]
+      \(V\)が\(\Gamma(E,p)\)に属する。
+      \item[\(\Leftrightarrow\)]
+      \(V\)の (\(U\)内での) 境界\(\bar{V}\setminus V\)は\(U\)内に集積点を持たない。
+    \end{itemize}
+  \end{itemize}
+\end{prob}
+
+\begin{proof}
+  \(p\)が局所同相写像であることは\(E\)の位相の定義から明らかである。
+  \(X \dfn \R \times \left\{ r,l,b\right\} \subset E\)とおき、
+  \(q:E\to \left\{ t,f,r,l,b\right\}\)を第二射影とする。
+
+  開集合\(U\subset \R\)と\(p|_{p^{-1}(U)}:p^{-1}(U)\to U\)の
+  切断\((s:U\to E)\in \Gamma(E,p)(U)\)を任意にとる。
+  \(\varphi_U(s) \dfn s^{-1}(\R\times \left\{t\right\})\subset U\)と定義すると、
+  \(\R\times \left\{t\right\}\subset E\)が開であることと\(s\)が連続であることから、
+  \(\varphi_U(s)\)も開となる。
+  従って、この対応関係により射
+  \[
+  \varphi_U:\Gamma(E,p)(U) \to \Omega(U)
+  \]
+  を得る。
+  これは明らかに\(U\)に関して函手的であるから、
+  層の射\(\varphi: \Gamma(E,p)\to \Omega\)を得る。
+
+  \(V \dfn \varphi_U(s)\)と置く。
+  \(x\in \bar{V}\)を任意にとる
+  (ただし\(\bar{V}\)は\(U\)内での閉包とする)。
+  もし\(q(s(x)) = f\)であれば、
+  \(s(x)=(x,f)\)の開近傍\(V_f^x(\delta)\)の\(s\)による逆像は
+  \(x\)を含む開集合であるから、
+  \(x\in\bar{V}\)であることから
+  \(s^{-1}(V_f^x(\delta))\cap V \neq \emptyset\)となる。
+  一方、点\(x'\in s^{-1}(V_f^x(\delta))\cap V\)に対しては次が成り立つ：
+  \begin{itemize}
+    \item \(x'\in s^{-1}(V_f^x(\delta))\)であることから\(q(s(x')) = f\)となる。
+    \item \(x'\in V\)であることから\(q(s(x')) = t\)となる。
+  \end{itemize}
+  これは矛盾である。
+  従って\(q(s(x)) = f\)とはならないことがわかる。
+  以上より
+  \[s^{-1}(\R\times \left\{f\right\}) = U\setminus \bar{V}\]
+  となることがわかった。
+  \(V\dfn s^{-1}(\R\times \left\{ t\right\})\)という定義だったので、
+  以上より、
+  \(\bar{V}\setminus V = s^{-1}(X)\)
+  も帰結される。
+
+  点\(x\in U\)が\(s(x)\in X\)となるとする。
+  すなわち、\(s(x)\)の第二座標\(q(s(x))\)は\(r,l,b\)のいずれかであるとする。
+  このとき、\(s\)が連続であることから、
+  \(s(x)\)の近傍\(V_{q(s(x))}^x(\delta)\)の\(s\)による逆像は、
+  \(x\)のある近傍を含む。
+  従って、十分小さい\(\ep > 0\)に対し、
+  \((x-\ep,x+\ep) \subset s^{-1}(V_{q(s(x))}^x(\delta))\)となる。
+  このような\(\ep\)に対しては
+  \(s((x-\ep,x+\ep)) \subset V_{q(s(x))}^x(\delta)\)となるので、
+  特に任意の\(x\neq x'\in (x-\ep,x+\ep)\)に対して
+  \(q(s(x'))\)は\(t\)または\(f\)である。
+  特に、\(\bar{V}\setminus V = s^{-1}(X)\subset U\)は相対位相に関して離散であることがわかる。
+  さらに、\(s(x)\)の第二座標は
+  \begin{itemize}
+    \item
+    \(s(x) = r\)である \(\Leftrightarrow\)
+    \(x\in\bar{V}\setminus V\)かつ
+    十分小さい\(\ep > 0\)に対して\((x-\ep,x+\ep)\cap V = (x-\ep,x)\)
+    \item
+    \(s(x) = f\) \(\Leftrightarrow\)
+    \(x\in\bar{V}\setminus V\)かつ
+    十分小さい\(\ep > 0\)に対して\((x-\ep,x+\ep)\cap V = (x,x+\ep)\)
+    \item
+    \(s(x) = b\) \(\Leftrightarrow\)
+    \(x\in\bar{V}\setminus V\)かつ
+    十分小さい\(\ep > 0\)に対して\((x-\ep,x+\ep)\cap V = (x-\ep,x)\cup (x,x+\ep)\)
+  \end{itemize}
+  で特徴付けられるので、\(\bar{V}\setminus V\)が\(U\)の相対位相に関して離散であれば、
+  \(V\)によって一意的に\(p\)の切断\(s\)を決定することができる。
+  従って\(\varphi_U\)は単射であり、
+  さらに\(U\)の開集合\(V\)が\(\varphi_U\)の像に属することが
+  \(\bar{V}\setminus V\)が\(U\)内に集積点を持たないことと同値であることがわかった。
+  以上で証明を完了する。
+\end{proof}
+
+
+\begin{prob}\label{prob: 0.6}
+  \(F\subset G\)を位相空間\(X\)上の層の圏のモノ射とし、
+  \(U\subset X\)を開集合、
+  \(s\in G(U)\)を切断とする。
+  このとき、\(s|_V^G\in F(V)\)となるような最大の開集合\(V\subset U\)が存在することを示せ。
+  ただしここで\(|^G\)は\(G\)に関する制限写像を意味する。
+  さらに、\(\Omega\)という層が次の性質を持つことを示せ：
+  \begin{itemize}
+    \item
+    任意のモノ射\(i:F\to G\)と
+    任意の射\(f:F\to \Omega\)に対し、
+    ある\(g:G\to \Omega\)が存在し (一意的とは限らない！) 、
+    \(f=g\circ i\)となる。
+  \end{itemize}
+\end{prob}
+
+\begin{proof}
+  \[V\dfn \bigcup \left\{ V'\subset U \middle| s|_{V'}^G\in F(V')\right\}\]
+  と定義すれば、\(F\)が層であることと
+  \(V\)が\(s|_{V'}^G\in F(V')\)となる\(V'\)たちの和集合であることから、
+  \(s|_V^G\in F(V)\)となる。
+  \(V\)は明らかにこの条件を満たすもののうち最大の開集合である。
+  この\(V\)を\(W(s)\)と書くことにする。
+
+  開集合\(V\subset U\)と切断\(s\in G(U)\)に対し、以下がわかる：
+  \begin{itemize}
+    \item
+    \(W(s)\cap V \subset W(s)\)であるから、
+    \((s|_V)^G|_{W(s)\cap V}^G = s|_{W(s)\cap V}^G\in F(W(s)\cap V)\)となり、
+    \(W(s|_V^G)\)の最大性から\(W(s)\cap V \subset W(s|_V^G)\)である。
+    \item
+    \(W(s|_V)\)の定義から、
+    \(s|_{W(s|_V^G)}^G = (s|_V^G)|_{W(s|_V^G)}\in F(W(s|_V^G))\)となり、
+    \(W(s)\)の最大性から\(W(s|_V^G)\subset W(s)\)である。
+  \end{itemize}
+  \(W(s|_V^G)\subset V\)であるから、以上より\(W(s|_V^G) = W(s)\cap V\)がわかる。
+
+  各開集合\(U\subset X\)と
+  各切断\(s\in G(U)\)に対して、
+  \[
+  g_U(s) \dfn f_{W(s)}(s|_{W(s)}^G)
+  \]
+  と定義する。
+  ここで\(W(s)\)の定義より\(s|_{W(s)}^G\in F(W(s))\)であり、
+  さらに\(\Omega\)の定義より\(f_{W(s)}(s|_{W(s)}^G)\)は\(W(s)\)の開集合、
+  すなわち\(U\)の開集合であることに注意する。
+  従って写像\(g_U:G(U)\to \Omega(U)\)はwell-definedである。
+  このとき、開集合の包含関係\(V\subset U\)に対して、
+  \begin{align*}
+    &g_V(s|_V^G)
+    = f_{W(s|_V^G)}((s|_V^G)|_{W(s|_V^G)})
+    = f_{W(s|_V^G)}(s|_{W(s|_V^G)}^G)
+    = f_{W(s)\cap V}(s|_{W(s)\cap V}^G), \\
+    &(g_U(s))|_V^{\Omega}
+    = g_U(s)\cap V
+    = f_{W(s)}(s|_{W(s)}^G) \cap V
+    = f_{W(s)}(s|_{W(s)}^G) \cap V \cap W(s)
+    = \left( f_{W(s)}(s|_{W(s)}^G) \right)|_{V\cap W(s)}^{\Omega}
+  \end{align*}
+  となる。
+  ここで\(|^{\Omega}\)は\(\Omega\)に関する制限写像である。
+  \(F\)は\(G\)の部分層であるから、\(G\)に関する制限と\(F\)に関する制限は等しい。
+  また、\(f:F\to \Omega\)は層の射であるから、
+  開集合の包含関係\(W(s)\cap V\subset W(s)\)に対して
+  \(f\)は\(F,\Omega\)のそれぞれの制限写像と可換であり、
+  切断\(s|_{W(s)}\in F(W(s))\)に対して
+  \[
+  f_{W(s)\cap V}(s|_{W(s)\cap V}^G) = \left( f_{W(s)}(s|_{W(s)}^G) \right)|_{V\cap W(s)}^{\Omega}
+  \]
+  が成立する。
+  以上より、射の族\(g_U:G(U)\to \Omega(U)\)は層の射\(g:G\to \Omega\)を形成する。
+  また、切断\(s\in F(U)\)に対しては、\(W(s)=U\)となることから、
+  \[
+  g_U(s) = f_{W(s)}(s|_{W(s)}^G) = f_U(s)
+  \]
+  となって、\(f = g\circ i\)を満たすこともわかる。
+  以上ですべて確認できた。
+\end{proof}
+
+
+\begin{prob}\label{prob: 0.7}
+  位相空間\(X\)に対する以下の条件がすべて同値であることを示せ：
+  \begin{enumerate}
+    \item \label{enumi: prob: 0.7.1}
+    \(X\)は局所連結である。
+    \item \label{enumi: prob: 0.7.2}
+    任意の局所同相写像\(p:E\to X\)に対して\(E\)も局所連結となる。
+    \item \label{enumi: prob: 0.7.3}
+    任意の局所同相写像\(p:E\to X\)に対し、
+    連結成分のなす集合\(\Pi_0(E)\)は離散である。
+    \item \label{enumi: prob: 0.7.4}
+    任意の開集合\(U\subset X\)に対して\(\Pi_0(U)\)は離散である。
+  \end{enumerate}
+  さらに次を示せ：
+  \(X\)が局所連結であることと、
+  定数層を対応させる函手\(\Gamma^*: \sfSet \to \Sh(X)\)に
+  左随伴\(\Pi_0\)が存在することは同値である。
+\end{prob}
+
+\begin{proof}
+  まず二つの条件\ref{enumi: prob: 0.7.1}と\ref{enumi: prob: 0.7.4}の同値性を証明する。
+  条件\ref{enumi: prob: 0.7.1}を仮定、すなわち、\(X\)を局所連結であると仮定する。
+  開集合\(U\subset X\)に対して\(U\)も局所連結であるから、
+  条件\ref{enumi: prob: 0.7.4}を満たすことを示すには、
+  \(\Pi_0(X)\)が離散であることを示せば十分である。
+  \(X\)は局所連結であるから、各連結成分は開であり、
+  従って、\(\Pi_0(X)\)も開となる
+  (\(\Pi_0(X)\)には商位相が入っていて、各一点の逆像は\(X\)の連結成分、すなわち開集合であるから、
+  \(\Pi_0(X)\)の各一点集合は開集合となる)。
+  逆に条件\ref{enumi: prob: 0.7.4}を仮定する。
+  このとき、\(X\)の各開集合\(U\subset X\)に対して、
+  \(U\)の各連結成分は開となる。
+  点\(x\in X\)に対し、\(x\)を含む開集合\(x\in U\subset X\)を任意にとると、
+  \(U\)の連結成分のうち\(x\)の属するものを\(V\)とすれば、
+  \(V\)は連結な\(x\)の開近傍となる。
+  これは\(X\)の各点が連結な開集合からなる近傍基を持つことを意味していて、
+  すなわち\(X\)は局所連結となる。
+  以上で\ref{enumi: prob: 0.7.1}\(\Leftrightarrow\)\ref{enumi: prob: 0.7.4}が示された。
+
+  局所同相写像の定義より\ref{enumi: prob: 0.7.1}\(\Rightarrow\)\ref{enumi: prob: 0.7.2}は明らかであり、
+  局所同相写像として\(\id_X:X\to X\)を考えることで
+  \ref{enumi: prob: 0.7.2}\(\Rightarrow\)\ref{enumi: prob: 0.7.1}も従う。
+  以上より
+  \ref{enumi: prob: 0.7.1}\(\Leftrightarrow\)\ref{enumi: prob: 0.7.2}
+  \(\Leftrightarrow\)\ref{enumi: prob: 0.7.4}がわかった。
+  また\ref{enumi: prob: 0.7.1}\(\Leftrightarrow\)\ref{enumi: prob: 0.7.4}の同値性から
+  \ref{enumi: prob: 0.7.2}\(\Leftrightarrow\)\ref{enumi: prob: 0.7.3}の同値性がわかるので、
+  以上ですべての条件の同値性が示された。
+
+  最後の主張を証明する。
+  定理0.24で\(L\)と表記されている函手を用いると、
+  \(X\)上の層\(F\)に対して、
+  局所同相写像\(q:L(F)\to X\)を得る。
+  \(p_1:X\times S \to X\)を射影とする。
+  局所連結な位相空間の圏を\(\mathsf{LCTop}\)と表す。
+  集合を離散位相空間とみなす函手\(D:\sfSet\to\sfTop\)は
+  部分圏\(\mathsf{LCTop}\)を経由する。
+  また、連結成分の集合に商位相を入れることで得られる函手
+  \(\Pi_0:\sfTop\to\sfTop\)と包含函手\(I:\mathsf{LCTop}\to\sfTop\)を合成すると、
+  すでに確認した同値性
+  \ref{enumi: prob: 0.7.1}\(\Leftrightarrow\)\ref{enumi: prob: 0.7.4}により、
+  \(\Pi_0\circ I\)は\(D\)の (本質的) 像を経由し、
+  函手\(\bar{\Pi}_0 : \mathsf{LCTop}\to \sfSet\)を得る。
+  このとき、自然な商写像\(X\to \Pi_0(X)\)があることから、
+  \(\bar{\Pi}_0\)は\(D\)の左随伴となっている。
+
+  さて、\(X\)上の層\(F\)と集合\(S\)に対して次のimplicationsを得る：
+  \begin{itemize}
+    \item[ \ ]
+    層の射\(F\to \Gamma^*(S)\)を与える。
+    \item[\(\overset{\bigstar}{\Leftrightarrow}\)]
+    連続写像\(\varphi: L(F) \to X\times D(S)\)を\(q=p\circ \varphi\)となるように与える。
+    \item[\(\overset{\spadesuit}{\Leftrightarrow}\)]
+    連続写像\(L(F)\to D(S)\)を与える。
+    \item[\(\overset{\clubsuit}{\Leftrightarrow}\)]
+    連続写像\(\Pi_0(L(F))\to D(S)\)を与える。
+  \end{itemize}
+  ただし\(\bigstar\)の箇所は定理0.24の圏同値を用い、
+  \(\spadesuit\)の箇所は\(X\times S\)の積の普遍性を用い、
+  \(\clubsuit\)の箇所は「同値関係で割ること」の普遍性を用いた。
+  また、この射の対応は\(F,S\)について自然である。
+  \(X\)が局所連結であれば\(L(F)\)も局所連結であり、
+  従って\(\Pi_0(L(F))\)は離散位相となって、
+  上はさらに集合の射\(U(\Pi_0(L(F)))\to S\)を与えることと等価となる。
+  ここで\(U:\sfTop\to \sfSet\)は忘却函手である。
+  以上より\(\Gamma^*\)の左随伴\(U\circ \Pi_0\circ L\)が得られる。
+
+  逆に\(\Gamma^*\)に左随伴が存在するとする。
+  この左随伴を\(\Pi_0\)と区別して\(\tilde{\Pi}_0\)と表記することにする。
+  集合\(S\)と層\(F\)に対して、
+  随伴\(\tilde{\Pi}_0\dashv \Gamma^*\)と上の対応関係によって、
+  \begin{itemize}
+    \item[ \ ] 写像\(\tilde{\Pi}_0(F)\to S\)を与える
+    \item[\(\Leftrightarrow\)] 射\(F\to \Gamma^*(S)\)を与える
+    \item[\(\Leftrightarrow\)] 連続写像\(\Pi_0(L(F))\to D(S)\)を与える
+  \end{itemize}
+  となる。
+  \(S\)として\(\tilde{\Pi}_0(F)\)をとり、
+  写像\(\id_{\tilde{\Pi}_0(F)}:\tilde{\Pi}_0(F)\to \tilde{\Pi}_0(F)\)
+  に対応する連続写像\(\theta:\Pi_0(L(F))\to D(\tilde{\Pi}_0(F))\)を考える。
+  すると、\(f:\tilde{\Pi}_0(F)\to S\)に上の同値性によって対応する射
+  \(\Pi_0(L(F))\to D(S)\)は\(D(f)\circ \theta\)によって与えられる。
+
+  \(\theta\)が単射であることを証明すれば、\(\Pi_0(L(F))\)が離散位相であることがわかり、
+  \(L(F)\)が局所連結、すなわち底空間\(X\)の局所連結性がわかる。
+  \(C,C'\in \Pi_0(L(F))\)を異なる二つの点とする。
+  \(C,C'\)は\(L(F)\)の異なる二つの連結成分である。
+  従って、\(C,C'\)を\(L(F)\)の部分集合と考えると、これは開かつ閉となる。
+  \(S \dfn \left\{ C ,L(F)\setminus C\right\}\)という二点集合とし、
+  \(f:L(F)\to D(S)\)を\(C\)に属する点を点\(C\)へ、
+  そうでない点を\(L(F)\setminus C\)という点へ写す写像とする。
+  このとき、\(f\)の引き起こす射\(\bar{f}:\Pi_0(L(F))\to D(S)\)は
+  \(\bar{f}(C) = C, \bar{f}(C') = L(F)\setminus C\)を満たす。
+  また、\(\bar{f}\)は\(\theta:\Pi_0(L(F))\to D(\tilde{\Pi}_0(F))\)を経由するので、
+  \(\theta(C) \neq\theta(C')\)となって\(\theta\)が単射であることがわかった。
+  以上より\(\Pi_0(L(F))\)は離散位相となって、
+  \(L(F)\)は局所連結となる。
+  射影\(L(F)\to X\)は局所同相なので、前半で確認した事柄から、\(X\)の局所連結性が従う。
+  以上で全て示された。
+\end{proof}
+
+\begin{rrem*}
+  より良い証明を求めています。
+\end{rrem*}
+
+
+\begin{prob}\label{prob: 0.8}
+  \(\mcC\)を (小) 圏、
+  \(R\subset h_U\)を対象\(U\in \mcC\)上のsieveとする。
+  \begin{itemize}
+    \item
+    \(R\)が\textbf{エピ} (epimorphic) であるとは、
+    \(a,b:U\to W, a\neq b\)となる二つの射に対し、
+    ある\((c:V\to U)\in R\)が存在して\(ac\neq bc\)となることを言う。
+    \item
+    \(R\)が\textbf{普遍的にエピ} (universally epimorphic) であるとは、
+    任意の射\((f:V\to U)\in \mcC\)に対して
+    \(f^*R\)が\(V\)上のsieveとしてエピであることを言う。
+  \end{itemize}
+  このとき、普遍的にエピなsieveの族は\(\mcC\)のGrothendieck位相を形成することを示せ。
+  また、これはすべての表現可能函手がseparated presheafとなるような最大の位相であることを示せ。
+\end{prob}
+
+\begin{proof}
+  証明に入る前に、エピであることの条件を言い換える。
+  \((f:V\to U)\in R\)をとることが
+  前層の射\(h_V\to R\)を与えることと同値 (米田の補題) であることに注意すれば、
+  次の等価な言い換えが成立する：
+  \begin{itemize}
+    \item[ \ ]
+    \(R\subset h_U\)がエピである。
+    \item[\(\Leftrightarrow\)]
+    任意の射\(a,b:h_U\to h_{U'} , a\neq b\)に対して
+    \(ai \neq bi\)である。
+    ただしここで\(i:R\to h_U\)は包含射である。
+  \end{itemize}
+
+  \(J(U)\)を\(U\)上の普遍的にエピなsieveの集合とする。
+  \(h_U\)というsieveは普遍的にエピであるから、\(h_U\in J(U)\)となる。
+  よって\(J(U)\)たちはGrothendieck位相であるための条件 (Definition 0.32 (i)) を満たす。
+  次に、普遍的にエピなsieve \(R\in J(U)\)と任意の射\(f:V\to U\)に対して、
+  \(f^*R = R\times_{h_U}h_V\)は定義より普遍的にエピであるから、
+  \(f^*R\in J(V)\)となって、
+  \(J(U)\)たちはGrothendieck位相であるための条件 (Definition 0.32 (ii)) を満たす。
+
+  \(J(U)\)たちがGrothendieck位相であるための条件 (Definition 0.32 (iii)) を満たすことを証明する。
+  \(R\in J(U)\)を普遍的にエピなsieve、
+  \(S\)を\(U\)上のsieveであって、
+  任意の\((f:V\to U)\in R\)に対して\(f^*S\)は普遍的にエピであるとする。
+  示さなければならないことは、\(S\)が普遍的にエピな\(U\)上のsieveとなることである。
+  任意に射\(g:W\to U\)をとる。
+  \(g^*S\)が\(W\)上のエピなsieveであれば良い。
+  そのために、二つの異なる射\(a,b:h_W\to h_{W'}, a\neq b\)を任意にとる。
+  \(R\)は普遍的にエピであるから、
+  ある射\(j:h_{U_0}\to g^*R\)であって、
+  包含射\(i:g^*R\subset h_W\)と\(a,b\)を合成して\(aij\neq bij\)となるものが存在する。
+  ここで\(g^*R\xrightarrow{i} h_W \xrightarrow{g\circ (-)} h_U\)は
+  \(R\to h_U\)を経由する。
+  \(p:g^*R\to R\)を射影、\(k:R\subset h_U\)を包含射とする。
+  \(kpj:h_{U_0}\to h_U\)に対応する\(\mcC\)の射を\(l:U_0\to U\)とする。
+  \(l_* = kpj = g_*ij\)である。
+  ここで\(S\subset h_U\)を\(g_*:h_W\to h_U\)と\(l_*:h_{U_0}\to h_U\)でpull-backしたものを考えると、
+  \(W,U_0\)上のsieve \(g^*S\subset h_W,l^*S\subset h_{U_0}\)を得る。
+  さらに\(l_*\)は\(R\)を経由する、つまり\(l\in R\)であることから、
+  \(l^*S\subset h_{U_0}\)はエピなsieveである。
+  以上より、包含射を\(j':l^*S\subset h_{U_0}\)とすれば、
+  二つの異なる射\(aij\neq bij : h_{U_0}\to h_{W'}\)に対して
+  \(aijj'\neq aijj' : l^*S\to h_{W'}\)となる。
+  \(k':g^*S\subset h_W\)を包含射とすると、図式
+  \[
+  \begin{CD}
+    l^* S @>j'>> h_{U_0} \\
+    @VVV @V ij VV \\
+    g^*S @> k' >> h_W
+  \end{CD}
+  \]
+  が可換であることから、
+  \(aijj'\neq aijj'\)は\(ak'\neq bk'\)を意味する。
+  このことは\(g^*S\)が\(W\)上のエピなsieveであることを意味している。
+  以上より\(J(U)\)たちはGrothendieck位相であるための条件 (Definition 0.32 (iii)) を満たす。
+
+
+  これらの\(J(U)\)たちがすべての\(h_U\)たちをseparated presheafとするような
+  最大の位相であることを証明する。
+  まずこの位相\(J(U)\)に関して表現可能函手がseparated presheafであることを示す。
+  そのためには、任意の開集合\(U\)と任意の\(R\in J(V)\)と
+  任意の二つの射\(a,b:h_V\to h_U\)が\(a|_R = b|_R\)を満たしているときに
+  \(a=b\)となることを示せば良い。
+  一方これは\(R\to h_V\)がエピなsieveであることから明らかである。
+  よって表現可能函手はこの位相に関してseparated presheafである。
+  逆にすべての表現可能函手がseparated presheafとなるような位相\(J'(U)\)を考える。
+  このとき、\(U\)を開集合、
+  \(R\in J'(U)\)をsieveとすると、
+  表現可能函手がseparatedであることから、
+  任意の二つの射\(a,b:h_U\to h_W\)に対して、
+  \(a\neq b\)であれば、\(a|_R\neq b|_R\)となる。
+  従って、これは\(R\)がエピであることを示している。
+  よって\(J'(U)\)は\(U\)上のエピなsieveの集合の部分集合である。
+  一方、\(J'(U)\)たちは
+  Grothendieck位相であるための条件 (Definition 0.32 (ii)) を満たすので、
+  任意の\(f:V\to U\)に対して
+  \(f^*R\in J'(V)\)となる。
+  このことは\(f^*R\)がエピな\(V\)上のsieveであることを帰結する。
+  従ってとくに\(R\)は普遍的にエピな\(U\)上のsieveとなる。
+  以上より\(J'(U)\subset J(U)\)がわかる。
+  すなわち、普遍的にエピなsieveをすべて集めることで構成される位相\(J(U)\)は
+  表現可能函手をすべてseparated presheafとするような最大の位相であることがわかった。
+
+  以上で証明を完了する。
+\end{proof}
+
+
+
+
+\begin{prob}\label{prob: 0.9}
+  \(G\)を群、
+  \(\sfTop_G\)を\(G\)の作用のある位相空間と\(G\)の作用と可換な連続写像のなす圏、
+  \(X\)を\(\sfTop_G\)の対象、
+  \(\pi:X\to X/G\)を\(G\)の作用による商、
+  \(\Sh_G(X)\)を\(X\)への局所同相写像からなる\(\sfTop_{G/X}\)の充満部分圏とする。
+  次の主張を示せ：
+  \begin{enumerate}
+    \item \label{enumi: prob: 0.9.1}
+    \(\Sh_G(X)\)はGrothendieck Toposである。
+    \item \label{enumi: prob: 0.9.2}
+    \(\pi\)によるpull-backは函手
+    \(\pi^{-1}: \Sh(X/G)\to \Sh_G(X)\)を引き起こす。
+    \item \label{enumi: prob: 0.9.3}
+    \(G\)の作用が自由、
+    すなわち任意の点でのstabilizerが自明な\(G\)の部分群であるとき、
+    \(\pi^{-1}\)は圏同値である
+    (本文ではこの意味で群作用がeffectiveであるという用語が用いられている)。
+    \item \label{enumi: prob: 0.9.4}
+    \(G\)の作用がproper、
+    すなわち任意の点の軌道が\(X\)の閉部分集合である、と仮定する。
+    このとき、\(\pi^{-1}\)が圏同値であれば、
+    \(G\)の作用は自由である。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: prob: 0.9.1}。
+  Giraudの定理を用いてもできると思う (多分。確認してない。)
+  けど、ここではヒント通りにやる。
+  サイト\((\mcC,J)\)を構成して、
+  \(\Sh(\mcC,J)\cong \Sh_G(X)\)となるようにする。
+
+  圏\(\mcC\)を次で定義する：
+  \begin{itemize}
+    \item
+    対象の集合は\(X\)の開集合の集合とする。
+    \item
+    二つの対象 (\(X\)の開集合) \(U,V\)の間の射の集合は、
+    \[\Hom_{\mcC}(V,U) \dfn \left\{ g\in G\middle| g(V)\subset U\right\}\]
+    で定める。
+    \item
+    二つの射\(g:V\to U, h:W\to V\)があるとき、
+    射の定義から\(g(V)\subset U, h(W)\subset V\)となるので、
+    \(gh(W)\subset g(V)\subset U\)となる。
+    従って、\(g,h\)の合成を\(G\)の元としての積\(gh\)と定めることで、
+    これはwell-definedな写像
+    \[\Hom_{\mcC}(V,U)\times\Hom_{\mcC}(W,V) \to \Hom_{\mcC}(W,U)\]
+    を定める。
+  \end{itemize}
+  \(\mcC\)は任意のfiber積が存在する圏となることを確かめておく。
+  \(g:V\to U , h:W\to U\)を二つの射とする。
+  このとき、\(\mcC\)の射の定義より、\(g(V)\subset U, h(W)\subset U\)である。
+  \(U'\dfn h(W)\cap g(V)\)とおけば、
+  \(U'\subset g(V), U'\subset h(W)\)であるから、
+  \(g^{-1}(U')\subset V, h^{-1}(U')\subset W\)となる。
+  従って\(\mcC\)における次の可換図式を得る：
+  \[
+  \begin{CD}
+    U' @>h^{-1}>> W \\
+    @V g^{-1} VV @VV h V \\
+    V @>g>> U.
+  \end{CD}
+  \]
+  任意に可換図式
+  \[
+  \begin{CD}
+    W' @>r>> W \\
+    @V s VV @VV h VV \\
+    V @>g>> U
+  \end{CD}
+  \]
+  を与える。
+  このとき、\(\mcC\)における射とそれらの合成の定義から、
+  \(r(W')\subset W, s(W')\subset V, hr = gs\)となる。
+  \(t \dfn hr = gs\)と置く。
+  このとき、\(t(W')\subset h(W) \subset U , t(W')\subset g(V)\subset U\)となるので、
+  \(t(W')\subset U' = h(W)\cap g(V)\)となる。
+  従って、\(\mcC\)における射\(t: W'\to U'\)が存在する。
+  また、\(g^{-1}t = s, h^{-1}t = r\)であり、
+  \(G\)が群であることはこのような\(t\)は存在すれば一意的であることを意味するので、
+  以上より\(U'\)が\(g:V\to U,h:W\to U\)のfiber積となる。
+
+  \(\mcC\)上の位相 (本文のsieveによるものではなく、本文でpretopologyと呼ばれているもの)
+  \(J\)を次で定義する：
+  \begin{itemize}
+    \item
+    対象\(U\in \mcC\)に対し、
+    \(\mcC\)の射の集合\(\left\{ g_i:U_i\to U\middle| i\in I\right\}\)
+    が\(U\)の被覆であることを、
+    \(\bigcup_{i\in I}g_i(U_i) = U\)となることとして定義する。
+    \(J(U)\)を\(U\)の被覆の集合とする。
+  \end{itemize}
+  \(J\)が\(\mcC\)上のGrothendieck (pre)topologyを与えることを示す。
+  \(\left\{ \id_U = 1_G : U\to U\right\} \in J(U)\)であるから、
+  \(J\)はGrothendieck pretopologyであるための条件 (Definition 0.31 (i)) を満たす。
+  \(\left\{ g_i:U_i\to U\middle| i\in I\right\}\)を\(U\)の被覆、
+  \(h:V\to U\)を射とする。
+  このとき、\(\mcC\)のfiber積に関してすでに確認したことから、
+  \(h:V\to U, g_i:U_i\to U\)の\(U\)上のfiber積は
+  \(V_i\dfn h(V) \cap g_i(U_i)\)で与えられ、
+  射影\(V_i\to V\)は\(h^{-1}\)により与えられる。
+  このとき、
+  \begin{align*}
+    \bigcup_{i\in I} h^{-1}\left(V_i\right)
+    &= \bigcup_{i\in I} h^{-1}\left( h(V) \cap g_i(U_i) \right) \\
+    &= \bigcup_{i\in I} \left( V \cap h^{-1}g_i(U_i) \right) \\
+    &= V \cap h^{-1}\left( \bigcup_{i\in I} g_i(U_i) \right) \\
+    &= V \cap h^{-1}(U) \\
+    &= V
+  \end{align*}
+  であるから、\(\left\{h^{-1}:V_i\to V\middle| i\in I\right\}\)は\(V\)の被覆となる。
+  よって\(J\)はGrothendieck pretopologyであるための条件 (Definition 0.31 (ii)) を満たす。
+  \(\left\{ g_i:U_i\to U\middle| i\in I\right\}\)を\(U\)の被覆、
+  \(\left\{ g_{ij}:U_{ij}\to U_i\middle| j\in J_i\right\}\)を\(U_i\)の被覆とする。
+  このとき、
+  \(\bigcup_{i\in I}g_i(U_i) = U ,
+  \bigcup_{j\in J_i}g_{ij}(U_{ij}) = U_i\)であるから、
+  \[
+  \bigcup_{i\in I}\bigcup_{j\in J_i}g_ig_{ij}(U_{ij})
+  = \bigcup_{i\in I} g_i\left(\bigcup_{j\in J_i}g_{ij}(U_{ij})\right)
+  = \bigcup_{i\in I} g_i(U_i)
+  = U
+  \]
+  となって、
+  \(\left\{ g_ig_{ij}:U_{ij}\to U \middle| i\in I, j\in J_i\right\}\)
+  は\(U\)の被覆である。
+  以上で\(J\)はGrothendieck pretopologyであるための条件を全て満たすことが確認できた。
+
+  \(\Sh_G(X)\)と\(\Sh(\mcC,J)\)が圏同値であることを証明する。
+  \(\mcC\)は部分圏として\(\Open(X)\)を含んでいることに注意する。
+  すると、反変関手\(F:\mcC^{\op}\to \sfSet\)に対して、
+  \(\Open(X)^{\op}\subset \mcC^{\op}\)を合成することで、
+  \(X\)上の前層\(\bar{F}\)を得る。
+  この函手により\(\PSh(\mcC,J)\)は\(\PSh(X)\)の部分圏とみなすことができる。
+  同様に、\(G\)の作用を忘却することで、
+  \(\sfTop_{G/X}\)は\(\sfTop_{/X}\)の部分圏とみなすことができる。
+  これらの包含函手と本文のTheorem 0.24の函手\(L,\Gamma\)との合成を考え、
+  それらが部分圏\(\PSh(\mcC,J)\subset \PSh(X), \sfTop_{G/X}\subset \sfTop_{/X}\)
+  を経由することを確認しておく：
+  \[
+  \begin{tikzpicture}[auto]
+    \node (A) at (0,2) {\(\sfTop_{/X}\)};
+    \node (B) at (4,2) {\(\PSh(X)\)};
+    \node (A') at (0,0) {\(\sfTop_{G/X}\)};
+    \node (B') at (4,0) {\(\PSh(\mcC,J).\)};
+    \draw[->,transform canvas={yshift=1pt}] (A) to node {\(\scriptstyle \Gamma\)} (B);
+    \draw[->,transform canvas={yshift=-1pt}] (B) to node {\(\scriptstyle L\)} (A);
+    \draw[right hook->] (A') to node {\(\scriptstyle \bar{(-)}\)} (A);
+    \draw[right hook->] (B') to node {\(\scriptstyle \bar{(-)}\)} (B);
+    \draw[->,transform canvas={yshift=1pt}, dashed] (A') to node {\(\scriptstyle \bar{\Gamma}\)} (B');
+    \draw[->,transform canvas={yshift=-1pt}, dashed] (B') to node {\(\scriptstyle \bar{L}\)} (A');
+  \end{tikzpicture}
+  \]
+  \(F:\mcC^{\op}\to \sfSet\)を\(\mcC\)上の前層とする。
+  射\(g:V\to U\)に対し、\(F(g):F(U)\to F(V)\)が (合成と可換になるように) 与えられていることから、
+  とくに\(\mcC\)の同型射\(g:V\to g(V)\)に対して
+  全単射\(F(g):F(V)\to F(g(V))\)が与えられている。
+  また、\(\bar{F}\)の各制限写像\(\rho^U_V\)は、
+  \(1_G:V\subset U\)に対応するものとして
+  \(\rho^U_V\dfn F(1_G:V \hookrightarrow U)\)で与えられる。
+  さて、\(L(\bar{F})\)は点\(x\in X\)とstalk \(s\in \bar{F}_x\)の組
+  \((x,s)\)のなす集合に、
+  各切断にstalkでの像を対応させる写像\(\bar{F}(U)\to L(\bar{F})\)の
+  像位相を入れた位相空間として定義される。
+  \(\bar{F}\)が\(\mcC\)上の前層\(F\)の忘却であることから、
+  \(L(\bar{F})\)には次のような\(G\)の作用が入る：
+  \(g(x,s) \dfn (g(x),F_x(g^{-1})(s))\).
+  ただしここで、\(F_x(g^{-1}):\bar{F}_x \xrightarrow{\sim} \bar{F}_{g(x)}\)は
+  射\(g:V\to U\)に対する次の可換図式がstalkの間に引き起こす全単射である
+  (縦向きに余極限をとる)：
+  \[
+  \begin{CD}
+    \bar{F}(U) = F(U) @>F_{U,g(U)}(g^{-1})>> \bar{F}(g(U)) = F(g(U)) \\
+    @V {F(1_G) = \rho^U_V} VV @VV {F(1_G) = \rho^U_V} V \\
+    \bar{F}(V) = F(V) @>F_{V,g(V)}(g^{-1})>> \bar{F}(g(V)) = F(g(V)).
+  \end{CD}
+  \]
+  \(L(\bar{F})\to X\)は第一成分への射影であるから、
+  これはこのように定義した\(L(\bar{F})\)の\(G\)の作用と可換であり、
+  従って\(L(\bar{F})\)は\(\sfTop_{G/X}\)の対象となる。
+  また、\(\mcC\)上の前層の射\(\varphi: F\to F'\)と開集合\(U\subset X\)と\(g\in G\)に対して、
+  図式
+  \[
+  \begin{CD}
+    F(U) @>F_{U,g(U)}(g^{-1})>> F(g(U)) \\
+    @V\varphi_U VV @V\varphi_{g(U)}VV \\
+    F'(U) @>F'_{U,g(U)}(g^{-1})>> F'(g(U))
+  \end{CD}
+  \]
+  が可換であることから、stalkの間に引き起こす射の可換図式
+  \[
+  \begin{CD}
+    \bar{F}_x @>F_x(g^{-1})>> \bar{F}_{g(x)} \\
+    @V\varphi_x VV @V\varphi_{g(x)}VV \\
+    \bar{F}'_x @>F'_x(g^{-1})>> \bar{F}'_x
+  \end{CD}
+  \]
+  が得られ、
+  従って、\(\varphi\)の引き起こす\(X\)上の射
+  \(L(\bar{\varphi}): L(\bar{F})\to L(\bar{F}')\)
+  は\(G\)の作用と可換である。
+  以上より、\(L,\bar{(-)}\)と可換な函手
+  \(\bar{L}:\PSh(\mcC,J) \to \sfTop_{G/X}\)を得る。
+  また、本文のTheorem 0.24の証明中にもある通り、
+  射影\(\bar{L}(F)\to X\)は局所同相写像であるから、
+  \(\bar{L}\)は\(\Sh_G(X)\)を経由することに注意しておく。
+
+  \(p:E\to X\)を\(\sfTop_{G/X}\)の対象とする。
+  \(\bar{p}:\bar{E}\to X\)は\(G\)の作用を忘却した\(\sfTop_{/X}\)の対象である。
+  \(\Gamma(\bar{E})\)は\(\bar{p}\)の局所的な切断のなす層であり、
+  各開集合\(U\subset X\)に対して
+  \[
+  \Gamma(\bar{E})(U) \dfn \Hom_{\sfTop_{/X}}(U,E) = \Hom_{/X}(U,E)
+  \]
+  で定義される。
+  このとき、\(g\in G\)と\(X\)上の連続写像\(s:U\to E\)に対して、
+  可換図式
+  \[
+  \begin{CD}
+    U @>s>> E \\
+    @| @VVpV \\
+    U @>\subset >> X
+  \end{CD}
+  \]
+  を写像\(g^{-1}:X\to X\)に沿ってpull-backすることにより、可換図式
+  \[
+  \begin{CD}
+    g(U) @>g^*s>> E \\
+    @| @VVpV \\
+    g(U) @>\subset >> X
+  \end{CD}
+  \]
+  を得る。
+  これにより全単射
+  \[
+  g^*:\Gamma(\bar{E})(U) = \Hom_{/X}(U,E)
+  \xrightarrow{\sim} \Gamma(\bar{E})(g(U)) = \Hom_{/X}(g(U),E)
+  \]
+  が定まる。
+  図式
+  \[
+  \begin{CD}
+    g(U) @>g^*s>> E \\
+    @Vg^{-1}VV @VVg^{-1}V \\
+    U @>s>> E
+  \end{CD}
+  \]
+  が可換 (pull-back diagram) であることから、点\(x\in g(U)\)に対しては、
+  \((g^*s)(x) = g(s(g^{-1}(x))\)となることに注意しておく。
+  従って、射\(g:V\to U\)と\(X\)上の連続写像\((s:U\to E)\in \Gamma(\bar{E})(U)\)に対し、
+  \(g^{-1,*}(s|_{g(V)})\in \Gamma(\bar{E})(V)\)が定まる。
+  \(g\)が\(X\)上の\(g^{-1}\)に沿ったpull-backにより定義されていることから、
+  開集合の包含\(V\subset U\)に対しては、図式
+  \[
+  \begin{CD}
+    \Hom_{/X}(U,E) @>g^*>> \Hom_{/X}(g(U),E) \\
+    @V {(-)|_V} VV @VV {(-)|_{g(V)}} V \\
+    \Hom_{/X}(V,E) @>g^*>> \Hom_{/X}(g(V),E)
+  \end{CD}
+  \]
+  が可換となる。
+  よって、二つの射\(g:V\to U, h:W\to V\)に対して、
+  \begin{align*}
+    h^{-1,*}((g^{-1,*}(s|_{g(V)})|_{h(W)}))
+    &= h^{-1,*}((g^{-1,*}(s)|_V)|_{h(W)})) \\
+    &= h^{-1,*}(g^{-1,*}(s)|_{h(W)}) \\
+    &= h^{-1,*}g^{-1,*}(s)|_W \\
+    &= (gh)^{-1,*}(s)|_W
+  \end{align*}
+  となる。
+  これは\(\mcC\)の対象\(U\)に対して
+  \[
+  U\mapsto \bar{\Gamma}(E)(U) \dfn \Gamma(\bar{E})(U) = \Hom_{/X}(U,E)
+  \]
+  により定まる対応関係が、\(G\)の作用
+  \[
+  \bar{\Gamma}(E)_{U,V}(g):
+  \bar{\Gamma}(E)(U) \to \bar{\Gamma}(E)(V), s\mapsto g^{-1,*}(s|_{g(V)})
+  \]
+  によって\(\mcC\)上の前層\(\bar{\Gamma}(E)\)を定めることを示している。
+  各\(s\in \bar{\Gamma}(E)(U)\)と各点\(x\in V\)に対しては、
+  \begin{equation}
+    \label{eq: prob: 0.9}
+    \bar{\Gamma}(E)_{UV}(g)(s)(x) = g^{-1,*}(s|_{g(V)})(x)
+    = g^{-1}(s|_{g(V)}(g(x)) = g^{-1}(s(g(x)))
+    \tag{\(\dagger\)}
+  \end{equation}
+  と計算できることに注意しておく。
+  構成から\(\overline{\bar{\Gamma}(E)} = \Gamma(\bar{E})\)となる。
+  さらに、\(G\)の作用と可換な\(X\)上の射\(f:E\to E'\)と
+  開集合\(U\subset X\)に対して、
+  図式
+  \[
+  \begin{CD}
+    \Hom_{/X}(U,E) @>g>> \Hom_{/X}(g(U),E) \\
+    @V {f\circ(-)} VV @VV {f\circ(-)} V \\
+    \Hom_{/X}(U,E') @>g>> \Hom_{/X}(g(U),E')
+  \end{CD}
+  \]
+  が可換であることから、
+  各\(U\)に対して定まる写像
+  \(\Gamma(\bar{f})_U:\Gamma(\bar{E})(U) \to \Gamma(\bar{E}')(U)\)
+  は自然変換\(\bar{\Gamma}(E)\to \bar{\Gamma}(E')\)を形成する。
+  以上より\(\bar{(-)}, \Gamma\)と可換な
+  函手\(\bar{\Gamma}:\sfTop_{G/X} \to \PSh(\mcC,J)\)が構成された。
+
+
+  これらの函手\(\bar{L},\bar{\Gamma}\)が\(\bar{(-)},\eta,\ep\)と可換な随伴対をなすことを証明する。
+  ただしここで\(\eta,\ep\)は本文のTheorem 0.24で構成されている随伴対のunitとcounitである。
+  本文のTheorem 0.24で構成されている自然変換\(\eta\)は、
+  \(X\)上の前層\(F\)、開集合\(U\subset X\)、切断\(s\in F(U)\)に対して、
+  \[
+  \eta_{F,U}(s) \dfn (x\mapsto s_x)\in \Hom_{/X}(U,L(F)) = \Gamma(L(F))(U)
+  \]
+  で定義される写像
+  \(\eta_{F,U}:F(U)\to \Gamma(L(F))(U)\)の族である。
+  \(F\)が\(\mcC\)上の前層であるときに、
+  \(\eta_{\bar{F},U}\)が\(\mcC\)の射\(g:V\to U\)の引き起こす写像
+  \(F(g):F(U)\to F(V),
+  \bar{\Gamma}(\bar{L}(g)) : \bar{\Gamma}(\bar{L}(F))(U)\to \bar{\Gamma}(\bar{L}(V))\)
+  と可換であることを示せば良い。
+  すなわち、図式
+  \[
+  \begin{CD}
+    F(U) @>F_{UV}(g)>> {F(V)} \\
+    @V {\eta_{\bar{F},U}} VV @VV {\eta_{\bar{F},V}}V \\
+    \bar{\Gamma}(\bar{L}(F))(U) @>\bar{\Gamma}(\bar{L}(F))_{UV}(g)>> \bar{\Gamma}(\bar{L}(F))(V)
+  \end{CD}
+  \]
+  が可換であることを示せば良い。
+  \(\mcC\)の射\(g:V\to U\)と切断\(s\in F(U)\)を任意にとる。
+  \(\bar{\Gamma}(\bar{L}(F))(V)\)の元は
+  \(X\)上の連続写像\(V\to \bar{L}(F)\)であることに注意する。
+  点\(x\in V\)に対して、
+  \begin{align*}
+    \left(\left(\bar{\Gamma}(\bar{L}(F))_{UV}(g)\right)(\eta_{\bar{F},U}(s))\right)(x)
+    &\overset{\bigstar}{=}
+    g^{-1}(\eta_{\bar{F},U}(s)(g(x))) \\
+    &\overset{\spadesuit}{=} g^{-1}(s_{g(x)}) \\
+    &\overset{\clubsuit}{=} F_{g(x)}(g^{-1})(s_{g(x)}) \\
+    &\overset{\heartsuit}{=} F_{g(V),V}(g^{-1})(s|_{g(V)})_x \\
+    &= F_{U,V}(g^{-1})(s)_x \\
+    &\overset{\spadesuit}{=} \eta_{\bar{F},V}(F_{U,V}(g^{-1})(s))(x) \\
+  \end{align*}
+  となる。
+  ただし\(\bigstar\)の箇所は\(\bar{\Gamma}(-)_{UV}(g)\)の計算結果\eqref{eq: prob: 0.9}を用い、
+  二つの\(\spadesuit\)の箇所は\(\eta_{\bar{F}}\)の定義を用い、
+  \(\clubsuit\)の箇所は\(\bar{L}\)への\(G\)の作用の定義を用い、
+  \(\heartsuit\)の箇所は図式
+  \[
+  \begin{CD}
+    F(g(V)) @> F_{g(V),V}(g^{-1}) >> F(V) \\
+    @ V(-)_{g(x)} VV @VV (-)_x V \\
+    \bar{F}_{g(x)} @>F_{g(x)}(g^{-1}) >> \bar{F}_x
+  \end{CD}
+  \]
+  が可換であることを用いた。
+  このことは、\(\eta_{\bar{F},U}\)が\(\mcC\)の射\(g:V\to U\)と可換であることを示している。
+  すなわち、\(\bar{\eta}_{F,U}\dfn \eta_{\bar{F},U}\)と定義すれば、
+  \(\bar{\eta}_F = \left\{ \bar{\eta}_{F,U}\right\}_{U\in\mcC}\)は
+  自然変換\(\bar{\eta}_F:F\to \bar{\Gamma}(\bar{L}(F))\)を形成する。
+  \(\eta\)の自然性から、
+  \(\bar{\eta} = \left\{ \bar{\eta}_F\middle| F\in \PSh(\mcC,J)\right\}\)は
+  自然変換\(\bar{\eta}: 1\to \bar{\Gamma}\bar{L}\)を形成する。
+
+  本文のTheorem 0.24で構成されている自然変換\(\ep\)は、
+  \(X\)上の位相空間\((p:E\to X)\in \sfTop_{/X}\)と
+  点\((x,t)\in L(\Gamma(E))\)に対して、
+  \[
+  \ep_{E}(x,t) \dfn s(x)\in E
+  \]
+  と定義される。
+  ここで\(s\)は\(x\)のある近傍\(U\)上の
+  \(\Gamma(E)\)の切断\(s\in \Gamma(E) = \Hom_{/X}(U,E)\)であって、
+  \(s_x = t\)となるものである。
+  \(s(x)\)は開集合\(U\)や切断\(s\)の取り方によらない。
+  \(E\in \sfTop_{G/X}\)であるときに、
+  \(\ep_{\bar{E}}\)が\(G\)の作用と両立的であることを示す。
+  点\((x,t)\in L(\Gamma(\bar{E}))\)と元\(g\in G\)に対し、
+  \(x\)の近傍\(V\)と切断
+  \(s\in \bar{\Gamma}(E)(V) = \overline{\bar{\Gamma}(E)}(V)\)を
+  \(s_x = t\)となるように選べば、
+  \begin{align*}
+    \ep_{\bar{E}}(g(x,t))
+    &\overset{\bigstar}{=}
+    \ep_{\bar{E}}(g(x),\bar{\Gamma}(E)_x(g^{-1})(t)) \\
+    &\overset{\spadesuit}{=}
+    \ep_{\bar{E}}(g(x), \left( \bar{\Gamma}(E)_{V,g(V)}(g^{-1})(s)\right)_{g(x)}) \\
+    &\overset{\clubsuit}{=}
+    \left( \bar{\Gamma}(E)_{V,g(V)}(g^{-1})(s)\right) (g(x)) \\
+    &\overset{\heartsuit}{=}
+    g(s(g^{-1}(g(x))) \\
+    &= g(s(x)) \\
+    &\overset{\clubsuit}{=} g(\ep_{\bar{E}}(x,t))
+  \end{align*}
+  となる。
+  ただしここで\(\bigstar\)の箇所は\(G\)の\(L(\Gamma(\bar{E}))\)への作用の定義を用い、
+  \(\spadesuit\)の箇所は図式
+  \[
+  \begin{CD}
+    \overline{\bar{\Gamma}(E)}(V) @>\bar{\Gamma}(E)_{V,g(V)}(g^{-1})>>
+    \overline{\bar{\Gamma}(E)}(g(V)) \\
+    @V(-)_xVV @VV(-)_{g(x)}V \\
+    \overline{\bar{\Gamma}(E)}_x @>\bar{\Gamma}(E)_x(g^{-1})>>
+    \overline{\bar{\Gamma}(E)}(E)_{g(x)}
+  \end{CD}
+  \]
+  が可換であることを用い、
+  二つの\(\clubsuit\)の箇所は\(\ep_{\bar{E}}\)の定義を用い、
+  \(\heartsuit\)の箇所は\(\bar{\Gamma}(-)(g)\)の計算結果\eqref{eq: prob: 0.9}を用いた。
+  以上で位相空間の図式
+  \[
+  \begin{CD}
+    L\Gamma(\bar{E}) = \bar{L}\bar{\Gamma}(E) @>g>> L\Gamma(\bar{E}) = \bar{L}\bar{\Gamma}(E) \\
+    @V\ep_{\bar{E}}VV @VV\ep_{\bar{E}}V \\
+    E @>g>> E
+  \end{CD}
+  \]
+  が可換であることがわかった。
+  このことは、\(\bar{\ep}_E \dfn \ep_{\bar{E}}\)と定義すれば、
+  \(\bar{\ep}_E : \bar{L}\bar{\Gamma}(E) to E\)が\(G\)の作用と可換、
+  すなわち\(\sfTop_{G/X}\)の射であることを示している。
+  \(\ep\)の自然性から、\(\bar{\ep} = \left\{ \ep_E \middle| E\in \sfTop_{G/X}\right\}\)
+  は自然変換\(\bar{L}\bar{\Gamma}\to 1\)を形成する。
+  以上で\(\bar{\eta},\bar{\ep}\)により
+  \(\bar{\Gamma}\)は\(\bar{L}\)の右随伴となる。
+
+  本文のTheorem 0.24で示されている圏同値により、
+  \((p:E\to X)\in \sfTop_{G/X}\)が局所同相であれば、
+  \(\bar{\ep}_E = \ep_E : \bar{L}\bar{\Gamma}(E) \to E\)は\(G\)の作用と可換な同相写像となる。
+  また、\(F\in \PSh(\mcC,J)\)が
+  \(\PSh(\Open(X))\)の対象として貼り合わせ条件を満たせば (すなわち、\(X\)上の層であれば)、
+  \(\bar{\eta}_F:F\to \bar{\Gamma}\bar{L}(F)\)は\(\PSh(\mcC,J)\)の同型射となる。
+  このことは、
+  \(\bar{L},\bar{\Gamma}\)が
+  \(X\)上の層からなる\(\PSh(\mcC,J)\)の充満部分圏 (これを\(\mcD\)と置く) と
+  \(\Sh_G(X)\)の間の圏同値を与えることを意味している。
+  \(\Sh_G(X)\)と\(\Sh(\mcC,J)\)が圏同値であることを示すのに残っていることは、
+  \(\mcD\)が\(\Sh(\mcC,J)\)と圏同値であることを証明することである。
+  \(\Sh(\mcC,J)\subset \mcD\subset \PSh(\mcC,J)\)であるから、
+  包含函手\(\Sh(\mcC,J)\subset \mcD\)が本質的全射であることを示せば良い。
+  \(F\)を\(X\)上で層となるような\(\mcC\)上の前層とし、
+  \(\left\{ g_i:U_i\to U\middle| i\in I\right\}\)を\(U\)の被覆とする。
+  \(\mcC\)での被覆の定義より、
+  \(\bigcup_{i\in I}g_i(U_i) = U\)である。
+  また、\(U_{ij} \dfn U_i\times_U U_j = g_i(U_i)\cap g_j(U_j)\) (圏\(\mcC\)におけるfiber積) と置くと、
+  \(F\)の函手性から、以下の集合の図式が可換となる：
+  \[
+  \begin{tikzpicture}[auto]
+    \node (A) at (0,2) {\(F(U)\)};
+    \node (B) at (5,2) {\(\prod_{i\in I}F(g_i(U_i))\)};
+    \node (C) at (13,2) {\(\prod_{i,j\in I}F(g_i(U_i)\cap g_j(U_j))\)};
+    \node (A') at (0,0) {\(F(U)\)};
+    \node (B') at (5,0) {\(\prod_{i\in I}F(U_i)\)};
+    \node (C') at (13,0) {\(\prod_{i\in I}F(U_{ij}).\)};
+    \draw[->] (A) to node {\(\scriptstyle \prod_{i\in I}F_{U,g_i(U_i)}(1_G)\)} (B);
+    \draw[->,transform canvas={yshift=1pt}] (B) to node
+    {\(\scriptstyle \prod_{i,j\in I}F_{g_i(U_i),g_i(U_i)\cap g_j(U_j)}(1_G)\)} (C);
+    \draw[->,transform canvas={yshift=-1pt}] (B) to node[swap]
+    {\(\scriptstyle \prod_{i,j\in I}F_{g_j(U_j),g_i(U_i)\cap g_j(U_j)}(1_G)\)} (C);
+    \draw[->] (A') to node {\(\scriptstyle \prod_{i\in I}F_{U,U_i}(g_i)\)} (B');
+    \draw[->,transform canvas={yshift=1pt}] (B') to node
+    {\(\scriptstyle \prod_{i,j\in I}F_{U_i,U_{ij}}(g_i^{-1})\)} (C');
+    \draw[->,transform canvas={yshift=-1pt}] (B') to node[swap]
+    {\(\scriptstyle \prod_{i,j\in I}F_{U_j,U_{ij}}(g_j^{-1})\)} (C');
+    \draw[->] (A) to node {\(\scriptstyle \id_{F(U)}\)} (A');
+    \draw[->] (B) to node {\(\scriptstyle \prod_{i\in I}F_{U_i,g_i(U_i)}(g_i)\)} (B');
+    \draw[->] (C) to node {\(\scriptstyle \id \)} (C');
+  \end{tikzpicture}
+  \]
+  ここで上側の横向きの図式は\(F\)が層であることと\(\bigcup_{i\in I}g_i(U_i) = U\)であることから
+  equalizerの図式であり、
+  真ん中縦向きの射は同型射であるから、
+  下側横向きの図式もequalizerの図式となる。
+  従って\(F\)は\((\mcC,J)\)に関する層となる。
+  よって\(\mcD = \Sh_G(\mcC,J)\)であり、
+  以上で\ref{enumi: prob: 0.9.1}の証明が完了した。
+
+  \ref{enumi: prob: 0.9.2}。
+  任意の\(g\in G\)の作用\(g:X\to X\)が射影\(\pi:X\to X/G\)と可換である、
+  すなわち\(\pi = \pi\circ g\)である。
+  \(p:E\to X/G\)に対してpull-back図式
+  \[
+  \begin{CD}
+    \pi^{-1}E @>>> \pi^{-1}E @>>> E \\
+    @VVV @VVV @VVpV \\
+    X @>g>> X @>\pi>> X/G
+  \end{CD}
+  \]
+  を考えることで、\(\pi^{-1}E\)に射影\(\pi^{-1}E\to X\)と可換な自然な\(G\)の作用が定義される。
+  これによって\(\pi^{-1}:\Sh(X/G) \to \Sh(X)\)が
+  \(\Sh_G(X)\)を経由することがわかる。
+
+  \ref{enumi: prob: 0.9.3}。
+  \(p:E\to X/G\)を連続写像とする。
+  \(\pi_E:\pi^{-1}E\to E\)を\(\pi_X:X\to X/G\)のpull-backとし、
+  \(\rho:\pi^{-1}E\to (\pi^{-1}E)/G\)を商写像とする。
+  全射開写像のpull-backは全射開写像である
+  \footnote{\(f:X\to Z\)を全射開写像、\(g:Y\to Z\)を連続写像とし、
+  \(p_Y:X\times_ZY\to Y\)を射影とする。
+  fiber積は部分空間\(X\times_ZY\subset X\times Y\)とみなすことができる。
+  \(W\subset X\times_ZY\)を開集合、\(y\in p_Y(W)\)を点とする。
+  \(y\in p_Y(W)\)であるから、
+  ある点\(x\in X\)が存在して、\(f(x) = g(y), (x,y)\in W\)となる。
+  また、積位相の定義から、ある開近傍\(x\in U\subset X\)と\(y\in V\subset Y\)が存在して、
+  \((U\times V) \cap (X\times_Z Y)\subset W\)となる。
+  \(f\)は開写像なので\(f(U)\subset Z\)は開である。
+  よって\(V'\dfn V\cap g^{-1}(f(U))\subset Y\)は開である。
+  \(f(x) = g(y)\in f(U)\)であるから、\(y\in V'\)であり、\(V'\)は\(y\)の開近傍である。
+  さらに、\(f\)が全射であることから、
+  各\(y'\in V'\)に対して\(f(x')=g(y')\)となる点\(x'\in U\)が存在し、
+  従って、\(W'\dfn (U\times V') \cap (X\times_Z Y)\)の\(p_Y\)での像は
+  ちょうど\(V'\)である。
+  このことは\(p_Y(W)\)の像が開であることを示している。}
+  ことと、商写像が全射開写像であることから、
+  \(\pi_E\)は開写像である。
+  商の普遍性により、自然な射\(f:E\to (\pi^{-1}E)/G\cong E\)を得る。
+  \(\pi_E:\pi^{-1}(E)\to E\)が全射であるから、\(f\)は全射であり、
+  また\(\pi^{-1}(E)\)の\(G\)の作用による異なる軌道の\(E\)での像は異なる点を与えるので、
+  \(f\)は単射である。
+  すなわち、\(f\)は全単射である。
+  開集合\(U\subset (\pi^{-1}E)/G\)に対して
+  \(\rho^{-1}(U) = \pi_E^{-1}(f(U))\)は\(\pi^{-1}E\)の開集合であるから、
+  \(f(U) = \pi_E(\rho^{-1}(U))\)は\(E\)の開集合である。
+  これは\(f\)が同相写像であることを示している。
+  以上より\(\pi^{-1}:\Sh(X/G) \to \Sh_G(X)\)が忠実充満であることがわかる。
+
+  \(G\)の作用が自由であるとする。
+  \(G\)の作用と可換な局所同相写像\(p:E\to X\)に対して、
+  \(G\)の作用と可換な自然な\(X\)上の射
+  \(f:E\to \pi^{-1}(E/G)\)を得る。
+  \(G\)の\(X\)への作用が自由であることから、\(G\)の\(E\)への作用も自由である。
+  従って\(f\)は全単射である
+  (\(f\)を施して同じ点に行く\(E\)の2点は\(G\)の作用で写り合う)。
+  さらに\(p\)が局所同相写像であることから、
+  各\(E\)の点の十分小さい近傍\(U\subset E\)に対して
+  \(p(U)\)は開集合であり、
+  \(f(U) = p^{-1}(p(U))\cap \pi_E^{-1}(\pi_E(U))\)は\(\pi^{-1}(E/G)\)の開集合となる。
+  すなわち、\(f\)は開写像となる。
+  従って\(f\)は同相写像となる。
+
+  \ref{enumi: prob: 0.9.4}。
+  \(G\)の作用がproperであり、自由でないとする。
+  このとき\(G\)の作用のstabilizerが自明でない点\(x\in X\)が存在する。
+  \(G\times X\)に以下の同値関係を定義する：
+  \begin{itemize}
+    \item
+    任意の\(g\in G\)と
+    任意の\(x'\neq x\)に対して
+    \((1_G,x')\sim (g,gx')\)であるとする。
+    \item
+    残っているのは\(gx=x\)となる\(g\in G\)に対する
+    \((g,x)\)の形の点である。
+    これらの点は自分自身とのみ同値であるとする。
+  \end{itemize}
+  \(G\times X\)への\(G\)の作用
+  \(g(h,x) = (gh,gx)\)はこの同値関係を保つ。
+  よって商空間\(Y\dfn (G\times X)/\sim\)に\(G\)の作用が入る。
+  また、第二成分への射影\(p:Y\to X\)は\(G\)の作用と両立的であり、
+  \(G\)の作用がproperであることから、\(p\)は局所同相写像となる
+  (\(G\cdot x\)が閉であることから、各\(g\)に対して
+  \(\left\{ g\right\} \times X\)の\(Y\)での像は開集合となり、
+  そこへの\(p\)の制限が同相となる)。
+  さらに\(\bar{p}:Y/G\xrightarrow{\sim} X/G\)は同相である
+  (\(Y\)への\(G\)の作用の商では\(x\)のstabilizerに属する\(g\)に対する
+  \((g,x)\)たちがちょうど同一視される)。
+  \(G\)の\(X\)への作用は点\(x\)でのstabilizerが非自明であるから、
+  \(p:Y\to X\)の点\(x\)でのfiberは\(2\)点以上である
+  (他の点でのfiberは\(1\)点である)。
+  このことは\(p\)がどんな\(X\)上の層のpull-backとしても実現できないことを示している
+  (\(X\)上の層のpull-backとして実現される局所同相写像は
+  各\(x\)の軌道上の点のfiberの点の数が等しい)。
+  以上より、もし\(G\)の作用がproperであって
+  \(\pi^{-1}:\Sh(X/G) \to \Sh_G(X)\)が圏同値を引き起こすのであれば、
+  \(G\)の作用は自由でなければならない。
+
+  以上で全て示された。
+\end{proof}
+
+
+
+
+\begin{prob}\label{prob: 0.10}
+  \(\mcC\)を、
+  \begin{itemize}
+    \item
+    離散位相を入れた自然数全体\(\N\)の一点コンパクト化\(\N^+\)と
+    台集合が一点である空間\(1\)からなる
+    \(\sfTop\)の充満部分圏
+  \end{itemize}
+  とする。
+  次を示せ：
+  \begin{enumerate}
+    \item \label{enumi: prob: 0.10.1}
+    \(\mcC\)上のcanonical topology (すべての表現可能函手が層となる最大の位相)
+    \(J\)は次で与えられる：
+    \(1\)は maximal sieve \(h_1\)のみにより被覆される。
+    sieve \(R\)が\(\N^+\)の被覆であることは次の二つの条件を満たすことと同値：
+    \begin{enumerate}
+      \item \label{enumi: prob: condition: 0.10.1.1}
+      任意の\(x\in \N^+\)に対し、\( (x:1\to \N^+ )\in R\)である。
+      \item \label{enumi: prob: condition: 0.10.1.2}
+      任意の無限集合\(T\subset \N^+\)に対し、
+      \(\im(f)\subset T\cup\left\{\infty\right\}\)となる
+      \(R\)に属するモノ射\(f:\N^+\to \N^+\)が存在する。
+    \end{enumerate}
+    \item \label{enumi: prob: 0.10.2}
+    \(X\)を任意の位相空間とするとき、
+    \(\Hom_{\sfTop}(-,X):\mcC^{\op}\to \sfSet\)はこの位相に関して層であり、
+    これによって函手
+    \(F:\sfTop \to \Sh(\mcC,J)\)が定義される。
+    \item \label{enumi: prob: 0.10.3}
+    \(F\)は忠実であり、
+    列型空間 (部分集合が閉であることと、
+    部分集合内の点列\(a_n\)の極限点が必ずその部分集合に属すること、が同値となる空間)
+    からなる充満部分圏\(\mcF\subset \sfTop\)に制限すると\(F\)は充満である。
+    \item \label{enumi: prob: 0.10.4}
+    \(X\)を位相空間、\(C_1,\cdots, C_n\)を\(X\)の有限閉被覆とする。
+    このとき、自然な射\(\coprod_{i=1}^nF(C_i) \to F(X)\)は
+    \(\Sh(\mcC,J)\)のエピ射である。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: prob: 0.10.1}。
+  まずは圏\(\mcC\)にはどんな射があり得るかについて注意しておく。
+  特に非自明なのは、連続写像\(\N^+\to \N^+\)としてどのようなものがあり得るかである。
+  \(f:\N^+\to \N^+\)の像が有限か無限かで分けて考察する。
+
+  \(\im(f)\)が有限であるとする。
+  \(f\)が連続であることと、相対位相で\(\im(f)\)が離散であることから、
+  \(f^{-1}(f(\infty))\)は\(\infty\)を含む開集合であり、
+  従ってその補集合は有限である。
+  逆に、\(f(\infty)\)以外の各点のfiberが有限集合であって、かつ
+  \(\im(f)\)が有限集合であれば、\(f\)は連続となる。
+  よって、\(\im(f)\)が有限集合であるとき、以下の主張が同値であることがわかった：
+  \begin{itemize}
+    \item
+    \(f\)が連続である。
+    \item
+    各\(x\in \N^+\setminus \left\{ f(\infty)\right\}\)のfiber
+    \(f^{-1}(x)\)が有限集合である。
+  \end{itemize}
+
+  \(\im(f)\)が無限集合であるとする。
+  もし\(n\in \N\)のfiberが無限集合であれば、
+  \(f\)の連続性から\(f^{-1}(n)\)は閉集合であり、
+  従って\(\infty\in f^{-1}(n)\)となる。
+  一方、\(f\)の連続性から\(f^{-1}(n)\)は開集合でもあるので、
+  \(\N^+\setminus f^{-1}(n)\)は有限集合となる。
+  これは\(\im(f)\)が無限集合であることに反する。
+  よって任意の\(n\in \N\)のfiberは有限集合である。
+  逆に、\(\im(f)\)が無限集合とは限らなくても、
+  各\(n\in \N\)について\(f^{-1}(n)\)が有限集合であって、
+  かつ\(\infty\not\in f^{-1}(n)\)であれば、
+  \(f(\N)\)は無限集合であるから\(\im(f)\)は無限集合となり、
+  また\(\infty\)の開近傍\(U\)に対して
+  \(\N^+ \setminus f^{-1}(U) = f^{-1}(\N^+\setminus U)\)は有限集合、
+  すなわち閉集合であるから、\(f^{-1}(U)\)は開集合となり、
+  \(f\)は連続となる。
+  よって写像\(f:\N^+\to \N^+\)に対して以下の主張が同値であることがわかった：
+  \begin{enumerate}[label=(\Alph*)]
+    \item \label{enumi: proof: prob: 0.10.1.1}
+    \(f\)は連続であり、かつ、\(\im (f)\)は無限集合である。
+    \item \label{enumi: proof: prob: 0.10.1.2}
+    各\(n\in \N^+\)のfiber \(f^{-1}(n)\)は\(\infty\)を含まない有限集合である。
+  \end{enumerate}
+
+  次に、sieve \(R\subset h_{\N^+}\)の性質について調べる。
+  連続写像\(f:\N^+\to \N^+\)の像が無限集合であるとする。
+  このとき\(f\)は\ref{enumi: proof: prob: 0.10.1.2}を満たすので、
+  \(f(\infty) = \infty\)である。
+  よって、\(\im(f)\)に相対位相を入れると、\(\im(f)\cong \N^+\)となる。
+  包含射を\(i :\N^+\cong \im(f) \subset \N^+\)と置くと、
+  \(i\)は\ref{enumi: proof: prob: 0.10.1.2}を満たすので単射連続写像である。
+  像への全射を\(p:\N^+ \to \im(f) \cong \N^+\)と置けば、
+  \(p\)は\ref{enumi: proof: prob: 0.10.1.2}を満たすので全射連続写像である。
+  像が無限集合となるような連続写像\(f:\N^+\to \N^+\)は、
+  全射連続写像\(p:\N^+\to \N^+\)と単射連続写像\(i:\N^+\to \N^+\)の合成
+  \(f = i\circ p\)に分解できることがわかる。
+  さらに全射連続写像\(p:\N^+\to \N^+\)に対して、
+  各fiber \(p^{-1}(n)\)から一点ずつ\(s_n\in p^{-1}(n)\)を選ぶと、
+  \(s:\N^+\to \N^+ , s(n) \dfn s_n, s(\infty) = \infty\)で定まる写像\(s\)は
+  \ref{enumi: proof: prob: 0.10.1.2}を満たすので像が無限集合となる連続全単射である。
+  \(s\)は\(p\circ s = \id_{\N^+}\)を満たす。
+  さて、ここで\(f\in R\)であるとする。
+  このとき、\(R\)がsieveであることから、
+  \(i = i\circ p \circ s = f\circ s \in R\)となる。
+  逆に\(i\in R\)であれば
+  \(f = i\circ p \in R\)となる。
+  \(i\)は同型\(\im(f)\cong \N^+\)の取り方だけ任意性があるので、
+  このことは、特に、\(f\in R\)であり、さらに別の連続写像\(f:\N^+\to \N^+\)が
+  \(\im(f) = \im (f')\)を満たしていれば、\(f'\in R\)となることを示している。
+  すなわち、次がわかった：
+  \begin{enumerate}[label=(\fnsymbol*),start=2]
+    \item \label{enumi: proof: prob: 0.10.1 infinite}
+    像が無限集合となるような\(f:\N^+\to \N^+\)に対しては、
+    \(f\in R\)であるかどうかはその像のみによって決定される。
+  \end{enumerate}
+
+  \(J'\)を問題\ref{enumi: prob: 0.10.1}で具体的に記述されているsieveの族とする。
+  \(J'\)が\(\mcC\)上のGrothendieck位相であることを証明する。
+  \(J'\)がGrothendieck位相であるための条件 Definition 0.32 (i) を満たすことを示す。
+  \(J'(1) = \left\{ h_1\right\}\)である。
+  \(\N^+\)上のsieve \(h_{\N^+}\)は条件
+  \ref{enumi: prob: condition: 0.10.1.1}を満たし、
+  任意の無限集合\(T\subset \N\)に対して
+  全単射\(f:\N\to T\)をとって
+  \(f(\infty) \dfn \infty\)と定義することで得られる写像
+  \((f:\N^+\to \N^+)\in h_{\N^+}(\N^+)\)は、
+  連続かつ\(\im(f) = T\cup \left\{ \infty\right\}\)であるから、
+  \(h_{\N^+}\)は条件\ref{enumi: prob: condition: 0.10.1.2}も満たす。
+  よって\(h_{\N^+}\in J'(\N^+)\)である。
+  従って\(J'\)はGrothendieck位相であるための条件 Definition 0.32 (i) を満たす。
+
+  \(J'\)がGrothendieck位相であるための条件 Definition 0.32 (ii) を満たすことを示す。
+  \(h_1\in J'(1)\)であり、
+  さらに唯一の射\(\N^+\to 1\)に対してのsieve \(h_1\)のpull-backは
+  \(h_{\N^+}\in J'(\N^+)\)である。
+  \(R\in J'(\N^+)\)とする。
+  任意の射\(x:1\to \N^+\)に対して、\(x\in R\)であることから、\(x^*R = h_1\in J'(1)\)となる。
+  連続写像\(f:\N^+\to \N^+\)を任意にとる。
+  任意の\(x:1\to \N^+\)に対し、
+  \(R\)が条件\ref{enumi: prob: condition: 0.10.1.1}を満たすことから、
+  \(f(x):1\to \N^+\)は\(R\)に属するので、
+  よって\(x\in f^*R\)である。
+  従って\(f^*R\)は条件\ref{enumi: prob: condition: 0.10.1.1}を満たす。
+  \(f^*R\)が条件\ref{enumi: prob: condition: 0.10.1.2}を満たすことを証明する。
+  \(T\subset \N\)を無限集合とする。
+  \(f(T)\)が有限集合である場合から証明する。
+  このとき、ある点\(x\in f(T)\)が存在して、\(f^{-1}(x)\subset T\)は無限集合である。
+  全単射\(g:\N\to f^{-1}(x)\)をとって包含\(f^{-1}(x)\subset T\subset \N\)と合成し、
+  \(g(\infty) \dfn \infty\)とすることで連続写像\(g:\N^+\to \N^+\)を定めると、
+  \(g\)はモノ射であり、しかも
+  \(\im(g) = f^{-1}(x)\cup\left\{\infty\right\} \subset T\cup\left\{\infty\right\}\)
+  である。
+  また、\(f\circ g = x\in R\)であるため、\(g\in f^*R\)である。
+  よって\(f(T)\)が有限集合の場合に
+  \(f^*\)が条件\ref{enumi: prob: condition: 0.10.1.2}を満たすことがわかった。
+  \(f(T)\)が無限集合であるとする。
+  このとき、\(f\)は像が無限集合となる連続写像であるから、
+  各\(n\in \N\)のfiberは有限集合であって\(\infty\)を含まない。
+  よって\(f(\infty) = \infty\)である。
+  さらに、\(R\)は無限集合\(f(T) \subset \N\)に対して
+  条件\ref{enumi: prob: condition: 0.10.1.2}を満たすので、
+  あるモノ射\(g:\N^+\to \N^+\)が存在して、
+  \(\im(g)\subset f(T)\cup\left\{\infty\right\}\)となる。
+  \(f^{-1}(\im(g))\cap T\)は無限集合であるから、
+  全単射\(h:\N\to f^{-1}(\im(g))\cap T\)と包含\(f^{-1}(\im(g))\cap T\subset \N\)を合成して
+  \(h(\infty) \dfn \infty\)とすることで連続写像\(h:\N^+\to \N^+\)を定めると、
+  \(h\)はモノ射であり、
+  しかも\(\im(f\circ h) = \im(g)\)である。
+  ここで\(g\in R\)であることと\(\im(g)=\im(f\circ h)\)が無限集合であることから、
+  \ref{enumi: proof: prob: 0.10.1 infinite}より\(f\circ h\in R\)がわかり、
+  従って\(h\in f^*R\)がわかる。
+  \(\im(h) = (f^{-1}(\im(g))\cap T)\cup\left\{\infty\right\} \subset T\left\{\infty\right\}\)
+  であるから、以上より\(f^*R\)が条件\ref{enumi: prob: condition: 0.10.1.2}を満たすことがわかった。
+  これより\(J'\)はGrothendieck位相であるための条件 Definition 0.32 (ii) を満たす。
+
+  \(J'\)がGrothendieck位相であるための条件 Definition 0.32 (iii) を満たすことを示す。
+  \(1\)上のsieveは\(h_1\)か\(\emptyset\)のみであるが、
+  \(\emptyset\)はどのような\(\mcC\)の射\((-)\to 1\)でpull-backしても\(\emptyset\)であり、
+  これは\(J'(1)\)にも\(J'(\N^+)\)にも属さない。
+  \(R,S\)を\(\N^+\)上のsieveとし、\(R\in J'(\N^+)\)であり、
+  任意の射\(f\in R\)について\(f^*S\)がcovering sieveであるとする。
+  \(S\in J'(\N^+)\)を示したい。
+  そのためには\(S\)が条件\ref{enumi: prob: condition: 0.10.1.1}
+  と\ref{enumi: prob: condition: 0.10.1.2}を満たすことを示さなければならない。
+  \(x:1\to \N^+\)に対して\(x^*S\in J'(1)\)であることから、
+  \(x^*S = h_1\)となる。
+  これは\(x\in S\)を示している。
+  よって\(S\)は条件\ref{enumi: prob: condition: 0.10.1.1}を満たす。
+  \(T\subset \N\)を無限集合とする。
+  \(R\in J'(\N^+)\)であるから、
+  \(R\)は条件\ref{enumi: prob: condition: 0.10.1.2}を満たし、
+  すなわち、ある単射\((f:\N^+\to \N^+)\in R\)が存在し、
+  \(\im(f) \subset T\cup\left\{\infty\right\}\)となる。
+  \(f^*S\in J'(\N^+)\)であるから、
+  \(f^*S\)は像が無限集合となるような射\(g:\N^+\to \N^+\)を含む。
+  このとき\(f\circ g\in S\)の像は無限集合であり、
+  \(\im(f\circ g)\subset \im(f) \subset T\cup\left\{\infty\right\}\)である。
+  よって\ref{enumi: proof: prob: 0.10.1 infinite}より、
+  像が\(\im(f\circ g)\)となるような単射\((h:\N^+\to \N^+)\in S\)が存在することがわかり、
+  このことは\(S\)が条件\ref{enumi: prob: condition: 0.10.1.2}を満たすことを示している。
+  以上で\(J'\)が\(\mcC\)のGrothendieck位相を与えることがわかった。
+
+  次に\(\mcC\)上の位相\(J'\)がsubcanonicalであることを示す。
+  そのためには、任意の対象\(U,V\in \mcC\)と\(U\)上の任意のcovering sieve \(R\in J'(U)\)と
+  任意の射\(\varphi: R\to h_V\)に対して
+  \(\varphi\)の一意的な延長\(\theta:h_U\to h_V\)が存在することを示せば良い。
+  \(U = 1\)の場合には、\(R = h_1\)となるので、延長の存在と一意性は明らかである。
+  また、\(V=1\)である場合にも、射\(R\to h_1, h_U\to h_1\)はただ一つしかないので、
+  延長の存在と一意性は明らかである。
+  残っているのは\(U=V=\N^+\)の場合である。
+  米田の補題により、函手\(\theta\)は連続写像\(p:\N^+\to \N^+\)により
+  \(\theta = p\circ (-)\)の形で一意的に決定される。
+  \(\theta\)が存在すると仮定する。
+  このとき、\(R(1)=h_{\N^+}(1)\)であるから、
+  \(\theta_1 = \varphi_1\)となる。
+  また、\(x\in \N^+\)に対して\(\theta_1(x)=p(x)\)であるから、
+  \(p=\varphi_1\)となり、\(\varphi_1\)は連続となる。
+  逆に\(\varphi_1\)が連続であれば、
+  \(\theta\dfn \varphi_1\circ (-)\)は\(\varphi\)の延長である。
+  従って、\(\varphi:R\to h_{\N^+}\)に対して次の主張は同値となる：
+  \begin{itemize}
+    \item
+    \(\varphi\)の延長\(\theta:h_{\N^+}\to h_{\N^+}\)が存在する。
+    \item
+    \(h_{\N^+}(1)\cong\N^+\)の同一視のもと、\(\varphi_1:\N^+\to \N^+\)は連続である。
+  \end{itemize}
+
+  延長の存在を示す前に、一意性を先に示す。
+  延長\(\theta\)が存在すれば、
+  \(x\in \N^+\)に対して、図式
+  \[
+  \begin{CD}
+    h_{\N^+}(\N^+) @>\theta_{\N^+}>> h_{\N^+}(\N^+) \\
+    @V(-)\circ x VV @VV(-)\circ x V \\
+    h_{\N^+}(1) @>\theta_1 = \varphi_1>> h_{\N^+}(1)
+  \end{CD}
+  \]
+  は可換であるから、
+  \(f:\N^+\to \N^+\)に対して
+  \(\theta_{\N^+}(f)(x) = \varphi_1(f(x))\)となって、
+  \(\theta=\varphi_1\circ (-)\)で与えられることがわかる。
+  すなわち、\(\varphi\)の延長\(\theta\)は、存在すれば一意的である。
+
+  \(\theta\)の存在を示すには\(\varphi_1\)の連続性を示せば良い。
+  任意の\(f\in R(\N^+)\)に対して
+  \(\varphi_{\N^+}(f)(x) = \varphi_1(f(x))\)
+  であるから、
+  \(\varphi_1\circ f\)は連続である。
+  従って、写像\(\varphi_1:\N^+\to \N^+\)についての以下の主張を示せば良い：
+  \begin{enumerate}
+    \item \label{enumi: proof: prob: 0.10.1 conti-assertion}
+    任意の\(f\in R(\N^+)\subset \Hom_{\mcC}(\N^+,\N^+)\)に対して
+    \(\varphi_1\circ f\)が連続であれば、
+    \(\varphi_1\)は連続である。
+  \end{enumerate}
+  任意の\(f\in R(\N^+)\subset \Hom_{\mcC}(\N^+,\N^+)\)に対して
+  \(\varphi_1\circ f\)が連続であるとする。
+  \(n\in \N\)とする (\(n\neq \infty\)とする)。
+  \(\varphi_1\)の連続性を示すために、まず、
+  \begin{center}
+    \(\infty\in \varphi_1^{-1}(n)\)なら\(\N^+\setminus \varphi_1^{-1}(n)\)は有限集合である
+  \end{center}
+  ことを証明する。
+  \(\N^+\setminus\varphi_1^{-1}(n)\)が無限集合であるとする。
+  このとき、\(R\)が条件\ref{enumi: prob: condition: 0.10.1.2}を満たすことから、
+  ある単射\((f:\N^+\to \N^+)\in R\)が存在して、
+  \(\im(f) \subset (\N^+\setminus \varphi_1^{-1}(n))\cup\left\{ \infty\right\}\)
+  となる。
+  \(f\)は単射連続写像なので\(f(x)=\infty\)となる\(x\)は\(\infty\)のみであり、
+  従って
+  \(f(\N)\subset \N^+\setminus \varphi_1^{-1}(n)\)となる。
+  このことは\(n\not\in \varphi_1(f(\N))\)を意味し、
+  よって
+  \[
+  \im(\varphi_1\circ f) = (\varphi_1\circ f)(\overline{\N})
+  \subset \overline{(\varphi_1\circ f)(\N)}
+  \subset \overline{\N^+ \setminus \left\{ n\right\}}
+  = \N^+ \setminus \left\{ n\right\}
+  \]
+  となる。
+  これは特に\(\varphi_1(f(\infty)) \neq n\)を意味していて、
+  従って\(\infty \not\in \varphi_1(n)\)となる。
+  以上より、\(\infty\in \varphi_1^{-1}(n)\)ならば
+  \(\N^+\setminus \varphi_1^{-1}(n)\)は有限集合であることがわかった。
+  次に、各\(x\in \N^+\)に対して、
+  \begin{center}
+    \(\varphi_1^{-1}(x)\)が無限集合ならば\(\infty\in\varphi_1^{-1}(x)\)となる
+  \end{center}
+  ことを示す。
+  \(\varphi_1^{-1}(x)\)が無限集合であるとする。
+  このとき、ある単射\((f:\N^+\to \N^+)\in R\)が存在して、
+  \(\im(f) \subset \varphi_1^{-1}(x) \cup\left\{\infty\right\}\)となる。
+  \(f(\N) \subset \varphi_1^{-1}(x)\)であることと、
+  \(\varphi_1\circ f\)が連続であることから、
+  \(\im(\varphi_1\circ f) = \left\{ x\right\}\)となる。
+  これは\(f(\infty)\in \varphi_1^{-1}(x)\)を意味している。
+  よって\(\varphi_1^{-1}(x)\)が無限集合ならば\(\infty\in\varphi_1^{-1}(x)\)であることがわかった。
+  これらより、各\(n\in \N\)について次が同値であることがわかった：
+  \begin{itemize}
+    \item \(\varphi_1(\infty) = n\)である。
+    \item \(\varphi_1^{-1}(n)\)は無限集合である。
+    \item \(\N^+\setminus \varphi_1^{-1}(n)\)は有限集合である
+    (すなわち、\(\varphi_1^{-1}(n)\)は\(\infty\)の開近傍である)。
+  \end{itemize}
+  よって特に、\(\varphi_1(\infty)\neq \infty\)であれば、\(\varphi_1\)は連続となる。
+  \(\varphi_1(\infty) = \infty\)のときも、
+  各\(n\in \N\)について\(\infty\not\in\varphi_1^{-1}(n)\)であるから、
+  \(\varphi_1^{-1}(n)\)は\(\infty\)を含まない有限集合となり、
+  従ってこの場合も\(\varphi_1\)は連続であることがわかる
+  (cf. \ref{enumi: proof: prob: 0.10.1.2})。
+  以上より\(\varphi_1\)は連続であることがわかった。
+  これから、\(\varphi\)の延長\(\theta\)が存在することがわかり、
+  従って、位相\(J'\)はsubcanonicalである。
+
+  位相\(J'\)がcanonicalであることを示す。
+  \(J\)を\(\mcC\)上のcanonicalな位相とする。
+  すると\(J'\)がsubcanonicalであることから、\(J'\subset J\)となる。
+  \(1\)上のsieveは\(\emptyset\)か\(h_1\)である。
+  もし\(\emptyset\in J(1)\)となれば、
+  \(J\)がcanonicalな位相であることから、
+  射\(\emptyset \to h_U\)が一意的に延長\(h_1\to h_U\)を持つこととなる。
+  \(U=\N^+\)とすることで、この一意性が矛盾を引き起こすことがわかる。
+  従って\(\emptyset \not\in J(1)\)であり、
+  \(J'(1) = J(1)\)がわかる。
+  同じく\(\emptyset\not\in J(\N^+)\)もわかる。
+  \(R\in J(\N^+)\)とすると、
+  射\(x:1\to \N^+\)でpull-backすることで、
+  \(x^*R \in J(1) = J'(1) = \left\{ h_1\right\}\)であるから、
+  \(x\in R\)がわかる。
+  これは任意の\(R\in J(\N^+)\)が
+  条件\ref{enumi: prob: condition: 0.10.1.1}を満たすことを示している。
+  とくに\(R\in J(\N^+)\)ならば自然な同一視\(R(1) = h_{\N^+}(1) \cong \N^+\)がある。
+  残っているのは任意の\(R\in J(\N^+)\)が
+  条件\ref{enumi: prob: condition: 0.10.1.2}を満たすことを示すことである。
+  位相\(J\)はcanonicalであるから、
+  任意の射\(\varphi:R\to h_{\N^+}\)に対して
+  \(\varphi\)の延長\(\theta:h_{\N^+}\to h_{\N^+}\)が一意的に存在する。
+  これは\(\varphi_1:R(1) \cong \N^+ \to h_{\N^+}(1) \cong \N^+\)が連続であることを意味する。
+  よって、\(R(1) = h_{\N^+}(1) \cong \N^+\)となるsieve \(R\)に関する
+  以下の主張を示せば良い：
+  \begin{center}
+    任意の\(\varphi:R\to h_{\N^+}\)に対して
+    \(\varphi_1:R(1) \cong \N^+ \to h_{\N^+}(1) \cong \N^+\)が連続であるならば、
+    \(R\)は条件\ref{enumi: prob: condition: 0.10.1.2}を満たす。
+  \end{center}
+  \(R(1) \cong \N^+\)の自然な同一視があることから、
+  \(\varphi:R\to h_{\N^+}\)は\(\varphi_{\N^+} = \varphi_1\circ (-)\)によって一意的に決定される。
+  従って、上の主張を示すには、
+  次の条件を満たすときに
+  \(R\)が条件\ref{enumi: prob: condition: 0.10.1.2}を満たすことを示すことに帰着される：
+  \begin{center}
+    写像\(\varphi_1:\N^+\to \N^+\)は、
+    全ての\(f\in R\)に対する\(\varphi_1\circ f\)が連続であるとき、連続となる。
+  \end{center}
+  対偶をとって、結局、
+  \begin{center}
+    \(R\)が条件\ref{enumi: prob: condition: 0.10.1.2}を満たさないとき、
+    任意の\(f\in R\)に対して\(\varphi_1\circ f\)が連続となるような、
+    連続でない写像\(\varphi_1:\N^+\to \N^+\)が存在する
+  \end{center}
+  ことを示せば良い。
+  ここで、\(\im(f)\)が有限であるような連続写像\(f:\N^+\to \N^+\)に対しては、
+  どんな写像\(\varphi_1:\N^+\to \N^+\)を合成しても
+  \(\varphi_1\circ f\)は連続となる。
+  また、\(\im(f)\)が無限集合であれば、単射連続写像\(s:\N^+\to\N^+\)をとって
+  \(f\circ s: \N^+ \to \N^+\)を単射連続写像とできるので、結局、
+  \begin{center}
+    \(R\)が条件\ref{enumi: prob: condition: 0.10.1.2}を満たさないとき、
+    \(\im(f)\)が無限集合であるすべてのモノ射\(f\in R\)に対して\(\varphi_1\circ f\)が連続となるような、
+    連続でない写像\(\varphi_1:\N^+\to \N^+\)が存在する
+  \end{center}
+  ことを示せば良い。
+  以下、これを示す。
+  \(R\)は条件\ref{enumi: prob: condition: 0.10.1.2}を満たさないので、
+  ある無限集合\(T\subset \N\)が存在し、
+  任意のモノ射\(f\in R\)は\(\im(f) \cap (\N\setminus T) \neq \emptyset\)となる。
+  ここでもし\(\im(f)\cap T\)が無限集合であれば、
+  \(f^{-1}(T)\)も無限集合であるから、
+  単射\(g:\N^+\to \N^+\)を\(g|_{\N}:\N\to f^{-1}(T)\)となるようにとれる。
+  すると\(\im (g\circ f)\subset T\cup \left\{\infty\right\}\)となるが、
+  \(f\in R\)であるから\(g\circ f\in R\)であり、
+  このことは\(R\)が条件\ref{enumi: prob: condition: 0.10.1.2}を満たすことを意味する。
+  これは矛盾である。
+  従って\(\im(f) \cap T\)はどんなモノ射\(f\in R\)に対しても有限集合である。
+  これから\(\N\setminus T\)が無限集合であることもわかる。
+  ここで写像\(\varphi_1:\N^+\to \N^+\)を
+  \(\varphi_1(t) = t , t\in T\)と\(\varphi_1(\N^+\setminus T) = n \not\in T\)によって定める。
+  このとき、\(T = \N^+\setminus \varphi_1^{-1}(n)\)が無限集合であることから、
+  \(\varphi_1\)は連続ではない。
+  一方、どんなモノ射\(f\in R\)に対しても、
+  \(\im(f) \cap T\)が有限集合であることから、
+  \(\im(\varphi_1\circ f)\)は有限集合である。
+  しかも\((\varphi_1\circ f)^{-1}(n) = f^{-1}(\N^+\setminus T)\)は
+  \(\infty\)を含む無限集合であるが、
+  それ以外の\(\varphi_1\circ f\)のfiberはすべて一点集合か空集合であるから、
+  \(\varphi_1\circ f\)は連続である。
+  以上より所望の写像\(\varphi_1\)が構成できた。
+  これにより\(J(\N^+)\subset J'(\N^+)\)がわかり、
+  \(J'\)がcanonical topologyであることが示された。
+  以上で\ref{enumi: prob: 0.10.1}の証明を完了する。
+
+  \ref{enumi: prob: 0.10.2}。
+  問題なのは、任意の位相空間\(X\)に対して
+  \(h_X \dfn \Hom_{\sfTop}(-,X):\mcC^{\op}\to \sfSet\)が層となることであり、
+  非自明な点は、
+  covering sieve \(R\subset h_{\N^+}\)と射\(\varphi : R\to h_X\)に対して
+  延長\(\theta:h_{\N^+}\to h_X\)が一意的に存在することである。
+  \(x\in \N^+\)に対して、図式
+  \[
+  \begin{CD}
+    R(\N^+) @>\varphi_{\N^+}>> h_X(\N^+) \\
+    @V (-)\circ x VV @VV (-)\circ x V \\
+    R(1)\cong \N^+ @>\varphi_1>> h_X(1)\cong X \\
+  \end{CD}
+  \]
+  が可換である
+  (\(R\)は条件\ref{enumi: prob: condition: 0.10.1.1}を満たすので
+  自然な同一視\(R(1)=h_{\N^+}(1) \cong \N^+\)がある)
+  から、
+  \(f\in R(\N^+)\)に対して
+  \(\varphi_{\N^+}(f)(x) = \varphi_1(f(x))\)であり、
+  従って、\(\varphi_{\N^+}(f) = \varphi_1\circ f\)となる。
+  同じく\(\theta\)が存在すれば、
+  \(\theta_1=\varphi_1\)であり、また
+  \(\theta_{\N^+}\)は\(\theta = \varphi_1\circ (-)\)として一意的に決定される。
+  従って問題なのは延長\(\theta\)の存在である。
+  そのためには、すべての連続写像\(f:\N^+\to \N^+\)に対して
+  \(\varphi_1\circ f\)が連続であれば良い。
+  一方、とくに\(f=\id\)とすれば、\(\varphi_1\)は連続でなければならないが、
+  逆に\(\varphi_1\)が連続であれば\(\varphi_1\circ f\)は連続であるから、
+  \(\varphi_1\)の連続性が問題となる。
+  よって次を示せば良い：
+  \begin{center}
+    任意の\(f\in R(\N^+)\)に対して
+    \(\varphi_1\circ f\)が連続となるならば、
+    写像\(\varphi_1:\N^+\to X\)は連続である。
+  \end{center}
+  \(U\subset X\)を開集合とする。
+  \(\varphi_1(\infty)\not\in U\)であれば、
+  \(\varphi_1^{-1}(U)\subset \N\)であるから、これは開である。
+  \(\varphi_1(\infty)\in U\)であるとする。
+  このときに\(\N^+\setminus \varphi_1^{-1}(U)\)が有限集合であれば\(\varphi_1\)の連続性がわかる。
+  \(\N^+\setminus \varphi_1^{-1}(U)\)が無限集合であるとする。
+  このとき、\(R\)は条件\ref{enumi: prob: condition: 0.10.1.2}を満たすので、
+  あるモノ射\((f:\N^+\to \N^+)\in R\)が存在して、
+  \(\im(f) \subset (\N^+\setminus \varphi_1^{-1}(U))\cup\left\{ \infty\right\}\)となる。
+  すると、\(f^{-1}(\varphi_1^{-1}(U)) = \left\{ \infty\right\}\)は開ではない。
+  \(\varphi_1\circ f\)は連続なので、これは矛盾である。
+  従って\(\N^+\setminus \varphi_1^{-1}(U)\)は有限集合となり、
+  よって\(\varphi_1\)の連続性が確かめられた。
+  以上で\ref{enumi: prob: 0.10.2}の証明を完了する。
+
+  \ref{enumi: prob: 0.10.3}。
+  まず\(F\)が忠実であることを示す。
+  \(X,Y\)を位相空間とする。
+  \(f:X\to Y\)を位相空間の間の連続写像とするとき、
+  函手の射\(F(f):h_X\to h_Y\)に\(1\)を代入すれば、
+  集合の間の写像として
+  \(F(f)_1=f:X\cong h_X(1) \to Y\cong h_Y(1)\)
+  となる。
+  従って、\(f\neq g\)であれば\(F(f)_1\neq F(g)_1\)であるから、
+  \(F(f)\neq F(g)\)となって\(F\)が忠実であることがわかる。
+
+  次に\(X,Y\)が列型空間であるときに、
+  任意の函手\(p:h_X\to h_Y\)がある連続写像\(f:X\to Y\)に対して
+  \(p = F(f) = f\circ (-)\)として得られることを示す。
+  \(p = F(f) = f\circ (-)\)となるには、
+  \(f = p_1\)となる必要がある。
+  すなわち、\(p_1\)が連続となる必要がある。
+  逆に、\(p_1\)が連続であれば、函手\(p\)は\(p_1\circ -\)によって与えられる。
+  従って、示すべきことは、次の主張である：
+  \begin{center}
+    列型空間\(X,Y\)と函手\(p:h_X\to h_Y\)に対して
+    \(p_1:X\cong h_X(1) \to Y \cong h_Y(1)\)が連続となる。
+  \end{center}
+  写像\(p_{\N^+}:h_X(\N^+)\to h_Y(\N^+)\)は写像\(p_1:X\to Y\)の合成として与えられるので、
+  従って、任意の連続写像\(f:\N^+\to X\)に対して
+  \(p_1\circ f:\N^+\to Y\)は連続となる。
+  よって、示すべきことは、列型空間\(X,Y\)と写像\(p:X\to Y\)に対する次の主張である：
+  \begin{center}
+    任意の連続写像\(f:\N^+\to X\)に対して\(p\circ f\)が連続となるとき、
+    \(p\)も連続である。
+  \end{center}
+  任意の連続写像\(f:\N^+\to X\)に対して\(p\circ f\)が連続となるとする。
+  \(F\subset Y\)を閉集合とする。
+  \(p^{-1}(F)\)が閉集合であることを示せばよい。
+  \(X\)は列型空間なので、
+  \(p^{-1}(F)\)が閉集合であるためには、
+  任意の点列\(a:\N\to p^{-1}(F)\subset X\)に対して、その連続な延長
+  \(\tilde{a}:\N^+ \to X\)が\(p^{-1}(F)\)を経由することを示せば良い。
+  点列\(\N\to p^{-1}(F)\subset X\)とその連続な延長
+  \(f:\N^+ \to X\)を任意にとる (\(f(\N)\subset p^{-1}(F)\)である)。
+  このとき、\(p\circ f: \N^+\to Y\)は連続であり、
+  さらに\(f(\N) = p^{-1}(F)\)であるから、
+  \((p\circ f)|_{\N} : \N\to Y\)は閉集合\(F\subset Y\)を経由する。
+  \(Y\)が列型空間であることと、
+  \(p\circ f\)が連続であることから、
+  点列\(n\mapsto (p\circ f)(n)\in F\)の極限点\(p(f(\infty))\)は\(F\)に属する、
+  すなわち、\(p\circ f\)も\(F\)を経由する。
+  このことは\(f\)が\(p^{-1}(F)\)を経由することを意味し、
+  従って\(p^{-1}(F)\)は閉集合となる。
+  以上で\ref{enumi: prob: 0.10.3}の証明を完了する。
+
+  \ref{enumi: prob: 0.10.4}。
+  \(C_1,\cdots,C_n\)を\(X\)の有限閉被覆とする。
+  \(\coprod_{i=1}^n F(C_i)(1) = \coprod_{i=1}^n \Hom_{\sfTop}(1,C_i)
+  \to F(X)(1) = \Hom_{\sfTop}(1,X)\)は明らかに全射であるから、
+  \(\coprod_{i=1}^n F(C_i) \to F(X)\)がエピであることを示すには、
+  \(\coprod_{i=1}^n F(C_i)(\N^+) \to F(X)(\N^+)\)が全射であること、すなわち
+  \(\coprod_{i=1}^n\Hom_{\sfTop}(\N^+,C_i) \to \Hom_{\sfTop}(\N^+,X)\)が
+  全射であることを示せば良い。
+  \(f:\N^+\to X\)を連続写像とする。
+  このとき\(\N\subset \bigcup_{i=1}^n f^{-1}(C_i)\)であるから、
+  ある\(i\)に対して
+  \(f^{-1}(C_i)\)は無限集合となる。
+  このとき\(f\)が連続であることと\(C_i\)が閉であることから、
+  \(f:\N^+\to X\)は閉部分集合\(C_i\subset X\)を経由する。
+  従って、ある\((g:\N^+\to C_i) \in F(C_i)(\N^+)\)が存在して、
+  射\(F(C_i)(\N^+) \to F(X)(\N^+)\)によって\(f\)に写る。
+  このことは\(\coprod_{i=1}^n F(C_i)(\N^+) \to F(X)(\N^+)\)が全射であることを示している。
+  以上より\(\coprod_{i=1}^n F(C_i) \to F(X)\)はエピとなる。
+  以上で\ref{enumi: prob: 0.10.4}の証明を完了する。
+\end{proof}
+
+
+
+
+\begin{prob}\label{prob: 0.11}
+  この問題では単に「環」と言うときに「単位元を持つ可換環」を意味する。
+  この問題では、環の間のエタール射を、有限表示な形式的エタール射として定義する。
+  ただし形式的エタール射の定義は
+  \cite[\href{https://stacks.math.columbia.edu/tag/00UQ}{Tag 00UQ}]{stacks-project}
+  を採用する。
+  以下を示せ。
+  \begin{enumerate}
+    \item \label{enumi: prob: 0.11.1}
+    \(f\)がエタール射であるとき、
+    \(g\)がエタールであることと\(gf\)がエタールであることは同値となる。
+    \item \label{enumi: prob: 0.11.2}
+    エタール射は任意の基底変換のあともエタール射である。
+    \item \label{enumi: prob: 0.11.3}
+    \(S\subset A\)を環\(A\)の積閉集合で、有限個の元で生成されるものとする。
+    このとき\(A\to S^{-1}A\)はエタール射である。
+    \item \label{enumi: prob: 0.11.4}
+    \(k\)を体、\(p\)を定数でない一変数\(t\)の\(k\)-係数多項式とする。
+    このとき、\(k\to k[t]/(p(t))\)がエタールであることと、
+    \(p\)が分離的 (\(p\)の根はすべて相異なる) であることは同値である。
+  \end{enumerate}
+  \(A\)を環とする。
+  \(\mcC\)をエタール\(A\)-代数と\(A\)-代数の射のなす圏の反転圏とする。
+  \ref{enumi: prob: 0.11.1}と
+  \ref{enumi: prob: 0.11.2}より、
+  \(\mcC\)には任意の有限極限が存在する。
+  \(\mcC\)の環の (エタール) 射の族
+  \(\left\{R\to A_i \middle| i\in I\right\}\)が\(R\)の被覆であるとは、
+  \(\Spec\)をとったときに像の和集合が全体になることを言う。
+  これは\(\mcC\)のsubcanonicalな位相であることを示せ。
+\end{prob}
+
+\begin{proof}
+  これは環論。
+  \ref{enumi: prob: 0.11.1}は有限表示射に関する同様の主張は成立するので、
+  形式的エタール射に関する同様の性質を示せば良いが、
+  それは図式のリフトをひとつずつ取っていけば良いだけである。
+  \ref{enumi: prob: 0.11.2}は基底変換の普遍性を用いて図式のリフトをとることで
+  基底変換で形式的エタール射性保たれることがわかり、
+  有限表示性は基底変換で保たれるので、エタール性が基底変換で保たれることがわかる。
+  \ref{enumi: prob: 0.11.3}は\ref{enumi: prob: 0.11.1}より
+  \(S\)が一元生成な積閉集合である場合に帰着され、
+  このときは\(I^2 = 0\)となるイデアル\(I\)に対して、ある元が
+  \(A/I\)で単元であることと\(A\)で単元であることが同値となることから、
+  局所化の普遍性により図式のリフトがとれることがわかって
+  \(A\to S^{-1}A\)が形式的エタールとなることがわかる
+  (\(S\)が有限生成であることから\(A\to S^{-1}A\)は有限表示である)。
+  \ref{enumi: prob: 0.11.4}は分離閉包\(\bar{k}_s\)に基底変換すればわかる
+  (基底変換後の図式にリフトが存在すればGalois降下 (忠実平坦降下) でもとの図式のリフトが得られる)。
+
+  最後の主張は忠実平坦降下より従う。
+\end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\newpage
+\renewcommand{\thesection}{Chapter \arabic{section}:}
+\section{\protect\quad Elementary Toposes}
+\label{section: 1}
+\renewcommand{\thesection}{\arabic{section}}
+
+
+\begin{prob}\label{prob: 1.1}
+  Elementary toposの定義 Definition 0.11の条件 (ii),(iii) が次で置き換えられることを示せ：
+  任意の対象\(X\in\mcE\)に対して、冪対象 (power object) と呼ばれるある対象
+  \(PX\in \mcE\)と部分対象\(\ep_X\rtot PX\times X\)が存在し、さらに
+  任意の対象\(Y\in \mcE\)と任意の部分対象\(R\rtot Y\times X\)に対して
+  ある射\(r:Y\to PX\)が存在して、
+  \(R\rtot Y\times X\)が\(r\times 1_X:Y\times X \to PX\times X\)に沿った
+  \(\ep_X \rtot PX\times X\)のpull-backとなる：
+  \[
+  \begin{CD}
+    R @>>> \ep_X \\
+    @VVV @VVV \\
+    Y\times X @>r\times 1_X>> PX\times X.
+  \end{CD}
+  \]
+\end{prob}
+
+\begin{proof}
+  任意の有限極限が存在する圏\(\mcE\)がElementary toposであるとする。
+  \(PX\)と\(\ep_X\)を次のように定める：
+  \begin{itemize}
+    \item
+    \(PX \dfn \Omega^X\)とする。
+    \item
+    \(u_X:PX \times X \to PX\)を
+    \(\id_{PX}:PX\to PX\)に随伴で対応する射とし、
+    \(\ep_X \rtot PX \times X\)を次のpull-back図式で定義する：
+    \[
+    \begin{CD}
+      \ep_X @>>> 1 \\
+      @VVV @VV t V \\
+      PX \times X @>>> \Omega.
+    \end{CD}
+    \]
+  \end{itemize}
+  これらが問いの条件を満たすことを示す。
+  \(Y\)を対象、\(R\rtot Y\times X\)を部分対象とする。
+  \(\Omega\)の定義より、ある\(\chi(r): Y\times X \to \Omega\)が存在して、
+  次の図式がpull-back図式となる：
+  \[
+  \begin{CD}
+    R @>>> 1 \\
+    @VVV @VV t V \\
+    Y\times X @>\chi(r)>> \Omega.
+  \end{CD}
+  \]
+  \(\chi(r)\)に随伴で対応する射を\(r:Y\to \Omega^X = PX\)と置けば、
+  \(\chi(r)\)は\(\chi(r) = u\circ (r\times 1_X) : Y\times X \to \Omega\)により得られることがわかる。
+  すると以下の可換図式ができる：
+  \[
+  \begin{CD}
+    R @>\exists! >> \ep_X @>>> 1 \\
+    @VVV @VVV @VV t V \\
+    Y\times X @> r\times 1_X >> PX \times X @>u>> \Omega.
+  \end{CD}
+  \]
+  ただしここで射\(R\to \ep_X\)は一番外側の四角形が可換であることと
+  右側の四角形がpull-back図式であることから引き起こされる一意的な射である。
+  一番外側の四角形と右側の四角形はともにpull-back図式であるから、
+  左側の四角形はpull-back図式である。
+  以上より所望の射\(r\)の存在が示された。
+  \(r\)と\(\chi(r)\)は1:1の対応関係にあるので、
+  \(\chi(r)\)の一意性から\(r\)の一意性が従う。
+  以上で\(PX,\ep_X\)が所望の性質を満たすことが示された。
+
+  次は、逆に有限完備な圏\(\mcE\)が問いの条件を満たしているとして、
+  \(\mcE\)がelementaly toposであることを証明する。
+  部分対象\(\id_X:X \rtot X\cong X\times 1 \)に対応する射を\([X]: 1 \to PX\)とし、
+  対角射\(\Delta_X:X\to X\times X\)に対応する射を\(\{\}:X\to PX\)とする。
+  \(\{\}\)がモノ射であることを示す。
+  そのために、射\(a,b:Y\to X\)を二つとり、
+  \(\{\}\circ a = \{\}\circ b\)となるとする。
+  \(\Gamma_a,\Gamma_b:Y\to X\times Y\)を\(a,b\)のグラフとするとき、
+  図式
+  \[
+  \begin{CD}
+    Y @> \Gamma_a >> X\times Y @> \mathrm{proj.} >> Y \\
+    @V a VV @VV \id_X \times a V @VV a V \\
+    X @> \Delta_X >> X\times X @> \mathrm{proj.} >> X
+  \end{CD}
+  \]
+  がpull-back図式であることから、
+  図式
+  \[
+  \begin{CD}
+    Y @> a >> X @>>> \ep_X \\
+    @V \Gamma_a VV @VV \Delta_X V @VVV \\
+    X\times Y @> \id_X \times a >> X\times X @> \id_X \times \{\} >> X\times PX
+  \end{CD}
+  \]
+  もpull-back図式となる。
+  \(a\)を\(b\)で置き換えても同様のpull-back図式が得られる。
+  ここで\(\{\}\circ a = \{\}\circ b\)であることから、
+  \(\Gamma_a=\Gamma_b\)がわかり、
+  以上より\(a=b\)が従う。
+  これは\(\{\}\)がモノ射であることを帰結する。
+
+  モノ射\(\ep_{X\times Y}\rtot X\times Y \times P(X\times Y)\)に対応する射
+  \(\varphi: X\times P(X\times Y) \to PY\)をとる。
+  pull-back図式
+  \[
+  \begin{CD}
+    Q @>>> Y \\
+    @VVV @VV\{\}V \\
+    X\times P(X\times Y) @>\varphi>> PY
+  \end{CD}
+  \]
+  によりモノ射\(Q\to X\times P(X\times Y)\)を定め、
+  このモノ射に対応する射\(\psi_Y: P(X\times Y) \to PX\)を考える。
+  pull-back図式
+  \[
+  \begin{CD}
+    Y^X @>>> 1 \\
+    @VVV @VV [X] V \\
+    P(X\times Y) @>\psi_Y>> PX
+  \end{CD}
+  \]
+  によりモノ射\(Y^X \to P(X\times Y)\)を定める。
+
+  射\(Y\times X\to Z\)と\(Y\to Z^X\)が (\(Y\)について自然に) 1:1対応することを確認する。
+  射\(f:Y\to Z^X\)を任意にとる。
+  すると射影\(p:Z^X \to P(X\times Z)\)と合成することで、
+  射\(p\circ f Y\to P(X\times Z)\)を得る。
+  この射はある部分対象
+  \(\Gamma \rtot X\times Z\times Y\)と対応する。
+  \(\Gamma\)がある射\(Y\times X\to Z\)のグラフと
+  \(X\times Z\times Y\)の部分対象として同型であることを確認すれば、
+  射\(f:Y\to Z^X\)に対して射\(Y\times X\to Z\)を得ることができる。
+  射\(f:Y\to Z^X\)を射影\(Z^X\to 1\)と合成し、
+  射\(Y\xrightarrow{f} Z^X\to 1 \xrightarrow{[X]} PX\)を得る。
+  これは\(X\times Y\)のある部分対象と対応するが、
+  その部分対象はpull-back図式
+  \[
+  \begin{CD}
+    X\times Y @>\text{proj.}_X>> X @> 1_X \times [X] >> X \times PX \\
+    @AAA @A \id_X AA @AAA \\
+    X\times Y @>>> X @>>> \ep_X
+  \end{CD}
+  \]
+  により得られるものであり、従って\(X\times Y\)と同型である。
+  このことは、合成
+  \(Y\xrightarrow{pf} P(X\times Z) \xrightarrow{\psi_Z} PX\)が
+  部分対象\(X\times Y\rtot X\times Y\)に対応する射であることを意味していて、
+  従って以下の図式はpull-back図式となる：
+  \[
+  \begin{CD}
+    X\times Y @> 1_X\times pf >> X\times P(X\times Z) @>1_X\times \psi_Z >> X\times PX \\
+    @AAA @AAA @AAA \\
+    X\times Y @>>> Q @>>> \ep_X.
+  \end{CD}
+  \]
+  ここで部分対象\(Q \rtot X\times P(X\times Z)\)は次のpull-back図式で定まるものである：
+  \[
+  \begin{CD}
+    Q @>>> Z \\
+    @VVV @VV\{\}V \\
+    X\times P(X\times Z) @>\varphi_Z>> PZ.
+  \end{CD}
+  \]
+  ただし射\(\varphi_Z: X\times P(X\times Z)\to PZ\)は
+  部分対象\(\ep_{X\times Z}\rtot X\times Z\times P(X\times Z)\)
+  に対応する射である。
+  \(1_X\times pf\)と\(\varphi_Z\)との合成を考えると、
+  以下のpull-back図式ができる：
+  \[
+  \begin{CD}
+    X\times Y @> 1_X\times pf >> X\times P(X\times Z) @>\varphi_Z>> PZ \\
+    @A\cong AA @AAA @AA\{\}A \\
+    X\times Y @>>> Q @>>> Z.
+  \end{CD}
+  \]
+  従って、合成\(\varphi_Z\circ (1_X\times pf) : X\times Y \to PZ\)は
+  部分対象\(\{\}:Z\to PZ\)を経由することがわかる。
+  よってある\(g:X\times Y \to Z\)が存在して\(\{\}\circ g = \varphi_Z\circ (1_X\times pf)\)となる。
+  合成\(\{\}\circ g = \varphi_Z\circ (1_X\times pf)\)に対応する\(X\times Z\times Y\)の部分対象は、
+  次のpull-back図式で与えられる：
+  \[
+  \begin{CD}
+    Z\times X\times Y @>1_Z\times g >> Z\times Z @> 1_Z \times \{\} >> Z\times PZ \\
+    @AAA @A \Delta_Z AA @AAA \\
+    \Gamma_g @>>> Z @>>> \ep_Z.
+  \end{CD}
+  \]
+  従って、左側のpull-back図式に注目すれば、
+  対応する部分対象は\(g\)のグラフ\(\Gamma_g\)と同型であることがわかる。
+  一方、この部分対象\(\Gamma_g\)は、
+  上の射の合成が\(\varphi_Z\circ (1_X\times pf)\)に等しいことと\(\varphi_Z\)の定義から、
+  以下の図式をpull-back図式とするものである：
+  \[
+  \begin{CD}
+    X\times Z \times Y @> 1_{X\times Z} \times pf >> X\times Z \times P(X\times Z)
+    @> 1_Z \times \varphi_Z >> Z\times PZ \\
+    @AAA @AAA @AAA \\
+    \Gamma_g @>>> \ep_{X\times Z} @>>> \ep_Z.
+  \end{CD}
+  \]
+  したがって、\(\Gamma_g\)は、
+  射\(pf: Y \to P(X\times Z)\)に対応する部分対象\(\Gamma\rtot X\times Y \times Z\)に等しい。
+  よって射\(f:Y\to Z^X\)から射\(g:X\times Y \to Z\)を得ることができた。
+  部分対象と\(P(-)\)への射の対応の一意性から、
+  \(f:Y\to Z^X\)に対して\(g:X\times Y \to Z\)を対応させる対応は単射である。
+
+  逆に、射\(g:X\times Y \to Z\)が与えられているとする。
+  グラフをとることで部分対象\(\Gamma_g\rtot X\times Y \times Z\)が得られ、
+  これに対応して射\(p_g: Y\to P(X\times Z)\)を得る。
+  この射と\(\varphi_Z:P(X\times Z) \to PX\)の合成
+  \(\varphi_Z\circ p_g:Y\to PX\)が
+  \([X] : 1\to PX\)を経由することを証明すれば良い。
+  そうすれば、pull-backの普遍性により\(Y\to Z^X\)が一意的に得られ、
+  これによって\(\Hom(X\times Y,Z) \cong \Hom(Y,Z^X)\)が示されたことになる。
+  \(\varphi_Z\circ p_g:Y\to PX\)が
+  \([X] : 1\to PX\)を経由することを示すには、
+  合成\(\varphi_Z\circ p_g : Y\to PX\)が\(X\times Y\)の部分対象
+  \(X\times Y\)に対応することを示せば良い。
+  合成\(\varphi_Z\circ p_g : Y\to PX\)に対応する\(X\times Y\)の部分対象は、
+  pull-back図式
+  \[
+  \begin{CD}
+    X\times Y @>1_X\times p_g>> X\times P(X\times Z) @>>> X\times PX \\
+    @AAA @AAA @AAA \\
+    \text{これ} @>>> Q @>>> \ep_X
+  \end{CD}
+  \]
+  により与えられる。
+  ここで\(Q\)はpull-back図式
+  \[
+  \begin{CD}
+    X\times P(X\times Z) @>\varphi_Z>> PZ \\
+    @AAA @AA\{\}A \\
+    Q @>>> Z
+  \end{CD}
+  \]
+  により与えられる部分対象であるから、以下のpull-back図式ができる：
+  \[
+  \begin{CD}
+    X\times Y @>1_X\times p_g>> X\times P(X\times Z) @>\varphi_Z>> PZ \\
+    @AAA @AAA @AA\{\}A \\
+    \text{これ} @>>> Q @>>> Z.
+  \end{CD}
+  \]
+  ここで合成\(\varphi_Z \circ (1_X\times p_g):X\times Y \to PZ\)に対応する
+  \(X\times Y \times Z\)の部分対象は、
+  \(\varphi_Z\)の定義から、以下のpull-back図式により与えられるものとなる：
+  \[
+  \begin{CD}
+    X \times Z \times Y @>1_{X\times Z} \times p_g>> X\times Z \times P(X\times Z)
+    @>1_Z \times \varphi_Z >> Z\times PZ \\
+    @AAA @AAA @AAA \\
+    \Gamma_g @>>> \ep_{X\times Z} @>>> \ep_Z.
+  \end{CD}
+  \]
+  \(p_g\)の定め方から、この部分対象は\(g:X\times Y \to Z\)のグラフ\(\Gamma_g\)に等しい。
+  pull-back図式
+  \[
+  \begin{CD}
+    Z \times X\times Y @>1_Z \times g >> Z\times Z @>1_Z \times \{\} >> Z\times PZ \\
+    @AAA @A\Delta_Z AA @AAA \\
+    \Gamma_g @>>> Z @>>> \ep_Z.
+  \end{CD}
+  \]
+  に注目すれば、部分対象と\(PZ\)への射の対応の一意性から、
+  合成\(\varphi_Z\circ (1_X\times p_g):X\times Y \to PZ\)は
+  \(g:X\times Y \to Z\)と\(\{\} : Z\to PZ\)の合成に等しいことがわかる。
+  このことは、pull-back図式
+  \[
+  \begin{CD}
+    X\times Y @>1_X\times p_g>> X\times P(X\times Z) @>\varphi_Z>> PZ \\
+    @AAA @AAA @AA\{\}A \\
+    \text{これ} @>>> Q @>>> Z.
+  \end{CD}
+  \]
+  で定まる部分対象「これ」が\(X\times Y\)と等しいことを帰結し、
+  これは所望の結果である。
+  以上より\(\Hom(X\times Y,Z) \cong \Hom(Y,Z^X)\)の全単射が構成された。
+
+  構成された全単射\(\Hom(X\times Y,Z)\cong \Hom(Y,Z^X)\)が\(Y\)について自然であることは、
+  射\(a:Y\to Y'\)と射\(p':X\times Y'\to Z\)に対して図式
+  \[
+  \begin{CD}
+    X\times Y \times Z @>1_X\times a \times 1_Z>> X\times Y' \times Z @>>> Z\times Z \\
+    @AAA @AAA @AA\Delta_Z A \\
+    \Gamma_{p'\circ (1_X\times a)} @>>> \Gamma_{p'} @>>> Z
+  \end{CD}
+  \]
+  がpull-back図式であることから従う。
+
+  \(Z\to W\)を射とする。
+  このとき\(Y\)について自然な写像の列
+  \[
+  \Hom(Y,Z^X) \cong \Hom(X\times Y,Z) \to \Hom(X\times Y,W) \cong \Hom(Y,W^X)
+  \]
+  を得る。
+  この\(Y\)について自然な写像の列は、
+  米田の補題により射\(Z^X\to W^X\)を定める。
+  この構成方法より、射の列\(Z_1\to Z_2\to Z_3\)に対して
+  \(Z_1^X\to Z_2^X \to Z_3^X\)の合成は
+  合成射\(Z_1\to Z_3\)により得られるものであるから、
+  \(Z\mapsto Z^X\)は函手\(\mcE\to \mcE\)を定めることがわかる。
+  このことは、\(X\times (-)\)が\((-)^X\)の左随伴函手となることを意味していて、
+  以上で指数函手の存在が示された。
+
+  \(P1\)がsubobject classifierを定めることを示す。
+  そのために、まずモノ射
+  \(\ep_1 \rtot P1\times 1\cong P1\)がgeneric subobjectであることを示す。
+  対象\(X\)とその部分対象\(S\rtot X\)に対し、
+  \(X\cong X\times 1\)の同型のもと\(S\)を\(X\times 1\)の部分対象とみなすと、
+  \(P\)の満たす普遍性より、
+  \(S\rtot X\times 1\)が射
+  \(r \cong r\times \id_1 :X \cong X\times 1 \to P1\times 1 \cong P1\)
+  による\(\ep_1 \rtot P1\)のpull-backとなるような\(r:X\to P1\)が一意的に存在する：
+  \[
+  \begin{CD}
+    S @>>> \ep_1 \\
+    @VVV @VVV \\
+    X @> r >> P1.
+  \end{CD}
+  \]
+  このことは\(\ep_1\rtot P1\)がgeneric subobjectであることを示している。
+
+  \(P1\)がsubobject classifierであることを示すためには、
+  一般に、generic subobject \(S\rtot \Omega\)の定義域\(S\)が終対象であることを示せば良い。
+  \(j:S\rtot \Omega\)をgeneric subobjectとする。
+  射\(f:X\to S\)に対して、
+  pull-back図式
+  \[
+  \begin{CD}
+    Y @>>> T @>>> S \\
+    @VVV @VVV @VV j V \\
+    X @>f>> S @>j>> \Omega
+  \end{CD}
+  \]
+  により\(Y,T\)を定義する。
+  すると、\(j\)がモノ射であることから射\(T\to S\)は同型射となる。
+  従って、その\(f\)に沿った基底変換である\(Y\to X\)も同型射となる。
+  このことは、\(j\)の\(j\circ f\)に沿った基底変換が同型射であることを意味する。
+  \(j:S\rtot \Omega\)がgeneric subobjectであることは、
+  \(j\)のpull-backが同型射 (一つの部分対象) となるような
+  \(X\to \Omega\)はただ一つしかないことを意味している。
+  よって任意の\(f:X\to S\)に対して
+  合成\(j\circ f:X\to \Omega\)は同じ射を定め、
+  \(j\)がモノ射であることは射\(f:X\to S\)が一つしかないことを示している。
+  これは\(S\)が終対象であることを意味する。
+  以上で示された。
+\end{proof}
+
+\begin{rrem*}
+  \(PX\)に対する函手性は必要がない。
+  この問題は、\(\sfSet\)で各\(X\)に対して冪集合\(2^X\)が与えられているときに
+  \(\Hom(X,Y)\)をこのデータから復元する問題と考えると考えやすい。
+  まず\(\ep_X\subset 2^X\times X\)は
+  \[
+  \ep_X = \left\{ (A,x) \middle| x\in A\right\}
+  \]
+  と対応することに注意する。
+  従って、\(\ep_X\subset 2^X\times X\)という部分集合の定める写像
+  \(\ep_X:2^X\times X\to 2\)は、
+  論理式\(x\in A\)の真理値を与える関数とみることができる。
+  この意味で、\(\ep_X\)を論理式\(x\in A\)と「思い込む」。
+  また、\(R\subset Y\times X\)に対して引き起こされる\(r:Y\to 2^X\)は、
+  各\(y\in Y\)に対して射影\(Y\times X\to Y\)のfiberと\(R\)の共通部分により与えられ、
+  \(r(y) = \left\{ x\in X\middle| (x,y)\in R\right\}\)となる。
+  \(r(y)\)は\(x\in X\)に対する論理式\((x,y)\in R\)の真理値と読むことができ、
+  \(r(y)\)は論理式\((x,y)\in R\)が真となるような\(X\)の部分集合である。
+
+  \(\Hom(X,Y)\)の元、つまり写像\(f:X\to Y\)は、
+  \(X\times Y\)の部分集合\(\Gamma_f\)であって、
+  \[
+  \forall x\in X, \exists! y\in Y, (x,y)\in \Gamma_f
+  \]
+  という条件をみたすものと自然に1:1対応がある。
+  従って、\(\Hom(X,Y)\)という集合を構成するには、
+  上の論理式をみたす\(X\times Y\)の部分集合からなる\(2^{X\times Y}\)の部分集合として構成すれば良い。
+  ここで上の論理式を一つずつ分解していく。
+  \(x\in X,A\subset X\times Y\)に対して、
+  \[
+  \varphi(x,A)(y) = \text{論理式\((x,y)\in A\)の真理値}
+  \]
+  として写像\(\varphi(x,A):Y\to 2\)を定める。
+  これは\(\varphi(x,A)\subset Y\)を定めるので、
+  \((x,A)\mapsto \varphi(x,A)\)によって
+  \[
+  \varphi: X\times 2^{X\times Y} \to 2^Y , (x,A) \mapsto \varphi(x,A)
+  \]
+  という写像が得られる。
+  この写像は、
+  \(X\times Y \times 2^{X\times Y}\)の部分集合であって
+  \(\left\{ (x,y,A) \middle| \varphi(x,A)(y) = 1\right\}\)となるものたち、
+  すなわち
+  \[
+  \left\{ (x,y,A) \middle| (x,y)\in A\right\} = \ep_{X\times Y}
+  \subset X\times Y \times 2^{X\times Y}
+  \]
+  に対応する。
+  次に、式\((x,y)\in A\)の変数\(y\)を束縛する。
+  すなわち、各\(x,A\)に対して論理式
+  \[
+  \psi(x,A) = \exists! y\in Y, (x,y)\in A
+  \]
+  を考え、これが真となる\((x,A)\)のなす部分集合\(\psi\subset X\times 2^{X\times Y}\)を決定する。
+  そのためには、一点集合を与える射\(\left\{ \right\} : Y\to 2^Y\)を構成し、pull-backとして
+  \[
+  \begin{CD}
+    \psi @>>> Y \\
+    @VVV @VV\left\{ \right\} V \\
+    X\times 2^{X\times Y} @>\varphi>> 2^Y
+  \end{CD}
+  \]
+  とすれば良い。
+  従って、一点集合を与える射\(\left\{\right\}:Y\to 2^Y\)を圏論的にどう構成するかという問題に帰着される。
+  これは\(Y\times Y\)の部分集合であって、
+  \(\left\{ (y_1,y_2) \middle| y_1 \in \left\{ y_2\right\} \right\}\)
+  により与えられるので、すなわち対角射\(\Delta_Y:Y\to Y\times Y\)に対応するものとして圏論的に構成される。
+  さて、\(\psi(x,A) = \exists! y\in Y, (x,y)\in A\)を表現する部分集合
+  \(\psi \subset X\times 2^{X\times Y}\)が得られたので、
+  対応して射\(\psi :2^{X\times Y} \to 2^X\)を得る。
+  この射は各\(A\subset X\times Y\)に対して、
+  論理式\(\psi(x,A)\)が真となる\(x\in X\)の部分集合を与えるものである。
+
+  最後に変数\(x\)を束縛する。
+  各\(A\subset X\times Y\)に対し、論理式
+  \[
+  \phi(A) = \forall x\in X, \exists! y\in Y, (x,y)\in A
+  \]
+  を考え、これが真となる\(2^{X\times Y}\)の部分集合
+  \(\psi \subset 2^{X\times Y}\)を決定する。
+  これは求める集合\(\Hom(X,Y)\)と自然な1:1対応がある。
+  \(\phi(A) = \forall x\in X, \psi(x,A)\)であるから、
+  \(X\)の部分集合として\(\psi(x,A) = X\)となる\(A\)の集合を決定する問題となる。
+  従って、\(\left[ X \right]: 1 \to 2^X , 0 \mapsto X\)という写像が圏論的に構成できれば、
+  これの\(\psi:2^{X\times Y}\to 2^X\)に沿ったpull-backとして
+  \[
+  \begin{CD}
+    \phi @>>> 1 \\
+    @VVV @VV \left[ X \right] V \\
+    2^{X\times Y} @>\psi >> 2^X
+  \end{CD}
+  \]
+  のように\(\phi\)を構成できる。
+  写像\(\left[ X \right] : 1\to 2^X\)は
+  部分集合\(\id_X:X\to X\)に対応するものとして圏論的に得られるので、
+  以上で\(\Hom(X,Y)\)の構成が完了したこととなる。
+
+  長くなったけど、要はほしい集合をある論理式が真となるものたちとして表現してから、
+  その論理式を一つずつ分解して考えれば自然に解ける、ということが言いたかった。
+\end{rrem*}
+
+
+
+
+\begin{prob}\label{prob: 1.2}
+  Elementary toposの定義 Definition 0.11の条件 (i) が次で置き換えられることを示せ：
+  \(\mcE\)は有限直積と終対象を持ち、
+  \[
+  \begin{CD}
+    @. 1 \\
+    @. @VVtV \\
+    X @>>> \Omega
+  \end{CD}
+  \]
+  の形の図式のpull-backがつねに存在する。
+\end{prob}
+
+\begin{proof}
+  \(\mcE\)が有限完備であれば問いの条件を満たすことは明らかであるから、
+  問いの条件を満たすときに\(\mcE\)が有限完備であることを示す。
+  Equalizerを構成すれば良いので、
+  二つの射\(a,b:X\rightrightarrows Y\)を任意にとる。
+  \(Y\times Y\)は存在するので、
+  部分対象\(\Delta_Y:Y\to Y\times Y\)に対して
+  classifing morphism \(\chi(\Delta_Y) : Y\times Y\to \Omega\)をとれば、
+  pull-back図式
+  \[
+  \begin{CD}
+    E @>>> Y @>>> 1 \\
+    @VVV @V\Delta_Y VV @VV t V \\
+    X @>(a,b)>> Y\times Y @>\chi(\Delta_Y)>> \Omega
+  \end{CD}
+  \]
+  を得る。
+  ここで\(E\)は一番外側の四角形をpull-back図式とするような対象であり、
+  それは問いの条件より存在する。
+  すると左側の四角形はpull-back図式となり、
+  このことは\(E\)が\(a,b\)のequalizerであることを示している。
+\end{proof}
+
+
+\begin{prob}\label{prob: 1.3}
+  \(\alpha:\Omega \rtot \Omega\)をtopos \(\mcE\)のモノ射とし、
+  \(m:U\rtot \Omega\)を\(\alpha\)によって分類される\(\Omega\)の部分対象、
+  すなわち以下のpull-back図式で定まる射とする：
+  \[
+  \begin{CD}
+    U @>>> 1 \\
+    @V m VV @VV t V \\
+    \Omega @>\alpha>> \Omega.
+  \end{CD}
+  \]
+  \(m\)によって分類される\(U\)の部分対象を考えることで、以下の図式が可換であることを示せ：
+  \[
+  \begin{CD}
+    U @> m >> \Omega \\
+    @VVV @AA \alpha A \\
+    1 @> t >> \Omega.
+  \end{CD}
+  \]
+  さらに図式
+  \[
+  \begin{CD}
+    U @> 1_U >> U \\
+    @V m VV @VV m V \\
+    \Omega @> \alpha^2 >> \Omega
+  \end{CD}
+  \]
+  がpull-back図式であることを帰結し、
+  \(\alpha^2 = 1_{\Omega}\)を示せ。
+\end{prob}
+
+
+\begin{proof}
+  対象\(X\)から終対象\(1\)への一意的な射を\(u_X\)と表すことにする。
+  示さなければならない一つ目のことは、
+  射の等式\(m = \alpha t u_U\)である。
+  \(m\)によって分類される\(U\)の部分対象を\(v:V\rtot U\)とおく。
+  すなわち、以下のpull-back図式を考える：
+  \[
+  \begin{CD}
+    V @> u_V >> 1 \\
+    @V v VV @VV t V \\
+    U @> m >> \Omega.
+  \end{CD}
+  \]
+  すると、終対象への射が一意的であることから、
+  \(u_V = u_U v\)となることがわかる。
+  従って、射\(u_V:V\to 1\)の射\(u_U: U\rtot 1\)に沿った基底変換は\(v:V\rtot U\)となる。
+  よって次の3つのpull-back図式ができる：
+  \[
+  \begin{CD}
+    V @> {\id_V} >> V @> v >> U @> u_U >> 1 \\
+    @V v VV @VV {u_V} V @VV m V @VV t V \\
+    U @> u_U >> 1 @> t >> \Omega @> \alpha >> \Omega.
+  \end{CD}
+  \]
+  部分対象\(v:V\rtot U\)を分類する射は\(m:U\to \Omega\)であるから、
+  部分対象に対する分類射の一意性により、
+  \(m = \alpha t u_U\)が従う。
+  これは示したかった射の等式である。
+
+  次に、図式
+  \[
+  \begin{CD}
+    U @> \id_U >> U @> m >> \Omega @> \id_{\Omega} >> \Omega \\
+    @V \id_U VV @V u_U VV @VV \alpha V @VV \alpha V \\
+    U @> u_U >> 1 @> t >> \Omega @> \id_{\Omega} >> \Omega \\
+    @V \id_U VV @V \id_1 VV @VV \id_{\Omega} V @VV \alpha V \\
+    U @> u_U >> 1 @> t >> \Omega @> \alpha >> \Omega
+  \end{CD}
+  \]
+  に注目する。
+  この図式は、一番下の射を一番右側の射で順番にpull-backして得られる図式である。
+  \(\alpha\)がモノであることから、
+  下の段の一番右側の四角形がpull-back図式となることがわかる。
+  これにより下の段の四角形がすべてpull-back図式となり、
+  また上の段の一番右側の四角形がpull-back図式であることもわかる。
+  \(m\)の定義より、上の段の真ん中の図式はpull-back図式であり、
+  これによってすべての四角形がpull-back図式であることがわかる。
+  ここで一番下の射の列の合成は、既に確認したことにより、\(m : U\to \Omega\)と等しい。
+  従って、このことは図式
+  \[
+  \begin{CD}
+    U @> \id_U >> U \\
+    @V m VV @VV m V \\
+    \Omega @> \alpha^2 >> \Omega
+  \end{CD}
+  \]
+  がpull-back図式であることを示している。
+
+  最後に\(\alpha^2 = \id_{\Omega}\)を示す。
+  図式
+  \[
+  \begin{CD}
+    U @> \id_U >> U @> u_U >> 1 \\
+    @V m VV @V m VV @VV t V \\
+    \Omega @>\alpha^2>> \Omega @>\alpha>> \Omega
+  \end{CD}
+  \]
+  がpull-back図式であることと、
+  部分対象に対する分類射の一意性により、
+  \(\alpha^3 = \alpha\)がわかる。
+  ここで\(\alpha\)がモノ射であることから、
+  \(\alpha^2 = \id_{\Omega}\)がわかる。
+
+  以上で全て示された。
+\end{proof}
+
+
+
+
+
+
+\begin{prob}\label{prob: 1.4}
+  \(\On\)を順序数のクラスとし、
+  通常の順序により (大きい) 圏とみなす。
+  \(\sfSet^{\On^{\op}}\)はelementary toposであるが、
+  \(\sfSet^{\On}\)はelementary toposではないことを示せ。
+\end{prob}
+
+
+\begin{proof}
+  \textbf{問題なのは、圏の大きさである}。
+  小圏上の前層圏はいつでもGrothendieck toposであるから、
+  とくにelementary toposとなるが、
+  この場合は\(\On\)が小圏ではないので、この事実を用いることはできない！
+
+  \(\sfSet^{\On^{\op}}\)がelementary toposであることを示す。
+  そのために、まず\(\sfSet^{\On^{\op}}\)が有限完備であることを示す。
+  \(F\to H \gets G\)を函手\(\On^{\op}\to \sfSet\)の図式とすると、
+  その各\(\alpha\in \On\)ごとのfiber積は
+  \(F(\alpha)\times_{H(\alpha)}G(\alpha)\)により与えられる。
+  \((F(\alpha),G(\alpha),H(\alpha)\)が\(\sfSet\)に属することから、
+  \(F(\alpha)\times_{H(\alpha)}G(\alpha)\)も\(\sfSet\)に属する。
+  従って\(\alpha\mapsto F(\alpha)\times_{H(\alpha)}G(\alpha)\)は
+  函手\(F\times_HG: \On^{\op}\to \sfSet\)を与え、
+  これは\(\sfSet^{\On^{\op}}\)での
+  \(F\to H \gets G\)のfiber積となる。
+  よって\(\sfSet^{\On^{\op}}\)は有限完備である。
+
+  次に\(\sfSet^{\On^{\op}}\)がCartesian閉であることを示す。
+  各\(\alpha\in \On\)に対し、
+  \(\On_{\alpha}\)を\(\alpha\)以下の順序数のなす\(\On\)の充満部分圏とする。
+  包含函手\(\On_{\alpha}\subset \On\)が
+  制限函手\((-)|_{\alpha} : \sfSet^{\On^{\op}} \to \sfSet^{\On_{\alpha}^{\op}}\)を引き起こす。
+  この右辺は小さい圏\(\On_{\alpha}\)上の函手圏であるから、局所小圏である。
+  各\(F,G\in\sfSet^{\On^{\op}}\)に対し、
+  \[
+  \alpha \mapsto \Hom_{\sfSet^{\On_{\alpha}^{\op}}}(F|_\alpha,G|_\alpha)
+  \]
+  で定まる対応関係は、右辺が小さい集合であることから、
+  函手\(\Hom(F,G): \On^{\op}\to \sfSet\)を定める。
+  \(\Hom(F,-):\sfSet^{\On^{\op}}\to \sfSet^{\On^{\op}}\)が
+  \((-)\times F:\sfSet^{\On^{\op}}\to \sfSet^{\On^{\op}}\)の右随伴であることを示せば良い。
+  \(F,G,H\in \sfSet^{\On^{\op}}\)に対し、
+  射\(\varphi:F\to \Hom(G,H)\)を与えると、
+  これは各\(\alpha\in\On\)に対して射の族
+  \(\varphi_\alpha:F(\alpha) \to \Hom_{\sfSet^{\On_\alpha^{\op}}}(G|_\alpha,H|_\alpha)\)
+  を\(\alpha\)について自然に与えることと等しい。
+  この射の族は、各\(f\in F(\alpha)\)に対して
+  自然変換\(\varphi_\alpha(f) : G|_\alpha\to H|_\alpha\)を定めるので、
+  各\(\beta \leq \alpha\)に対する射の族
+  \(\varphi_\alpha(f)_\beta:G(\beta)\to H(\beta)\)で\(\beta\)について自然なものを定める。
+  すると
+  \(F(\alpha)\times G(\alpha) \to H(\alpha)\)を
+  \[F(\alpha) \to \Hom(G(\alpha),H(\alpha)) , f\mapsto \varphi_\alpha(f)_\alpha\]
+  に対応するものとして\(\alpha\)について自然にとることができる。
+  すなわち前層の射\(F\times G\to H\)を得る。
+  逆に\(\alpha\)について自然に射の族
+  \(\psi_\alpha:F(\alpha)\times G(\alpha) \to H(\alpha)\)
+  が与えられると、
+  各\(f\in F(\alpha)\)について
+  \(\psi_\alpha(f,-):G(\alpha)\to H(\alpha)\)ができる。
+  \(\alpha\)についての自然性から、
+  各\(\beta \leq \alpha\)と\(g\in G(\alpha)\)に対して
+  \(\psi_\beta(f|_\beta,g|_\beta) = \psi_\alpha(f,g)|_\beta\)
+  となる。
+  このことは、各\(f\)についての射の族
+  \(\{\psi_\alpha(f,(-))_\beta\}_{\beta \leq \alpha}\)が
+  前層の射
+  \(\psi_\alpha(f,-): G|_\alpha \to H|_\alpha\)
+  を定めることを意味する。
+  これによって\(\alpha\)について自然に
+  \(F(\alpha) \to \Hom_{\sfSet^{\On_\alpha^{\op}}}(G|_\alpha,H|_\alpha)\)
+  を得ることができ、これは前層の射
+  \(F\to \Hom(G,H)\)を定める。
+  この対応関係は1:1であるから、
+  以上で\(\sfSet^{\On^{\op}}\)がCartesian閉であることがわかった。
+
+  \(\sfSet^{\On^{\op}}\)が部分対象分類子を持つことを示す。
+  各\(\alpha\in \On\)に対し、
+  \(h_\alpha\)の部分対象の集合を\(\Omega(\alpha)\)とする。
+  \(\Omega(\alpha)\)が小さい集合であれば、
+  \(\Omega:\On^{\op}\to \sfSet\)が求める部分対象分類子を与えるので、
+  従って\(h_\alpha\)の部分対象の集合が小さい集合であることが証明できれば良い。
+  \(F\subset h_\alpha\)を部分対象とする。
+  各\(\beta\in \On\)に対し、
+  \(h_\alpha(\beta)\)は\(\beta \leq \alpha\)であれば一点集合で、
+  \(\beta > \alpha\)であれば\(\emptyset\)であるから、
+  \(F(\beta)\)は\(\beta \leq \alpha\)に対しては\(\emptyset\)か一点集合であり、
+  \(\beta > \alpha\)に対しては\(\emptyset\)である。
+  このような\(F:\On^{\op}\to \sfSet\)は明らかに小さい集合となるので、
+  以上より部分対象分類子の存在がわかった。
+  よって\(\sfSet^{\On^{\op}}\)はelementary toposとなる。
+
+  次に\(\sfSet^{\On}\)が部分対象分類子を持たないことを示し、
+  とくにelementary toposとならないことを示す。
+  \(\sfSet^{\On}\)に部分対象分類子\(\Omega\)が存在したとする。
+  このとき米田の補題より、
+  \[\Hom_{\sfSet^{\On}}(\Hom_{\On}(\alpha,-),\Omega)\cong \Omega(\alpha)\in \sfSet\]
+  であるから、
+  \(\Hom_{\On}(\alpha,-)\)の部分対象の集合は小さい集合でなければならない。
+  一方、各\(\beta \geq \alpha\)について、
+  \begin{itemize}
+    \item \(\beta' \geq \beta\)に対し\(F_\beta(\beta')\)を一点集合
+    \item \(\beta' < \beta\)に対し\(F_\beta(\beta') = \emptyset\)
+  \end{itemize}
+  で定まる前層\(F_\beta:\On\to \sfSet\)は
+  各\(\beta\)について異なる\(\Hom_{\On}(\alpha,-)\)の部分対象を定める。
+  このことは
+  \(\Hom_{\On}(\alpha,-)\)の部分対象の集合\(\Omega(\alpha)\)が大きいことを意味していて、
+  \(\Omega(\alpha)\in \sfSet\)に反する。
+  以上で\(\sfSet^{\On}\)はelementary toposとならない。
+\end{proof}
+
+
+
+
+
+\begin{prob}\label{prob: 1.5}
+  Elementary toposの対象\(E\in \mcE\)に対し、
+  \(E\)が入射的対象である、
+  すなわち任意のモノ射\(f:X\rtot Y\)と
+  任意の射\(g:X\to E\)に対し、
+  ある\(h:Y\to E\)が存在して\(g = h\circ f\)となる、ということと、
+  \(E\)がある対象\(X\)に対する\(\Omega^X\)のレトラクトであることが同値であることを示せ。
+  これにより、
+  入射的対象\(E\)に対して
+  函手\(E^{(-)}:\mcE^{\op} \to \mcE\)がreflexive coequalizerを保つことを帰結せよ。
+\end{prob}
+
+\begin{proof}
+  \(E\)が入射的対象であるとする。
+  \(\Delta_E:E\to E\times E\)を分類する射
+  \(\chi(\Delta_E):E\times E \to \Omega\)に
+  随伴で対応する射を\(\{\}:E\to \Omega^E\)とする。
+  このとき\(\{\}\)はモノ射である (cf. \autoref{prob: 1.1})。
+  \(E\)は入射的対象であるから、
+  \(\id_E:E\to E\)はモノ射\(\{\}\)に沿って延長でき、
+  \(\{\}\)のレトラクト
+  \(r:\Omega^E\to E\)を得る。
+  以上で\(E\)は\(\Omega^E\)のレトラクトとなることがわかった。
+
+  逆に\(E\)がある\(X\)に対する\(\Omega^X\)のレトラクトとなるとする。
+  入射的対象のレトラクトは入射的対象であるから、
+  \(\Omega^X\)が入射的対象であることを示せば良い。
+  モノ射\(j:Y\rtot Z\)と射\(f:Y\to \Omega^X\)を任意にとる。
+  \(k_Y:R\rtot X\times Y\)を、
+  \(f: Y\to \Omega^X\)に対応する射
+  \(u(f): X\times Y\to \Omega\)によって分類される部分対象とする。
+  すなわち、以下のpull-back図式により定まる部分対象とする：
+  \[
+  \begin{CD}
+    R @>>> 1 \\
+    @V k_Y VV @VV t V \\
+    X\times Y @> u(i\circ f) >> \Omega.
+  \end{CD}
+  \]
+  部分対象\(k_Z \dfn (\id_X\times j) \circ k_Y : R\to X\times Z\)を分類する射を
+  \(l:X\times Z\to \Omega\)とおく。
+  このとき、
+  \[
+  \begin{CD}
+    R @>\id_R>> R @>>> 1 \\
+    @V k_Y VV @V k_Z VV @VV t V \\
+    X\times Y @> \id_X\times j >> X\times Z @> l >> \Omega
+  \end{CD}
+  \]
+  はpull-back図式となる。
+  なぜなら、右側の四角形は\(l\)の定義によりpull-back図式であり、
+  縦向き真ん中の射\(k_Z:R\to X\times Z\)は
+  部分対象\(\id_X\times j : X\times Y\to X\times Z\)を経由するので、
+  左側の四角形もpull-back図式となる。
+  部分対象を分類する射の一意性により、
+  \(l\circ (\id_X\times j) = u(f)\)であることがわかり、
+  このことは、\(l\circ (\id_X\times j)\)に対応する射を
+  \(g:Z\to \Omega^X\)としたとき、
+  \(g\circ j = f\)となることを示している。
+  以上より\(\Omega^X\)は入射的対象であることがわかった。
+
+  最後に入射的対象\(E\)に対し
+  函手\(E^{(-)}:\mcE^{\op} \to \mcE\)がreflexive coequalizerを保つことを示す。
+  \(a,b:Y\rightrightarrows X\)を\(\mcE\)の射であって、
+  \(\mcE^{\op}\)におけるreflexive pairであるとする。
+  すなわち、ある\(\mcE\)の射\(c:X\to Y\)が存在して
+  \(c\circ a = c\circ b\)となるとする
+  (\(\mcE^{\op}\)でのreflexive pairであるから向きが逆であることに注意)。
+  \(z:Z \to X\)を\((a,b)\)の\(\mcE\)でのequalizerであるとする。
+  これは\(\mcE^{\op}\)でのcoequalizerである。
+  図式
+  \[
+  \begin{tikzpicture}[auto]
+    \node (A) at (0,0) {\(E^X\)};
+    \node (B) at (3,0) {\(E^Y\)};
+    \node (C) at (6,0) {\(E^Z\)};
+    \draw[->,transform canvas={yshift=1pt}] (A) to node {\(\scriptstyle a^*\)} (B);
+    \draw[->,transform canvas={yshift=-1pt}] (A) to node[swap] {\(\scriptstyle b^*\)} (B);
+    \draw[->] (B) to node {\(\scriptstyle z^*\)} (C);
+  \end{tikzpicture}
+  \]
+  が\(\mcE\)のcoequalizer図式であることを示せば良い。
+  この図式を\(E\)-系の図式と呼ぶことにする。
+  射\(w:E^Y \to W\)が\(w\circ a^* = w\circ b^*\)を満たすとする。
+  図式全体を可換にする射\(E^Z\to W\)が一意的に存在することを示せば良い。
+  \(i:E\to \Omega^E\)により埋め込むと、レトラクト\(r:\Omega^E\to E\)がとれる。
+  ここで\(\Omega^{(-)}\)は本文中のTheorem 1.34の証明より
+  reflexive coequalizerを保つので、図式
+  \[
+  \begin{tikzpicture}[auto]
+    \node (A) at (0,0) {\(\Omega^{E\times X}\)};
+    \node (B) at (3,0) {\(\Omega^{E\times Y}\)};
+    \node (C) at (6,0) {\(\Omega^{E\times Z}\)};
+    \draw[->,transform canvas={yshift=1pt}] (A) to node {\(\scriptstyle a^*\)} (B);
+    \draw[->,transform canvas={yshift=-1pt}] (A) to node[swap] {\(\scriptstyle b^*\)} (B);
+    \draw[->] (B) to node {\(\scriptstyle z^*\)} (C);
+  \end{tikzpicture}
+  \]
+  はcoequalizer図式である。
+  この図式を\(\Omega\)-系の図式と呼ぶことにする。
+  \(\Omega\)-系の図式はcoequalizer図式であるから、
+  射\(w \circ r_*:\Omega^{E\times Y}\cong (\Omega^E)^Y \to E^Y \to W\)
+  に対して\(\Omega\)系の図式全体を可換にする射\(p:\Omega^{E\times Z}\to W\)が一意的に存在する。
+  \(E^Z \to W\)を\(p\circ i_*:E^Z \to \Omega^{E\times Z} \to W\)と定義すれば、
+  これは\(E\)-系の図式全体を可換にする射となる。
+  また、\(E\)-系の図式全体を可換にする射\(q:E^Z\to W\)に対し、
+  \(\Omega\)-系の図式全体を可換にする射\(q\circ r_* : \Omega^{E\times Z} \to E^Z \to W\)ができるので、
+  二つの\(E\)-系の図式全体を可換にする射\(q_1,q_2:E^Z\to W\)に対して
+  \(\Omega\)-系の図式全体を可換にする射の一意性より
+  \(q_1\circ r_* = q_2 \circ r_*\)となり、
+  \(i_*\)を合成することで\(q_1 = q_1\circ r_* \circ i_* = q_2\circ r_* \circ i_* = q_2\)
+  がわかる。
+  以上で\(E\)-系の図式全体を可換にする射\(E^Z\to W\)の存在と一意性がわかり、
+  \(E\)-系の図式がcoequalizer図式であることがわかった。
+\end{proof}
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 1.6}
+  本文Example 1.38と同様に、
+  elementary toposにおけるcoproductを構成するために
+  本文Theorem 1.34がどのようにして用いられるかを明らかにせよ。
+\end{prob}
+
+\begin{proof}
+  \(X,Y\)をelementary topos \(\mcE\)の二つの対象とする。
+  \(Z\dfn PX \times PY\)とし、射影を\(p_X:Z\to PX, p_Y:Z\to PY\)とおく。
+  \(\alpha_X:X\to P^2X\)を
+  \(\mathrm{Ev}_X:X\times PX = X\times \Omega^X \to \Omega\)に対応する射とする。
+  すると、
+  \(P(\alpha_X) \circ P^2(p_X): P^2Z\to P^3X \to PX\)と
+  \(P(\alpha_Y) \circ P^2(p_Y): P^2Z\to P^3Y \to PY\)の二つの射から
+  直積の普遍性より
+  \(p_X\circ r = P(\alpha_X) \circ P^2(p_X), p_Y\circ r = P(\alpha_Y) \circ P^2(p_Y)\)
+  となる射\(r:P^2Z \to Z\)が一意的に引き起こされる。
+  \(k:K\to PZ\)を\(P(\alpha_Z): PZ \to P^3Z\)と\(P(r):PZ\to P^3Z\)のequalizerとする。
+  図式
+  \[
+  \begin{tikzpicture}[auto]
+    \node (A) at (0,1.5) {\(X\)};
+    \node (B) at (4,1.5) {\(P^2X\)};
+    \node (C) at (8,1.5) {\(P^4X\)};
+    \node (A') at (0,0) {\(K\)};
+    \node (B') at (4,0) {\(PZ\)};
+    \node (C') at (8,0) {\(P^3Z\)};
+    \draw[->,transform canvas={yshift=1pt}] (B) to node {\(\scriptstyle \alpha_{P^2X}\)} (C);
+    \draw[->,transform canvas={yshift=-1pt}] (B) to node[swap] {\(\scriptstyle P^2(\alpha_X)\)} (C);
+    \draw[->] (A) to node {\(\scriptstyle \alpha_X\)} (B);
+    \draw[->,transform canvas={yshift=1pt}] (B') to node {\(\scriptstyle P(\alpha_Z)\)} (C');
+    \draw[->,transform canvas={yshift=-1pt}] (B') to node[swap] {\(\scriptstyle P(r)\)} (C');
+    \draw[->] (A') to node {\(\scriptstyle k\)} (B');
+    \draw[->, dashed] (A) to node[swap] {\(\scriptstyle q_X\)} (A');
+    \draw[->] (B) to node[swap] {\(\scriptstyle P(p_X)\)} (B');
+    \draw[->] (C) to node {\(\scriptstyle P^3(p_X)\)} (C');
+  \end{tikzpicture}
+  \]
+  において、実線で表記された射からなる部分が可換であることから、
+  全体を可換にするように射\(q_X: X\to K\)が一意的に引き起こされる。
+  同様に射\(q_Y: Y\to K\)が引き起こされる。
+  これらの射により、\(K\)が\(X,Y\)の余積としての普遍性を持つことを示す。
+\end{proof}
+
+
+
+
+
+
+
+\begin{prob}\label{prob: 1.7}
+  \(X\)を位相空間、
+  \(p:E\to X\)を局所同相写像とする。
+  このとき、\(\Sh(X)_{/\Gamma(E,p)}\)と\(\Sh(E)\)は圏同値であることを示せ。
+\end{prob}
+
+\begin{proof}
+  \(\Sh(X)\)と\(X\)上の位相空間であって局所同相であるもののなす\(\sfTop_{/X}\)の充満部分圏を同一視する。
+  \(\Sh(X)\)の射\(f:Y\to E\)を任意にとる。
+  このとき\(p\circ f:Y\to X\)は局所同相写像であるから、
+  各\(y\in Y\)に対してある開近傍\(y\in V\subset Y\)が存在して
+  \(p(f(V))\subset X\)は開集合であり、
+  さらに\((p\circ f)|_V : V\to X\)は像への同相となる。
+  \(p^{-1}(p(f(V)))\)は\(E\)の開集合であって\(f(y)\)を含むものであるから、
+  \(p\)が局所同相であることより、
+  ある\(f(y)\)の開近傍\(f(y)\in U\subset p^{-1}(p(f(V)))\)が存在して、
+  \(p(U)\subset X\)は開集合であり、
+  さらに\(p|_U:U\to X\)は像への同相となる。
+  このとき\(y\in W\dfn V\cap f^{-1}(U)\)であり、
+  \((p\circ f)|_W : W\to U \to X\)も\(p|_U:U\to X\)も像への同相であるから、
+  \(f|_W :W\to U\subset E\)も像への同相である。
+  また、\(W\)が\(V\)の開集合であることと\((p\circ f)|_V\)が像への同相であることから、
+  \((p\circ f)(W)\)は\(X\)の開集合であり、
+  従って\(f(W) = p|_U^{-1}(p(f(W)))\)は\(U\subset E\)の開集合である。
+  以上より\(f\)も局所同相写像となることがわかった。
+  従って、\(\Sh(X)_{/E}\)の対象は自然に\(\Sh(E)\)の対象とみなすことができる。
+  逆に\(\Sh(E)\)の対象を\(p\)の合成をすることで\(\Sh(X)\)の対象とみなせば、
+  \(E\)への構造射が\(X\)上の位相空間の射を与えるので、
+  \(\Sh(E)\)の対象は自然に\(\Sh(X)_{/E}\)の対象とみなすことができる。
+  この対応は明らかに1:1であり、これらの圏の間の圏同値を与える。
+\end{proof}
+
+
+
+
+
+\begin{prob}\label{prob: 1.8}
+  \(\mcE\)を有限完備な圏とする。
+  \(\mcE\)がCartesian閉であることは、
+  任意の対象\(X\in \mcE\)に対して函手\(X^*\dfn (-)\times X:\mcE \to \mcE_{/X}\)が
+  右随伴\(\Pi_X\)を持つことと同値であることを示せ。
+\end{prob}
+
+
+\begin{proof}
+  任意の\(X\in \mcE\)に対して\(X^*\)の右随伴函手\(\Pi_X\)が存在するとして、
+  \(\mcE\)がCartesian閉であることを示す。
+  そのためには次の自然な集合の同型に注目すれば良い：
+  \[
+  \Hom_{\mcE}(Y\times X,Z) \cong \Hom_{\mcE_{/X}}(Y\times X, Z\times X)
+  \cong \Hom_{\mcE}(Y,\Pi_X(Z\times X)).
+  \]
+  よって\(\mcE\)はCartesian閉である。
+
+  逆に\(\mcE\)がCartesian閉であるとして\(X^*\)の右随伴函手\(\Pi_X\)の存在を示す。
+  \(h:Y\to X\)を\(\mcE_{/X}\)の任意の対象とする。
+  pull-back図式
+  \[
+  \begin{CD}
+    \Pi_X(Y) @>>> 1 \\
+    @VVV @VV \bar{\id_X} V \\
+    Y^X @> h^X >> X^X
+  \end{CD}
+  \]
+  により\(\mcE\)の対象\(\Pi_X(Y)\)を定める。
+  対応\(Y\mapsto \Pi_X(Y)\)は明らかに\(Y\)について函手的である。
+  \(X^*\)の右随伴であることを示す。
+  対象\(Y\in \mcE\)と対象\((h:Z\to X)\in \mcE_{/X}\)と
+  \(X\)上の射\(f:X^*Y = Y\times X \to Z\)をとる。
+  随伴\((-)\times X \dashv (-)^X\)のcounitを
+  \(\mathrm{coEv}_{(-)}:(-)\to ((-)\times X)^X\)と表す。
+  図式
+  \[
+  \begin{CD}
+    Y @>>> \Pi_X(Z) @>>> 1 \\
+    @VVV @VVV @VV \bar{\id_X} V \\
+    Y @> f^X\circ \mathrm{coEv}_Y >> Z^X @> h^X >> X^X.
+  \end{CD}
+  \]
+  において、右側は\(\Pi_X(Z)\)の定義よりpull-back図式であり、
+  一番外側は、下の射の合成が射影\(Y\times X \to X\)に対応する射である、
+  すなわち\(\bar{\id_X}:1\to X^X\)を経由することからpull-back図式となる。
+  これにより射\(Y\to \Pi_X(Z)\)を得ることができた。
+  逆に、射\(Y\to \Pi_X(Z)\)に対しては
+  射影\(\Pi_X(Z)\to Z^X\)を合成したのちに対応する射をとることで
+  \(Y\times X\to Z\)を得る。
+  この対応関係は\(Y,Z\)について自然な1:1の対応である。
+  以上で全て示された。
+\end{proof}
+
+
+
+
+\begin{prob}\label{prob: 1.9}
+  \(f:\mcF\to \mcE\)をelementary toposの間のgeometric morphismとする。
+  対象\(X\in \mcE, Y\in \mcF\)に対して
+  \(f_*(Y^{f^*X}), (f_*Y)^X\)は自然に同型であることを示せ。
+\end{prob}
+
+\begin{proof}
+  対象\(Z\in \mcE\)について自然な射の集合の全単射
+  \begin{align*}
+    \Hom_{\mcE}(Z,f_*(Y^{f^*X}))
+    &\overset{\bigstar}{\cong}
+    \Hom_{\mcE}(f^*Z,Y^{f^*X}) \\
+    &\overset{\spadesuit}{\cong}
+    \Hom_{\mcE}(f^*Z\times f^*X,Y) \\
+    &\overset{\clubsuit}{\cong}
+    \Hom_{\mcE}(f^*(Z\times X),Y) \\
+    &\overset{\bigstar}{\cong}
+    \Hom_{\mcE}(Z\times X,f_*Y) \\
+    &\overset{\spadesuit}{\cong}
+    \Hom_{\mcE}(Z,(f_*Y)^X)
+  \end{align*}
+  に対して米田の補題を使えば良い。
+  ただしここで二箇所の\(\bigstar\)の同型で\(f^*\)が\(f_*\)の左随伴であることを用い、
+  二箇所の\(\spadesuit\)の同型で\(\mcE\)がCartesian閉であることを用い、
+  \(\clubsuit\)の同型で\(f^*\)がexactであることを用いた。
+\end{proof}
+
+
+\begin{prob}\label{prob: 1.10}
+  次を示せ：
+  \begin{enumerate}
+    \item \label{enumi: prob: 1.10.1}
+    射\(f:X\to Y\)に対して、射\(\exists f:\Omega^X \to \Omega^Y\)を、
+    モノ射である場合は本文の1.3節で定義したものと同じとなり、
+    \(X\mapsto \Omega^X,f\mapsto \exists f\)が函手\(\mcE\to \mcE\)を与えるように、
+    定義せよ。
+    \item \label{enumi: prob: 1.10.2}
+    本文のLemma 1.3がモノ射とは限らない\(g,h\)に対しても
+    \ref{enumi: prob: 1.10.1}の定義のもとで成立することを示せ。
+    すなわち、任意のpull-back図式
+    \[
+    \begin{CD}
+      X @> f >> Y \\
+      @V g VV @VV h V \\
+      Z @> k >> W
+    \end{CD}
+    \]
+    に対して図式
+    \[
+    \begin{CD}
+      \Omega^Y @> Pf >> \Omega^X \\
+      @V \exists g VV  @VV \exists h V \\
+      \Omega^W @> Pk >> \Omega^Z
+    \end{CD}
+    \]
+    が可換であることを示せ。
+    \item \label{enumi: prob: 1.10.3}
+    \(f:X\to Y\)がエピであるとき、
+    \((\exists f) \circ (Pf) = \id_{\Omega^Y}\)
+    となることを示せ。
+    \item \label{enumi: prob: 1.10.4}
+    対応\(f\mapsto \exists f\)が
+    pull-back図式
+    \[
+    \begin{CD}
+      X @> f >> Y \\
+      @V g VV @VV h V \\
+      Z @> k >> W
+    \end{CD}
+    \]
+    で\(g,h\)がモノであるようなものを、pull-back図式に写すことを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  本題に入るまえに、image factorizationに関していくつかの事実を確認しておく。
+  射\(f:X\to Y, g:Y\to Z\)に対して、\(f,g,g\circ f\)のimage factorizationを
+  \(p:X\to \im(f), i:\im(f) \rtot Y;
+  q:Y\to \im(g), j:\im(g) \rtot Z;
+  r:Y\to \im(g\circ f), k:\im(g\circ f) \rtot Z\)とおく。
+  ただし\(p,q,r\)はエピであり、\(i,j,k\)はモノである。
+  \(j,k\)によるfiber積を\(K\)として、
+  射影を\(h_{g\circ f}:K\to \im(g\circ f), h_g:K\to \im(g)\)とおく。
+  すると\(j\circ (q\circ f) = g\circ f = k\circ r\)であることから、
+  \(h_{g\circ f}\circ m = r , h_g \circ m = q\circ f\)となる
+  射\(m:X\to K\)が一意的に存在する。
+  ここで\(r\)がエピであることから\(h_{g\circ f}\)がエピであることがわかる。
+  一方、\(h_{g\circ f}\)はモノ射のpull-backなのでモノ射となり、
+  以上より\(h_{g\circ f}\)は同型射となる (elementary toposの射はエピかつモノであれば同型である)。
+  従って
+  \begin{enumerate}[label=(\fnsymbol*),start=2]
+    \item \label{enumi: prob: 1.10 proof 1}
+    \(\im(g\circ f)\rtot Z\)は\(\im(g)\rtot Y\)を一意的にfactorする
+  \end{enumerate}
+  ことがわかる。
+  さらに、もし\(f\)がエピであれば、\(q\circ f\)もエピであるから、
+  \(h_g\)もエピとなることがわかり、
+  一方\(h_g\)はモノ射のpull-backなのでモノ射であるから、
+  \(h_g\)が同型射となることがわかる。
+  従って、とくに\(g\circ f = (g\circ i) \circ p\)と考えれば、
+  \begin{enumerate}[label=(\fnsymbol*),start=3]
+    \item \label{enumi: prob: 1.10 proof 2}
+    \(Z\)の部分対象として
+    \(\im(g\circ f) \cong \im(\im(f)\rtot Y\xrightarrow{g} Z)\)
+    となる
+  \end{enumerate}
+  ことがわかる。
+
+  次に
+  \[
+  \begin{CD}
+    X @> g >> Z \\
+    @V f VV @VV k V \\
+    Y @> h >> W
+  \end{CD}
+  \]
+  をpull-back図式とする。
+  \(g,h\)のimage factorizationを
+  \(p:X\to \im(g), i:\im(g) \rtot Z;
+  q:Y\to \im(h), j:\im(h) \rtot W\)とする。
+  このとき
+  \begin{enumerate}[label=(\fnsymbol*),start=4]
+    \item \label{enumi: prob: 1.10 proof 3}
+    図式
+    \[
+    \begin{CD}
+      X @> p >> \im(g) @> i >> Z \\
+      @V f VV @VV l V @VV k V \\
+      Y @> q >> \im(h) @> j >> W
+    \end{CD}
+    \]
+    はpull-back図式である
+  \end{enumerate}
+  ことを示す。
+  ただし\(l:\im(g) \to \im(h)\)は像の間に引き起こされる一意的な射である。
+  そのために、\(K\)を\(j\)の\(k\)に沿ったpull-backとして定める：
+  \[
+  \begin{CD}
+    X @> r >> K @> m >> Z \\
+    @V f VV @VV l V @VV k V \\
+    Y @> q >> \im(h) @> j >> W.
+  \end{CD}
+  \]
+  \(m\)はモノ射\(j\)のpull-backであるからモノである。
+  従って射\(s:\im(g) \to K\)が存在して、
+  \(r = s\circ q, j = m\circ s\)となる。
+  ここで\(j\)がモノ射であることから\(s\)はモノ射となる。
+  また、\(r\)はエピ射\(q\)のpull-backであるからエピである
+  (elementary toposにおけるcolimitはpull-backと可換であるから、
+  とくにエピのpull-backはエピとなる)。
+  従って\(s\)もエピ射となる。
+  よって\(s\)は同型射となる。
+  これは所望の結果である。
+
+  本題に入る。
+
+  \ref{enumi: prob: 1.10.1}。
+  まず定義を与える。
+  合成射
+  \[
+  \ep_X \rtot X\times \Omega^X \xrightarrow{f\times \id_{\Omega^X}} Y\times \Omega^X
+  \]
+  のimage factorizationをとって得られる部分対象
+  \((f\times \id_{\Omega^X})(\ep_X)\rtot Y\times \Omega^X\)
+  を分類する射\(Y\times \Omega^X\to \Omega\)に対応する射を
+  \(\exists f:\Omega^X \to \Omega^Y\)と定める。
+  この対応が函手的であることを示せば良い。
+  すなわち、
+  \(f:X\to Y, g:Y\to Z\)に対し、
+  \(\exists (g\circ f) = (\exists g)\circ (\exists f)\)
+  となることを示せば良い。
+
+  \begin{itemize}
+    \item
+    \(I_f \dfn (f \times \id_{\Omega^X})(\ep_X) \rtot Y\times \Omega^X\)
+    \item
+    \(I_g \dfn (g \times \id_{\Omega^Y})(\ep_Y) \rtot Z\times \Omega^Y\)
+    \item
+    \(I_{g\circ f} \dfn ((g\circ f) \times \id_{\Omega^X})(\ep_X) \rtot Z\times \Omega^X\)
+  \end{itemize}
+  をそれぞれ
+  \begin{itemize}
+    \item
+    二つの射\(\ep_X \rtot X\times \Omega^X\)と
+    \(f \times \id_{\Omega^X}: X\times \Omega^X \to Y\times \Omega^X\)の合成の像、
+    \item
+    二つの射\(\ep_Y \rtot Y\times \Omega^Y\)と
+    \(g \times \id_{\Omega^Y}: Y\times \Omega^Y \to Z\times \Omega^Y\)の合成の像、
+    \item
+    二つの射\(\ep_X \rtot X\times \Omega^X\)と
+    \((g\circ f) \times \id_{\Omega^X}: X\times \Omega^X \to Z\times \Omega^X\)の合成の像、
+  \end{itemize}
+  とする。
+  すると、\(\exists f, \exists g, \exists (g\circ f)\)はそれぞれ
+  次の3つの図式をpull-back図式とする一意的な射である：
+  \[
+  \begin{tikzpicture}[auto]
+    \node (A) at (0,1.2) {\(I_f\)};
+    \node (B) at (3,1.2) {\(\ep_Y\)};
+    \node (C) at (5,1.2) {\(I_g\)};
+    \node (D) at (8,1.2) {\(\ep_Z\)};
+    \node (E) at (10,1.2) {\(I_{g\circ f}\)};
+    \node (F) at (13,1.2) {\(\ep_Z\)};
+    \node (A') at (0,0) {\(Y\times \Omega^X\)};
+    \node (B') at (3,0) {\(Y\times \Omega^Y,\)};
+    \node (C') at (5,0) {\(Z\times \Omega^Y\)};
+    \node (D') at (8,0) {\(Z\times \Omega^Z,\)};
+    \node (E') at (10,0) {\(Z\times \Omega^X\)};
+    \node (F') at (13,0) {\(Z\times \Omega^Z.\)};
+    \draw[->] (A) to (B);
+    \draw[->] (C) to (D);
+    \draw[->] (E) to (F);
+    \draw[->] (A') to node {\(\scriptstyle \id_Y\times \exists f\)} (B');
+    \draw[->] (C') to node {\(\scriptstyle \id_Z\times \exists g\)} (D');
+    \draw[->] (E') to node {\(\scriptstyle \id_Z\times \exists (g\circ f)\)} (F');
+    \draw[->] (A) to (A');
+    \draw[->] (B) to (B');
+    \draw[->] (C) to (C');
+    \draw[->] (D) to (D');
+    \draw[->] (E) to (E');
+    \draw[->] (F) to (F');
+  \end{tikzpicture}
+  \]
+  とくに、\(I_f\)に注目すると、
+  次の図式はpull-back図式である：
+  \[
+  \begin{CD}
+    I_f @>>> Y\times \Omega^X @> g\times \id_{\Omega^X} >> Z\times \Omega^X \\
+    @VVV @V \id_Y \times \exists f VV @VV \id_Z \times \exists f V \\
+    \ep_Y @>>> Y\times \Omega_Y @> g\times \id_{\Omega^X} >> Z\times \Omega^Y.
+  \end{CD}
+  \]
+  \(I_f\)は\(\ep_X\)の\(Y\times \Omega^X\)での像であるから、
+  このpull-back図式の上の射の合成の像は
+  主張\ref{enumi: prob: 1.10 proof 2}よりちょうど\(I_{g\circ f}\)に一致する。
+  また、下の射の合成の像は定義より\(I_g\)であるから、
+  主張\ref{enumi: prob: 1.10 proof 3}より図式
+  \[
+  \begin{CD}
+    I_f @>>> I_{g\circ f} @>>> Z\times \Omega^X \\
+    @VVV @VVV @VV id_Z \times \exists f V \\
+    \ep_Y @>>> I_g @>>> Z\times \Omega^Y
+  \end{CD}
+  \]
+  はpull-back図式となる。
+  とくに右側の四角形がpull-back図式であることから、図式
+  \[
+  \begin{CD}
+    I_{g\circ f}  @>>> I_g @>>> \ep_Z \\
+    @VVV @VVV @VVV \\
+    Z\times \Omega^X @> \id_Z \times \exists f >>
+    Z\times \Omega^Y @> \id_Z \times \exists g >>
+    Z\times \Omega^Z
+  \end{CD}
+  \]
+  がpull-back図式となることがわかる。
+  一方、\(\exists (g\circ f)\)は図式
+  \[
+  \begin{CD}
+    I_{g\circ f} @>>> \ep_Z \\
+    @VVV @VVV \\
+    Z\times \Omega^X @> \id_Z \times \exists (g\circ f) >> Z\times \Omega^Z
+  \end{CD}
+  \]
+  をpull-back図式とするような一意的な射であるから、
+  以上より\(\exists (g\circ f) = (\exists g) \circ (\exists f)\)となることがわかる。
+  従って\(X\mapsto \Omega^X ,f\mapsto \exists f\)の函手性が示された。
+
+  \ref{enumi: prob: 1.10.2}。
+  \(P_f\rtot X\times \Omega^Y\)を
+  pull-back図式
+  \[
+  \begin{CD}
+    P_f @>>> \ep_Y \\
+    @VVV @VVV \\
+    X\times \Omega^Y @> f\times \id_{\Omega^Y} >> Y\times \Omega^Y
+  \end{CD}
+  \]
+  によって定めると、\(Pf\)は以下の図式をpull-back図式とする一意的な射である：
+  \[
+  \begin{CD}
+    P_f @>>> \ep_X \\
+    @VVV @VVV \\
+    X\times \Omega^Y @> \id_X \times Pf >> X\times \Omega^X.
+  \end{CD}
+  \]
+  \(k\)についても同様に\(P_k\rtot Z\times \Omega^W\)を定める。
+  また、\(I_g \rtot Z\times \Omega^X\)を
+  合成
+  \(\ep_X \rtot X\times \Omega^X \xrightarrow{g\times \id_{\Omega^X}} Z\times \Omega^X\)
+  のimage factorizationとして定める。
+  すると、射\(\exists g\)は以下の図式をpull-back図式とする一意的な射である：
+  \[
+  \begin{CD}
+    I_g @>>> \ep_Z \\
+    @VVV @VVV \\
+    Z\times \Omega^X @> \id_Z \times \exists g >> Z\times \Omega^Z.
+  \end{CD}
+  \]
+  \(h\)に対しても同様に部分対象\(I_h\rtot W\times \Omega^Y\)を定める。
+  示すべき可換図式の右回りの合成
+  \(r \dfn (\exists g) \circ Pf: \Omega^Y \to \Omega^Z\)
+  について考える。
+  pull-back図式
+  \[
+  \begin{CD}
+    R @>>> I_g \\
+    @VVV @VVV \\
+    Z\times \Omega^Y @> \id_Z \times Pf >> Z\times \Omega^X
+  \end{CD}
+  \]
+  により部分対象\(s_r : R \rtot Z\times \Omega^Y\)を定めると、
+  \(r\)は図式
+  \[
+  \begin{CD}
+    R @>>> \ep_Z \\
+    @V s_r VV @VVV \\
+    Z\times \Omega^Y @> \id_X \times r >> Z\times \Omega^Z
+  \end{CD}
+  \]
+  をpull-back図式とする一意的な射\(\Omega^Y\to \Omega^Z\)である。
+  左周りの合成\(l\dfn Pk\circ \exists h\)についても同様に
+  部分対象\(s_l: L\rtot Z\times \Omega^Y\)を定める。
+  示すべきことは\(Z\times \Omega^Y\)の部分対象として\(L=R\)となることである。
+  定義より、\(L\)は次の図式をpull-back図式とする：
+  \[
+  \begin{CD}
+    L @>>> P_k \\
+    @V s_l VV @VVV \\
+    Z\times \Omega^Y @> \id_Z \times \exists h >> Z\times \Omega^W.
+  \end{CD}
+  \]
+  \(P_k\)はpull-back図式
+  \[
+  \begin{CD}
+    P_k @>>> \ep_W \\
+    @VVV @VVV \\
+    Z\times \Omega^W @> k\times 1_{\Omega^W} >> W\times \Omega^W
+  \end{CD}
+  \]
+  により定まり、
+  \(\exists h\)は図式
+  \[
+  \begin{CD}
+    I_h @>>> \ep_W \\
+    @VVV @VVV \\
+    W\times \Omega^Y @> \id_W \times \exists h >> W\times \Omega^Y
+  \end{CD}
+  \]
+  をpull-back図式とする一意的な射であるから、
+  図式
+  \[
+  \begin{CD}
+    L @>>> I_h \\
+    @V s_l VV @VVV \\
+    Z\times \Omega^Y @> k \times \id_{\Omega^Y} >> W\times \Omega^Y
+  \end{CD}
+  \]
+  はpull-back図式となる。
+
+  図式
+  \[
+  \begin{CD}
+    P_f @>>> X\times \Omega^Y @> g\times \id_{\Omega^Y} >> Z\times \Omega^Y \\
+    @VVV @V \id_X \times Pf VV @VV \id_X \times Pf V \\
+    \ep_X @>>> X\times \Omega^X @>> g \times \id_{\Omega^X}> Z\times \Omega^X
+  \end{CD}
+  \]
+  がpull-back図式であることと、
+  \(I_g\)が下側の射の合成のimage factorizationであることから、
+  主張\ref{enumi: prob: 1.10 proof 3}より
+  \(R\)は上側の射の合成のimage factorizationとなる。
+  次に図式
+  \[
+  \begin{CD}
+    P_f @>>> X\times \Omega^Y @> g\times \id_{\Omega^Y} >> Z\times \Omega^Y \\
+    @VVV @V f\times \id_{\Omega^Y} VV @VV k \times \id_{\Omega^Y} V \\
+    \ep_Y @>>> Y\times \Omega^Y @>> h \times \id_{\Omega^Y}> W\times \Omega^Y
+  \end{CD}
+  \]
+  について考察する。
+  初めの\(X,Y,Z,W,f,g,h,k\)に関する四角形がpull-back図式であることから
+  右側の四角形がpull-back図式となり、
+  左側の四角形は\(P_f\)の定義によりpull-back図式である。
+  上側の射の合成のimage factorizationが部分対象\(s_r:R\rtot Z\times \Omega^Y\)を定めることと、
+  下側の射の合成のimage factorizationが部分対象\(I_h \rtot W\times \Omega^Y\)を定めることと、
+  主張\ref{enumi: prob: 1.10 proof 3}より、
+  図式
+  \[
+  \begin{CD}
+    R @> s_r >> Z\times \Omega^Y \\
+    @VVV @VV k\times \id_{\Omega^Y} V \\
+    I_h @>>> W\times \Omega^Y
+  \end{CD}
+  \]
+  がpull-back図式であることがわかる。
+  一方、\(L\)は部分対象\(I_h\rtot W\times \Omega^Y\)の\(k\times \id_{\Omega^Y}\)に沿った
+  pull-backと同型であるから、
+  これにより\(R=L\)が従う。
+  以上で示された。
+
+  \ref{enumi: prob: 1.10.3}。
+  \(f:X\to Y\)をエピとする。
+  合成\(\ep_X \to X\times \Omega^X \xrightarrow{f\times \id_{\Omega^X}} Y\times \Omega^X\)
+  のimage factorizationにより定まる部分対象を
+  \(I_f\rtot Y\times \Omega^X\)とする。
+  部分対象\(a:A\rtot Y\times \Omega^Y\)をpull-back図式
+  \[
+  \begin{CD}
+    A @>>> I_f \\
+    @VVV @VVV \\
+    Y\times \Omega^Y @> \id_Y \times Pf >> Y\times \Omega^X
+  \end{CD}
+  \]
+  により定めると、
+  \((\exists f)\circ (Pf)\)
+  は図式
+  \[
+  \begin{CD}
+    A @>>> I_f @>>> \ep_Y \\
+    @VVV @VVV @VVV \\
+    Y\times \Omega^Y @> \id_Y \times Pf >>
+    Y\times \Omega^X @> \id_Y \times \exists f >>
+    Y\times \Omega^Y
+  \end{CD}
+  \]
+  の外側の四角形をpull-back図式とするような一意的な射である。
+  従って、\((\exists f)\circ Pf = \id_{\Omega^Y}\)を示したければ、
+  \(Y\times \Omega^Y\)の部分対象として\(A=\ep_Y\)であることを示せば良い。
+
+  部分対象\(Pf\rtot X\times \Omega^Y\)をpull-back図式
+  \[
+  \begin{CD}
+    P_f @>>> \ep_Y \\
+    @VVV @VVV \\
+    X\times \Omega^Y @> f \times \id_{\Omega^Y} >> Y\times \Omega^Y
+  \end{CD}
+  \]
+  で定める。
+  Elementary toposにおいてエピ射のpull-backはエピ射であるから、
+  \(P_f\to \ep_Y\)はエピ射である。
+  また、射\(Pf\)は図式
+  \[
+  \begin{CD}
+    P_f @>>> \ep_X \\
+    @VVV @VVV \\
+    X\times \Omega^Y @> \id_X \times Pf >> X\times \Omega^X
+  \end{CD}
+  \]
+  をpull-back図式とする一意的な射である。
+  とくに図式
+  \[
+  \begin{CD}
+    P_f @>>> X\times \Omega^Y @> f\times \id_{\Omega^Y} >> Y\times \Omega^Y \\
+    @VVV @V \id_X \times Pf VV @VV \id_Y \times Pf V \\
+    \ep_X @>>> X\times \Omega^X @> f\times \id_{\Omega^X} >> Y\times \Omega^X
+  \end{CD}
+  \]
+  はpull-back図式である。
+  よって図式
+  \[
+  \begin{CD}
+    P_f @>>> A \\
+    @VVV @VVV \\
+    X\times \Omega^Y @> f\times \id_{\Omega^Y} >> Y\times \Omega^Y
+  \end{CD}
+  \]
+  はpull-back図式となる。
+  ここで\(f\)がエピであることと、
+  elementary toposにおいてエピ射のpull-backがエピ射であることから、
+  \(P_f \to A\)はエピである。
+  従って次の可換図式を得る：
+  \[
+  \begin{CD}
+    P_f @>>> A @>>> Y\times \Omega^Y \\
+    @| @. @| \\
+    P_f @>>> \ep_Y @>>> Y\times \Omega^Y.
+  \end{CD}
+  \]
+  ここで上左側の射と下左側の射はともにエピであり、
+  上右側の射と下右側の射はともにモノである。
+  \(A\to Y\times \Omega^Y \gets \ep_Y\)でfiber積をとったものを\(B\)とおくと、
+  \(B\)は\(A,\ep_Y\)の部分対象を定め、
+  さらに図式全体を可換にする射\(P_f\to B\)が一意的に存在する。
+  このとき\(P_f\to A\)がエピであることから射影\(B\to A\)はエピであり、
+  \(P_f\to \ep_Y\)がエピであることから射影\(B\to \ep_Y\)もエピである。
+  ここで\(B\to A, B\to \ep_Y\)はともにモノ射のpull-backなのでモノ射であり、
+  以上より\(Y\times \Omega^Y\)の部分対象として
+  \(A\cong B \cong \ep_Y\)となることがわかった。
+  とくに\(Y\times \Omega^Y\)の部分対象として\(A = \ep_Y\)であり、
+  このことは\((\exists f)\circ Pf = \id_{\Omega^Y}\)を意味する。
+
+  \ref{enumi: prob: 1.10.4}。
+  本題に入る前に、射\(f:X\to Y\)に対して、
+  射\(x:A\to \Omega^X\)の与える\(A\times X\)の部分対象と、
+  \(x:A\to \Omega^X\)と\(\exists f:\Omega^X\to \Omega^Y\)の合成射
+  \(y\dfn (\exists f) \circ x: A\to \Omega^Y\)の与える
+  \(A\times Y\)の部分対象の間の関係性を明らかにしておく。
+  射\(x:A\to \Omega^X\)を任意にとる。
+  この射はpull-back図式
+  \[
+  \begin{CD}
+    R_X @>>> \ep_X \\
+    @VVV @VVV \\
+    A\times X @> x \times \id_X >> \Omega^X\times X
+  \end{CD}
+  \]
+  により部分対象\(R_X \rtot A\times X\)を定める。
+  逆に\(x\)は上の図式をpull-back図式とする一意的な射である。
+  次にpull-back図式
+  \[
+  \begin{CD}
+    I_f @>>> \ep_Y \\
+    @VVV @VVV \\
+    \Omega^X \times Y @> (\exists f) \times \id_Y >> \Omega^Y \times Y
+  \end{CD}
+  \]
+  により部分対象\(I_f :\rtot \Omega^X\times Y\)を定める。
+  射\(\exists f\)は上の図式をpull-back図式とする一意的な射であり、
+  また\(\exists f\)の定義より、部分対象\(I_f\)は
+  合成射\(\ep_X \rtot X\times \Omega^X \rightarrow{f\times \id_{\Omega^X}} Y\times \Omega^X\)
+  のimage factorizationにより与えられるものである。
+  合成射\(y \dfn (\exists f) \circ x\)について考える。
+  この射はpull-back図式
+  \[
+  \begin{CD}
+    R_Y @>>> I_f @>>> \ep_Y \\
+    @VVV @VVV @VVV \\
+    A\times Y @> x\times \id_Y >> \Omega^X \times Y
+    @> (\exists f) \times \id_Y >> \Omega^Y\times Y
+  \end{CD}
+  \]
+  により部分対象\(R_Y \rtot A\times Y\)を定める。
+  逆に\(y\)は一番外側の四角形をpull-back図式とする一意的な射である。
+
+  さて、図式
+  \[
+  \begin{CD}
+    R_X @>>> A\times X @> \id_A \times f >> A\times Y \\
+    @VVV @V x\times \id_X VV @VV x\times \id_Y V \\
+    \ep_X @>>> \Omega^X \times X
+    @> \id_{\Omega^X} \times f >> \Omega^X\times Y \\
+    @| @. @| \\
+    \ep_X @> \text{image} >> I_f @>>> \Omega^X\times Y
+  \end{CD}
+  \]
+  について考察する。
+  この図式の上側の二つの四角形はいずれもpull-back図式であり、
+  下側の図式はimage factorizationを表している。
+  従って全体の四角形は可換図式となっている。
+  このことは合成射\(R_X \to I_f\)と
+  \(R_X\to A\times Y\)が
+  \(I_f\to \Omega^X \times Y \gets A\times Y\)のpull-backで定まる対象を
+  一意的に経由することを意味する。
+  \(I_f\to \Omega^X \times Y \gets A\times Y\)のpull-backで定まる対象とは
+  \(R_Y\)のことであったから、
+  従って次の可換図式を得る：
+  \[
+  \begin{CD}
+    R_X @>>> R_Y @>>> A\times Y \\
+    @VVV @VVV @VV x\times \id_Y V \\
+    \ep_X @> \text{image} >> I_f @>>> \Omega^X\times Y.
+  \end{CD}
+  \]
+  この図式の右側の四角形は\(R_Y\)の定義によりpull-back図式である。
+  また全体の図式は一つ前の図式の上側の四角形と等しいのでこれもpull-back図式である。
+  以上より左側の四角形もpull-back図式となることがわかる。
+  とくに\(R_X\to R_Y\)はエピであり、
+  部分対象\(R_Y\rtot A\times Y\)は
+  合成射\(R_X\rtot A\times X \to A\times Y\)のimage factorizationにより与えられる
+  \(A\times Y\)の部分対象と等しいことがわかる。
+  このことからとくに、
+  \begin{enumerate}
+    \item \label{enumi: prob: 1.10.4.1 in proof}
+    \(x:A\to \Omega^X\)の定める部分対象\(R_X \rtot A\times X\)と
+    \(\id_A \times f : A\times X \to A\times Y\)の合成射
+    \(R_X\to A\times Y\)のimage factorizationが与える\(A\times Y\)の部分対象
+    \(R_Y \rtot A\times Y\)は合成射\((\exists f)\circ x : A\to \Omega^Y\)と対応する
+  \end{enumerate}
+  ことがわかる。
+
+  本題に入る。
+  \[
+  \begin{CD}
+    X @> f >> Y \\
+    @V g VV @VV h V \\
+    Z @> k >> W
+  \end{CD}
+  \]
+  をpull-back図式であり、\(g,h\)をモノ射とする。
+  図式
+  \[
+  \begin{CD}
+    \Omega^X @> \exists f >> \Omega^Y \\
+    @V \exists g VV @VV \exists h V \\
+    \Omega^Z @> \exists k >> \Omega^W
+  \end{CD}
+  \]
+  がpull-back図式であればよい。
+  そのために可換図式
+  \[
+  \begin{CD}
+    A @> y >> \Omega^Y \\
+    @V z VV @VV \exists h V \\
+    \Omega^Z @> \exists k >> \Omega^W
+  \end{CD}
+  \]
+  を任意にとる。
+  \(y\)の定める部分対象を\(R_Y\rtot A\times Y\)とおき、
+  \(z\)の定める部分対象を\(R_Z\rtot A\times Z\)とおき、
+  \(w \dfn (\exists h)\circ y = (\exists k)\circ z\)の定める部分対象を
+  \(R_W \rtot Z\times W\)と置く。
+  主張\ref{enumi: prob: 1.10.4.1 in proof}より、
+  \(R_W\)は合成射
+  \(R_Y\to A\times Y\to A\times W\)のimage factorizationが与える
+  \(A\times W\)の部分対象と等しく、
+  同様に
+  \(R_Z\to A\times Z \to A\times W\)のimage factorizationが与える
+  \(A\times W\)の部分対象とも等しい。
+  ここで\(h:Y\to W\)がモノ射であることから、
+  合成\(R_Y\to A\times Y \to A\times W\)はモノ射であり、
+  従ってとくに\(R_Y\to R_W\)は同型射となる。
+
+  さて、図式全体を可換にする射\(x:A\to \Omega^X\)が一意的に存在するためには、
+  \(A\times X\)の部分対象\(R_X\)であって、
+  以下の二つの条件を満たすものが一意的に存在することが必要十分である：
+  \begin{itemize}
+    \item
+    合成射\(R_X \to A\times X \to A\times Z\)のimage factorizationが\(R_Z\)を与える。
+    \item
+    合成射\(R_X \to A\times X \to A\times Y\)のimage factorizationが\(R_Y\)を与える。
+  \end{itemize}
+  ここで\(g:X\to Z\)がモノ射であることから、
+  このような\(R_X\)が存在すれば、
+  \(R_X \to A\times X \to A\times Z\)はモノ射であるから、
+  そのimage factorizationへの射\(R_X \to R_Z\)は同型射となる必要がある。
+  従ってとくに、\(R_X\)は存在すれば一意的である。
+  存在を示すには、\(R_Z\to A\times Z\)が
+  部分対象\(\id_A \times g: A\times X \to A\times Z\)の部分対象であることを示せば良い。
+  なぜなら、もしそうなれば、たんに\(R_Z\to A\times X\)を\(R_X\)定めることにより、
+  図式
+  \[
+  \begin{CD}
+    R_X @>>> R_Y \\
+    @V\cong VV @VV \cong V \\
+    R_Z @>>> R_W
+  \end{CD}
+  \]
+  が可換となるが、
+  \(R_Z\to R_W\)はimage factorizationにより与えられる射なのでエピであり、
+  従って\(R_X \to R_Y\)もエピとなることがわかる。
+  これは\(R_Y\)が\(R_X \to A\times X \to A\times Y\)の
+  image factorizationにより与えられることを意味している。
+  よって\(R_Z\to A\times Z\)が\(A\times X \to A\times Z\)を経由することを示せば良いことがわかった。
+
+  pull-back図式
+  \[
+  \begin{CD}
+    A\times X @> \id_A \times f >> A\times Y \\
+    @V \id_A \times g VV @VV \id_A \times h V \\
+    A\times Z @> \id_A \times k >> A\times W
+  \end{CD}
+  \]
+  に注目する。
+  この図式は、はじめに与えられた
+  \(X,Y,Z,W,f,g,h,k\)による四角形がpull-back図式であることから、
+  pull-back図式となる。
+  合成\(R_Z\rtot A\times Z \to A\times W\)と
+  合成\(R_Z \to R_W \to A\times W\)は射として等しいので、
+  これらは合成
+  \(R_Z \to R_W \xleftarrow{\sim} R_Y \rtot A\times Y \to A\times W\)
+  と射として等しい。
+  このことと、上の図式がpull-back図式であることから、
+  二つの射\(R_Z\to A\times Z\)と
+  \(R_Z \to R_W \xleftarrow{\sim} R_Y \rtot A\times Y\)が
+  一意的に\(R_Z \to A\times X\)を定める。
+  これは\(R_Z \to A\times Z\)が
+  部分対象\(A\times X \to A\times Z\)を経由することを意味している。
+  以上ですべて示された。
+\end{proof}
+
+
+
+
+
+\newpage
+\renewcommand{\thesection}{Chapter \arabic{section}:}
+\section{\protect\quad Internal Category Theory}
+\label{section: 2}
+\renewcommand{\thesection}{\arabic{section}}
+
+
+このChapterでは、\(\mcE\)を有限完備な圏とする。
+また、本文中で\(d_0\)と表記されているsourceを表す射は\(s\)で、
+本文中で\(d_1\)と表記されているtargetを表す射は\(t\)で表す。
+
+
+\begin{prob}\label{prob: 2.1}
+  以下の問いに答えよ：
+  \begin{enumerate}
+    \item \label{enumi: prob: 2.1.1}
+    Internal natural transformationの適切な定義は何か？
+    \item \label{enumi: prob: 2.1.2}
+    Internal natural transformationの単体的対象としての対応物は何か？
+    \item \label{enumi: prob: 2.1.3}
+    \(\msC,\msD\)を圏\(\mcE\)の二つのinternal categoryとし、
+    \(F,G:\msC \to \msD\)を二つのinternal functorとする。
+    このとき、internal natural transformation \(\eta:F\to G\)が
+    (通常の) 自然変換\(F^*\to G^*\)を引き起こすことを示せ。
+    ただしここで\(F^*:\mcE^{\msD} \to \mcE^{\msC}\)は
+    internal functorがinternal diagramの圏の間にpull-backにより引き起こす函手である。
+    \item \label{enumi: prob: 2.1.4}
+    \(\mcE\)がelementary toposであるとき、
+    本文Corollary 2.35において定義されている
+    (1-圏の意味での) 函手\(\mathbf{Cat}(\mcE) \to \Topos_{/\mcE}\)が
+    2-圏の意味での函手となっていることを示せ。
+  \end{enumerate}
+\end{prob}
+
+\begin{proof}
+  \ref{enumi: prob: 2.1.1}。
+  \(\msC, \msD\)を\(\mcE\)のinternal category、
+  \(F,G:\msC \to \msD\)をinternal functorとする。
+  Internal natural transformation \(\eta:F\to G\)とは、
+  射\(\eta:C_0\to D_1\)であって、次の二つの条件を満たすものである：
+  \begin{itemize}
+    \item
+    次の二つの射の等式が成立する：
+    \[
+    s^{\msD}\circ \eta = F_0 \ , \ \ t^{\msD}\circ \eta = G_0.
+    \]
+    \item
+    上の射の等式より、射の等式
+    \(t^{\msD}\circ F_1 = s^{\msD}\circ \eta \circ t^{\msC},
+    t^{\msD}\circ \eta\circ s^{\msC} = s^{\msD}\circ G_1\)
+    が成り立ち、これによって射
+    \((F_1,\eta t^{\msC}), (\eta s^{\msC}, G_1) : C_1\to D_1\times_{D_0} D_1\)
+    を得る。
+    このとき、以下の図式が可換である：
+    \[
+    \begin{tikzpicture}[auto]
+      \node (A) at (0,1) {\(C_1\)};
+      \node (C) at (3,1) {\(D_1\times_{D_0} D_1\)};
+      \node (A') at (0,0) {\(D_1\times_{D_0} D_1\)};
+      \node (C') at (3,0) {\(D_1\).};
+      \draw[->] (A) to node {\(\scriptstyle (F_1, \eta t^{\msC})\)} (C);
+      \draw[->] (A') to node {\(\scriptstyle m^{\msD}\)} (C');
+      \draw[->] (A) to node[swap] {\(\scriptstyle (\eta s^{\msC}, G_1)\)} (A');
+      \draw[->] (C) to node {\(\scriptstyle m^{\msD}\)} (C');
+    \end{tikzpicture}
+    \]
+  \end{itemize}
+
+  二つのinternal natural transformation \(\eta:F\to G, \theta: G\to H\)
+  (ただし\(F,G,H:\msC\to \msD\)は
+  二つのinternal category \(\mcC,\mcD\)の間のinternal functor)
+  の合成を定義する。
+  射の等式
+  \(t^{\msD}\circ \eta = G_0, s^{\msD}\circ \theta = G_0\)より、
+  \(\eta,\theta : C_0 \to D_1\)は射
+  \((\theta,\eta) : C_0 \to D_1\times_{D_0} D_1\)
+  を一意的に引き起こす。
+  \(\theta\circ \eta : C_0 \to D_1\)を次で定義する：
+  \[
+  \theta \circ \eta \dfn m^{\msD}\circ (\eta,\theta) :
+  C_0 \xrightarrow{(\theta,\eta)} D_1 \times_{D_0} D_1 \to D_1.
+  \]
+  このとき、\(m^{\msD}\)が結合律
+  \(m^{\msD}\circ (\id_{D_1}\times m^{\msD}) = m^{\msD} \circ (m^{\msD}\times \id_{D_1})\)
+  を満たすことから、3つのinternal natural transformation
+  \(\eta: F\to G, \theta: G\to H, \xi: H\to I\)に対する結合律
+  \((\xi \circ \theta) \circ \eta = \xi \circ (\theta\circ \eta)\)
+  が成立する。
+  以上より、internal functorを対象とし
+  internal natural transformationを射とする圏
+  \([\msC,\msD]\)を得る。
+
+  Internal functor \(F,G: \msC\to \msD\)の間の
+  internal natural transformation \(\eta:F\to G\)と
+  internal functor \(I:\msD \to \msE\)に対する水平合成を
+  \[
+  I \bullet \eta \dfn I_1 \circ \eta : C_0 \xrightarrow{\eta} D_1 \xrightarrow{I_1} E_1
+  \]
+  により定義する。
+  Internal natural transformation \(\eta:F\to G, \theta:G\to H\)に対して、
+  射の等式
+  \begin{align*}
+    I \bullet (\theta \circ \eta)
+    &= I_1\circ m^{\msD} \circ (\eta, \theta) \\
+    &\overset{\bigstar}{=} m^{\msE} \circ (I_1 \times I_1 ) \circ (\eta, \theta) \\
+    &= m^{\msE} \circ ( I_1 \circ \eta \times I_1 \circ \theta ) \\
+    &= m^{\msE} \circ ( I \bullet \eta , I \bullet \theta ) \\
+    &= ( I \bullet \eta ) \circ ( I \bullet \theta )
+  \end{align*}
+  が成立する。
+  ただしここで\(\bigstar\)の箇所に、
+  \(I\)がinternal functerであり、とくに合成射\(m\)と可換することを用いた。
+  Internal natural transformation \(\eta:F\to G\)と
+  internal functor \(J:\msE' \to \msD\)の水平合成を
+  \[
+  \eta \bullet J \dfn \eta \circ J_0 : E_0' \xrightarrow{J_0} C_0 \xrightarrow{\eta} D_1
+  \]
+  により定義する。
+  Internal natural transformation \(\eta:F\to G, \theta:G\to H\)に対して、
+  射の等式
+  \begin{align*}
+    (\theta\circ \eta) \bullet J
+    &= m^{\msD} \circ (\eta, \theta) \circ J_0  \\
+    &= m^{\msD} \circ (\eta\circ J_0, \theta\circ J_0)  \\
+    &= m^{\msD} \circ (\eta\bullet J, \theta\bullet J)  \\
+    &= (\theta\bullet J) \circ (\eta\bullet J)
+  \end{align*}
+  が成立する。
+  Internal natural transformation
+  \(\eta:F\to G: \msC\to \msD , \theta:H\to I:\msD\to \msE\)に対し、
+  射の等式
+  \begin{align*}
+    (\theta \bullet G) \circ (H \bullet \eta)
+    &= (\theta \bullet G) \circ (H \bullet \eta) \\
+    &= m^{\msE} \circ (H_1 \circ \eta, \theta \circ G_0) \\
+    &\overset{\bigstar}{=}
+    m^{\msE} \circ (H_1 \circ \eta , \theta \circ t^{\msD}\circ \eta) \\
+    &= m^{\msE} \circ (H_1 , \theta \circ t^{\msD} )\circ \eta \\
+    &\overset{\spadesuit}{=}
+    m^{\msE} \circ (\theta \circ s^{\msD}, J_1) \circ \eta \\
+    &= m^{\msE} \circ (\theta \circ s^{\msD}\circ \eta, J_1\circ \eta) \\
+    &\overset{\bigstar}{=}
+    m^{\msE} \circ (\theta \circ F_0 , J_1\circ \eta) \\
+    &= m^{\msE} \circ (\theta \bullet F , J \bullet \eta) \\
+    &= (J \bullet \eta) \circ (\theta \bullet F)
+  \end{align*}
+  が成り立つ。
+  ただしここで\(\bigstar\)の箇所では
+  \(\eta\)がinternal natural transformationであることと
+  internal natural transformationの定義のうちの一つ目の等号を用い、
+  \(\spadesuit\)の箇所で
+  \(\theta\)がinternal natural transformationであることと
+  internal natural transformationの定義のうちの二つ目の等号を用いた。
+  この等式を念頭において、
+  \begin{equation*}
+    \label{eq: proof: 2.1.1}
+    \theta \bullet \eta \dfn
+    (J \bullet \eta) \circ (\theta \bullet F) =
+    (\theta \bullet G) \circ (H \bullet \eta)
+    \tag{\(\dagger\)}
+  \end{equation*}
+  と定義する。
+  すると、
+  internal functor
+  \(F,G,H:\msC\to \msD, I,J,K:\msD\to \msE\)と
+  internal natural transformation
+  \(\eta:F\to G, \theta:G\to H, \xi:I\to J, \zeta: J\to K\)に対し、
+  射の等式
+  \begin{align*}
+    (\zeta \circ \xi) \bullet (\theta \circ \eta)
+    &= (K \bullet (\theta \circ \eta)) \circ ((\zeta \circ \xi) \bullet F) \\
+    &\overset{\bigstar}{=}
+    (K \bullet\theta) \circ ((K\bullet\eta) \circ (\zeta\bullet F)) \circ (\xi\bullet F) \\
+    &\overset{\spadesuit}{=}
+    ((K \bullet\theta) \circ (\zeta\bullet G)) \circ ((J\bullet\eta) \circ (\xi\bullet F)) \\
+    &\overset{\bigstar}{=}
+    (\zeta \bullet \theta) \circ (\xi \bullet \eta)
+  \end{align*}
+  が成立する。
+  ただしここで二つの\(\bigstar\)の箇所は水平合成が自然変換の通常の合成と可換することを用い、
+  \(\spadesuit\)の箇所は等式\eqref{eq: proof: 2.1.1}を用いた。
+  従って、とくに\(\bullet\)が函手
+  \[
+  \bullet: [\msD,\msE]\times [\msC,\msD] \to [\msC,\msE], \ \ \ \ \
+  (G,F) \mapsto G\circ F, \ \ \ \ \
+  [(\theta,\eta):(G_1,F_1)\to (G_2,F_2)] \mapsto \theta\bullet\eta
+  \]
+  を引き起こすことがわかる。
+  \(\bullet\)が結合律を満たすことを示す。
+  \(F_1,F_2:\msC_0\to\msC_1, G_1,G_2:\msC_1\to\msC_2, H_1,H_2:\msC_2\to\msC_3\)
+  をinternal functorとし、
+  \(\eta_1:F_1\to F_2, \eta_2:G_1\to G_2, \eta_3:H_1\to H_2\)
+  をinternal natural transformationとする。
+  \begin{align*}
+    (\eta_3\bullet\eta_2)\bullet\eta_1
+    &= ((\eta_3\bullet G_2)\circ(H_1\bullet\eta_2)) \bullet \eta_1 \\
+    &= (((\eta_3\bullet G_2)\circ(H_1\bullet\eta_2))\bullet F_2)
+    \circ ((H_1\circ G_1)\bullet\eta_1) \\
+    &= (\eta_3\bullet (G_2\circ F_2)) \circ (H_1\bullet\eta_2\bullet F_2)
+    \circ ((H_1\circ G_1)\bullet\eta_1) \\
+    &= (\eta_3\bullet (G_2\circ F_2)) \circ
+    (H_1\bullet ((\eta_2\bullet F_2) \circ (G_1\bullet\eta_1)) \\
+    &= (\eta_3\bullet (G_2\circ F_2)) \circ (H_1\bullet (\eta_2\bullet \eta_1)) \\
+    &= \eta_3\bullet (\eta_2\bullet\eta_1)
+  \end{align*}
+  が成立するので、函手\(\bullet\)は結合法則を満たす。
+  以上より\(\mathbf{Cat}(\mcE)\)がstrict 2-categoryとなることがわかった。
+
+  \ref{enumi: prob: 2.1.2}。
+  単体的対象としての対応物は
+  二つの射の間のsimplicial homotopyである。
+
+  \ref{enumi: prob: 2.1.3}。
+  \(\mcF\)をinternal category \(\msD\)上のinternal diagramとする。
+  このとき、等式\(\gamma\circ e = t^{\msD}\circ \mathrm{pr}_2\)より
+  一意的に射\(\mcF_0\times_{D_0}D_1 \to D_1\times_{D_0}\mcF_0\)を得る。
+  これをinternal natural transformation \(\eta:C_0\to D_1\)でpull-backすると、射
+  \begin{align*}
+    \eta^* : &(\mcF_0 \times_{\gamma,D_0,s^{\msD}} D_1) \times_{\mathrm{pr}_2,D_1,\eta} C_0
+    \cong \mcF_0\times_{\gamma,D_0,s^{\msD}\circ \eta = F_0} C_0
+    = (F^*\mcF)_0 \\
+    &\to (D_1 \times_{t^{\msD},D_0,\gamma} \mcF_0) \times_{\mathrm{pr}_1,D_1,\eta} C_0
+    \cong \mcF_0\times_{\gamma,D_0,t^{\msD}\circ \eta = G_0} C_0
+    = (G^*\mcF)_0
+  \end{align*}
+  を得る。
+  この射\(\eta^*:(F^*\mcF)_0 \to (G^*\mcF)_0\)が
+  射影\(F^*\gamma: (F^*\mcF)_0\to C_0, G^*\gamma: (G^*\mcF)_0\to C_0\)と
+  \(F^*e: (F^*\mcF)_1\to (F^*\mcF)_0, G^*e: (G^*\mcF)_1\to (G^*\mcF)_0\)
+  と可換することを示せば良い。
+
+  \ref{enumi: prob: 2.1.4}。
+\end{proof}
+
+
+\newpage
+\begin{thebibliography}{9}
+  \bibitem[Johnstone]{Main}
+  P. T. Johnstone,
+  \textit{Topos Theory},
+  London Mathematical Society Monographs,
+  \textbf{10}, Academic Press (1977),
+  (Paperback edition: Dover reprint (2014)).
+  \bibitem[Stacks]{stacks-project}
+  The Stacks Project Authors,
+  \href{https://stacks.math.columbia.edu/}{\textit{Stacks Project}}.
+\end{thebibliography}
+\addcontentsline{toc}{section}{\protect\numberline{\ensuremath{\spadesuit}}\protect\quad \bibname}
+\end{document}

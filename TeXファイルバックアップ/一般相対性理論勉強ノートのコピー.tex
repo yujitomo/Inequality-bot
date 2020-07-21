@@ -1,0 +1,488 @@
+\documentclass[uplatex]{jsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+
+\usepackage{xcolor}
+\usepackage[dvipdfmx]{graphicx}
+
+
+\usepackage{applekeys}
+\usepackage{mandorasymb}
+\usepackage{ulem}
+\usepackage{braket}
+\usepackage{framed}
+
+
+%%%%%ハイパーリンク
+\usepackage[setpagesize=false,dvipdfmx]{hyperref}
+\usepackage{aliascnt}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+%%%%%ハイパーリンク
+
+
+
+
+%%%%%図式
+\usepackage{tikz}%%%図
+\usetikzlibrary{arrows}
+\usepackage{amscd}%%%簡単な図式
+%%%%%図式
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{thm}{定理}[section]
+\newcommand{\thmautorefname}{定理}
+
+\newaliascnt{prop}{thm}%%%カウンター「prop」の定義（thmと同じ）
+\newtheorem{prop}[prop]{命題}
+\aliascntresetthe{prop}
+\newcommand{\propautorefname}{命題}%%%カウンター名propは「命題」で参照する
+
+\newaliascnt{cor}{thm}
+\newtheorem{cor}[cor]{系}
+\aliascntresetthe{cor}
+\newcommand{\corautorefname}{系}
+
+\newaliascnt{lem}{thm}
+\newtheorem{lem}[lem]{補題}
+\aliascntresetthe{lem}
+\newcommand{\lemautorefname}{補題}
+
+\newaliascnt{defi}{thm}
+\newtheorem{defi}[defi]{定義}
+\aliascntresetthe{defi}
+\newcommand{\defiautorefname}{定義}
+
+\newaliascnt{prob}{thm}
+\newtheorem{prob}[prob]{練習問題}
+\aliascntresetthe{prob}
+\newcommand{\probautorefname}{練習問題}
+
+
+%%%%%%%番号づけない定理環境
+\newtheorem*{exam*}{例}
+\newtheorem*{rrem*}{ゆじノート}
+\newtheorem*{question*}{疑問}
+\newtheorem*{defi*}{定義}
+
+\newtheorem*{nikki*}{日記}
+
+%%%証明環境を「proof」から「証明.」に変えるやつ
+\renewcommand\proofname{\bf 証明.}
+\renewcommand{\qedsymbol}{\kinoposymbniko}
+
+
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+%%%%%%%%%%%%定理環境%%%%%%%%%%%%
+
+
+
+
+%%%%%箇条書き環境
+\usepackage[]{enumitem}
+
+\makeatletter
+\AddEnumerateCounter{\fnsymbol}{\c@fnsymbol}{9}%%%%fnsymbolという文字をenumerate環境のパラメーターで使えるようにする。
+\makeatother
+
+\renewcommand{\theenumi}{(\arabic{enumi})}%%%%%itemは(1),(2),(3)で番号付ける。
+\renewcommand{\labelenumi}{\theenumi}
+%%%%%箇条書き環境
+
+
+\usepackage{latexsym}
+\renewcommand{\emptyset}{\varnothing}
+\def\ep{\varepsilon}
+\def\id{\mathrm{id}}
+
+\def\C{\mathbb{C}}
+\def\R{\mathbb{R}}
+\def\Q{\mathbb{Q}}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+\def\P{\mathbf{P}}
+
+
+\def\E{\mathbb{E}}
+\def\I{\mathbf{1}}
+
+\def\mcA{\mathcal{A}}
+\def\mcB{\mathcal{B}}
+\def\mcC{\mathcal{C}}
+\def\mcD{\mathcal{D}}
+\def\mcE{\mathcal{E}}
+\def\mcF{\mathcal{F}}
+\def\mcG{\mathcal{G}}
+\def\mcH{\mathcal{H}}
+\def\mcI{\mathcal{I}}
+\def\mcJ{\mathcal{J}}
+\def\mcK{\mathcal{K}}
+\def\mcL{\mathcal{L}}
+\def\mcM{\mathcal{M}}
+\def\mcN{\mathcal{N}}
+\def\mcO{\mathcal{O}}
+\def\mcP{\mathcal{P}}
+\def\mcQ{\mathcal{Q}}
+\def\mcR{\mathcal{R}}
+\def\mcS{\mathcal{S}}
+\def\mcT{\mathcal{T}}
+\def\mcU{\mathcal{U}}
+\def\mcV{\mathcal{V}}
+\def\mcW{\mathcal{W}}
+\def\mcX{\mathcal{X}}
+\def\mcY{\mathcal{Y}}
+\def\mcZ{\mathcal{Z}}
+
+\def\dfn{:\overset{\mbox{{\scriptsize def}}}{=}}
+
+\allowdisplaybreaks[1]
+
+\begin{document}
+
+
+\title{一般相対性理論勉強ノート}
+\date{\today}
+\author{ゆじとも}
+
+\maketitle
+
+\begin{abstract}
+  このノートは一般相対性理論の個人的な勉強ノートです。
+  個人的な勉強ノートのため、
+  数学科 (院) で私が習ったり勉強したりしたことは無断使用します。
+  つまり私が知っている程度のリーマン幾何はこのノートを読む上での前提知識になります。
+  一方で私は全然物理がわからないので、
+  そういう感じのバランスのノートになると思います。
+\end{abstract}
+
+
+\tableofcontents
+
+
+私と一般相対性理論の関係性は以下の通りです：
+中学生くらいの頃、ニュートンとかの雑誌で相対性理論の解説を読んだりして、
+漠然と相対性理論に対する憧れを抱いていました。
+その後、高校生になると物理ができなくなって、
+今までずっと物理っぽい話を理解することは諦めてきました。
+ですが、まあせっかく時間もあることだし、
+一度くらい挑戦してもいいんじゃないか、などと思ったので、
+とりあえず勉強してみることにしました。
+
+
+
+\newpage
+\section{最低限の特殊相対性理論}
+
+\subsection{電磁気学の難点}
+
+
+
+
+
+\section{一般相対性理論}
+
+
+
+
+
+
+
+
+\newpage
+
+\appendix
+
+\section{日記とかノートとか思ったこととか}
+
+\begin{nikki*}[2020.6.8 (月)]
+  なんとなく一般相対性理論を勉強したくなった。
+  なぜだろう？本当に意味がわからない。
+  とりあえずスタバで勉強した帰りに三条河原町の丸善で
+  裳華房から出ている内山龍雄という人の一般相対性理論の本を買った。
+  高かった。なんで買ったんだろ。
+  本選びはなんか「一般相対性理論 教科書」でググったら
+  一番上にアマゾンのリンクが出てきたからこれにしただけ。
+  1,2章にさらっと目を通してみたところ、
+  1章はイントロで、2章はただの数学だった。
+  よくわからないけど、一般相対性理論というのは、
+  \begin{center}
+    4次元多様体であって各接空間で特殊相対性理論が成立する状況で物理をしよう！
+  \end{center}
+  という話のように読めた。
+  局所ローレンツ系をとるとか言ってるのは、たぶん、リーマン幾何語で言えば
+  指数写像による接空間とその点の近傍の等長同型をとって考えますということだろう。
+  幾何はわかるけど物理がわからんから特殊相対性理論の本から買えばよかったなって思った。
+  というかまじで物理わからんくて「慣性系」の意味もよくわからん。
+  これがわからなくて高校物理できなくなったんだよな確か。もう忘れたけど。
+\end{nikki*}
+
+
+
+\begin{nikki*}[2020.6.9 (火)]
+  とりあえず物理がわからんのでシャワー浴びながらいろいろ考えた。
+  まず慣性系、これよくわかんない座標系なんだけど、
+  物理で出てくるほとんどのものは時間発展するんだと思えば
+  座標系が時間発展してもいいよなとは思ってきた。
+  たとえば箱が\(x\)軸方向に一定の速さ\(v\)で動くときに
+  箱の中で慣性系をとるとか言った場合には、
+  外から見た\((t,x,y,z)\)という座標系に対して
+  \((T,X,Y,Z)\dfn (t,x+tv,y,z)\)というような座標をとっている感じなんだろう。
+  座標系も動くんだよなあ。
+  でも3次元で考えるから動くとかいう気持ちになるんであって、
+  最初から時間も込めて4次元で考えればただの座標変換だからなんのことはないのかもしれない。
+  座標が動くことに抵抗のない人すごい。
+  いや、私が「動く」という気持ちに囚われすぎなんかな。
+
+  なんか唐突に出てくるラグランジアンとかが意味わからんすぎて禿げた。
+  いろいろ調べてると、次のような構図 (最小作用の原理) があるらしいことはわかった：
+  \begin{center}
+    モノはラグランジアンとかいうやつの積分 (作用) が極値であるような運動をする。
+  \end{center}
+  物質とか物理で考えられる様々なものは、
+  いろんな経路に対してラグランジアンの積分を考えたとき、
+  その値が極値であるように時間発展をするらしい。
+\end{nikki*}
+
+
+\begin{nikki*}[2020.6.10 (水)]
+  ラグランジアンがやっとわかってきた。
+  ラグランジアンというのは\textbf{運動を決定する関数}という\textbf{抽象的な定義}なんだな。
+  ラグランジアンというものに「運動を決定する関数」という以上の意味はないんだ。
+  だからただ単に位置\(q\)と速度\(\dot{q}\)と時刻\(t\)の関数
+  \(L(q,\dot{q},t)\)という形をする、という以上のことを言わないんだな。
+  なるほど。
+  最小作用の原理から出てくるオイラー=ラグランジュ方程式は、
+  微分幾何で言うところの第一変分原理だろう。
+  最小作用の原理と考えている系に課された物理的条件 (運動に関する条件)
+  が\(L\)の形を決定するんだな。
+  だから最小作用の原理だけだと\(L\)の形状はそんなに決まらないけど、
+  今の物理的状況がどういう状況かというのを考慮すれば\(L\)が決まるんだな。
+  なるほど。
+
+  ていうか物理よくわからんのやけど座標を選んだら空間が変わるみたいなふうに書いてあって困る。
+  たとえばランダウ=リプシッツの力学の3節第二段落とかを見たら、
+  「勝手に選ばれた基準系に関しては、空間は一様でなくまた等方でもない」
+  とか書いてあるけど、
+  一様とか等方の意味がなんなのかというのを一旦置いておくとしても、
+  座標を選んだら空間そのものが変わるかのような記述をしていて気持ち悪い。
+  数学科的には、空間はア座標に先立って何かある
+  (位相空間でも多様体でもそれに距離や計量や別の構造が入っていてもとりあえず何か先にモノがある)
+  わけだから、座標を選んだら空間が変わるとかそういう気持ちには全然なれない。
+  変な座標をとって変な性質になっちゃったならそれは座標の性質であって空間の性質ではない、
+  と言う気持ちになる。
+  だから「\textbf{空間は}一様でなくまた等方でもない」という記述は気持ち悪い。
+  せめて「座標は」だろう。
+  主語がおかしい。
+  それか、選んだ座標をもとにしてその座標近傍に計量などの構造を考えているなら、
+  それこそ座標に依存した計量なのだから、そう書かないとおかしい。
+\end{nikki*}
+
+
+
+
+\begin{nikki*}[2020.6.11 (木)]
+  あまりに物理がわからない。
+  歩きながらいろいろ考えていたけど、
+  最小作用の原理からニュートンの運動方程式を導く議論がなんとなくわかってきた気がする。
+  ラグランジアンって幾何的にはなんやねんというのについては
+  \href{http://www.asahi-net.or.jp/~fu5k-mths/pdf/geo_lag.pdf}{このノート}
+  が参考になった。
+  \href{http://www.asahi-net.or.jp/~fu5k-mths/pdf/geo_lag.pdf}{このノート}
+  の最後には「ラグランジアンの形は結局のところ勘で求めるしかない」
+  と書いてあったから、まあそういうものかと思っておくしかないのかな。
+  ランダウ-リプシッツの力学の一番最初には、
+  慣性系を自由に動く質点に対してラグランジアンを求める議論があったから、
+  とりあえずそれはフォローしてみた：
+  \begin{exam*}
+    空間 (多様体とか\(\R^3\)と思っておけばいい) を動く質点に対して、
+    その質点の\textbf{慣性系}とは、以下が成り立つ座標系である：
+    \begin{enumerate}
+      \item \label{enumi: 2020.6.11 - 1}
+      ある時刻で観測された質点の運動は、
+      別の時刻で観測しても同じである
+      (時間の一様性？)。
+      \item \label{enumi: 2020.6.11 - 2}
+      ある (固定された) 地点で観測した質点の運動は、
+      別の (固定された) 地点から観測しても同じである
+      (空間の一様・等方性？)。
+    \end{enumerate}
+    ここで「運動が同じ」ということの意味に\textbf{深く言及しない}でおく。
+    ただし、\textbf{ラグランジアンは運動を規定する関数}であるから、
+    \textbf{運動が同じならラグランジアンが同じ}ということにはなるだろう。
+    従って、慣性系からみて自由に運動する質点のラグランジアン\(L(r,v,t)\)は、
+    \begin{itemize}
+      \item \ref{enumi: 2020.6.11 - 1}より時間\(t\)に依存する項を消去でき、
+      \item \ref{enumi: 2020.6.11 - 2}より位置\(r\)に依存する項を消去できる。
+    \end{itemize}
+    すなわち、\(L(r,v,t)\)は速度ベクトル\(v\)のみに依存する関数となる。
+    また、さらに
+    \begin{itemize}
+      \item
+      \ref{enumi: 2020.6.11 - 2}は運動が速度ベクトルの方向に依存してはならないこと意味する
+    \end{itemize}
+    ので、特に
+    \begin{center}
+      \(L(r,v,t)\)は速度ベクトルのノルム\(\|v\|\)のみに依存する関数として記述できる
+    \end{center}
+    ことになる。
+    \(L(r,v,t)\)が\(r\)によらないことから
+    \(\frac{\partial L(r,v,t)}{\partial r}=0\)であり、
+    このままオイラー=ラグランジュ方程式に代入すれば、
+    \[
+    \frac{d}{dt}\frac{\partial L(r,v,t)}{\partial v} = 0
+    \]
+    となるので\(\frac{\partial L(r,v,t)}{\partial v}\)は定数関数である。
+    これと、\(L(r,v,t)\)が\(\|v\|\)のみの関数であることから、
+    \(v\)は一定でなければならない。
+    このことは\textbf{慣性の法則}と呼ばれる次の法則が成立することを意味する：
+    \begin{center}
+      慣性系においては、すべての自由な運動は大きさも方向も一定の速度を持つ。
+    \end{center}
+    あとは\textbf{相対性原理を使って}別の慣性系で見て\(v=v'+\ep\)のように変換してから
+    ラグランジアンが同一であることを使って
+    二つの座標系で計算したラグランジアンの差が\(r,t\)の関数分くらいしかないことを主張し、
+    適当に展開したら\(L\)が\(\|v\|^2\)に比例することがわかる。
+    比例定数として (慣性) 質量を定義する。
+    詳しくはランダウ-リプシッツの最初の5節を読めば良い。
+  \end{exam*}
+  上に書いた部分で個人的に
+  「\textbf{ラグランジアンは運動を規定する関数}であるから、
+  \textbf{運動が同じならラグランジアンが同じ}」
+  という点に気づいたのが大きかった。
+  運動が同じとはなんなのかとかそういうことを深く考えてもよくわからないし、
+  ラグランジアンという抽象的な一つの関数から出発している以上、
+  運動が同じというのはラグランジアンが同じということ以外の何者でもないんだな。
+\end{nikki*}
+
+
+
+
+\begin{nikki*}[2020.6.19 (金)]
+  しばらく放ったらかしてしまった。
+
+  やっぱり物理で座標系を時間発展させるのが数学的にはすごい気持ち悪い。
+  物体の運動が3次元多様体内の質点の移動だと解釈するとすごい素朴で自然だけど、
+  その考えだと、普通は多様体論ではある点の周りに貼った座標を時間発展させて
+  動かしたりはしないから、
+  ガリレイ変換とかですら意味不明な操作って感じがしてくる。
+  そもそもこの時点で、
+  数学的には、時間も含めた4次元多様体内の質点の移動と解釈する方が自然なんだろうなとおもう。
+  たとえば\(\R^4=\R t \oplus \R x \oplus \R y \oplus \R z\)
+  内を速度ベクトルが時間に依存せず\(v\)であるように移動する質点\(q\)を考えると、
+  \(q\)が時刻\(0\)で原点\((x,y,z)=(0,0,0)\)にいるとすれば、
+  時刻\(t\)では
+  \((x,y,z) = vt = (v_1t,v_2t,v_3t)\)にいるわけだから、
+  \(\R^4\)内の動きとしては
+  \[
+  (t,x,y,z) = (t,v_1t,v_2t,v_3t)
+  \]
+  となって、常にこう考えた方が自然だと思った。
+  この4次元多様体には時間軸への射影\(\R^4 \to \R t\)があって、
+  古典力学での質点の運動はこの射影の局所的なsectionなんじゃないかな。
+  時間が固定されてるってそういうことっぽい。
+
+  あと、思ったけど最小作用の原理だけからじゃ多分何も出ないよね。
+  最小作用の原理と相対性原理を組み合わせると古典力学が全部？カバーできるのかな。
+  たとえば、慣性系の間の変換がガリレイ変換に限ることとかは次のように確認できる：
+  \(\R^4\)内の自然な座標\((t,x,y,z)\) (\(x\)-系)
+  に関して静止している質点\(q\)を、
+  別の慣性系\((t'=t,x',y',z')\) (\(x'\)-系) から観測する。
+  相対性原理、つまり
+  どの慣性系からみても\textbf{力学が同じ}であるから、
+  \(x\)-系で自由に動く (静止しているものも含まれる) 質点は
+  別の慣性系\(x'\)-系でみても自由に動く。
+  既に述べたことから、慣性系で自由に運動する質点は等速直線運動だから、
+  \(q\)は\(x'\)-系で一定の速度ベクトル\(v\)で運動しているように観測できる。
+  すると、\(x'\)-系からみた\(x\)-系の原点は
+  一定の速度ベクトル\(v\)で運動しているわけだから、
+  \(x\)-系からみたら
+  \[
+  (x',y',z') = (x,y,z) - vt + \text{(\(t\)に関して定ベクトル)}
+  \]
+  という形で座標変換されることがわかる。
+  平行移動して第三項を消去したら慣性系の間の変換が本質的にガリレイ変換しかないことがわかる。
+\end{nikki*}
+
+
+\begin{nikki*}[2020.6.30 (水)]
+  日記が途切れがち。
+  メンタリストDaiGoの動画をずっと見てたんだけど、気付いたら勉強してなかった。
+  でも計画術とか記録術を学んだので、これからはきちんと継続する。
+
+  クリストッフェル記号についてあることに気づいた。
+  まず多様体\(M\)上とその上のランク\(r\)のベクトル束\(E\)とにある点\(x\in M\)をとる
+  (\(x\)は座標と思ってる)。
+  点\(x\)のまわりの近傍で\(E\)の自明化をとっておいて、
+  十分小さい点\(x+\Delta x\)を考える。
+  ベクトル\(v\in E_x\)の点\(x+\Delta x\)への\textbf{平行移動}をする操作
+  \(P(\Delta x) : E_x\cong \R^r \to E_{x+\Delta x}\cong \R^r\)が
+  どんな性質を満たしてほしいかというと、最低限
+  \begin{itemize}
+    \item \(P(\Delta x)\)は線形、
+    \item \(P(0) = \id_{E_x}\) (つまり移動しないときは\(\id\))、
+    \item \(P(\Delta x)\)は\(\Delta x\)に関して滑らか、
+  \end{itemize}
+  などは要請したくなる。
+  このような\(P(\Delta x)\)を自明化
+  \(E_x\cong \R^r \cong E_{x+\Delta x}\)
+  のもとで計算する。
+  \(\Delta x\)に関して\(0\)のまわりでテイラー展開することを考える。
+  \(v=(v_1,\cdots, v_r)\in E_x\cong \R^r\)に対して、
+  \(P(\Delta x)(v) = (P(\Delta x)(v)_i)_{i=1,\cdots ,r}\)
+  の各成分は、\(P(\Delta x)\)を行列と考えて、
+  \[
+  P(\Delta x)(v)_i
+  = P(\Delta x)^j_iv_j
+  = \left(\left( P(0)\right)^j_i +
+  \left( \frac{\partial P}{\partial x^{\alpha}}(0) \right)^j_i
+  \Delta x^\alpha \right) v_j
+  = v_i +
+  \left( \frac{\partial P}{\partial x^{\alpha}}(0) \right)^j_i \Delta x^\alpha v_j
+  \]
+  となる (ただし添字は\(j\)と\(\alpha\)で縮約)。
+  するとここで
+  \[
+  \Gamma_{\alpha i}^j(x) \dfn -\left( \frac{\partial P}{\partial x^{\alpha}}(0) \right)^j_i
+  \]
+  とおけば、
+  \[
+  P(\Delta x)(v)_i = v_i - \Gamma_{\alpha i}^j(x) \Delta x^\alpha v_j
+  \]
+  となる。
+  まだ\(E\)の各点\(x\)でのベクトルの並行移動しかしてない。
+  なので今度は切断ベクトル場\(A = A_ie^i\)の\(x\)での値
+  \(A(x)\)の点\(x+\Delta x\)への平行移動
+  \(P(\Delta x)(A(x))\)と
+  \(A(x+\Delta x)\)の比較をする (共変微分)。
+  ただし\(e^i\)は\(E\)の点\(x\)での局所的なフレームとしている。
+  すると、成分ごとには、\(e^i\)を省略して、
+  \begin{align*}
+    A_i(x+\Delta x) - \left(P(\Delta x)(A(x))\right)_i
+    &= A_i(x+\Delta x) - A_i(x) + \Gamma_{\alpha i}^j(x)\Delta x^{\alpha} A_j(x) \\
+    &= \partial_\alpha A_i(x)\Delta x^\alpha
+    + \Gamma_{\alpha i}^j(x)\Delta x^\alpha A_j(x) \\
+    &= \left( \partial_\alpha A_i (x)
+    + \Gamma_{\alpha i}^j(x)A_j(x)\right) \Delta x^\alpha
+  \end{align*}
+  となる。
+  これは共変微分の公式そのものである。
+\end{nikki*}
+
+
+
+\end{document}
